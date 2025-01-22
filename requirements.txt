@@ -1,0 +1,7 @@
+numpy<2.0
+matplotlib
+geopandas
+jupyter
+pytest
+coverage
+coveralls
