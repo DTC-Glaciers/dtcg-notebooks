@@ -38,6 +38,7 @@ dependencies = [
     "matplotlib",
     "geopandas",
     "jupyter",
+    "dtcg @ git+ssh://git@github.com/DTC-Glaciers/dtcg.git@develop",
 ]
 
 [project.optional-dependencies]
@@ -75,7 +76,7 @@ dev = [
 # dtcg-run-notebook = "main:main"
 
 [tool.hatch.build.targets.sdist]
-packages = ["dtcg-notebook"]
+packages = ["src/dtcg_notebook"]
 exclude = [
     "logs",
     "*.png",
@@ -87,7 +88,7 @@ exclude = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["dtcg-notebook"]
+packages = ["src/dtcg_notebook"]
 
 [tool.hatch.metadata]
 allow-direct-references = true
