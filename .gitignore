@@ -1,3 +1,14 @@
+# Ours
+html/index.html
+.idea
+book/_build/
+.DS_Store
+data/
+~$*.pptx
+ignore/
+_build/
+notebooks/working_dir/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

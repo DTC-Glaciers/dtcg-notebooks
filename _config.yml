@@ -1,0 +1,50 @@
+#######################################################################################
+# A default configuration that will be loaded for all jupyter books
+# See the documentation for help and more options:
+# https://jupyterbook.org/customize/config.html
+
+#######################################################################################
+# Book settings
+title: DTC-Glaciers notebooks  # The title of the book. Will be placed in the left navbar.
+author: DTCG Consortium  # The author of the book
+copyright: "2024-2025"  # Copyright year to be placed in the footer
+logo: img/logo.jpg  # A path to the book logo
+repository:
+  url: https://github.com/DTC-Glaciers/dtc-glaciers-notebooks
+  path_to_book: notebooks
+  branch: main
+# parse:
+#   myst_enable_extensions:
+#     # don't forget to list any other extensions you want enabled,
+#     # including those that are enabled by default!
+#     - dollarmath
+#     - linkify
+#     - substitution
+#     - colon_fence
+#     - html_image
+# launch_buttons:
+#   notebook_interface: "jupyterlab"
+#   binderhub_url: "https://mybinder.org"
+html:
+  use_repository_button: true
+  use_issues_button: true
+  use_edit_page_button: true
+  favicon: img/favicon.png
+  extra_css:
+    - _static/custom.css
+  toc_title: "On this page"
+  extra_footer: |
+    <p>
+    &copy; Copyright 2024-2025 DTC-Glaciers consortium
+    </p>
+sphinx:
+  config:
+    html_show_copyright: false
+    html_last_updated_fmt: '%b %d, %Y'
+    nb_merge_streams: true
+    html_js_files:
+    - ['https://plausible.oggm.org/js/script.js', {'defer': 'defer', 'data-domain': 'dtcglaciers.org'}]
+execute:
+  execute_notebooks: auto
+  allow_errors: true
+only_build_toc_files: true
