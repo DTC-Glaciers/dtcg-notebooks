@@ -45,6 +45,7 @@ sphinx:
     html_js_files:
     - ['https://plausible.oggm.org/js/script.js', {'defer': 'defer', 'data-domain': 'dtcglaciers.org'}]
 execute:
-  execute_notebooks: auto
+  execute_notebooks: auto  # auto or off (for tests)
+  timeout: -1
   allow_errors: true
 only_build_toc_files: true
