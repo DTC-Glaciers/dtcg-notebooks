@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Cryosat - model comparison in Iceland &#8212; DTC-Glaciers notebooks</title>
+    <title>CryoSat2 - mass-balance model comparison at Vatnajökull ice cap, Iceland &#8212; DTC-Glaciers notebooks</title>
   
   
   
@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bd95c4b6" />
@@ -70,7 +70,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Jan 31, 2025"/>
+    <meta name="docbuild:last-update" content="Feb 03, 2025"/>
   </head>
   
   
@@ -174,7 +174,7 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary notebooks</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01_alps.html">Glacier runoff in the Alps</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Cryosat - model comparison in Iceland</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">CryoSat2 - mass-balance model comparison at Vatnajökull ice cap, Iceland</a></li>
 </ul>
 
     </div>
@@ -374,7 +374,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Cryosat - model comparison in Iceland</h1>
+    <h1>CryoSat2 - mass-balance model comparison at Vatnajökull ice cap, Iceland</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -384,22 +384,24 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-vatnajokull-rgi-ids">Load Vatnajökull rgi_ids</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-preprocessed-data-of-oggm">get preprocessed data of OGGM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-vatnajokull-rgi6-outlines">Load Vatnajökull RGI6 outlines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fetch-the-standard-global-oggm-runs">Fetch the standard global OGGM runs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#re-run-oggm-at-monthly-timestep-and-load-data">Re-run OGGM at monthly timestep and load data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelled-mass-change-and-comparison-to-calibration-data">Modelled mass change and comparison to calibration data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oggm">OGGM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hugonnet-observations">Hugonnet observations</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elevation-change-comparison">Elevation change comparison</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#redo-run-for-getting-monthly-output-and-load-data">Redo run for getting monthly output and load data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-modelled-elevation-change">calculate modelled elevation change</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-cryosat-2-data">Load Cryosat-2 data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hugonnet-et-al">Hugonnet et al</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-modelled-elevation-change">Compute modelled elevation change</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-elevation-change-observed-vs-modelled">Plot elevation change observed vs. modelled</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-observations-of-elevation-change">Load observations of elevation change</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-elevation-change-observed-vs-modelled">plot elevation change observed vs. modelled</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wgms-comparison">WGMS comparison</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-wgms-data">load WGMS data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#help-function-to-access-wgms-data">help function to access WGMS data</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-modelled-data">open modelled data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-for-calculating-modelled-mb">function for calculating modelled mb</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-wgms-data">Load WGMS data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-hydro-year-averages">Compute hydro year averages</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-wgms-and-modelled-mb-for-all-available-glaciers">Plot WGMS and modelled mb for all available glaciers</a></li>
 </ul>
 </li>
@@ -414,41 +416,89 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="cryosat-model-comparison-in-iceland">
-<h1>Cryosat - model comparison in Iceland<a class="headerlink" href="#cryosat-model-comparison-in-iceland" title="Link to this heading">#</a></h1>
+  <div>
+<img src="https://dtcglaciers.org/notebooks/_images/ESA_logo.svg" width="160" align='right'/>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="cryosat2-mass-balance-model-comparison-at-vatnajokull-ice-cap-iceland">
+<h1>CryoSat2 - mass-balance model comparison at Vatnajökull ice cap, Iceland<a class="headerlink" href="#cryosat2-mass-balance-model-comparison-at-vatnajokull-ice-cap-iceland" title="Link to this heading">#</a></h1>
+<p>This notebook is a very early illustration of the scientific challenges to be tackled with the <a class="reference external" href="https://dtcglaciers.org">DTC-Glaciers</a> project. We compare the output from the Open Global Glacier Model (OGGM) v1.6.1 against EO And in-situ observations at Vatnajökull ice cap, Iceland.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">oggm</span> <span class="kn">import</span> <span class="n">utils</span><span class="p">,</span> <span class="n">workflow</span><span class="p">,</span> <span class="n">tasks</span><span class="p">,</span> <span class="n">DEFAULT_BASE_URL</span><span class="p">,</span> <span class="n">cfg</span>
 <span class="kn">import</span> <span class="nn">yaml</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="k">as</span> <span class="nn">mdates</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;notebook&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<section id="load-vatnajokull-rgi-ids">
-<h2>Load Vatnajökull rgi_ids<a class="headerlink" href="#load-vatnajokull-rgi-ids" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dtcf_url</span> <span class="o">=</span> <span class="s1">&#39;https://cluster.klima.uni-bremen.de/~dtcg/test_files/case_study_regions/iceland/&#39;</span>
-<span class="n">fp_rgi_ids</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">file_downloader</span><span class="p">(</span><span class="n">dtcf_url</span> <span class="o">+</span> <span class="s1">&#39;vatnajokull_rgi_ids.yml&#39;</span><span class="p">)</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fp_rgi_ids</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">yaml_file</span><span class="p">:</span>
-    <span class="n">rgi_ids</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">yaml_file</span><span class="p">)[</span><span class="s1">&#39;rgi_ids&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Where to find the test files on EODS</span>
+<span class="n">dtcf_url</span> <span class="o">=</span> <span class="s1">&#39;https://cluster.klima.uni-bremen.de/~dtcg/test_files/case_study_regions/iceland/&#39;</span>
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># OGGM parameters</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">logging_level</span><span class="o">=</span><span class="s1">&#39;ERROR&#39;</span><span class="p">)</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">PARAMS</span><span class="p">[</span><span class="s1">&#39;use_multiprocessing&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">PARAMS</span><span class="p">[</span><span class="s1">&#39;continue_on_error&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">PATHS</span><span class="p">[</span><span class="s1">&#39;working_dir&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_temp_dir</span><span class="p">(</span><span class="s1">&#39;working_dir&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-02-03 11:46:53: oggm.cfg: Reading default parameters from the OGGM `params.cfg` configuration file.
+2025-02-03 11:46:53: oggm.cfg: Multiprocessing switched OFF according to the parameter file.
+2025-02-03 11:46:53: oggm.cfg: Multiprocessing: using all available processors (N=10)
+2025-02-03 11:46:55: oggm.cfg: Multiprocessing switched ON after user settings.
+2025-02-03 11:46:55: oggm.cfg: PARAMS[&#39;continue_on_error&#39;] changed from `False` to `True`.
+</pre></div>
+</div>
+</div>
+</div>
+<section id="load-vatnajokull-rgi6-outlines">
+<h2>Load Vatnajökull RGI6 outlines<a class="headerlink" href="#load-vatnajokull-rgi6-outlines" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># RGI6 ids</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">file_downloader</span><span class="p">(</span><span class="n">dtcf_url</span> <span class="o">+</span> <span class="s1">&#39;vatnajokull_rgi_ids.yml&#39;</span><span class="p">),</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">yaml_file</span><span class="p">:</span>
+    <span class="n">rgi_ids</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">yaml_file</span><span class="p">)[</span><span class="s1">&#39;rgi_ids&#39;</span><span class="p">]</span>
+
+<span class="c1"># Select the outlines from RGI6 file and convert to UTM</span>
+<span class="n">rgi_file</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">get_rgi_region_file</span><span class="p">(</span><span class="s1">&#39;06&#39;</span><span class="p">))</span>
+<span class="n">rgi_file</span> <span class="o">=</span> <span class="n">rgi_file</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rgi_file</span><span class="o">.</span><span class="n">RGIId</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">rgi_ids</span><span class="p">)]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;RGIId&#39;</span><span class="p">)</span>
+<span class="n">rgi_file</span> <span class="o">=</span> <span class="n">rgi_file</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s1">&#39;EPSG:32628&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgi_file</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ec</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/af0b67709ba840b7ebe0077748d9a62743cc0af0b08b6cf7deec20b069eedb3b.png" src="../_images/af0b67709ba840b7ebe0077748d9a62743cc0af0b08b6cf7deec20b069eedb3b.png" />
 </div>
 </div>
 </section>
-<section id="get-preprocessed-data-of-oggm">
-<h2>get preprocessed data of OGGM<a class="headerlink" href="#get-preprocessed-data-of-oggm" title="Link to this heading">#</a></h2>
+<section id="fetch-the-standard-global-oggm-runs">
+<h2>Fetch the standard global OGGM runs<a class="headerlink" href="#fetch-the-standard-global-oggm-runs" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cfg</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">logging_level</span><span class="o">=</span><span class="s1">&#39;ERROR&#39;</span><span class="p">)</span>
-<span class="n">working_dir</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_temp_dir</span><span class="p">(</span><span class="s1">&#39;working_dir&#39;</span><span class="p">)</span>
-<span class="n">cfg</span><span class="o">.</span><span class="n">PATHS</span><span class="p">[</span><span class="s1">&#39;working_dir&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">working_dir</span>
-
-<span class="n">gdirs</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">init_glacier_directories</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdirs</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">init_glacier_directories</span><span class="p">(</span>
     <span class="n">rgi_ids</span><span class="p">,</span>  <span class="c1"># which glaciers?</span>
     <span class="n">prepro_base_url</span><span class="o">=</span><span class="n">DEFAULT_BASE_URL</span><span class="p">,</span>  <span class="c1"># where to fetch the data?</span>
     <span class="n">from_prepro_level</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>  <span class="c1"># what kind of data? </span>
@@ -458,25 +508,18 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-01-31 11:15:16: oggm.cfg: Reading default parameters from the OGGM `params.cfg` configuration file.
-2025-01-31 11:15:16: oggm.cfg: Multiprocessing switched OFF according to the parameter file.
-2025-01-31 11:15:16: oggm.cfg: Multiprocessing: using all available processors (N=10)
-2025-01-31 11:15:18: oggm.workflow: init_glacier_directories from prepro level 4 on 118 glaciers.
-2025-01-31 11:15:18: oggm.workflow: Execute entity tasks [gdir_from_prepro] on 118 glaciers
-2025-01-31 11:15:18: oggm.workflow: WARNING: you are trying to run an entity task on 118 glaciers with multiprocessing turned off. OGGM will run faster with multiprocessing turned on.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-02-03 11:46:55: oggm.workflow: init_glacier_directories from prepro level 4 on 118 glaciers.
+2025-02-03 11:46:55: oggm.workflow: Execute entity tasks [gdir_from_prepro] on 118 glaciers
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="elevation-change-comparison">
-<h2>Elevation change comparison<a class="headerlink" href="#elevation-change-comparison" title="Link to this heading">#</a></h2>
-<section id="redo-run-for-getting-monthly-output-and-load-data">
-<h3>Redo run for getting monthly output and load data<a class="headerlink" href="#redo-run-for-getting-monthly-output-and-load-data" title="Link to this heading">#</a></h3>
+<section id="re-run-oggm-at-monthly-timestep-and-load-data">
+<h2>Re-run OGGM at monthly timestep and load data<a class="headerlink" href="#re-run-oggm-at-monthly-timestep-and-load-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cfg</span><span class="o">.</span><span class="n">PARAMS</span><span class="p">[</span><span class="s1">&#39;continue_on_error&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">workflow</span><span class="o">.</span><span class="n">execute_entity_task</span><span class="p">(</span><span class="n">tasks</span><span class="o">.</span><span class="n">run_from_climate_data</span><span class="p">,</span> <span class="n">gdirs</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">workflow</span><span class="o">.</span><span class="n">execute_entity_task</span><span class="p">(</span><span class="n">tasks</span><span class="o">.</span><span class="n">run_from_climate_data</span><span class="p">,</span> <span class="n">gdirs</span><span class="p">,</span>
                              <span class="n">init_model_filesuffix</span><span class="o">=</span><span class="s1">&#39;_spinup_historical&#39;</span><span class="p">,</span>
                              <span class="n">init_model_yr</span><span class="o">=</span><span class="mi">1979</span><span class="p">,</span>
                              <span class="n">store_monthly_step</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -489,86 +532,170 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-01-31 11:15:38: oggm.cfg: PARAMS[&#39;continue_on_error&#39;] changed from `False` to `True`.
-2025-01-31 11:15:38: oggm.workflow: Execute entity tasks [run_from_climate_data] on 118 glaciers
-2025-01-31 11:15:38: oggm.workflow: WARNING: you are trying to run an entity task on 118 glaciers with multiprocessing turned off. OGGM will run faster with multiprocessing turned on.
-2025-01-31 11:15:42: oggm.core.flowline: AttributeError occurred during task run_from_climate_data_spinup_historical_monthly on RGI60-06.00387: &#39;Dataset&#39; object has no attribute &#39;time&#39;
-2025-01-31 11:16:14: oggm.utils: Applying global task compile_run_output on 118 glaciers
-2025-01-31 11:16:14: oggm.utils: Applying compile_run_output on 118 gdirs.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-02-03 11:47:03: oggm.workflow: Execute entity tasks [run_from_climate_data] on 118 glaciers
+AttributeError occurred during task run_from_climate_data_spinup_historical_monthly on RGI60-06.00387: &#39;Dataset&#39; object has no attribute &#39;time&#39;
+2025-02-03 11:47:09: oggm.utils: Applying global task compile_run_output on 118 glaciers
+2025-02-03 11:47:09: oggm.utils: Applying compile_run_output on 118 gdirs.
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="calculate-modelled-elevation-change">
-<h3>calculate modelled elevation change<a class="headerlink" href="#calculate-modelled-elevation-change" title="Link to this heading">#</a></h3>
+<section id="modelled-mass-change-and-comparison-to-calibration-data">
+<h2>Modelled mass change and comparison to calibration data<a class="headerlink" href="#modelled-mass-change-and-comparison-to-calibration-data" title="Link to this heading">#</a></h2>
+<section id="oggm">
+<h3>OGGM<a class="headerlink" href="#oggm" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">volume_total</span> <span class="o">=</span> <span class="n">ds_monthly</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;rgi_id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">volume</span>
-
-<span class="c1"># it is a bit unclear which basline was used by the observation</span>
-<span class="c1"># from the meta_data: &quot;average of the first 5 months (all data pre-2011)&quot;</span>
-<span class="n">baseline_volume</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">volume_total</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">2011</span><span class="p">,</span> <span class="mf">2011.5</span><span class="p">)))</span>
-
-<span class="c1"># divide by RGI area, which is the same area as used by the creation of the observation</span>
-<span class="n">rgi_area</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">gdir</span> <span class="ow">in</span> <span class="n">gdirs</span><span class="p">:</span>
-    <span class="n">rgi_area</span> <span class="o">+=</span> <span class="n">gdir</span><span class="o">.</span><span class="n">rgi_area_m2</span>
-
-<span class="c1"># finally the calculation of the modelled elevation change</span>
-<span class="n">model_elev</span> <span class="o">=</span> <span class="p">(</span><span class="n">volume_total</span> <span class="o">-</span> <span class="n">baseline_volume</span><span class="p">)</span> <span class="o">/</span> <span class="n">rgi_area</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">years</span><span class="p">,</span> <span class="n">months</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">floatyear_to_date</span><span class="p">(</span><span class="n">ds_monthly</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">({</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="n">years</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="n">months</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}))</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_volume_m3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds_monthly</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;rgi_id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">volume</span><span class="o">.</span><span class="n">data</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_mwe&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_volume_m3&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_volume_m3&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2000-01&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">rgi_file</span><span class="o">.</span><span class="n">Area</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1e6</span><span class="p">)</span> <span class="o">*</span> <span class="mi">900</span> <span class="o">/</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_mwe&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;OGGM v1.6.1&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;m w.e.&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Vatnajökull cumulative mass change 1979-2020 from OGGM&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/dc201eb6b26a4f851bdf80a8213705f05611948f5d418e52ae0d19dd2ebcd2db.png" src="../_images/dc201eb6b26a4f851bdf80a8213705f05611948f5d418e52ae0d19dd2ebcd2db.png" />
+</div>
+</div>
+</section>
+<section id="hugonnet-observations">
+<h3>Hugonnet observations<a class="headerlink" href="#hugonnet-observations" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ref_mb_df</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_geodetic_mb_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rgi_ids</span><span class="p">]</span>
+<span class="n">ref_mb_df</span> <span class="o">=</span> <span class="n">ref_mb_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ref_mb_df</span><span class="o">.</span><span class="n">period</span> <span class="o">==</span> <span class="s1">&#39;2000-01-01_2020-01-01&#39;</span><span class="p">]</span>
+<span class="n">hugonnet_20yrs</span> <span class="o">=</span> <span class="p">(</span><span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;dmdtda&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">20</span>
+<span class="n">hugonnet_20yrs_err</span> <span class="o">=</span> <span class="p">(</span><span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;err_dmdtda&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">20</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute Hugonnet&#39;s mass balance estimates for the plot</span>
+<span class="n">p0</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_mwe&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2000-01&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">hugonnet_20yrs</span> <span class="o">+</span> <span class="n">p0</span>
+
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">ptimes</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s1">&#39;2000-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-01&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">index</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">ptimes</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">p0</span><span class="p">,</span> <span class="n">p1</span><span class="p">],</span> <span class="n">yerr</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">hugonnet_20yrs_err</span><span class="p">],</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> 
+             <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Hugonnet et al. (2021)&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_mwe&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;1995&#39;</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;OGGM v1.6.1&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;m w.e.&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Vatnajökull cumulative mass change as calibrated&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ac1267a234dedbbe52508e0e7350e50d9c2bb17f0bac84204b304d625585cf47.png" src="../_images/ac1267a234dedbbe52508e0e7350e50d9c2bb17f0bac84204b304d625585cf47.png" />
+</div>
+</div>
 </section>
 </section>
-<section id="load-observations-of-elevation-change">
-<h2>Load observations of elevation change<a class="headerlink" href="#load-observations-of-elevation-change" title="Link to this heading">#</a></h2>
+<section id="elevation-change-comparison">
+<h2>Elevation change comparison<a class="headerlink" href="#elevation-change-comparison" title="Link to this heading">#</a></h2>
+<section id="load-cryosat-2-data">
+<h3>Load Cryosat-2 data<a class="headerlink" href="#load-cryosat-2-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obs_file</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">file_downloader</span><span class="p">(</span><span class="n">dtcf_url</span> <span class="o">+</span> <span class="s1">&#39;averaged_grid.csv&#39;</span><span class="p">)</span>
-<span class="n">df_obs_elev</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">obs_file</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">df_obs_elev</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_obs_elev</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">df_obs_elev</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">obs_file</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df_obs_elev</span> <span class="o">=</span> <span class="n">df_obs_elev</span><span class="p">[</span><span class="s1">&#39;changes_t0&#39;</span><span class="p">]</span>  <span class="c1"># only keep average which is used for comparision</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="plot-elevation-change-observed-vs-modelled">
-<h2>plot elevation change observed vs. modelled<a class="headerlink" href="#plot-elevation-change-observed-vs-modelled" title="Link to this heading">#</a></h2>
+<section id="hugonnet-et-al">
+<h3>Hugonnet et al<a class="headerlink" href="#hugonnet-et-al" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ref_mb_df</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_geodetic_mb_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rgi_ids</span><span class="p">]</span>
+<span class="n">ref_mb_df</span> <span class="o">=</span> <span class="n">ref_mb_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ref_mb_df</span><span class="o">.</span><span class="n">period</span> <span class="o">==</span> <span class="s1">&#39;2010-01-01_2020-01-01&#39;</span><span class="p">]</span>
+<span class="c1"># Hugonnet uses 850 </span>
+<span class="n">hugonnet_10yrs</span> <span class="o">=</span> <span class="p">(</span><span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;dmdtda&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">/</span> <span class="mi">850</span>
+<span class="n">hugonnet_10yrs_err</span> <span class="o">=</span> <span class="p">(</span><span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;err_dmdtda&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">/</span> <span class="mi">850</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="compute-modelled-elevation-change">
+<h3>Compute modelled elevation change<a class="headerlink" href="#compute-modelled-elevation-change" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># it is a bit unclear which basline was used by the observations</span>
+<span class="c1"># from the meta_data: &quot;average of the first 5 months (all data pre-2011)&quot;</span>
+<span class="c1"># baseline_volume = np.mean(volume_total.sel(time=slice(2011, 2011.5)))</span>
+<span class="c1"># Her we just pick the first one in the obs timeseries</span>
+<span class="n">baseline_volume</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_volume_m3&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2010-09&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 
-<span class="n">df_obs_elev</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Observations (CryoSat-2)&#39;</span><span class="p">)</span>
+<span class="c1"># divide by RGI area, which is the same area as used by the creation of the observation</span>
+<span class="n">rgi_area</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">gdir</span><span class="o">.</span><span class="n">rgi_area_m2</span> <span class="k">for</span> <span class="n">gdir</span> <span class="ow">in</span> <span class="n">gdirs</span><span class="p">])</span>
 
-<span class="n">years</span><span class="p">,</span> <span class="n">months</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">floatyear_to_date</span><span class="p">(</span><span class="n">ds_monthly</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">({</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="n">years</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="n">months</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}),</span>
-        <span class="n">model_elev</span><span class="p">,</span>
-        <span class="n">label</span><span class="o">=</span><span class="s1">&#39;DTCG&#39;</span><span class="p">)</span>
+<span class="c1"># finally the calculation of the modelled elevation change</span>
+<span class="c1"># This assumes a density of 900 kg m2</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_elev&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_volume_m3&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">baseline_volume</span><span class="p">)</span> <span class="o">/</span> <span class="n">rgi_area</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-elevation-change-observed-vs-modelled">
+<h3>Plot elevation change observed vs. modelled<a class="headerlink" href="#plot-elevation-change-observed-vs-modelled" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute Hugonnet&#39;s mass balance estimates for the plot</span>
+<span class="n">p0</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_elev&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2010-01&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">hugonnet_10yrs</span> <span class="o">+</span> <span class="n">p0</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Cumulative monthly change [m]&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="kc">None</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Vatnajökull elevation change&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">ptimes</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s1">&#39;2010-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-01&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">index</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">ptimes</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">p0</span><span class="p">,</span> <span class="n">p1</span><span class="p">],</span> <span class="n">yerr</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">hugonnet_20yrs_err</span><span class="p">],</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> 
+             <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Hugonnet et al. (2021)&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_elev&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2009&#39;</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;OGGM v1.6.1&#39;</span><span class="p">);</span>
+<span class="n">df_obs_elev</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CryoSat-2&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Set x-axis ticks to show every year</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">YearLocator</span><span class="p">())</span>  <span class="c1"># One tick per year</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s1">&#39;%Y&#39;</span><span class="p">))</span>  <span class="c1"># Format as &quot;YYYY&quot;</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;m elevation&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Vatnajökull cumulative elevation change&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Vatnajökull elevation change&#39;)
-</pre></div>
-</div>
-<img alt="../_images/9f7990385f01e927e5084505033fbae87f3e9609ae9c838a8c4acad98a3e9c9e.png" src="../_images/9f7990385f01e927e5084505033fbae87f3e9609ae9c838a8c4acad98a3e9c9e.png" />
+<img alt="../_images/fd88a2e9b26b1b92ee11cfc86ca0eab033f3452a7399565a3389c81e530f8bac.png" src="../_images/fd88a2e9b26b1b92ee11cfc86ca0eab033f3452a7399565a3389c81e530f8bac.png" />
 </div>
 </div>
+</section>
 </section>
 <section id="wgms-comparison">
 <h2>WGMS comparison<a class="headerlink" href="#wgms-comparison" title="Link to this heading">#</a></h2>
 <section id="load-wgms-data">
-<h3>load WGMS data<a class="headerlink" href="#load-wgms-data" title="Link to this heading">#</a></h3>
+<h3>Load WGMS data<a class="headerlink" href="#load-wgms-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fp_wgms</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">file_downloader</span><span class="p">(</span><span class="n">dtcf_url</span> <span class="o">+</span> <span class="s1">&#39;WGMS_MB-DTC-Glaciers.csv&#39;</span><span class="p">)</span>
@@ -577,9 +704,7 @@
 </div>
 </div>
 </div>
-</section>
-<section id="help-function-to-access-wgms-data">
-<h3>help function to access WGMS data<a class="headerlink" href="#help-function-to-access-wgms-data" title="Link to this heading">#</a></h3>
+<p>Helper functions to access WGMS data</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># conversions between wgms ids and rgi ids</span>
@@ -616,8 +741,7 @@
             <span class="n">wgms_glacier_data</span> <span class="o">=</span> <span class="n">wgms_data</span><span class="p">[</span><span class="n">wgms_data</span><span class="p">[</span><span class="s1">&#39;glacier_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">wgms_id</span><span class="p">]</span>
             <span class="n">df_wgms_glacier_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
                 <span class="p">{</span><span class="s1">&#39;annual_balance&#39;</span><span class="p">:</span> <span class="n">wgms_glacier_data</span><span class="p">[</span><span class="s1">&#39;annual_balance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">},</span>
-                <span class="c1"># ignoring hydro dates for now, as it is also what the model does</span>
-                <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">wgms_glacier_data</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)),</span>
+                <span class="n">index</span><span class="o">=</span><span class="n">wgms_glacier_data</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
             <span class="p">)</span>
             <span class="k">return</span> <span class="n">df_wgms_glacier_data</span><span class="p">,</span> <span class="n">wgms_glacier_data</span><span class="p">[</span><span class="s1">&#39;glacier_id.short_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
@@ -625,31 +749,16 @@
 </div>
 </div>
 </section>
-</section>
-<section id="open-modelled-data">
-<h2>open modelled data<a class="headerlink" href="#open-modelled-data" title="Link to this heading">#</a></h2>
+<section id="compute-hydro-year-averages">
+<h3>Compute hydro year averages<a class="headerlink" href="#compute-hydro-year-averages" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_annual</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">compile_run_output</span><span class="p">(</span><span class="n">gdirs</span><span class="p">,</span> <span class="n">input_filesuffix</span><span class="o">=</span><span class="s1">&#39;_spinup_historical&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-01-31 11:16:29: oggm.utils: Applying global task compile_run_output on 118 glaciers
-2025-01-31 11:16:29: oggm.utils: Applying compile_run_output on 118 gdirs.
-</pre></div>
-</div>
-</div>
-</div>
-<section id="function-for-calculating-modelled-mb">
-<h3>function for calculating modelled mb<a class="headerlink" href="#function-for-calculating-modelled-mb" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_smb</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">rgi_id</span><span class="p">):</span>
-    <span class="n">volume</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">loc</span><span class="p">[{</span><span class="s1">&#39;rgi_id&#39;</span><span class="p">:</span> <span class="n">rgi_id</span><span class="p">}]</span><span class="o">.</span><span class="n">volume</span><span class="o">.</span><span class="n">values</span>
-    <span class="n">area</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">loc</span><span class="p">[{</span><span class="s1">&#39;rgi_id&#39;</span><span class="p">:</span> <span class="n">rgi_id</span><span class="p">}]</span><span class="o">.</span><span class="n">area</span><span class="o">.</span><span class="n">values</span>
-    <span class="n">smb</span> <span class="o">=</span> <span class="p">(</span><span class="n">volume</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">volume</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">area</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">*</span> <span class="n">cfg</span><span class="o">.</span><span class="n">PARAMS</span><span class="p">[</span><span class="s1">&#39;ice_density&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span>
-    <span class="k">return</span> <span class="n">smb</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here we need some code to work in hydro ye</span>
+<span class="n">df_annual</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1980</span><span class="p">,</span> <span class="mi">2019</span><span class="p">):</span>
+    <span class="n">d0</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s1">-10-01&#39;</span>
+    <span class="n">d1</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">-10-01&#39;</span>
+    <span class="n">df_annual</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="s1">&#39;OGGM_mwe&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">d1</span><span class="p">][</span><span class="s1">&#39;OGGM_mwe&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">d0</span><span class="p">][</span><span class="s1">&#39;OGGM_mwe&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -666,30 +775,27 @@
         <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
         <span class="c1"># add modelled smb</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">({</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="n">ds_annual</span><span class="o">.</span><span class="n">time</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}),</span>
-                <span class="n">get_smb</span><span class="p">(</span><span class="n">ds_annual</span><span class="p">,</span> <span class="n">gdir</span><span class="o">.</span><span class="n">rgi_id</span><span class="p">),</span>
-                <span class="s1">&#39;.-&#39;</span><span class="p">,</span>
-                <span class="n">label</span><span class="o">=</span><span class="s1">&#39;DTCG&#39;</span><span class="p">,</span>
-               <span class="p">)</span>
+        <span class="n">df_annual</span><span class="p">[</span><span class="s1">&#39;OGGM_mwe&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;OGGM v1.6.1&#39;</span><span class="p">)</span>
         
         <span class="c1"># add observation</span>
         <span class="n">wgms_mb</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;annual_balance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span>
-                                          <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Observation (WGMS)&#39;</span><span class="p">)</span>
-        
+                                          <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Observations (WGMS)&#39;</span><span class="p">)</span>
+
         <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">gdir</span><span class="o">.</span><span class="n">rgi_id</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">wgms_mb</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;m w.e.&#39;</span><span class="p">);</span> 
+        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">1998</span><span class="p">,</span> <span class="mi">2024</span><span class="p">);</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ad36736a59c79ab99aa90b0ae81c9c0dd88076f1c1424a4f7e0cb1599a889b18.png" src="../_images/ad36736a59c79ab99aa90b0ae81c9c0dd88076f1c1424a4f7e0cb1599a889b18.png" />
-<img alt="../_images/dd90e464a4322b978bc9ff756a7390abec5e060928d8b5cff2cddc19e4c27dfb.png" src="../_images/dd90e464a4322b978bc9ff756a7390abec5e060928d8b5cff2cddc19e4c27dfb.png" />
-<img alt="../_images/de46e93860c7e653dfa13b2ebb0254b2ec6e560e866caee59fa6d0a23ef22299.png" src="../_images/de46e93860c7e653dfa13b2ebb0254b2ec6e560e866caee59fa6d0a23ef22299.png" />
-<img alt="../_images/43f55c1190947b8bef9d46815f6378b7af7c813c1f2767561b205c30c061a78f.png" src="../_images/43f55c1190947b8bef9d46815f6378b7af7c813c1f2767561b205c30c061a78f.png" />
-<img alt="../_images/7a06e700a99f84dd091ec7d9a2567270188d6ff5314015181fbb73556f6bffe6.png" src="../_images/7a06e700a99f84dd091ec7d9a2567270188d6ff5314015181fbb73556f6bffe6.png" />
-<img alt="../_images/1b0c52c46114bc7939b983958cc1637a1867134b24f3d1c3a16e2bf782fbbd4a.png" src="../_images/1b0c52c46114bc7939b983958cc1637a1867134b24f3d1c3a16e2bf782fbbd4a.png" />
+<img alt="../_images/ff9b0bb8ebf62e370a62c195be043cda1f5cbe2c3f3a5b0dbf50485bccb9236c.png" src="../_images/ff9b0bb8ebf62e370a62c195be043cda1f5cbe2c3f3a5b0dbf50485bccb9236c.png" />
+<img alt="../_images/3983d9a98e5a39fe06f39058638376040503794ec964a2e33e8ebed7ba948d25.png" src="../_images/3983d9a98e5a39fe06f39058638376040503794ec964a2e33e8ebed7ba948d25.png" />
+<img alt="../_images/abc26acfa2fbfce9cced0357bef1161d6d80f3756adc45edb089414be8a9f493.png" src="../_images/abc26acfa2fbfce9cced0357bef1161d6d80f3756adc45edb089414be8a9f493.png" />
+<img alt="../_images/2fd123d24de7390fb6c2bca650e259071dbc3a74c4397fba8464281afc735c9b.png" src="../_images/2fd123d24de7390fb6c2bca650e259071dbc3a74c4397fba8464281afc735c9b.png" />
+<img alt="../_images/d2327a438e0fc4e03a4b239efe43b0212be2c6704054fb4d9f91156bdee028cf.png" src="../_images/d2327a438e0fc4e03a4b239efe43b0212be2c6704054fb4d9f91156bdee028cf.png" />
+<img alt="../_images/67fb449a6f3c5f08449af1e1d9c792bc3060797f4d22dd1ab0272258206be8ef.png" src="../_images/67fb449a6f3c5f08449af1e1d9c792bc3060797f4d22dd1ab0272258206be8ef.png" />
 </div>
 </div>
 </section>
@@ -752,22 +858,24 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-vatnajokull-rgi-ids">Load Vatnajökull rgi_ids</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-preprocessed-data-of-oggm">get preprocessed data of OGGM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-vatnajokull-rgi6-outlines">Load Vatnajökull RGI6 outlines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fetch-the-standard-global-oggm-runs">Fetch the standard global OGGM runs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#re-run-oggm-at-monthly-timestep-and-load-data">Re-run OGGM at monthly timestep and load data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelled-mass-change-and-comparison-to-calibration-data">Modelled mass change and comparison to calibration data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oggm">OGGM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hugonnet-observations">Hugonnet observations</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elevation-change-comparison">Elevation change comparison</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#redo-run-for-getting-monthly-output-and-load-data">Redo run for getting monthly output and load data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-modelled-elevation-change">calculate modelled elevation change</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-cryosat-2-data">Load Cryosat-2 data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hugonnet-et-al">Hugonnet et al</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-modelled-elevation-change">Compute modelled elevation change</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-elevation-change-observed-vs-modelled">Plot elevation change observed vs. modelled</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-observations-of-elevation-change">Load observations of elevation change</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-elevation-change-observed-vs-modelled">plot elevation change observed vs. modelled</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wgms-comparison">WGMS comparison</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-wgms-data">load WGMS data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#help-function-to-access-wgms-data">help function to access WGMS data</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-modelled-data">open modelled data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-for-calculating-modelled-mb">function for calculating modelled mb</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-wgms-data">Load WGMS data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-hydro-year-averages">Compute hydro year averages</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-wgms-and-modelled-mb-for-all-available-glaciers">Plot WGMS and modelled mb for all available glaciers</a></li>
 </ul>
 </li>
@@ -797,7 +905,7 @@ By DTCG Consortium
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jan 31, 2025.
+  Last updated on Feb 03, 2025.
   <br/>
 </p>
   </div>
