@@ -1,3 +1,3 @@
 #!/bin/bash
 
-ghp-import -n -p -f book/_build/html
+ghp-import -n -p -f _build/html
