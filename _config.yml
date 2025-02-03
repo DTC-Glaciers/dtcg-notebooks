@@ -10,22 +10,13 @@ author: DTCG Consortium  # The author of the book
 copyright: "2024-2025"  # Copyright year to be placed in the footer
 logo: img/logo.jpg  # A path to the book logo
 repository:
-  url: https://github.com/DTC-Glaciers/dtc-glaciers-notebooks
-  path_to_book: notebooks
+  url: https://github.com/DTC-Glaciers/dtcg-notebooks
   branch: main
-# parse:
-#   myst_enable_extensions:
-#     # don't forget to list any other extensions you want enabled,
-#     # including those that are enabled by default!
-#     - dollarmath
-#     - linkify
-#     - substitution
-#     - colon_fence
-#     - html_image
-# launch_buttons:
-#   notebook_interface: "jupyterlab"
-#   binderhub_url: "https://mybinder.org"
+launch_buttons:
+  notebook_interface: "jupyterlab"
+  jupyterhub_url: "https://hub.dtcglaciers.org"
 html:
+  baseurl: https://notebooks.dtcglaciers.org
   use_repository_button: true
   use_issues_button: true
   use_edit_page_button: true
@@ -45,7 +36,7 @@ sphinx:
     html_js_files:
     - ['https://plausible.oggm.org/js/script.js', {'defer': 'defer', 'data-domain': 'dtcglaciers.org'}]
 execute:
-  execute_notebooks: auto  # auto or off (for tests)
+  execute_notebooks: auto  #  or off (for tests)
   timeout: -1
   allow_errors: true
 only_build_toc_files: true
