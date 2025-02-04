@@ -72,7 +72,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Feb 03, 2025"/>
+    <meta name="docbuild:last-update" content="Feb 04, 2025"/>
   </head>
   
   
@@ -470,17 +470,6 @@ For selecting a subregion, this is what an API query could look like:</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-02-03 23:16:01: oggm.cfg: Reading default parameters from the OGGM `params.cfg` configuration file.
-2025-02-03 23:16:01: oggm.cfg: Multiprocessing switched OFF according to the parameter file.
-2025-02-03 23:16:01: oggm.cfg: Multiprocessing: using all available processors (N=10)
-2025-02-03 23:16:03: oggm.cfg: Multiprocessing switched ON after user settings.
-2025-02-03 23:16:03: oggm.cfg: PARAMS[&#39;store_model_geometry&#39;] changed from `False` to `True`.
-2025-02-03 23:16:04: oggm.workflow: init_glacier_directories from prepro level 5 on 1 glaciers.
-2025-02-03 23:16:04: oggm.workflow: Execute entity tasks [gdir_from_prepro] on 1 glaciers
-</pre></div>
-</div>
-</div>
 </div>
 <p>The API is very flexible: it can pass OGGM parameters directly to OGGM, and to preserve bandwidth a response can be customised to contain as little data as needed.</p>
 <p>For this example, the response data are synthesised into static plots.
@@ -501,76 +490,43 @@ In a dashboard setting, these plots are automatically updated for every user int
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plot_data</span> <span class="o">=</span> <span class="n">dtcg</span><span class="o">.</span><span class="n">interface</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">plot_runoff_dashboard</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">response</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;glacier_data&quot;</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">basin_shapefile</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;shapefile&quot;</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">annual_runoff</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;runoff_data&quot;</span><span class="p">][</span><span class="s2">&quot;annual_runoff&quot;</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">monthly_runoff</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;runoff_data&quot;</span><span class="p">][</span><span class="s2">&quot;monthly_runoff&quot;</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">min_runoff_year</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;runoff_data&quot;</span><span class="p">][</span><span class="s2">&quot;runoff_year_min&quot;</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">max_runoff_year</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;runoff_data&quot;</span><span class="p">][</span><span class="s2">&quot;runoff_year_max&quot;</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">subregion_name</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">subregion_name</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="p">)</span>
-
-<span class="nn">File ~/.mambaforge/envs/oggm_env/lib/python3.12/site-packages/dtcg/interface/plotting.py:175,</span> in <span class="ni">plot_runoff_dashboard</span><span class="nt">(response, subregion_name, basin_shapefile, annual_runoff, monthly_runoff, min_runoff_year, max_runoff_year, name)</span>
-<span class="g g-Whitespace">    </span><span class="mi">166</span> <span class="n">plot_monthly_runoff</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">167</span>     <span class="n">monthly_runoff</span><span class="p">,</span> <span class="n">min_runoff_year</span><span class="p">,</span> <span class="n">max_runoff_year</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">168</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">169</span> <span class="n">plot_basin_selection</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">170</span>     <span class="n">basin_shapefile</span><span class="o">=</span><span class="n">basin_shapefile</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">171</span>     <span class="n">glacier_data</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">172</span>     <span class="n">subregion_name</span><span class="o">=</span><span class="n">subregion_name</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">173</span>     <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span>
-<span class="g g-Whitespace">    </span><span class="mi">174</span> <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">175</span> <span class="n">plot_glacier_highlight</span><span class="p">(</span><span class="n">glacier_data</span><span class="o">=</span><span class="n">response</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-<span class="g g-Whitespace">    </span><span class="mi">176</span> <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span>
-
-<span class="nn">File ~/.mambaforge/envs/oggm_env/lib/python3.12/site-packages/dtcg/interface/plotting.py:140,</span> in <span class="ni">plot_glacier_highlight</span><span class="nt">(glacier_data, name, ax)</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span> <span class="k">def</span> <span class="nf">plot_glacier_highlight</span><span class="p">(</span><span class="n">glacier_data</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">140</span>     <span class="n">glacier_data</span><span class="p">[</span><span class="n">glacier_data</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">141</span>         <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">142</span>         <span class="n">label</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">143</span>         <span class="n">zorder</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">144</span>         <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#beacf6&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span>         <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">146</span>         <span class="n">lw</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">147</span>         <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">148</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">149</span>     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">150</span>     <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
-
-<span class="nn">File ~/.mambaforge/envs/oggm_env/lib/python3.12/site-packages/geopandas/plotting.py:968,</span> in <span class="ni">GeoplotAccessor.__call__</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">966</span> <span class="n">kind</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;kind&quot;</span><span class="p">,</span> <span class="s2">&quot;geo&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">967</span> <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;geo&quot;</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">968</span>     <span class="k">return</span> <span class="n">plot_dataframe</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">969</span> <span class="k">if</span> <span class="n">kind</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pandas_kinds</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">970</span>     <span class="c1"># Access pandas plots</span>
-<span class="g g-Whitespace">    </span><span class="mi">971</span>     <span class="k">return</span> <span class="n">PlotAccessor</span><span class="p">(</span><span class="n">data</span><span class="p">)(</span><span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~/.mambaforge/envs/oggm_env/lib/python3.12/site-packages/geopandas/plotting.py:664,</span> in <span class="ni">plot_dataframe</span><span class="nt">(df, column, cmap, color, ax, cax, categorical, legend, scheme, k, vmin, vmax, markersize, figsize, legend_kwds, categories, classification_kwds, missing_kwds, aspect, autolim, **style_kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">662</span>     <span class="n">bounds</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">total_bounds</span>
-<span class="g g-Whitespace">    </span><span class="mi">663</span>     <span class="n">y_coord</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">bounds</span><span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
-<span class="ne">--&gt; </span><span class="mi">664</span>     <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">y_coord</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">180</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">665</span>     <span class="c1"># formula ported from R package sp</span>
-<span class="g g-Whitespace">    </span><span class="mi">666</span>     <span class="c1"># https://github.com/edzer/sp/blob/master/R/mapasp.R</span>
-<span class="g g-Whitespace">    </span><span class="mi">667</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">668</span>     <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
-
-<span class="nn">File ~/.mambaforge/envs/oggm_env/lib/python3.12/site-packages/matplotlib/axes/_base.py:1664,</span> in <span class="ni">_AxesBase.set_aspect</span><span class="nt">(self, aspect, adjustable, anchor, share)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1662</span>     <span class="n">aspect</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">aspect</span><span class="p">)</span>  <span class="c1"># raise ValueError if necessary</span>
-<span class="g g-Whitespace">   </span><span class="mi">1663</span>     <span class="k">if</span> <span class="n">aspect</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">aspect</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1664</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;aspect must be finite and positive &quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1666</span> <span class="k">if</span> <span class="n">share</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1667</span>     <span class="n">axes</span> <span class="o">=</span> <span class="p">{</span><span class="n">sibling</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_axis_names</span>
-<span class="g g-Whitespace">   </span><span class="mi">1668</span>             <span class="k">for</span> <span class="n">sibling</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shared_axes</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">get_siblings</span><span class="p">(</span><span class="bp">self</span><span class="p">)}</span>
-
-<span class="ne">ValueError</span>: aspect must be finite and positive 
+<img alt="../_images/b4124106d66eb66a3614e594d254e9e4a6551403d345736763d6c91e1e194449.png" src="../_images/b4124106d66eb66a3614e594d254e9e4a6551403d345736763d6c91e1e194449.png" />
+</div>
+</div>
+<p>A user can also select specific glaciers</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A query might look like this</span>
+<span class="n">user_query_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="s2">&quot;select_glacier&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;region_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Central Europe&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;subregion_name&quot;</span><span class="p">:</span> <span class="n">subregion_name</span><span class="p">,</span>
+    <span class="s2">&quot;glacier_name&quot;</span><span class="p">:</span> <span class="n">glacier_name</span><span class="p">,</span>
+    <span class="s2">&quot;shapefile_path&quot;</span><span class="p">:</span> <span class="s2">&quot;nested_catchments_oetztal/nested_catchments_oetztal.shx&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;oggm_params&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;use_multiprocessing&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">&quot;rgi_version&quot;</span><span class="p">:</span> <span class="s2">&quot;62&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;store_model_geometry&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">dtcg</span><span class="o">.</span><span class="n">interface</span><span class="o">.</span><span class="n">gateway</span><span class="o">.</span><span class="n">_set_user_query</span><span class="p">(</span><span class="o">**</span><span class="n">user_query_params</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">dtcg</span><span class="o">.</span><span class="n">interface</span><span class="o">.</span><span class="n">gateway</span><span class="o">.</span><span class="n">get_query_response</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="../_images/a60ac49f13adc87d2b92e5e734a02a9ed9ae43376b6bc83a81e01402cb13011d.png" src="../_images/a60ac49f13adc87d2b92e5e734a02a9ed9ae43376b6bc83a81e01402cb13011d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dtcg</span><span class="o">.</span><span class="n">interface</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">plot_mass_balance</span><span class="p">(</span>
+    <span class="n">observations</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;runoff_data&quot;</span><span class="p">][</span><span class="s2">&quot;wgms&quot;</span><span class="p">],</span>
+    <span class="n">mass_balance</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;runoff_data&quot;</span><span class="p">][</span><span class="s2">&quot;mass_balance&quot;</span><span class="p">],</span>
+    <span class="n">name</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">glacier_name</span><span class="p">,</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c1fb2734bcd4f6e8ee650b85b12b5828b36fd8c6c9b0e934380f74b9597e4280.png" src="../_images/c1fb2734bcd4f6e8ee650b85b12b5828b36fd8c6c9b0e934380f74b9597e4280.png" />
 </div>
 </div>
 </section>
@@ -651,7 +607,7 @@ By DTCG Consortium
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Feb 03, 2025.
+  Last updated on Feb 04, 2025.
   <br/>
 </p>
   </div>
