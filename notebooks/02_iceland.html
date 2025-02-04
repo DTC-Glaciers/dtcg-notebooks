@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>CryoSat2 - mass-balance model comparison at Vatnajökull ice cap, Iceland &#8212; DTC-Glaciers notebooks</title>
+    <title>CryoSat2 - model comparison at Vatnajökull ice cap, Iceland &#8212; DTC-Glaciers notebooks</title>
   
   
   
@@ -175,7 +175,7 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary notebooks</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01_alps.html">Glacier runoff in the Alps</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">CryoSat2 - mass-balance model comparison at Vatnajökull ice cap, Iceland</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">CryoSat2 - model comparison at Vatnajökull ice cap, Iceland</a></li>
 </ul>
 
     </div>
@@ -406,7 +406,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>CryoSat2 - mass-balance model comparison at Vatnajökull ice cap, Iceland</h1>
+    <h1>CryoSat2 - model comparison at Vatnajökull ice cap, Iceland</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -452,8 +452,8 @@
   <div>
 <img src="https://notebooks.dtcglaciers.org/_images/ESA_logo.svg" width="160" align='right'/>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="cryosat2-mass-balance-model-comparison-at-vatnajokull-ice-cap-iceland">
-<h1>CryoSat2 - mass-balance model comparison at Vatnajökull ice cap, Iceland<a class="headerlink" href="#cryosat2-mass-balance-model-comparison-at-vatnajokull-ice-cap-iceland" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="cryosat2-model-comparison-at-vatnajokull-ice-cap-iceland">
+<h1>CryoSat2 - model comparison at Vatnajökull ice cap, Iceland<a class="headerlink" href="#cryosat2-model-comparison-at-vatnajokull-ice-cap-iceland" title="Link to this heading">#</a></h1>
 <p>This notebook is a very early illustration of the scientific challenges to be tackled with the <a class="reference external" href="https://dtcglaciers.org">DTC-Glaciers</a> project. We compare the output from the Open Global Glacier Model (OGGM) v1.6.1 against EO And in-situ observations at Vatnajökull ice cap, Iceland.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -491,11 +491,11 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-02-04 08:06:35: oggm.cfg: Reading default parameters from the OGGM `params.cfg` configuration file.
-2025-02-04 08:06:35: oggm.cfg: Multiprocessing switched OFF according to the parameter file.
-2025-02-04 08:06:35: oggm.cfg: Multiprocessing: using all available processors (N=10)
-2025-02-04 08:06:37: oggm.cfg: Multiprocessing switched ON after user settings.
-2025-02-04 08:06:37: oggm.cfg: PARAMS[&#39;continue_on_error&#39;] changed from `False` to `True`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-02-04 12:11:26: oggm.cfg: Reading default parameters from the OGGM `params.cfg` configuration file.
+2025-02-04 12:11:26: oggm.cfg: Multiprocessing switched OFF according to the parameter file.
+2025-02-04 12:11:26: oggm.cfg: Multiprocessing: using all available processors (N=10)
+2025-02-04 12:11:27: oggm.cfg: Multiprocessing switched ON after user settings.
+2025-02-04 12:11:27: oggm.cfg: PARAMS[&#39;continue_on_error&#39;] changed from `False` to `True`.
 </pre></div>
 </div>
 </div>
@@ -534,15 +534,15 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdirs</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">init_glacier_directories</span><span class="p">(</span>
     <span class="n">rgi_ids</span><span class="p">,</span>  <span class="c1"># which glaciers?</span>
     <span class="n">prepro_base_url</span><span class="o">=</span><span class="n">DEFAULT_BASE_URL</span><span class="p">,</span>  <span class="c1"># where to fetch the data?</span>
-    <span class="n">from_prepro_level</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>  <span class="c1"># what kind of data? </span>
+    <span class="n">from_prepro_level</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>  <span class="c1"># what kind of data?</span>
     <span class="n">prepro_border</span><span class="o">=</span><span class="mi">80</span>  <span class="c1"># how big of a map?</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-02-04 08:06:37: oggm.workflow: init_glacier_directories from prepro level 4 on 118 glaciers.
-2025-02-04 08:06:37: oggm.workflow: Execute entity tasks [gdir_from_prepro] on 118 glaciers
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-02-04 12:11:28: oggm.workflow: init_glacier_directories from prepro level 4 on 118 glaciers.
+2025-02-04 12:11:28: oggm.workflow: Execute entity tasks [gdir_from_prepro] on 118 glaciers
 </pre></div>
 </div>
 </div>
@@ -565,10 +565,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-02-04 08:06:47: oggm.workflow: Execute entity tasks [run_from_climate_data] on 118 glaciers
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-02-04 12:11:37: oggm.workflow: Execute entity tasks [run_from_climate_data] on 118 glaciers
 AttributeError occurred during task run_from_climate_data_spinup_historical_monthly on RGI60-06.00387: &#39;Dataset&#39; object has no attribute &#39;time&#39;
-2025-02-04 08:06:54: oggm.utils: Applying global task compile_run_output on 118 glaciers
-2025-02-04 08:06:54: oggm.utils: Applying compile_run_output on 118 gdirs.
+2025-02-04 12:11:44: oggm.utils: Applying global task compile_run_output on 118 glaciers
+2025-02-04 12:11:44: oggm.utils: Applying compile_run_output on 118 gdirs.
 </pre></div>
 </div>
 </div>
@@ -629,7 +629,7 @@ AttributeError occurred during task run_from_climate_data_spinup_historical_mont
 
 <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
 <span class="n">ptimes</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s1">&#39;2000-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-01&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">index</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">ptimes</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">p0</span><span class="p">,</span> <span class="n">p1</span><span class="p">],</span> <span class="n">yerr</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">hugonnet_20yrs_err</span><span class="p">],</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">ptimes</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">p0</span><span class="p">,</span> <span class="n">p1</span><span class="p">],</span> <span class="n">yerr</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">hugonnet_20yrs_err</span><span class="p">],</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
              <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Hugonnet et al. (2021)&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_mwe&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;1995&#39;</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;OGGM v1.6.1&#39;</span><span class="p">);</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -664,7 +664,7 @@ AttributeError occurred during task run_from_climate_data_spinup_historical_mont
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ref_mb_df</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_geodetic_mb_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rgi_ids</span><span class="p">]</span>
 <span class="n">ref_mb_df</span> <span class="o">=</span> <span class="n">ref_mb_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ref_mb_df</span><span class="o">.</span><span class="n">period</span> <span class="o">==</span> <span class="s1">&#39;2010-01-01_2020-01-01&#39;</span><span class="p">]</span>
-<span class="c1"># Hugonnet uses 850 </span>
+<span class="c1"># Hugonnet uses 850</span>
 <span class="n">hugonnet_10yrs</span> <span class="o">=</span> <span class="p">(</span><span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;dmdtda&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">/</span> <span class="mi">850</span>
 <span class="n">hugonnet_10yrs_err</span> <span class="o">=</span> <span class="p">(</span><span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;err_dmdtda&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">/</span> <span class="mi">850</span>
 </pre></div>
@@ -707,7 +707,7 @@ AttributeError occurred during task run_from_climate_data_spinup_historical_mont
 
 <span class="c1"># finally the calculation of the modelled elevation change</span>
 <span class="c1"># This assumes a density of 900 kg m2</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_elev&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_volume_m3&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">baseline_volume</span><span class="p">)</span> <span class="o">/</span> <span class="n">rgi_area</span> 
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_elev&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_volume_m3&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">baseline_volume</span><span class="p">)</span> <span class="o">/</span> <span class="n">rgi_area</span>
 </pre></div>
 </div>
 </div>
@@ -723,7 +723,7 @@ AttributeError occurred during task run_from_climate_data_spinup_historical_mont
 
 <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
 <span class="n">ptimes</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s1">&#39;2010-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-01&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">index</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">ptimes</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">p0</span><span class="p">,</span> <span class="n">p1</span><span class="p">],</span> <span class="n">yerr</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">hugonnet_20yrs_err</span><span class="p">],</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">ptimes</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">p0</span><span class="p">,</span> <span class="n">p1</span><span class="p">],</span> <span class="n">yerr</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">hugonnet_20yrs_err</span><span class="p">],</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
              <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Hugonnet et al. (2021)&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_elev&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2010&#39;</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;OGGM v1.6.1&#39;</span><span class="p">);</span>
 <span class="n">df_obs_elev</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CryoSat-2&#39;</span><span class="p">)</span>
@@ -778,7 +778,7 @@ AttributeError occurred during task run_from_climate_data_spinup_historical_mont
     <span class="k">if</span> <span class="n">wgms_id</span> <span class="ow">in</span> <span class="n">df_wgms_ids</span><span class="p">[</span><span class="s1">&#39;WGMS_ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">df_wgms_ids</span><span class="p">[</span><span class="n">df_wgms_ids</span><span class="p">[</span><span class="s1">&#39;WGMS_ID&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">wgms_id</span><span class="p">][</span><span class="s1">&#39;RGI60_ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">None</span>    
+        <span class="k">return</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -790,7 +790,7 @@ AttributeError occurred during task run_from_climate_data_spinup_historical_mont
 <span class="sd">    Returns (mb_DataFrame, Glacier name)</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">wgms_id</span> <span class="o">=</span> <span class="n">get_wgms_from_rgi</span><span class="p">(</span><span class="n">rgi_id</span><span class="p">)</span>
-    
+
     <span class="c1"># only not None if this glacier is a WGMS glacier</span>
     <span class="k">if</span> <span class="n">wgms_id</span><span class="p">:</span>
         <span class="c1"># check if we have some data</span>
@@ -836,7 +836,7 @@ AttributeError occurred during task run_from_climate_data_spinup_historical_mont
 <span class="c1">#         wgms_mb[0][&#39;annual_balance&#39;].plot(ax=ax, marker=&#39;.&#39;,</span>
 <span class="c1">#                                           label=&#39;Observations (WGMS)&#39;)</span>
 <span class="c1">#         ax.set_title(f&#39;{gdir.rgi_id}, {wgms_mb[1]}&#39;)</span>
-<span class="c1">#         ax.set_xlabel(&#39;&#39;); ax.set_ylabel(&#39;m w.e.&#39;); </span>
+<span class="c1">#         ax.set_xlabel(&#39;&#39;); ax.set_ylabel(&#39;m w.e.&#39;);</span>
 <span class="c1">#         ax.legend();</span>
 <span class="c1">#         ax.set_xlim(1998, 2024);</span>
 <span class="c1">#         plt.show()</span>
