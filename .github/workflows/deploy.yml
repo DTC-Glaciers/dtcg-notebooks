@@ -2,6 +2,7 @@ name: Build & Deploy Jupyter Book
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build-deploy:
@@ -15,8 +16,8 @@ jobs:
           python-version: "3.11"
       - run: |
           python -m pip install --upgrade pip
-          pip install jupyter-book nbstripout
-          pip install git+https://github.com/DTC-Glaciers/dtcg
+          pip install jupyter-book==1.0.4 nbstripout
+          pip install 'dtcg[oggm] @ git+https://github.com/DTC-Glaciers/dtcg'
       - run: |
           jupyter-book clean --html .
           find . -name '*.ipynb' -exec nbstripout {} +
