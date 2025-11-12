@@ -1,0 +1,30 @@
+name: Build & Deploy Jupyter Book
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    env:
+      SPECKLIA_API_KEY: ${{ secrets.SPECKLIA_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: |
+          python -m pip install --upgrade pip
+          pip install jupyter-book==1.0.4 nbstripout
+          pip install 'dtcg[oggm] @ git+https://github.com/DTC-Glaciers/dtcg'
+      - run: |
+          jupyter-book clean --html .
+          find . -name '*.ipynb' -exec nbstripout {} +
+          jupyter-book build .
+          echo "notebooks.dtcglaciers.org" > _build/html/CNAME
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: _build/html
+          publish_branch: gh-pages
