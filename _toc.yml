@@ -9,3 +9,6 @@ parts:
     - file: notebooks/01_alps
     - file: notebooks/02_iceland
     - file: notebooks/04_calibrate_with_eolis_data
+    - file: notebooks/05_mcs_workflow_example
+    - file: notebooks/06_sfc_type_workflow
+    - file: notebooks/07_explore_datacubes
