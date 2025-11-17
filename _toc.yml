@@ -8,3 +8,4 @@ parts:
     chapters:
     - file: notebooks/01_alps
     - file: notebooks/02_iceland
+    - file: notebooks/04_calibrate_with_eolis_data
