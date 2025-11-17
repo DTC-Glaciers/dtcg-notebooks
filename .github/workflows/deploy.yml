@@ -17,7 +17,7 @@ jobs:
       - run: |
           python -m pip install --upgrade pip
           pip install jupyter-book==1.0.4 nbstripout
-          pip install 'dtcg[oggm] @ git+https://github.com/DTC-Glaciers/dtcg'
+          pip install 'dtcg[jupyter] @ git+https://github.com/DTC-Glaciers/dtcg'
       - run: |
           jupyter-book clean --html .
           find . -name '*.ipynb' -exec nbstripout {} +
