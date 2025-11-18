@@ -34,11 +34,12 @@ jobs:
 
           for path in Path("notebooks").rglob("*.ipynb"):
               nb = nbformat.read(path, as_version=4)
-              ks = nb.setdefault("metadata", {}).setdefault("kernelspec", {})
+              metadata = nb.setdefault("metadata", {})
+              ks = metadata.setdefault("kernelspec", {})
               ks["name"] = "python3"
               ks["display_name"] = "Python 3"
               nbformat.write(nb, path)
-              print("Patched", path)
+              print(f"Patched {path}")
           EOF
 
       - name: Build and deploy Jupyter Book
