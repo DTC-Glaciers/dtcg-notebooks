@@ -4,6 +4,11 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
@@ -14,11 +19,30 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: |
+
+      - name: Install dependencies
+        run: |
           python -m pip install --upgrade pip
-          pip install jupyter-book==1.0.4 nbstripout
+          pip install jupyter-book==1.0.4 nbstripout nbformat
           pip install 'dtcg[jupyter] @ git+https://github.com/DTC-Glaciers/dtcg'
-      - run: |
+
+      - name: Normalise notebook kernelspecs
+        run: |
+          python - << 'EOF'
+          import nbformat
+          from pathlib import Path
+
+          for path in Path("notebooks").rglob("*.ipynb"):
+              nb = nbformat.read(path, as_version=4)
+              ks = nb.setdefault("metadata", {}).setdefault("kernelspec", {})
+              ks["name"] = "python3"
+              ks["display_name"] = "Python 3"
+              nbformat.write(nb, path)
+              print("Patched", path)
+          EOF
+
+      - name: Build and deploy Jupyter Book
+        run: |
           jupyter-book clean --html .
           find . -name '*.ipynb' -exec nbstripout {} +
           jupyter-book build .
