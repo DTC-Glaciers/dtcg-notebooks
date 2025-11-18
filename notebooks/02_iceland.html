@@ -519,11 +519,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-11-18 13:44:27: oggm.cfg: Reading default parameters from the OGGM `params.cfg` configuration file.
-2025-11-18 13:44:27: oggm.cfg: Multiprocessing switched OFF according to the parameter file.
-2025-11-18 13:44:27: oggm.cfg: Multiprocessing: using all available processors (N=4)
-2025-11-18 13:44:28: oggm.cfg: Multiprocessing switched ON after user settings.
-2025-11-18 13:44:28: oggm.cfg: PARAMS[&#39;continue_on_error&#39;] changed from `False` to `True`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-11-18 14:54:07: oggm.cfg: Reading default parameters from the OGGM `params.cfg` configuration file.
+2025-11-18 14:54:07: oggm.cfg: Multiprocessing switched OFF according to the parameter file.
+2025-11-18 14:54:07: oggm.cfg: Multiprocessing: using all available processors (N=4)
+2025-11-18 14:54:07: oggm.cfg: Multiprocessing switched ON after user settings.
+2025-11-18 14:54:07: oggm.cfg: PARAMS[&#39;continue_on_error&#39;] changed from `False` to `True`.
 </pre></div>
 </div>
 </div>
@@ -563,8 +563,8 @@ document.write(`
 </section>
 <section id="fetch-the-standard-global-oggm-runs">
 <h2>Fetch the standard global OGGM runs<a class="headerlink" href="#fetch-the-standard-global-oggm-runs" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdirs</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">init_glacier_directories</span><span class="p">(</span>
     <span class="n">rgi_ids</span><span class="p">,</span>  <span class="c1"># which glaciers?</span>
     <span class="n">prepro_base_url</span><span class="o">=</span><span class="n">DEFAULT_BASE_URL</span><span class="p">,</span>  <span class="c1"># where to fetch the data?</span>
@@ -574,142 +574,194 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-11-18 13:44:30: oggm.workflow: init_glacier_directories from prepro level 4 on 118 glaciers.
-2025-11-18 13:44:30: oggm.workflow: Execute entity tasks [gdir_from_prepro] on 118 glaciers
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-11-18 14:54:10: oggm.workflow: init_glacier_directories from prepro level 4 on 118 glaciers.
+2025-11-18 14:54:10: oggm.workflow: Execute entity tasks [gdir_from_prepro] on 118 glaciers
   0% of 302.3 MiB |                      | Elapsed Time: 0:00:00 ETA:  --:--:--
-  0% of 302.3 MiB |                      | Elapsed Time: 0:00:00 ETA:   0:34:03
-  0% of 302.3 MiB |                      | Elapsed Time: 0:00:01 ETA:   0:22:43
-  0% of 302.3 MiB |                      | Elapsed Time: 0:00:01 ETA:   0:14:12
-  0% of 302.3 MiB |                      | Elapsed Time: 0:00:01 ETA:   0:09:43
-  0% of 302.3 MiB |                      | Elapsed Time: 0:00:01 ETA:   0:05:39
-  1% of 302.3 MiB |                      | Elapsed Time: 0:00:02 ETA:   0:03:20
-  2% of 302.3 MiB |                      | Elapsed Time: 0:00:02 ETA:   0:01:51
-  3% of 302.3 MiB |                      | Elapsed Time: 0:00:02 ETA:   0:01:24
-  4% of 302.3 MiB |                      | Elapsed Time: 0:00:03 ETA:   0:01:11
-  4% of 302.3 MiB |#                     | Elapsed Time: 0:00:03 ETA:   0:01:09
-  5% of 302.3 MiB |#                     | Elapsed Time: 0:00:03 ETA:   0:01:01
-  6% of 302.3 MiB |#                     | Elapsed Time: 0:00:03 ETA:   0:01:00
-  6% of 302.3 MiB |#                     | Elapsed Time: 0:00:04 ETA:   0:01:03
-  7% of 302.3 MiB |#                     | Elapsed Time: 0:00:04 ETA:   0:00:57
-  8% of 302.3 MiB |#                     | Elapsed Time: 0:00:04 ETA:   0:00:52
-  9% of 302.3 MiB |##                    | Elapsed Time: 0:00:05 ETA:   0:00:48
- 10% of 302.3 MiB |##                    | Elapsed Time: 0:00:05 ETA:   0:00:45
- 10% of 302.3 MiB |##                    | Elapsed Time: 0:00:05 ETA:   0:00:45
- 11% of 302.3 MiB |##                    | Elapsed Time: 0:00:05 ETA:   0:00:43
- 12% of 302.3 MiB |##                    | Elapsed Time: 0:00:05 ETA:   0:00:41
- 13% of 302.3 MiB |##                    | Elapsed Time: 0:00:06 ETA:   0:00:40
- 14% of 302.3 MiB |###                   | Elapsed Time: 0:00:06 ETA:   0:00:39
- 15% of 302.3 MiB |###                   | Elapsed Time: 0:00:06 ETA:   0:00:38
- 16% of 302.3 MiB |###                   | Elapsed Time: 0:00:07 ETA:   0:00:38
- 17% of 302.3 MiB |###                   | Elapsed Time: 0:00:07 ETA:   0:00:36
- 17% of 302.3 MiB |###                   | Elapsed Time: 0:00:07 ETA:   0:00:36
- 18% of 302.3 MiB |####                  | Elapsed Time: 0:00:08 ETA:   0:00:35
- 19% of 302.3 MiB |####                  | Elapsed Time: 0:00:08 ETA:   0:00:34
- 20% of 302.3 MiB |####                  | Elapsed Time: 0:00:08 ETA:   0:00:33
- 21% of 302.3 MiB |####                  | Elapsed Time: 0:00:08 ETA:   0:00:32
- 21% of 302.3 MiB |####                  | Elapsed Time: 0:00:09 ETA:   0:00:32
- 22% of 302.3 MiB |#####                 | Elapsed Time: 0:00:09 ETA:   0:00:31
- 23% of 302.3 MiB |#####                 | Elapsed Time: 0:00:09 ETA:   0:00:31
- 24% of 302.3 MiB |#####                 | Elapsed Time: 0:00:09 ETA:   0:00:30
- 24% of 302.3 MiB |#####                 | Elapsed Time: 0:00:09 ETA:   0:00:30
- 25% of 302.3 MiB |#####                 | Elapsed Time: 0:00:10 ETA:   0:00:29
- 25% of 302.3 MiB |#####                 | Elapsed Time: 0:00:10 ETA:   0:00:29
- 26% of 302.3 MiB |#####                 | Elapsed Time: 0:00:10 ETA:   0:00:28
- 26% of 302.3 MiB |#####                 | Elapsed Time: 0:00:10 ETA:   0:00:28
- 27% of 302.3 MiB |######                | Elapsed Time: 0:00:10 ETA:   0:00:27
- 27% of 302.3 MiB |######                | Elapsed Time: 0:00:10 ETA:   0:00:28
- 28% of 302.3 MiB |######                | Elapsed Time: 0:00:10 ETA:   0:00:27
- 28% of 302.3 MiB |######                | Elapsed Time: 0:00:11 ETA:   0:00:27
- 29% of 302.3 MiB |######                | Elapsed Time: 0:00:11 ETA:   0:00:26
- 30% of 302.3 MiB |######                | Elapsed Time: 0:00:11 ETA:   0:00:26
- 31% of 302.3 MiB |######                | Elapsed Time: 0:00:12 ETA:   0:00:26
- 32% of 302.3 MiB |#######               | Elapsed Time: 0:00:12 ETA:   0:00:25
- 33% of 302.3 MiB |#######               | Elapsed Time: 0:00:12 ETA:   0:00:24
- 34% of 302.3 MiB |#######               | Elapsed Time: 0:00:12 ETA:   0:00:24
- 35% of 302.3 MiB |#######               | Elapsed Time: 0:00:13 ETA:   0:00:23
- 36% of 302.3 MiB |########              | Elapsed Time: 0:00:13 ETA:   0:00:23
- 37% of 302.3 MiB |########              | Elapsed Time: 0:00:13 ETA:   0:00:22
- 38% of 302.3 MiB |########              | Elapsed Time: 0:00:14 ETA:   0:00:22
- 39% of 302.3 MiB |########              | Elapsed Time: 0:00:14 ETA:   0:00:21
- 40% of 302.3 MiB |########              | Elapsed Time: 0:00:14 ETA:   0:00:21
- 41% of 302.3 MiB |#########             | Elapsed Time: 0:00:14 ETA:   0:00:20
- 42% of 302.3 MiB |#########             | Elapsed Time: 0:00:15 ETA:   0:00:20
- 43% of 302.3 MiB |#########             | Elapsed Time: 0:00:15 ETA:   0:00:20
- 44% of 302.3 MiB |#########             | Elapsed Time: 0:00:15 ETA:   0:00:19
- 45% of 302.3 MiB |#########             | Elapsed Time: 0:00:16 ETA:   0:00:19
- 46% of 302.3 MiB |##########            | Elapsed Time: 0:00:16 ETA:   0:00:19
- 47% of 302.3 MiB |##########            | Elapsed Time: 0:00:16 ETA:   0:00:18
- 48% of 302.3 MiB |##########            | Elapsed Time: 0:00:16 ETA:   0:00:18
- 49% of 302.3 MiB |##########            | Elapsed Time: 0:00:17 ETA:   0:00:17
- 50% of 302.3 MiB |###########           | Elapsed Time: 0:00:17 ETA:   0:00:17
- 50% of 302.3 MiB |###########           | Elapsed Time: 0:00:17 ETA:   0:00:17
- 52% of 302.3 MiB |###########           | Elapsed Time: 0:00:18 ETA:   0:00:16
- 52% of 302.3 MiB |###########           | Elapsed Time: 0:00:18 ETA:   0:00:16
- 53% of 302.3 MiB |###########           | Elapsed Time: 0:00:18 ETA:   0:00:15
- 54% of 302.3 MiB |############          | Elapsed Time: 0:00:18 ETA:   0:00:15
- 55% of 302.3 MiB |############          | Elapsed Time: 0:00:19 ETA:   0:00:15
- 56% of 302.3 MiB |############          | Elapsed Time: 0:00:19 ETA:   0:00:14
- 57% of 302.3 MiB |############          | Elapsed Time: 0:00:19 ETA:   0:00:14
- 58% of 302.3 MiB |############          | Elapsed Time: 0:00:20 ETA:   0:00:14
- 59% of 302.3 MiB |#############         | Elapsed Time: 0:00:20 ETA:   0:00:13
- 60% of 302.3 MiB |#############         | Elapsed Time: 0:00:20 ETA:   0:00:13
- 61% of 302.3 MiB |#############         | Elapsed Time: 0:00:20 ETA:   0:00:13
- 61% of 302.3 MiB |#############         | Elapsed Time: 0:00:21 ETA:   0:00:13
- 62% of 302.3 MiB |#############         | Elapsed Time: 0:00:21 ETA:   0:00:12
- 63% of 302.3 MiB |##############        | Elapsed Time: 0:00:21 ETA:   0:00:12
- 64% of 302.3 MiB |##############        | Elapsed Time: 0:00:22 ETA:   0:00:12
- 65% of 302.3 MiB |##############        | Elapsed Time: 0:00:22 ETA:   0:00:11
- 66% of 302.3 MiB |##############        | Elapsed Time: 0:00:22 ETA:   0:00:11
- 67% of 302.3 MiB |##############        | Elapsed Time: 0:00:22 ETA:   0:00:11
- 67% of 302.3 MiB |##############        | Elapsed Time: 0:00:22 ETA:   0:00:11
- 68% of 302.3 MiB |##############        | Elapsed Time: 0:00:23 ETA:   0:00:10
- 69% of 302.3 MiB |###############       | Elapsed Time: 0:00:23 ETA:   0:00:10
- 70% of 302.3 MiB |###############       | Elapsed Time: 0:00:23 ETA:   0:00:10
- 70% of 302.3 MiB |###############       | Elapsed Time: 0:00:23 ETA:   0:00:09
- 71% of 302.3 MiB |###############       | Elapsed Time: 0:00:24 ETA:   0:00:09
- 72% of 302.3 MiB |###############       | Elapsed Time: 0:00:24 ETA:   0:00:09
- 73% of 302.3 MiB |################      | Elapsed Time: 0:00:24 ETA:   0:00:09
- 73% of 302.3 MiB |################      | Elapsed Time: 0:00:24 ETA:   0:00:08
- 74% of 302.3 MiB |################      | Elapsed Time: 0:00:24 ETA:   0:00:08
- 74% of 302.3 MiB |################      | Elapsed Time: 0:00:24 ETA:   0:00:08
- 75% of 302.3 MiB |################      | Elapsed Time: 0:00:25 ETA:   0:00:08
- 75% of 302.3 MiB |################      | Elapsed Time: 0:00:25 ETA:   0:00:08
- 75% of 302.3 MiB |################      | Elapsed Time: 0:00:25 ETA:   0:00:08
- 77% of 302.3 MiB |################      | Elapsed Time: 0:00:25 ETA:   0:00:07
- 77% of 302.3 MiB |#################     | Elapsed Time: 0:00:26 ETA:   0:00:07
- 78% of 302.3 MiB |#################     | Elapsed Time: 0:00:26 ETA:   0:00:07
- 78% of 302.3 MiB |#################     | Elapsed Time: 0:00:26 ETA:   0:00:07
- 79% of 302.3 MiB |#################     | Elapsed Time: 0:00:26 ETA:   0:00:06
- 80% of 302.3 MiB |#################     | Elapsed Time: 0:00:26 ETA:   0:00:06
- 81% of 302.3 MiB |#################     | Elapsed Time: 0:00:27 ETA:   0:00:06
- 82% of 302.3 MiB |##################    | Elapsed Time: 0:00:27 ETA:   0:00:05
- 83% of 302.3 MiB |##################    | Elapsed Time: 0:00:27 ETA:   0:00:05
- 84% of 302.3 MiB |##################    | Elapsed Time: 0:00:28 ETA:   0:00:05
- 85% of 302.3 MiB |##################    | Elapsed Time: 0:00:28 ETA:   0:00:04
- 86% of 302.3 MiB |##################    | Elapsed Time: 0:00:28 ETA:   0:00:04
- 86% of 302.3 MiB |##################    | Elapsed Time: 0:00:28 ETA:   0:00:04
- 87% of 302.3 MiB |###################   | Elapsed Time: 0:00:28 ETA:   0:00:04
- 87% of 302.3 MiB |###################   | Elapsed Time: 0:00:29 ETA:   0:00:03
- 88% of 302.3 MiB |###################   | Elapsed Time: 0:00:29 ETA:   0:00:03
- 88% of 302.3 MiB |###################   | Elapsed Time: 0:00:29 ETA:   0:00:03
- 89% of 302.3 MiB |###################   | Elapsed Time: 0:00:29 ETA:   0:00:03
- 90% of 302.3 MiB |###################   | Elapsed Time: 0:00:30 ETA:   0:00:03
- 91% of 302.3 MiB |####################  | Elapsed Time: 0:00:30 ETA:   0:00:02
- 92% of 302.3 MiB |####################  | Elapsed Time: 0:00:30 ETA:   0:00:02
- 92% of 302.3 MiB |####################  | Elapsed Time: 0:00:30 ETA:   0:00:02
- 93% of 302.3 MiB |####################  | Elapsed Time: 0:00:30 ETA:   0:00:02
- 94% of 302.3 MiB |####################  | Elapsed Time: 0:00:31 ETA:   0:00:01
- 95% of 302.3 MiB |##################### | Elapsed Time: 0:00:31 ETA:   0:00:01
- 96% of 302.3 MiB |##################### | Elapsed Time: 0:00:31 ETA:   0:00:01
- 96% of 302.3 MiB |##################### | Elapsed Time: 0:00:31 ETA:   0:00:01
- 97% of 302.3 MiB |##################### | Elapsed Time: 0:00:32 ETA:   0:00:00
- 98% of 302.3 MiB |##################### | Elapsed Time: 0:00:32 ETA:   0:00:00
- 99% of 302.3 MiB |##################### | Elapsed Time: 0:00:32 ETA:   0:00:00
-100% of 302.3 MiB |######################| Elapsed Time: 0:00:32 Time:  0:00:32
+  0% of 302.3 MiB |                      | Elapsed Time: 0:00:00 ETA:   0:27:32
+  0% of 302.3 MiB |                      | Elapsed Time: 0:00:00 ETA:   0:18:32
+  0% of 302.3 MiB |                      | Elapsed Time: 0:00:01 ETA:   0:15:29
+  0% of 302.3 MiB |                      | Elapsed Time: 0:00:01 ETA:   0:13:49
+  0% of 302.3 MiB |                      | Elapsed Time: 0:00:01 ETA:   0:10:48
+  0% of 302.3 MiB |                      | Elapsed Time: 0:00:01 ETA:   0:10:35
+  0% of 302.3 MiB |                      | Elapsed Time: 0:00:02 ETA:   0:10:25
+  0% of 302.3 MiB |                      | Elapsed Time: 0:00:02 ETA:   0:09:17
+  0% of 302.3 MiB |                      | Elapsed Time: 0:00:02 ETA:   0:08:32
+  0% of 302.3 MiB |                      | Elapsed Time: 0:00:02 ETA:   0:08:30
+  0% of 302.3 MiB |                      | Elapsed Time: 0:00:02 ETA:   0:08:00
+  0% of 302.3 MiB |                      | Elapsed Time: 0:00:03 ETA:   0:07:36
+  0% of 302.3 MiB |                      | Elapsed Time: 0:00:03 ETA:   0:07:17
+  0% of 302.3 MiB |                      | Elapsed Time: 0:00:03 ETA:   0:07:02
+  0% of 302.3 MiB |                      | Elapsed Time: 0:00:03 ETA:   0:06:49
+  1% of 302.3 MiB |                      | Elapsed Time: 0:00:04 ETA:   0:06:38
+  1% of 302.3 MiB |                      | Elapsed Time: 0:00:04 ETA:   0:06:27
+  1% of 302.3 MiB |                      | Elapsed Time: 0:00:04 ETA:   0:06:08
+  1% of 302.3 MiB |                      | Elapsed Time: 0:00:04 ETA:   0:06:01
+  1% of 302.3 MiB |                      | Elapsed Time: 0:00:05 ETA:   0:05:45
+  1% of 302.3 MiB |                      | Elapsed Time: 0:00:05 ETA:   0:05:32
+  1% of 302.3 MiB |                      | Elapsed Time: 0:00:05 ETA:   0:05:21
+  1% of 302.3 MiB |                      | Elapsed Time: 0:00:05 ETA:   0:05:11
+  1% of 302.3 MiB |                      | Elapsed Time: 0:00:06 ETA:   0:05:02
+  2% of 302.3 MiB |                      | Elapsed Time: 0:00:06 ETA:   0:04:49
+  2% of 302.3 MiB |                      | Elapsed Time: 0:00:06 ETA:   0:04:42
+  2% of 302.3 MiB |                      | Elapsed Time: 0:00:06 ETA:   0:04:32
+  2% of 302.3 MiB |                      | Elapsed Time: 0:00:06 ETA:   0:04:23
+  2% of 302.3 MiB |                      | Elapsed Time: 0:00:07 ETA:   0:04:12
+  2% of 302.3 MiB |                      | Elapsed Time: 0:00:07 ETA:   0:04:00
+  3% of 302.3 MiB |                      | Elapsed Time: 0:00:07 ETA:   0:03:54
+  3% of 302.3 MiB |                      | Elapsed Time: 0:00:07 ETA:   0:03:45
+  3% of 302.3 MiB |                      | Elapsed Time: 0:00:07 ETA:   0:03:38
+  3% of 302.3 MiB |                      | Elapsed Time: 0:00:08 ETA:   0:03:29
+  3% of 302.3 MiB |                      | Elapsed Time: 0:00:08 ETA:   0:03:29
+  3% of 302.3 MiB |                      | Elapsed Time: 0:00:08 ETA:   0:03:24
+  4% of 302.3 MiB |                      | Elapsed Time: 0:00:08 ETA:   0:03:16
+  4% of 302.3 MiB |                      | Elapsed Time: 0:00:08 ETA:   0:03:10
+  4% of 302.3 MiB |#                     | Elapsed Time: 0:00:09 ETA:   0:03:03
+  5% of 302.3 MiB |#                     | Elapsed Time: 0:00:09 ETA:   0:02:55
+  5% of 302.3 MiB |#                     | Elapsed Time: 0:00:09 ETA:   0:02:56
+  5% of 302.3 MiB |#                     | Elapsed Time: 0:00:09 ETA:   0:02:50
+  5% of 302.3 MiB |#                     | Elapsed Time: 0:00:09 ETA:   0:02:44
+  5% of 302.3 MiB |#                     | Elapsed Time: 0:00:10 ETA:   0:02:38
+  6% of 302.3 MiB |#                     | Elapsed Time: 0:00:10 ETA:   0:02:31
+  6% of 302.3 MiB |#                     | Elapsed Time: 0:00:10 ETA:   0:02:32
+  6% of 302.3 MiB |#                     | Elapsed Time: 0:00:10 ETA:   0:02:27
+  7% of 302.3 MiB |#                     | Elapsed Time: 0:00:10 ETA:   0:02:22
+  7% of 302.3 MiB |#                     | Elapsed Time: 0:00:11 ETA:   0:02:16
+  7% of 302.3 MiB |#                     | Elapsed Time: 0:00:11 ETA:   0:02:11
+  8% of 302.3 MiB |#                     | Elapsed Time: 0:00:11 ETA:   0:02:05
+  8% of 302.3 MiB |#                     | Elapsed Time: 0:00:11 ETA:   0:02:06
+  8% of 302.3 MiB |#                     | Elapsed Time: 0:00:11 ETA:   0:02:01
+  8% of 302.3 MiB |#                     | Elapsed Time: 0:00:11 ETA:   0:02:01
+  9% of 302.3 MiB |##                    | Elapsed Time: 0:00:11 ETA:   0:01:57
+  9% of 302.3 MiB |##                    | Elapsed Time: 0:00:12 ETA:   0:01:51
+  9% of 302.3 MiB |##                    | Elapsed Time: 0:00:12 ETA:   0:01:52
+ 10% of 302.3 MiB |##                    | Elapsed Time: 0:00:12 ETA:   0:01:48
+ 10% of 302.3 MiB |##                    | Elapsed Time: 0:00:12 ETA:   0:01:43
+ 10% of 302.3 MiB |##                    | Elapsed Time: 0:00:12 ETA:   0:01:43
+ 11% of 302.3 MiB |##                    | Elapsed Time: 0:00:12 ETA:   0:01:39
+ 11% of 302.3 MiB |##                    | Elapsed Time: 0:00:12 ETA:   0:01:35
+ 12% of 302.3 MiB |##                    | Elapsed Time: 0:00:13 ETA:   0:01:35
+ 12% of 302.3 MiB |##                    | Elapsed Time: 0:00:13 ETA:   0:01:31
+ 12% of 302.3 MiB |##                    | Elapsed Time: 0:00:13 ETA:   0:01:31
+ 13% of 302.3 MiB |##                    | Elapsed Time: 0:00:13 ETA:   0:01:27
+ 13% of 302.3 MiB |##                    | Elapsed Time: 0:00:13 ETA:   0:01:27
+ 14% of 302.3 MiB |###                   | Elapsed Time: 0:00:13 ETA:   0:01:23
+ 14% of 302.3 MiB |###                   | Elapsed Time: 0:00:13 ETA:   0:01:24
+ 14% of 302.3 MiB |###                   | Elapsed Time: 0:00:13 ETA:   0:01:20
+ 14% of 302.3 MiB |###                   | Elapsed Time: 0:00:13 ETA:   0:01:20
+ 15% of 302.3 MiB |###                   | Elapsed Time: 0:00:14 ETA:   0:01:16
+ 15% of 302.3 MiB |###                   | Elapsed Time: 0:00:14 ETA:   0:01:17
+ 16% of 302.3 MiB |###                   | Elapsed Time: 0:00:14 ETA:   0:01:13
+ 16% of 302.3 MiB |###                   | Elapsed Time: 0:00:14 ETA:   0:01:13
+ 17% of 302.3 MiB |###                   | Elapsed Time: 0:00:14 ETA:   0:01:10
+ 17% of 302.3 MiB |###                   | Elapsed Time: 0:00:14 ETA:   0:01:10
+ 18% of 302.3 MiB |###                   | Elapsed Time: 0:00:14 ETA:   0:01:06
+ 18% of 302.3 MiB |####                  | Elapsed Time: 0:00:14 ETA:   0:01:07
+ 19% of 302.3 MiB |####                  | Elapsed Time: 0:00:15 ETA:   0:01:03
+ 19% of 302.3 MiB |####                  | Elapsed Time: 0:00:15 ETA:   0:01:04
+ 20% of 302.3 MiB |####                  | Elapsed Time: 0:00:15 ETA:   0:01:00
+ 20% of 302.3 MiB |####                  | Elapsed Time: 0:00:15 ETA:   0:01:01
+ 21% of 302.3 MiB |####                  | Elapsed Time: 0:00:15 ETA:   0:00:57
+ 21% of 302.3 MiB |####                  | Elapsed Time: 0:00:15 ETA:   0:00:58
+ 22% of 302.3 MiB |####                  | Elapsed Time: 0:00:15 ETA:   0:00:56
+ 22% of 302.3 MiB |#####                 | Elapsed Time: 0:00:16 ETA:   0:00:54
+ 23% of 302.3 MiB |#####                 | Elapsed Time: 0:00:16 ETA:   0:00:51
+ 24% of 302.3 MiB |#####                 | Elapsed Time: 0:00:16 ETA:   0:00:50
+ 25% of 302.3 MiB |#####                 | Elapsed Time: 0:00:16 ETA:   0:00:48
+ 26% of 302.3 MiB |#####                 | Elapsed Time: 0:00:17 ETA:   0:00:46
+ 27% of 302.3 MiB |######                | Elapsed Time: 0:00:17 ETA:   0:00:45
+ 28% of 302.3 MiB |######                | Elapsed Time: 0:00:17 ETA:   0:00:43
+ 28% of 302.3 MiB |######                | Elapsed Time: 0:00:17 ETA:   0:00:44
+ 29% of 302.3 MiB |######                | Elapsed Time: 0:00:17 ETA:   0:00:42
+ 30% of 302.3 MiB |######                | Elapsed Time: 0:00:18 ETA:   0:00:40
+ 31% of 302.3 MiB |######                | Elapsed Time: 0:00:18 ETA:   0:00:39
+ 31% of 302.3 MiB |######                | Elapsed Time: 0:00:18 ETA:   0:00:39
+ 32% of 302.3 MiB |#######               | Elapsed Time: 0:00:18 ETA:   0:00:38
+ 33% of 302.3 MiB |#######               | Elapsed Time: 0:00:18 ETA:   0:00:36
+ 34% of 302.3 MiB |#######               | Elapsed Time: 0:00:19 ETA:   0:00:35
+ 35% of 302.3 MiB |#######               | Elapsed Time: 0:00:19 ETA:   0:00:34
+ 35% of 302.3 MiB |#######               | Elapsed Time: 0:00:19 ETA:   0:00:34
+ 36% of 302.3 MiB |########              | Elapsed Time: 0:00:19 ETA:   0:00:33
+ 37% of 302.3 MiB |########              | Elapsed Time: 0:00:19 ETA:   0:00:32
+ 38% of 302.3 MiB |########              | Elapsed Time: 0:00:20 ETA:   0:00:32
+ 39% of 302.3 MiB |########              | Elapsed Time: 0:00:20 ETA:   0:00:31
+ 40% of 302.3 MiB |########              | Elapsed Time: 0:00:20 ETA:   0:00:30
+ 41% of 302.3 MiB |#########             | Elapsed Time: 0:00:20 ETA:   0:00:29
+ 41% of 302.3 MiB |#########             | Elapsed Time: 0:00:21 ETA:   0:00:29
+ 42% of 302.3 MiB |#########             | Elapsed Time: 0:00:21 ETA:   0:00:28
+ 43% of 302.3 MiB |#########             | Elapsed Time: 0:00:21 ETA:   0:00:27
+ 44% of 302.3 MiB |#########             | Elapsed Time: 0:00:21 ETA:   0:00:27
+ 45% of 302.3 MiB |#########             | Elapsed Time: 0:00:21 ETA:   0:00:26
+ 46% of 302.3 MiB |##########            | Elapsed Time: 0:00:22 ETA:   0:00:25
+ 47% of 302.3 MiB |##########            | Elapsed Time: 0:00:22 ETA:   0:00:25
+ 47% of 302.3 MiB |##########            | Elapsed Time: 0:00:22 ETA:   0:00:24
+ 48% of 302.3 MiB |##########            | Elapsed Time: 0:00:22 ETA:   0:00:23
+ 49% of 302.3 MiB |##########            | Elapsed Time: 0:00:23 ETA:   0:00:23
+ 50% of 302.3 MiB |###########           | Elapsed Time: 0:00:23 ETA:   0:00:22
+ 51% of 302.3 MiB |###########           | Elapsed Time: 0:00:23 ETA:   0:00:22
+ 52% of 302.3 MiB |###########           | Elapsed Time: 0:00:23 ETA:   0:00:21
+ 53% of 302.3 MiB |###########           | Elapsed Time: 0:00:23 ETA:   0:00:21
+ 53% of 302.3 MiB |###########           | Elapsed Time: 0:00:24 ETA:   0:00:21
+ 54% of 302.3 MiB |###########           | Elapsed Time: 0:00:24 ETA:   0:00:20
+ 55% of 302.3 MiB |############          | Elapsed Time: 0:00:24 ETA:   0:00:19
+ 56% of 302.3 MiB |############          | Elapsed Time: 0:00:24 ETA:   0:00:19
+ 56% of 302.3 MiB |############          | Elapsed Time: 0:00:24 ETA:   0:00:18
+ 57% of 302.3 MiB |############          | Elapsed Time: 0:00:24 ETA:   0:00:18
+ 58% of 302.3 MiB |############          | Elapsed Time: 0:00:25 ETA:   0:00:18
+ 59% of 302.3 MiB |############          | Elapsed Time: 0:00:25 ETA:   0:00:17
+ 59% of 302.3 MiB |#############         | Elapsed Time: 0:00:25 ETA:   0:00:17
+ 60% of 302.3 MiB |#############         | Elapsed Time: 0:00:25 ETA:   0:00:16
+ 61% of 302.3 MiB |#############         | Elapsed Time: 0:00:26 ETA:   0:00:16
+ 62% of 302.3 MiB |#############         | Elapsed Time: 0:00:26 ETA:   0:00:15
+ 63% of 302.3 MiB |#############         | Elapsed Time: 0:00:26 ETA:   0:00:15
+ 64% of 302.3 MiB |##############        | Elapsed Time: 0:00:26 ETA:   0:00:14
+ 65% of 302.3 MiB |##############        | Elapsed Time: 0:00:27 ETA:   0:00:14
+ 66% of 302.3 MiB |##############        | Elapsed Time: 0:00:27 ETA:   0:00:13
+ 67% of 302.3 MiB |##############        | Elapsed Time: 0:00:27 ETA:   0:00:13
+ 68% of 302.3 MiB |###############       | Elapsed Time: 0:00:27 ETA:   0:00:12
+ 69% of 302.3 MiB |###############       | Elapsed Time: 0:00:27 ETA:   0:00:12
+ 70% of 302.3 MiB |###############       | Elapsed Time: 0:00:28 ETA:   0:00:11
+ 71% of 302.3 MiB |###############       | Elapsed Time: 0:00:28 ETA:   0:00:11
+ 72% of 302.3 MiB |###############       | Elapsed Time: 0:00:28 ETA:   0:00:11
+ 73% of 302.3 MiB |################      | Elapsed Time: 0:00:28 ETA:   0:00:10
+ 73% of 302.3 MiB |################      | Elapsed Time: 0:00:29 ETA:   0:00:10
+ 74% of 302.3 MiB |################      | Elapsed Time: 0:00:29 ETA:   0:00:09
+ 75% of 302.3 MiB |################      | Elapsed Time: 0:00:29 ETA:   0:00:09
+ 76% of 302.3 MiB |################      | Elapsed Time: 0:00:29 ETA:   0:00:09
+ 77% of 302.3 MiB |#################     | Elapsed Time: 0:00:30 ETA:   0:00:08
+ 78% of 302.3 MiB |#################     | Elapsed Time: 0:00:30 ETA:   0:00:08
+ 79% of 302.3 MiB |#################     | Elapsed Time: 0:00:30 ETA:   0:00:07
+ 80% of 302.3 MiB |#################     | Elapsed Time: 0:00:30 ETA:   0:00:07
+ 81% of 302.3 MiB |#################     | Elapsed Time: 0:00:30 ETA:   0:00:07
+ 82% of 302.3 MiB |##################    | Elapsed Time: 0:00:31 ETA:   0:00:06
+ 83% of 302.3 MiB |##################    | Elapsed Time: 0:00:31 ETA:   0:00:06
+ 84% of 302.3 MiB |##################    | Elapsed Time: 0:00:31 ETA:   0:00:05
+ 85% of 302.3 MiB |##################    | Elapsed Time: 0:00:31 ETA:   0:00:05
+ 86% of 302.3 MiB |##################    | Elapsed Time: 0:00:32 ETA:   0:00:05
+ 86% of 302.3 MiB |###################   | Elapsed Time: 0:00:32 ETA:   0:00:04
+ 87% of 302.3 MiB |###################   | Elapsed Time: 0:00:32 ETA:   0:00:04
+ 88% of 302.3 MiB |###################   | Elapsed Time: 0:00:32 ETA:   0:00:04
+ 89% of 302.3 MiB |###################   | Elapsed Time: 0:00:33 ETA:   0:00:03
+ 90% of 302.3 MiB |###################   | Elapsed Time: 0:00:33 ETA:   0:00:03
+ 91% of 302.3 MiB |####################  | Elapsed Time: 0:00:33 ETA:   0:00:03
+ 92% of 302.3 MiB |####################  | Elapsed Time: 0:00:33 ETA:   0:00:02
+ 93% of 302.3 MiB |####################  | Elapsed Time: 0:00:34 ETA:   0:00:02
+ 94% of 302.3 MiB |####################  | Elapsed Time: 0:00:34 ETA:   0:00:02
+ 95% of 302.3 MiB |####################  | Elapsed Time: 0:00:34 ETA:   0:00:01
+ 96% of 302.3 MiB |##################### | Elapsed Time: 0:00:34 ETA:   0:00:01
+ 97% of 302.3 MiB |##################### | Elapsed Time: 0:00:34 ETA:   0:00:00
+ 98% of 302.3 MiB |##################### | Elapsed Time: 0:00:35 ETA:   0:00:00
+ 99% of 302.3 MiB |##################### | Elapsed Time: 0:00:35 ETA:   0:00:00
+100% of 302.3 MiB |######################| Elapsed Time: 0:00:35 Time:  0:00:35
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="re-run-oggm-at-monthly-timestep-and-load-data">
@@ -729,10 +781,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-11-18 13:45:11: oggm.workflow: Execute entity tasks [run_from_climate_data] on 118 glaciers
-2025-11-18 13:45:14: oggm.core.flowline: AttributeError occurred during task run_from_climate_data_spinup_historical_monthly on RGI60-06.00387: &#39;Dataset&#39; object has no attribute &#39;time&#39;
-2025-11-18 13:45:36: oggm.utils: Applying global task compile_run_output on 118 glaciers
-2025-11-18 13:45:36: oggm.utils: Applying compile_run_output on 118 gdirs.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-11-18 14:54:54: oggm.workflow: Execute entity tasks [run_from_climate_data] on 118 glaciers
+2025-11-18 14:54:56: oggm.core.flowline: AttributeError occurred during task run_from_climate_data_spinup_historical_monthly on RGI60-06.00387: &#39;Dataset&#39; object has no attribute &#39;time&#39;
+2025-11-18 14:55:19: oggm.utils: Applying global task compile_run_output on 118 glaciers
+2025-11-18 14:55:19: oggm.utils: Applying compile_run_output on 118 gdirs.
 </pre></div>
 </div>
 </div>
@@ -786,25 +838,73 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0% of  38.4 MiB |                      | Elapsed Time: 0:00:00 ETA:  --:--:--
-  0% of  38.4 MiB |                      | Elapsed Time: 0:00:00 ETA:   0:04:16
-  0% of  38.4 MiB |                      | Elapsed Time: 0:00:01 ETA:   0:02:50
-  1% of  38.4 MiB |                      | Elapsed Time: 0:00:01 ETA:   0:01:45
-  2% of  38.4 MiB |                      | Elapsed Time: 0:00:01 ETA:   0:01:11
-  4% of  38.4 MiB |#                     | Elapsed Time: 0:00:01 ETA:   0:00:40
-  8% of  38.4 MiB |#                     | Elapsed Time: 0:00:02 ETA:   0:00:23
- 17% of  38.4 MiB |###                   | Elapsed Time: 0:00:02 ETA:   0:00:11
- 25% of  38.4 MiB |#####                 | Elapsed Time: 0:00:02 ETA:   0:00:08
- 33% of  38.4 MiB |#######               | Elapsed Time: 0:00:03 ETA:   0:00:06
- 40% of  38.4 MiB |########              | Elapsed Time: 0:00:03 ETA:   0:00:04
- 48% of  38.4 MiB |##########            | Elapsed Time: 0:00:03 ETA:   0:00:03
- 55% of  38.4 MiB |############          | Elapsed Time: 0:00:03 ETA:   0:00:03
- 62% of  38.4 MiB |#############         | Elapsed Time: 0:00:04 ETA:   0:00:02
- 70% of  38.4 MiB |###############       | Elapsed Time: 0:00:04 ETA:   0:00:01
- 77% of  38.4 MiB |#################     | Elapsed Time: 0:00:04 ETA:   0:00:01
- 84% of  38.4 MiB |##################    | Elapsed Time: 0:00:05 ETA:   0:00:00
- 87% of  38.4 MiB |###################   | Elapsed Time: 0:00:05 ETA:   0:00:00
- 98% of  38.4 MiB |##################### | Elapsed Time: 0:00:05 ETA:   0:00:00
-100% of  38.4 MiB |######################| Elapsed Time: 0:00:05 Time:  0:00:05
+  0% of  38.4 MiB |                      | Elapsed Time: 0:00:00 ETA:   0:03:25
+  0% of  38.4 MiB |                      | Elapsed Time: 0:00:01 ETA:   0:02:53
+  0% of  38.4 MiB |                      | Elapsed Time: 0:00:01 ETA:   0:02:17
+  1% of  38.4 MiB |                      | Elapsed Time: 0:00:01 ETA:   0:02:00
+  1% of  38.4 MiB |                      | Elapsed Time: 0:00:02 ETA:   0:02:04
+  1% of  38.4 MiB |                      | Elapsed Time: 0:00:02 ETA:   0:01:55
+  2% of  38.4 MiB |                      | Elapsed Time: 0:00:02 ETA:   0:01:48
+  2% of  38.4 MiB |                      | Elapsed Time: 0:00:02 ETA:   0:01:43
+  2% of  38.4 MiB |                      | Elapsed Time: 0:00:02 ETA:   0:01:39
+  3% of  38.4 MiB |                      | Elapsed Time: 0:00:03 ETA:   0:01:35
+  3% of  38.4 MiB |                      | Elapsed Time: 0:00:03 ETA:   0:01:33
+  3% of  38.4 MiB |                      | Elapsed Time: 0:00:03 ETA:   0:01:30
+  4% of  38.4 MiB |                      | Elapsed Time: 0:00:03 ETA:   0:01:28
+  4% of  38.4 MiB |#                     | Elapsed Time: 0:00:04 ETA:   0:01:21
+  5% of  38.4 MiB |#                     | Elapsed Time: 0:00:04 ETA:   0:01:19
+  5% of  38.4 MiB |#                     | Elapsed Time: 0:00:04 ETA:   0:01:18
+  6% of  38.4 MiB |#                     | Elapsed Time: 0:00:04 ETA:   0:01:13
+  6% of  38.4 MiB |#                     | Elapsed Time: 0:00:05 ETA:   0:01:12
+  7% of  38.4 MiB |#                     | Elapsed Time: 0:00:05 ETA:   0:01:08
+  7% of  38.4 MiB |#                     | Elapsed Time: 0:00:05 ETA:   0:01:05
+  8% of  38.4 MiB |#                     | Elapsed Time: 0:00:05 ETA:   0:01:05
+  8% of  38.4 MiB |#                     | Elapsed Time: 0:00:05 ETA:   0:01:02
+  9% of  38.4 MiB |##                    | Elapsed Time: 0:00:06 ETA:   0:00:59
+ 10% of  38.4 MiB |##                    | Elapsed Time: 0:00:06 ETA:   0:00:57
+ 10% of  38.4 MiB |##                    | Elapsed Time: 0:00:06 ETA:   0:00:55
+ 11% of  38.4 MiB |##                    | Elapsed Time: 0:00:06 ETA:   0:00:53
+ 12% of  38.4 MiB |##                    | Elapsed Time: 0:00:07 ETA:   0:00:50
+ 13% of  38.4 MiB |##                    | Elapsed Time: 0:00:07 ETA:   0:00:48
+ 14% of  38.4 MiB |###                   | Elapsed Time: 0:00:07 ETA:   0:00:46
+ 14% of  38.4 MiB |###                   | Elapsed Time: 0:00:07 ETA:   0:00:45
+ 15% of  38.4 MiB |###                   | Elapsed Time: 0:00:07 ETA:   0:00:43
+ 16% of  38.4 MiB |###                   | Elapsed Time: 0:00:08 ETA:   0:00:41
+ 17% of  38.4 MiB |###                   | Elapsed Time: 0:00:08 ETA:   0:00:39
+ 18% of  38.4 MiB |####                  | Elapsed Time: 0:00:08 ETA:   0:00:37
+ 19% of  38.4 MiB |####                  | Elapsed Time: 0:00:08 ETA:   0:00:35
+ 21% of  38.4 MiB |####                  | Elapsed Time: 0:00:09 ETA:   0:00:33
+ 22% of  38.4 MiB |####                  | Elapsed Time: 0:00:09 ETA:   0:00:32
+ 23% of  38.4 MiB |#####                 | Elapsed Time: 0:00:09 ETA:   0:00:30
+ 25% of  38.4 MiB |#####                 | Elapsed Time: 0:00:09 ETA:   0:00:29
+ 26% of  38.4 MiB |#####                 | Elapsed Time: 0:00:10 ETA:   0:00:28
+ 28% of  38.4 MiB |######                | Elapsed Time: 0:00:10 ETA:   0:00:26
+ 29% of  38.4 MiB |######                | Elapsed Time: 0:00:10 ETA:   0:00:24
+ 31% of  38.4 MiB |######                | Elapsed Time: 0:00:10 ETA:   0:00:23
+ 32% of  38.4 MiB |#######               | Elapsed Time: 0:00:10 ETA:   0:00:22
+ 34% of  38.4 MiB |#######               | Elapsed Time: 0:00:11 ETA:   0:00:20
+ 36% of  38.4 MiB |########              | Elapsed Time: 0:00:11 ETA:   0:00:19
+ 38% of  38.4 MiB |########              | Elapsed Time: 0:00:11 ETA:   0:00:18
+ 40% of  38.4 MiB |########              | Elapsed Time: 0:00:11 ETA:   0:00:17
+ 42% of  38.4 MiB |#########             | Elapsed Time: 0:00:11 ETA:   0:00:15
+ 45% of  38.4 MiB |#########             | Elapsed Time: 0:00:12 ETA:   0:00:14
+ 47% of  38.4 MiB |##########            | Elapsed Time: 0:00:12 ETA:   0:00:13
+ 50% of  38.4 MiB |###########           | Elapsed Time: 0:00:12 ETA:   0:00:12
+ 53% of  38.4 MiB |###########           | Elapsed Time: 0:00:12 ETA:   0:00:11
+ 56% of  38.4 MiB |############          | Elapsed Time: 0:00:13 ETA:   0:00:10
+ 58% of  38.4 MiB |############          | Elapsed Time: 0:00:13 ETA:   0:00:09
+ 62% of  38.4 MiB |#############         | Elapsed Time: 0:00:13 ETA:   0:00:08
+ 65% of  38.4 MiB |##############        | Elapsed Time: 0:00:13 ETA:   0:00:07
+ 68% of  38.4 MiB |###############       | Elapsed Time: 0:00:14 ETA:   0:00:06
+ 72% of  38.4 MiB |###############       | Elapsed Time: 0:00:14 ETA:   0:00:05
+ 72% of  38.4 MiB |###############       | Elapsed Time: 0:00:14 ETA:   0:00:05
+ 76% of  38.4 MiB |################      | Elapsed Time: 0:00:14 ETA:   0:00:04
+ 80% of  38.4 MiB |#################     | Elapsed Time: 0:00:14 ETA:   0:00:03
+ 84% of  38.4 MiB |##################    | Elapsed Time: 0:00:14 ETA:   0:00:02
+ 88% of  38.4 MiB |###################   | Elapsed Time: 0:00:15 ETA:   0:00:01
+ 93% of  38.4 MiB |####################  | Elapsed Time: 0:00:15 ETA:   0:00:01
+ 98% of  38.4 MiB |##################### | Elapsed Time: 0:00:15 ETA:   0:00:00
+100% of  38.4 MiB |######################| Elapsed Time: 0:00:15 Time:  0:00:15
 </pre></div>
 </div>
 </div>
@@ -999,16 +1099,37 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0% of  10.1 MiB |                      | Elapsed Time: 0:00:00 ETA:  --:--:--
-  1% of  10.1 MiB |                      | Elapsed Time: 0:00:00 ETA:   0:01:08
-  2% of  10.1 MiB |                      | Elapsed Time: 0:00:01 ETA:   0:00:44
-  4% of  10.1 MiB |#                     | Elapsed Time: 0:00:01 ETA:   0:00:27
-  8% of  10.1 MiB |#                     | Elapsed Time: 0:00:01 ETA:   0:00:18
- 17% of  10.1 MiB |###                   | Elapsed Time: 0:00:01 ETA:   0:00:09
- 33% of  10.1 MiB |#######               | Elapsed Time: 0:00:02 ETA:   0:00:04
- 64% of  10.1 MiB |##############        | Elapsed Time: 0:00:02 ETA:   0:00:01
- 96% of  10.1 MiB |##################### | Elapsed Time: 0:00:02 ETA:   0:00:00
- 97% of  10.1 MiB |##################### | Elapsed Time: 0:00:02 ETA:   0:00:00
-100% of  10.1 MiB |######################| Elapsed Time: 0:00:02 Time:  0:00:02
+  1% of  10.1 MiB |                      | Elapsed Time: 0:00:00 ETA:   0:01:13
+  2% of  10.1 MiB |                      | Elapsed Time: 0:00:01 ETA:   0:00:45
+  4% of  10.1 MiB |#                     | Elapsed Time: 0:00:01 ETA:   0:00:26
+  6% of  10.1 MiB |#                     | Elapsed Time: 0:00:01 ETA:   0:00:24
+  8% of  10.1 MiB |#                     | Elapsed Time: 0:00:01 ETA:   0:00:19
+  9% of  10.1 MiB |##                    | Elapsed Time: 0:00:02 ETA:   0:00:19
+ 12% of  10.1 MiB |##                    | Elapsed Time: 0:00:02 ETA:   0:00:16
+ 14% of  10.1 MiB |###                   | Elapsed Time: 0:00:02 ETA:   0:00:14
+ 16% of  10.1 MiB |###                   | Elapsed Time: 0:00:02 ETA:   0:00:14
+ 18% of  10.1 MiB |####                  | Elapsed Time: 0:00:02 ETA:   0:00:13
+ 21% of  10.1 MiB |####                  | Elapsed Time: 0:00:03 ETA:   0:00:12
+ 23% of  10.1 MiB |#####                 | Elapsed Time: 0:00:03 ETA:   0:00:11
+ 25% of  10.1 MiB |#####                 | Elapsed Time: 0:00:03 ETA:   0:00:10
+ 29% of  10.1 MiB |######                | Elapsed Time: 0:00:03 ETA:   0:00:09
+ 32% of  10.1 MiB |#######               | Elapsed Time: 0:00:04 ETA:   0:00:08
+ 35% of  10.1 MiB |#######               | Elapsed Time: 0:00:04 ETA:   0:00:07
+ 38% of  10.1 MiB |########              | Elapsed Time: 0:00:04 ETA:   0:00:07
+ 42% of  10.1 MiB |#########             | Elapsed Time: 0:00:04 ETA:   0:00:06
+ 45% of  10.1 MiB |##########            | Elapsed Time: 0:00:05 ETA:   0:00:06
+ 49% of  10.1 MiB |##########            | Elapsed Time: 0:00:05 ETA:   0:00:05
+ 53% of  10.1 MiB |###########           | Elapsed Time: 0:00:05 ETA:   0:00:04
+ 58% of  10.1 MiB |############          | Elapsed Time: 0:00:05 ETA:   0:00:04
+ 61% of  10.1 MiB |#############         | Elapsed Time: 0:00:05 ETA:   0:00:03
+ 66% of  10.1 MiB |##############        | Elapsed Time: 0:00:06 ETA:   0:00:03
+ 71% of  10.1 MiB |###############       | Elapsed Time: 0:00:06 ETA:   0:00:02
+ 76% of  10.1 MiB |################      | Elapsed Time: 0:00:06 ETA:   0:00:02
+ 82% of  10.1 MiB |##################    | Elapsed Time: 0:00:06 ETA:   0:00:01
+ 87% of  10.1 MiB |###################   | Elapsed Time: 0:00:07 ETA:   0:00:00
+ 94% of  10.1 MiB |####################  | Elapsed Time: 0:00:07 ETA:   0:00:00
+100% of  10.1 MiB |######################| Elapsed Time: 0:00:07 ETA:  00:00:00
+100% of  10.1 MiB |######################| Elapsed Time: 0:00:07 Time:  0:00:07
 </pre></div>
 </div>
 </div>
