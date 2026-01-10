@@ -26,6 +26,7 @@ jobs:
           pip install jupyter-book==1.0.4 nbstripout nbformat
           pip install 'dtcg[jupyter] @ git+https://github.com/DTC-Glaciers/dtcg@7e17ae929a68012cf616b6ad9759837e1b024b9d'
           pip install --no-deps 'git+https://github.com/OGGM/oggm.git@d7044f7799c8a59ec44be1dfe602bcac06783e74'
+          pip uninstall -y progressbar2
 
       - name: Normalise notebook kernelspecs
         run: |
