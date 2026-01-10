@@ -6,9 +6,9 @@ root: welcome
 parts:
   - caption: Preliminary notebooks
     chapters:
-    - file: notebooks/04_calibrate_with_eolis_data
-    - file: notebooks/07_explore_datacubes
-    - file: notebooks/01_alps
-    - file: notebooks/02_iceland
-    - file: notebooks/05_mcs_workflow_example
-    - file: notebooks/06_sfc_type_workflow
+    - file: notebooks/01_L1_datacubes
+    - file: notebooks/02_L2_datacubes
+    - file: notebooks/03_validation
+    - file: notebooks/04_user_provided_data
+    - file: notebooks/05_additional_features
+    - file: notebooks/06_the_beginning_of_dtcg
