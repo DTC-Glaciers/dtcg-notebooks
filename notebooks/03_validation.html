@@ -1,0 +1,1020 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Validating DTC-Glaciers EO-DT-Enhanced Data cubes (L2) &#8212; DTC-Glaciers notebooks</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bd95c4b6" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/03_validation';</script>
+    <script data-domain="dtcglaciers.org" defer="defer" src="https://plausible.oggm.org/js/script.js"></script>
+    <link rel="canonical" href="https://notebooks.dtcglaciers.org/notebooks/03_validation.html" />
+    <link rel="icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Creating DTC-Glaciers User-DT-Enhanced Data cubes (L3)" href="04_user_provided_data.html" />
+    <link rel="prev" title="Creating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)" href="02_L2_datacubes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="Jan 10, 2026"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.jpg" class="logo__image only-light" alt="DTC-Glaciers notebooks - Home"/>
+    <script>document.write(`<img src="../_static/logo.jpg" class="logo__image only-dark" alt="DTC-Glaciers notebooks - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../welcome.html">
+                    DTC Glaciers notebooks
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary notebooks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_L1_datacubes.html">Creating DTC-Glaciers EO-Native data cubes (L1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_L2_datacubes.html">Creating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Validating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_user_provided_data.html">Creating DTC-Glaciers User-DT-Enhanced Data cubes (L3)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_additional_features.html">Further DTC-Glaciers features, work in progress</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_the_beginning_of_dtcg.html">CryoSat2 - model comparison at Vatnajökull ice cap, Iceland</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://hub.dtcglaciers.org/hub/user-redirect/git-pull?repo=https%3A//github.com/DTC-Glaciers/dtcg-notebooks&urlpath=lab/tree/dtcg-notebooks/notebooks/03_validation.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/DTC-Glaciers/dtcg-notebooks" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/DTC-Glaciers/dtcg-notebooks/edit/main/notebooks/03_validation.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/DTC-Glaciers/dtcg-notebooks/issues/new?title=Issue%20on%20page%20%2Fnotebooks/03_validation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/03_validation.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Validating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-of-dtc-glaciers-output">Validation of DTC-Glaciers output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iceland">Iceland</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#austria">Austria</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div>
+<img src="https://notebooks.dtcglaciers.org/_images/ESA_logo.svg" width="160" align='right'/>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="validating-dtc-glaciers-eo-dt-enhanced-data-cubes-l2">
+<h1>Validating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)<a class="headerlink" href="#validating-dtc-glaciers-eo-dt-enhanced-data-cubes-l2" title="Link to this heading">#</a></h1>
+<p>If required, install the DTCG API using the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install &#39;dtcg[jupyter] @ git+https://github.com/DTC-Glaciers/dtcg&#39;
+</pre></div>
+</div>
+<p>Run this command in a notebook cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To asses the performance of different <strong>L2</strong> data cubes this notbook illustrates the capabilities of the <strong>DTC-Glaciers validation framework</strong>. The goal is to use available data from the <strong>L1</strong> data cubes for valiation of corresponding <strong>L2</strong> data cubes.</p>
+<p>We start by opening two examples from the preprocessed <strong>L2</strong> data cubes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgi_id_ice</span> <span class="o">=</span> <span class="s2">&quot;RGI60-06.00377&quot;</span>  <span class="c1"># Brúarjökull</span>
+<span class="n">rgi_id_aut</span> <span class="o">=</span> <span class="s2">&quot;RGI60-11.00719&quot;</span>  <span class="c1"># Vernagtferner</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_l2_data_tree</span><span class="p">(</span><span class="n">rgi_id</span><span class="p">):</span>
+    <span class="n">l2_datacube_url</span> <span class="o">=</span> <span class="s2">&quot;https://cluster.klima.uni-bremen.de/~dtcg/datacubes_case_study_regions/L1_and_L2/&quot;</span>
+    <span class="k">return</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_datatree</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">l2_datacube_url</span><span class="si">}{</span><span class="n">rgi_id</span><span class="si">}</span><span class="s2">.zarr&quot;</span><span class="p">,</span>
+            <span class="n">chunks</span><span class="o">=</span><span class="p">{},</span>
+            <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;zarr&quot;</span><span class="p">,</span>
+            <span class="n">consolidated</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">decode_cf</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+<span class="n">data_tree_ice</span> <span class="o">=</span> <span class="n">get_l2_data_tree</span><span class="p">(</span><span class="n">rgi_id_ice</span><span class="p">)</span>
+<span class="n">data_tree_aut</span> <span class="o">=</span> <span class="n">get_l2_data_tree</span><span class="p">(</span><span class="n">rgi_id_aut</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="validation-of-dtc-glaciers-output">
+<h2>Validation of DTC-Glaciers output<a class="headerlink" href="#validation-of-dtc-glaciers-output" title="Link to this heading">#</a></h2>
+<p>The <strong>validation</strong> within DTC-Glaciers consist of a mix of using <strong>in-situ observations</strong> as well as <strong>EO data</strong> from our <strong>L1</strong> data cubes. The entire validation framework is build around the <code class="docutils literal notranslate"><span class="pre">DatacubeValidator</span></code>, which only needs a data tree as input:</p>
+<p>We asses the performance of different <strong>L2</strong> data cubes with regards to observations, by calculating the following metrics:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator_ice</span><span class="o">.</span><span class="n">get_description_of_metrics</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">validator_ice</span><span class="o">.</span><span class="n">get_description_of_metrics</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;validator_ice&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>To account for <strong>observation</strong> and <strong>model uncertainty</strong> during validation, we rely on <strong><a class="reference external" href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">Bootstrapping</a></strong>. In addition to evaluating the <strong>performance metrics</strong> using the <strong>most likely</strong> observation and model values, we generate a <strong>distribution</strong> for each metric. This is done by repeatedly <strong>resampling the time series</strong> in coherent multi-year blocks and <strong>drawing</strong> a plausible value for each resampled year from the corresponding <strong>uncertainty description</strong>. For <strong>observations</strong>, we assume a <strong>normal distribution</strong>, while the <strong>model output</strong> is represented by <strong>seven quantiles</strong> (0.05, 0.15, 0.25, 0.5, 0.75, 0.85, and 0.95). By default, this procedure is <strong>repeated 5000 times</strong>, and the resulting sampling distribution is summarized using a <strong>90% confidence interval</strong>, which is shown in brackets in the validation output below.</p>
+<p>Below we show two examples of the validation framework, for our two case study regions with different data availablility.</p>
+</section>
+<section id="iceland">
+<h2>Iceland<a class="headerlink" href="#iceland" title="Link to this heading">#</a></h2>
+<p>In Iceland we have EO-data from <strong><a class="reference external" href="https://cryotempo-eolis.org/">CryoTEMPO-EOLIS</a></strong> (CryoSat-2) available as well as for some glaciers in-situ observations from <strong><a class="reference external" href="https://wgms.ch/">WGMS</a></strong>.</p>
+<p>Let’s see which <strong>L2</strong> data cubes we have available:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">data_tree_ice</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;L1&#39;,
+ &#39;L2_Daily_Cryosat_2011_2020&#39;,
+ &#39;L2_Daily_Hugonnet_2000_2020&#39;,
+ &#39;L2_Daily_Hugonnet_2010_2020&#39;,
+ &#39;L2_SfcDaily_Cryosat_2011_2020&#39;,
+ &#39;L2_SfcDaily_Hugonnet_2000_2020&#39;,
+ &#39;L2_SfcDaily_Hugonnet_2010_2020&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>For the following analysis, we selected the Daily model calibrated with <strong><a class="reference external" href="https://cryotempo-eolis.org/">CryoTEMPO-EOLIS</a></strong> (CryoSat-2) for the period 2011–2020 and compared it to the same model calibrated with <strong><a class="reference external" href="https://doi.org/10.1038/s41586-021-03436-z">Hugonnet et al. (2021)</a></strong> for the period 2010–2020, which is the default dataset used in OGGM v1.6.2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l2_list_ice</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;L2_Daily_Cryosat_2011_2020&#39;</span><span class="p">,</span> <span class="s1">&#39;L2_Daily_Hugonnet_2010_2020&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With the already set-up <code class="docutils literal notranslate"><span class="pre">DatacubeValidator</span></code> we only need to provide the <strong>L2</strong> data cubes we are interested in and the validator looks which data is available in the <strong>L1</strong> data cubes and calculates the performance metrics:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data_ice</span><span class="p">,</span> <span class="n">bootstrap_args_ice</span> <span class="o">=</span> <span class="n">validator_ice</span><span class="o">.</span><span class="n">get_validation_for_layers</span><span class="p">(</span>
+    <span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_ice</span><span class="p">,</span> <span class="n">return_bootstrap_args</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">validation_data_ice</span><span class="p">,</span> <span class="n">bootstrap_args_ice</span> <span class="o">=</span> <span class="n">validator_ice</span><span class="o">.</span><span class="n">get_validation_for_layers</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_ice</span><span class="p">,</span> <span class="n">return_bootstrap_args</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;validator_ice&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s start by looking at the results of comparing the <strong>L2</strong> data cubes to the CryoSat-2 observation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data_ice</span><span class="p">[</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">validation_data_ice</span><span class="p">[</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;validation_data_ice&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that the data cube calibrated with Cryosat outperfoms the Hugonnet one. We can see smaller values in the metrics quantiving absolute differnces (<code class="docutils literal notranslate"><span class="pre">MeanAbsD</span></code>, <code class="docutils literal notranslate"><span class="pre">RMSD</span></code>). Further metrics quantifiying a bias (<code class="docutils literal notranslate"><span class="pre">MeanD</span></code> and <code class="docutils literal notranslate"><span class="pre">MedianD</span></code>) are closer to zero, with confidence intervalls with changing signs. Finally, also the correlation coefficient is larger indicating a stronger linear relationship between observations and model output.</p>
+<p>To help with interpretation we also can have a look at the bootstrap settings used during the validation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bootstrap_args_ice</span><span class="p">[</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">bootstrap_args_ice</span><span class="p">[</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;bootstrap_args_ice&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that the provided intervalls of metrics correspond to a 90% confidence intervall (<code class="docutils literal notranslate"><span class="pre">ci_level</span></code>), in total 173 observations are available (<code class="docutils literal notranslate"><span class="pre">n</span></code>), that 5000 individual resamplings of the timeseries and evalutaions of the metrics where performed (<code class="docutils literal notranslate"><span class="pre">n_boot</span></code>) and the coherent block length was 13 observations (<code class="docutils literal notranslate"><span class="pre">block_length</span></code>). For reproducebility we use a constant random <code class="docutils literal notranslate"><span class="pre">seed</span></code>.</p>
+<p>However we need to take into account that the above validation is not independent as the Cryosat data cube used parts of this data vor calibration. Theirfore, we also can have a look solely on the independent data by defining a validation period:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_cryosat_2020_2025</span> <span class="o">=</span> <span class="n">validator_ice</span><span class="o">.</span><span class="n">get_validation_for_layers</span><span class="p">(</span>
+    <span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_ice</span><span class="p">,</span>
+    <span class="n">baseline_date</span><span class="o">=</span><span class="s1">&#39;2020-01-01&#39;</span><span class="p">,</span>  <span class="c1"># the date where the cumulated elevation change starts</span>
+    <span class="n">obs_list</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">],</span>  <span class="c1"># we can select to only perform the validation on one observation</span>
+    <span class="n">validation_period</span><span class="o">=</span><span class="s1">&#39;2020-01-01_2025-12-31&#39;</span><span class="p">,)</span>  <span class="c1"># define the period which should be considered</span>
+
+<span class="n">validation_cryosat_2020_2025</span><span class="p">[</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">validation_cryosat_2020_2025</span> <span class="o">=</span> <span class="n">validator_ice</span><span class="o">.</span><span class="n">get_validation_for_layers</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_ice</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">baseline_date</span><span class="o">=</span><span class="s1">&#39;2020-01-01&#39;</span><span class="p">,</span>  <span class="c1"># the date where the cumulated elevation change starts</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">obs_list</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">],</span>  <span class="c1"># we can select to only perform the validation on one observation</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">validation_period</span><span class="o">=</span><span class="s1">&#39;2020-01-01_2025-12-31&#39;</span><span class="p">,)</span>  <span class="c1"># define the period which should be considered</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">validation_cryosat_2020_2025</span><span class="p">[</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;validator_ice&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Also when using the independent validation period, we see that the Cryosat data cube still outperforms the Hugonnet data cube, however differences are not as pronounced as when using the entire period.</p>
+<p>We also can use the <code class="docutils literal notranslate"><span class="pre">DatacubeValidator</span></code> to get a visual impression of the performance by creating comparision plots. For the entire period:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator_ice</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_ice</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">validator_ice</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_ice</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;validator_ice&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or for the independent period, by defining a <code class="docutils literal notranslate"><span class="pre">baseline_date</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">validator_ice</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_ice</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">,</span>
+                                                   <span class="n">baseline_date</span><span class="o">=</span><span class="s1">&#39;2020-01-01&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">fig</span> <span class="o">=</span> <span class="n">validator_ice</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_ice</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>                                                    <span class="n">baseline_date</span><span class="o">=</span><span class="s1">&#39;2020-01-01&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;validator_ice&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another available data source for our test glacier are in-situ mass balance obsevations from <strong><a class="reference external" href="https://wgms.ch/">WGMS</a></strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data_ice</span><span class="p">[</span><span class="s1">&#39;WGMS&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">validation_data_ice</span><span class="p">[</span><span class="s1">&#39;WGMS&#39;</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;validation_data_ice&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bootstrap_args_ice</span><span class="p">[</span><span class="s1">&#39;WGMS&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">bootstrap_args_ice</span><span class="p">[</span><span class="s1">&#39;WGMS&#39;</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;bootstrap_args_ice&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Also for this data the Cryosat data cube outperformes the Hugonnet data cube in most metrics, illustrating the added value of the EO-data.</p>
+<p>Visualisations are also available for the in-situ data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator_ice</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_ice</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;WGMS&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">validator_ice</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_ice</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;WGMS&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;validator_ice&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="austria">
+<h2>Austria<a class="headerlink" href="#austria" title="Link to this heading">#</a></h2>
+<p>In Austria we have EO-data from <strong><a class="reference external" href="https://www.enveo.at/">ENVEO</a></strong> (Sentinel-2) available as well as for some glaciers in-situ observations from <strong>WGMS</strong>. <a class="reference internal" href="01_L1_datacubes.html"><span class="std std-doc">See this notebook</span></a> for further explanations about the available data. Let’s see which <strong>L2</strong> data cubes we have available:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">data_tree_aut</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;L1&#39;,
+ &#39;L2_Daily_Hugonnet_2000_2020&#39;,
+ &#39;L2_Daily_Hugonnet_2010_2020&#39;,
+ &#39;L2_SfcDaily_Hugonnet_2000_2020&#39;,
+ &#39;L2_SfcDaily_Hugonnet_2010_2020&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this case we compare the influence of two different mass balance models, which rely on the same calibration data from <strong><a class="reference external" href="https://doi.org/10.1038/s41586-021-03436-z">Hugonnet et al. (2021)</a></strong> in the period 2010 to 2020. The daily model is a simple temperature index model, which is the same as the <a class="reference external" href="https://docs.oggm.org/en/v1.6.2/mass-balance-monthly.html">OGGM v1.6.1 default</a>, but with a daily resolution. The second model is a temperature index model, enhanced with a bucket system for snowtracking and was implemented following <a class="reference external" href="https://doi.org/10.1017/aog.2023.57">Schuster et al. 2023</a> and the <a class="reference external" href="https://github.com/OGGM/massbalance-sandbox">OGGM Mass-Balance sandbox</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l2_list_aut</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;L2_Daily_Hugonnet_2000_2020&#39;</span><span class="p">,</span> <span class="s1">&#39;L2_SfcDaily_Hugonnet_2000_2020&#39;</span><span class="p">]</span>
+
+<span class="n">validation_data_aut</span><span class="p">,</span> <span class="n">bootstrap_args_aut</span> <span class="o">=</span> <span class="n">validator_aut</span><span class="o">.</span><span class="n">get_validation_for_layers</span><span class="p">(</span>
+    <span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_aut</span><span class="p">,</span> <span class="n">return_bootstrap_args</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">l2_list_aut</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;L2_Daily_Hugonnet_2000_2020&#39;</span><span class="p">,</span> <span class="s1">&#39;L2_SfcDaily_Hugonnet_2000_2020&#39;</span><span class="p">]</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">validation_data_aut</span><span class="p">,</span> <span class="n">bootstrap_args_aut</span> <span class="o">=</span> <span class="n">validator_aut</span><span class="o">.</span><span class="n">get_validation_for_layers</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_aut</span><span class="p">,</span> <span class="n">return_bootstrap_args</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;validator_aut&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>You see a warning message shown, which indicates that some data cubes are missing data for the validation. The reason is that for the validation with Sentinel-2 data we need a modelled snowline, and this is only available when using the newly implemented snowtracking bucket sysetm. But more on this later, first we have a look at the WGMS validation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data_aut</span><span class="p">[</span><span class="s1">&#39;WGMS&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">validation_data_aut</span><span class="p">[</span><span class="s1">&#39;WGMS&#39;</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;validation_data_aut&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bootstrap_args_aut</span><span class="p">[</span><span class="s1">&#39;WGMS&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">bootstrap_args_aut</span><span class="p">[</span><span class="s1">&#39;WGMS&#39;</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;bootstrap_args_aut&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>The comparision of the two options shows slightly better performance for the daily model without snowtracking. Let’s visualize the data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator_aut</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_aut</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;WGMS&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">validator_aut</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_aut</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;WGMS&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;validator_aut&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>For surface tracking we see that the extreme year 2022 is much better captured. This probably could be related to the fact that with the bucket system albedo feedbacks are included and the very early snowfree glacier surface in 2022 led to a darker surface and hence more ablation. However, the newly developed bucket system need further research and developments to become operational.</p>
+<p>A potential new way in the future could be to utilize snowline observations for assimilation. Through the inclusion of surface tracking we are able to utilize this new type of EO data. In particular we are able to use snowline altitudes derived from Sentinel-2. In the current implementation we are using this data only for validation, but with future developments it should become possible to also use this data in the assimilation pipeline.</p>
+<p>The validation metrics of this first implementation looks like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data_aut</span><span class="p">[</span><span class="s1">&#39;Sentinel2&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">validation_data_aut</span><span class="p">[</span><span class="s1">&#39;Sentinel2&#39;</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;validation_data_aut&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>And the modelled snowline evolution can also be vizualized together with the observations:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator_aut</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_aut</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;Sentinel2&#39;</span><span class="p">,)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">validator_aut</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_aut</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;Sentinel2&#39;</span><span class="p">,)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;validator_aut&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>The plot is quite packed when looking at the full period, theirfor you also could use <code class="docutils literal notranslate"><span class="pre">x_lim</span></code> for zooming in to a period of interest:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator_aut</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_aut</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;Sentinel2&#39;</span><span class="p">,</span>
+                                             <span class="n">x_lim</span><span class="o">=</span><span class="p">[</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2022</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">validator_aut</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_aut</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;Sentinel2&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>                                              <span class="n">x_lim</span><span class="o">=</span><span class="p">[</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2022</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;validator_aut&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02_L2_datacubes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Creating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="04_user_provided_data.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Creating DTC-Glaciers User-DT-Enhanced Data cubes (L3)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-of-dtc-glaciers-output">Validation of DTC-Glaciers output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iceland">Iceland</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#austria">Austria</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By DTCG Consortium
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Jan 10, 2026.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+&copy; Copyright 2024-2025 DTC-Glaciers consortium
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

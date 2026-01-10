@@ -1,0 +1,1903 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Creating DTC-Glaciers User-DT-Enhanced Data cubes (L3) &#8212; DTC-Glaciers notebooks</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bd95c4b6" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/04_user_provided_data';</script>
+    <script data-domain="dtcglaciers.org" defer="defer" src="https://plausible.oggm.org/js/script.js"></script>
+    <link rel="canonical" href="https://notebooks.dtcglaciers.org/notebooks/04_user_provided_data.html" />
+    <link rel="icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Further DTC-Glaciers features, work in progress" href="05_additional_features.html" />
+    <link rel="prev" title="Validating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)" href="03_validation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="Jan 10, 2026"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.jpg" class="logo__image only-light" alt="DTC-Glaciers notebooks - Home"/>
+    <script>document.write(`<img src="../_static/logo.jpg" class="logo__image only-dark" alt="DTC-Glaciers notebooks - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../welcome.html">
+                    DTC Glaciers notebooks
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary notebooks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_L1_datacubes.html">Creating DTC-Glaciers EO-Native data cubes (L1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_L2_datacubes.html">Creating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_validation.html">Validating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Creating DTC-Glaciers User-DT-Enhanced Data cubes (L3)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_additional_features.html">Further DTC-Glaciers features, work in progress</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_the_beginning_of_dtcg.html">CryoSat2 - model comparison at Vatnajökull ice cap, Iceland</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://hub.dtcglaciers.org/hub/user-redirect/git-pull?repo=https%3A//github.com/DTC-Glaciers/dtcg-notebooks&urlpath=lab/tree/dtcg-notebooks/notebooks/04_user_provided_data.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/DTC-Glaciers/dtcg-notebooks" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/DTC-Glaciers/dtcg-notebooks/edit/main/notebooks/04_user_provided_data.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/DTC-Glaciers/dtcg-notebooks/issues/new?title=Issue%20on%20page%20%2Fnotebooks/04_user_provided_data.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/04_user_provided_data.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Creating DTC-Glaciers User-DT-Enhanced Data cubes (L3)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-scene">Preparing the scene</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-l3-data-cubes">Create L3 data cubes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validate-l3-data-cubes">Validate L3 data cubes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-with-user-data">Validation with user data</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div>
+<img src="https://notebooks.dtcglaciers.org/_images/ESA_logo.svg" width="160" align='right'/>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="creating-dtc-glaciers-user-dt-enhanced-data-cubes-l3">
+<h1>Creating DTC-Glaciers User-DT-Enhanced Data cubes (L3)<a class="headerlink" href="#creating-dtc-glaciers-user-dt-enhanced-data-cubes-l3" title="Link to this heading">#</a></h1>
+<p>If required, install the DTCG API using the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install &#39;dtcg[jupyter] @ git+https://github.com/DTC-Glaciers/dtcg&#39;
+</pre></div>
+</div>
+<p>Run this command in a notebook cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">dtcg.integration.oggm_bindings</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">oggm_bindings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">dtcg.integration.calibration</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">calibration</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">oggm.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">massbalance</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A <strong>central part</strong> wich makes DTC-Glaciers a <strong>Digital Twin</strong> is that <strong>users</strong> not only can download precomputed data, but to make it easy to <strong>interact with the system</strong> by providing your <strong>own data</strong> and use it for the creation of your own ‘model-data cubes’ (<strong>L3</strong>). And finally <strong>validate</strong> your newly created data cube and compare them to precomputed data cubes provided by DTC-Glaciers, also by integrating your <strong>own data</strong></p>
+<section id="preparing-the-scene">
+<h2>Preparing the scene<a class="headerlink" href="#preparing-the-scene" title="Link to this heading">#</a></h2>
+<p>In this example we concentrate on Iceland, where we got example in-situ mass balance data from he <strong>National Power Company of Iceland <a class="reference external" href="https://www.landsvirkjun.com/">Landsvirkjun</a></strong>, a key stakeholder of DTC-Glaciers.</p>
+<p>We use <strong>Brúarjökull</strong> again:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">salem</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">oggm</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span><span class="p">,</span> <span class="n">cfg</span>
+
+<span class="c1"># Module logger</span>
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="s1">&#39;iceland_smb&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cfg</span><span class="o">.</span><span class="n">BASENAMES</span><span class="p">:</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">BASENAMES</span><span class="p">[</span><span class="s1">&#39;iceland_smb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;iceland_smb.nc&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB for Iceland (DTCG)&#39;</span><span class="p">)</span>
+
+<span class="n">file_url</span> <span class="o">=</span> <span class="s1">&#39;https://cluster.klima.uni-bremen.de/~dtcg/test_files/case_study_regions/iceland/vatnajokull_SMB_maps_1996-2024_a&amp;s_v1.nc&#39;</span>
+
+
+<span class="nd">@utils</span><span class="o">.</span><span class="n">entity_task</span><span class="p">(</span><span class="n">log</span><span class="p">,</span> <span class="n">writes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;iceland_smb&#39;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_iceland_smb</span><span class="p">(</span><span class="n">gdir</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds SMB to the glacier directory and reprojects the data onto the L1 grid.&quot;&quot;&quot;</span>
+
+    <span class="c1"># Template dataset</span>
+    <span class="k">with</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">gdir</span><span class="o">.</span><span class="n">get_filepath</span><span class="p">(</span><span class="s1">&#39;gridded_data&#39;</span><span class="p">))</span> <span class="k">as</span> <span class="n">dsg</span><span class="p">:</span>
+        <span class="n">dsg</span> <span class="o">=</span> <span class="n">dsg</span><span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="c1"># Transform SMB to glacier map</span>
+    <span class="k">with</span> <span class="n">salem</span><span class="o">.</span><span class="n">open_xr_dataset</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">file_downloader</span><span class="p">(</span><span class="n">file_url</span><span class="p">))</span> <span class="k">as</span> <span class="n">ds_smb</span><span class="p">:</span>
+        <span class="n">dsg</span> <span class="o">=</span> <span class="n">dsg</span><span class="o">.</span><span class="n">salem</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ds_smb</span><span class="p">[[</span><span class="s1">&#39;ba&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">]],</span> <span class="n">interp</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Write it up</span>
+    <span class="n">dsg</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="n">gdir</span><span class="o">.</span><span class="n">get_filepath</span><span class="p">(</span><span class="s1">&#39;iceland_smb&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgi_id_ice</span> <span class="o">=</span> <span class="s2">&quot;RGI60-06.00377&quot;</span>  <span class="c1"># Brúarjökull</span>
+<span class="n">dtcg_oggm_ice</span> <span class="o">=</span> <span class="n">oggm_bindings</span><span class="o">.</span><span class="n">BindingsOggmModel</span><span class="p">(</span><span class="n">rgi_id</span><span class="o">=</span><span class="n">rgi_id_ice</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_l2_data_tree</span><span class="p">(</span><span class="n">rgi_id</span><span class="p">):</span>
+    <span class="n">l2_datacube_url</span> <span class="o">=</span> <span class="s2">&quot;https://cluster.klima.uni-bremen.de/~dtcg/datacubes_case_study_regions/L1_and_L2/&quot;</span>
+    <span class="k">return</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_datatree</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">l2_datacube_url</span><span class="si">}{</span><span class="n">rgi_id</span><span class="si">}</span><span class="s2">.zarr&quot;</span><span class="p">,</span>
+            <span class="n">chunks</span><span class="o">=</span><span class="p">{},</span>
+            <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;zarr&quot;</span><span class="p">,</span>
+            <span class="n">consolidated</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">decode_cf</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+<span class="n">data_tree_ice</span> <span class="o">=</span> <span class="n">get_l2_data_tree</span><span class="p">(</span><span class="n">rgi_id_ice</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># add user data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">oggm</span><span class="w"> </span><span class="kn">import</span> <span class="n">workflow</span>
+<span class="n">workflow</span><span class="o">.</span><span class="n">execute_entity_task</span><span class="p">(</span><span class="n">add_iceland_smb</span><span class="p">,</span> <span class="n">dtcg_oggm_ice</span><span class="o">.</span><span class="n">gdir</span><span class="p">);</span>
+
+<span class="c1"># open user data</span>
+<span class="k">with</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">dtcg_oggm_ice</span><span class="o">.</span><span class="n">gdir</span><span class="o">.</span><span class="n">get_filepath</span><span class="p">(</span><span class="s1">&#39;iceland_smb&#39;</span><span class="p">))</span> <span class="k">as</span> <span class="n">ds_user</span><span class="p">:</span>
+    <span class="n">ds_user</span> <span class="o">=</span> <span class="n">ds_user</span>
+<span class="n">ds_user</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0% of 541.2 MiB |                      | Elapsed Time: 0:00:00 ETA:  --:--:--
+  0% of 541.2 MiB |                      | Elapsed Time: 0:00:00 ETA:   0:24:30
+  0% of 541.2 MiB |                      | Elapsed Time: 0:00:00 ETA:   0:16:20
+  0% of 541.2 MiB |                      | Elapsed Time: 0:00:00 ETA:   0:10:13
+  0% of 541.2 MiB |                      | Elapsed Time: 0:00:00 ETA:   0:06:52
+  0% of 541.2 MiB |                      | Elapsed Time: 0:00:00 ETA:   0:04:01
+  0% of 541.2 MiB |                      | Elapsed Time: 0:00:00 ETA:   0:02:22
+  1% of 541.2 MiB |                      | Elapsed Time: 0:00:01 ETA:   0:01:20
+  1% of 541.2 MiB |                      | Elapsed Time: 0:00:01 ETA:   0:01:01
+  2% of 541.2 MiB |                      | Elapsed Time: 0:00:01 ETA:   0:00:51
+  2% of 541.2 MiB |                      | Elapsed Time: 0:00:01 ETA:   0:00:50
+  3% of 541.2 MiB |                      | Elapsed Time: 0:00:01 ETA:   0:00:45
+  3% of 541.2 MiB |                      | Elapsed Time: 0:00:01 ETA:   0:00:45
+  4% of 541.2 MiB |                      | Elapsed Time: 0:00:01 ETA:   0:00:42
+  5% of 541.2 MiB |#                     | Elapsed Time: 0:00:02 ETA:   0:00:39
+  5% of 541.2 MiB |#                     | Elapsed Time: 0:00:02 ETA:   0:00:36
+  6% of 541.2 MiB |#                     | Elapsed Time: 0:00:02 ETA:   0:00:34
+  6% of 541.2 MiB |#                     | Elapsed Time: 0:00:02 ETA:   0:00:33
+  7% of 541.2 MiB |#                     | Elapsed Time: 0:00:02 ETA:   0:00:32
+  7% of 541.2 MiB |#                     | Elapsed Time: 0:00:02 ETA:   0:00:31
+  8% of 541.2 MiB |#                     | Elapsed Time: 0:00:02 ETA:   0:00:30
+  8% of 541.2 MiB |#                     | Elapsed Time: 0:00:02 ETA:   0:00:30
+  9% of 541.2 MiB |##                    | Elapsed Time: 0:00:03 ETA:   0:00:29
+  9% of 541.2 MiB |##                    | Elapsed Time: 0:00:03 ETA:   0:00:28
+ 10% of 541.2 MiB |##                    | Elapsed Time: 0:00:03 ETA:   0:00:28
+ 10% of 541.2 MiB |##                    | Elapsed Time: 0:00:03 ETA:   0:00:27
+ 11% of 541.2 MiB |##                    | Elapsed Time: 0:00:03 ETA:   0:00:27
+ 11% of 541.2 MiB |##                    | Elapsed Time: 0:00:03 ETA:   0:00:26
+ 12% of 541.2 MiB |##                    | Elapsed Time: 0:00:03 ETA:   0:00:26
+ 12% of 541.2 MiB |##                    | Elapsed Time: 0:00:03 ETA:   0:00:25
+ 13% of 541.2 MiB |##                    | Elapsed Time: 0:00:03 ETA:   0:00:25
+ 14% of 541.2 MiB |###                   | Elapsed Time: 0:00:04 ETA:   0:00:25
+ 14% of 541.2 MiB |###                   | Elapsed Time: 0:00:04 ETA:   0:00:24
+ 15% of 541.2 MiB |###                   | Elapsed Time: 0:00:04 ETA:   0:00:24
+ 15% of 541.2 MiB |###                   | Elapsed Time: 0:00:04 ETA:   0:00:24
+ 16% of 541.2 MiB |###                   | Elapsed Time: 0:00:04 ETA:   0:00:23
+ 16% of 541.2 MiB |###                   | Elapsed Time: 0:00:04 ETA:   0:00:23
+ 16% of 541.2 MiB |###                   | Elapsed Time: 0:00:04 ETA:   0:00:23
+ 17% of 541.2 MiB |###                   | Elapsed Time: 0:00:04 ETA:   0:00:23
+ 17% of 541.2 MiB |###                   | Elapsed Time: 0:00:05 ETA:   0:00:23
+ 18% of 541.2 MiB |####                  | Elapsed Time: 0:00:05 ETA:   0:00:23
+ 18% of 541.2 MiB |####                  | Elapsed Time: 0:00:05 ETA:   0:00:23
+ 19% of 541.2 MiB |####                  | Elapsed Time: 0:00:05 ETA:   0:00:23
+ 19% of 541.2 MiB |####                  | Elapsed Time: 0:00:05 ETA:   0:00:23
+ 19% of 541.2 MiB |####                  | Elapsed Time: 0:00:05 ETA:   0:00:23
+ 20% of 541.2 MiB |####                  | Elapsed Time: 0:00:05 ETA:   0:00:23
+ 20% of 541.2 MiB |####                  | Elapsed Time: 0:00:05 ETA:   0:00:23
+ 20% of 541.2 MiB |####                  | Elapsed Time: 0:00:06 ETA:   0:00:22
+ 21% of 541.2 MiB |####                  | Elapsed Time: 0:00:06 ETA:   0:00:22
+ 21% of 541.2 MiB |####                  | Elapsed Time: 0:00:06 ETA:   0:00:22
+ 22% of 541.2 MiB |####                  | Elapsed Time: 0:00:06 ETA:   0:00:22
+ 22% of 541.2 MiB |####                  | Elapsed Time: 0:00:06 ETA:   0:00:22
+ 22% of 541.2 MiB |#####                 | Elapsed Time: 0:00:06 ETA:   0:00:22
+ 23% of 541.2 MiB |#####                 | Elapsed Time: 0:00:06 ETA:   0:00:22
+ 23% of 541.2 MiB |#####                 | Elapsed Time: 0:00:06 ETA:   0:00:22
+ 24% of 541.2 MiB |#####                 | Elapsed Time: 0:00:07 ETA:   0:00:21
+ 24% of 541.2 MiB |#####                 | Elapsed Time: 0:00:07 ETA:   0:00:21
+ 24% of 541.2 MiB |#####                 | Elapsed Time: 0:00:07 ETA:   0:00:21
+ 25% of 541.2 MiB |#####                 | Elapsed Time: 0:00:07 ETA:   0:00:21
+ 25% of 541.2 MiB |#####                 | Elapsed Time: 0:00:07 ETA:   0:00:21
+ 26% of 541.2 MiB |#####                 | Elapsed Time: 0:00:07 ETA:   0:00:21
+ 26% of 541.2 MiB |#####                 | Elapsed Time: 0:00:07 ETA:   0:00:21
+ 27% of 541.2 MiB |#####                 | Elapsed Time: 0:00:07 ETA:   0:00:21
+ 27% of 541.2 MiB |######                | Elapsed Time: 0:00:07 ETA:   0:00:20
+ 27% of 541.2 MiB |######                | Elapsed Time: 0:00:08 ETA:   0:00:20
+ 28% of 541.2 MiB |######                | Elapsed Time: 0:00:08 ETA:   0:00:20
+ 28% of 541.2 MiB |######                | Elapsed Time: 0:00:08 ETA:   0:00:20
+ 29% of 541.2 MiB |######                | Elapsed Time: 0:00:08 ETA:   0:00:20
+ 29% of 541.2 MiB |######                | Elapsed Time: 0:00:08 ETA:   0:00:20
+ 29% of 541.2 MiB |######                | Elapsed Time: 0:00:08 ETA:   0:00:20
+ 30% of 541.2 MiB |######                | Elapsed Time: 0:00:08 ETA:   0:00:19
+ 30% of 541.2 MiB |######                | Elapsed Time: 0:00:08 ETA:   0:00:19
+ 31% of 541.2 MiB |######                | Elapsed Time: 0:00:08 ETA:   0:00:19
+ 31% of 541.2 MiB |######                | Elapsed Time: 0:00:09 ETA:   0:00:19
+ 32% of 541.2 MiB |#######               | Elapsed Time: 0:00:09 ETA:   0:00:19
+ 32% of 541.2 MiB |#######               | Elapsed Time: 0:00:09 ETA:   0:00:19
+ 32% of 541.2 MiB |#######               | Elapsed Time: 0:00:09 ETA:   0:00:19
+ 33% of 541.2 MiB |#######               | Elapsed Time: 0:00:09 ETA:   0:00:18
+ 33% of 541.2 MiB |#######               | Elapsed Time: 0:00:09 ETA:   0:00:18
+ 34% of 541.2 MiB |#######               | Elapsed Time: 0:00:09 ETA:   0:00:18
+ 34% of 541.2 MiB |#######               | Elapsed Time: 0:00:09 ETA:   0:00:18
+ 34% of 541.2 MiB |#######               | Elapsed Time: 0:00:09 ETA:   0:00:18
+ 35% of 541.2 MiB |#######               | Elapsed Time: 0:00:10 ETA:   0:00:18
+ 35% of 541.2 MiB |#######               | Elapsed Time: 0:00:10 ETA:   0:00:18
+ 36% of 541.2 MiB |#######               | Elapsed Time: 0:00:10 ETA:   0:00:18
+ 36% of 541.2 MiB |########              | Elapsed Time: 0:00:10 ETA:   0:00:17
+ 37% of 541.2 MiB |########              | Elapsed Time: 0:00:10 ETA:   0:00:17
+ 37% of 541.2 MiB |########              | Elapsed Time: 0:00:10 ETA:   0:00:17
+ 37% of 541.2 MiB |########              | Elapsed Time: 0:00:10 ETA:   0:00:17
+ 38% of 541.2 MiB |########              | Elapsed Time: 0:00:10 ETA:   0:00:17
+ 38% of 541.2 MiB |########              | Elapsed Time: 0:00:10 ETA:   0:00:17
+ 39% of 541.2 MiB |########              | Elapsed Time: 0:00:11 ETA:   0:00:17
+ 39% of 541.2 MiB |########              | Elapsed Time: 0:00:11 ETA:   0:00:17
+ 39% of 541.2 MiB |########              | Elapsed Time: 0:00:11 ETA:   0:00:16
+ 40% of 541.2 MiB |########              | Elapsed Time: 0:00:11 ETA:   0:00:16
+ 40% of 541.2 MiB |########              | Elapsed Time: 0:00:11 ETA:   0:00:16
+ 41% of 541.2 MiB |#########             | Elapsed Time: 0:00:11 ETA:   0:00:16
+ 41% of 541.2 MiB |#########             | Elapsed Time: 0:00:11 ETA:   0:00:16
+ 42% of 541.2 MiB |#########             | Elapsed Time: 0:00:11 ETA:   0:00:16
+ 42% of 541.2 MiB |#########             | Elapsed Time: 0:00:11 ETA:   0:00:16
+ 43% of 541.2 MiB |#########             | Elapsed Time: 0:00:12 ETA:   0:00:15
+ 43% of 541.2 MiB |#########             | Elapsed Time: 0:00:12 ETA:   0:00:15
+ 43% of 541.2 MiB |#########             | Elapsed Time: 0:00:12 ETA:   0:00:15
+ 44% of 541.2 MiB |#########             | Elapsed Time: 0:00:12 ETA:   0:00:15
+ 44% of 541.2 MiB |#########             | Elapsed Time: 0:00:12 ETA:   0:00:15
+ 45% of 541.2 MiB |#########             | Elapsed Time: 0:00:12 ETA:   0:00:15
+ 45% of 541.2 MiB |##########            | Elapsed Time: 0:00:12 ETA:   0:00:15
+ 45% of 541.2 MiB |##########            | Elapsed Time: 0:00:12 ETA:   0:00:15
+ 46% of 541.2 MiB |##########            | Elapsed Time: 0:00:12 ETA:   0:00:14
+ 46% of 541.2 MiB |##########            | Elapsed Time: 0:00:12 ETA:   0:00:14
+ 47% of 541.2 MiB |##########            | Elapsed Time: 0:00:13 ETA:   0:00:14
+ 47% of 541.2 MiB |##########            | Elapsed Time: 0:00:13 ETA:   0:00:14
+ 47% of 541.2 MiB |##########            | Elapsed Time: 0:00:13 ETA:   0:00:14
+ 48% of 541.2 MiB |##########            | Elapsed Time: 0:00:13 ETA:   0:00:14
+ 48% of 541.2 MiB |##########            | Elapsed Time: 0:00:13 ETA:   0:00:14
+ 49% of 541.2 MiB |##########            | Elapsed Time: 0:00:13 ETA:   0:00:14
+ 49% of 541.2 MiB |##########            | Elapsed Time: 0:00:13 ETA:   0:00:13
+ 50% of 541.2 MiB |###########           | Elapsed Time: 0:00:13 ETA:   0:00:13
+ 50% of 541.2 MiB |###########           | Elapsed Time: 0:00:13 ETA:   0:00:13
+ 50% of 541.2 MiB |###########           | Elapsed Time: 0:00:14 ETA:   0:00:13
+ 51% of 541.2 MiB |###########           | Elapsed Time: 0:00:14 ETA:   0:00:13
+ 51% of 541.2 MiB |###########           | Elapsed Time: 0:00:14 ETA:   0:00:13
+ 52% of 541.2 MiB |###########           | Elapsed Time: 0:00:14 ETA:   0:00:13
+ 52% of 541.2 MiB |###########           | Elapsed Time: 0:00:14 ETA:   0:00:12
+ 53% of 541.2 MiB |###########           | Elapsed Time: 0:00:14 ETA:   0:00:12
+ 53% of 541.2 MiB |###########           | Elapsed Time: 0:00:14 ETA:   0:00:12
+ 53% of 541.2 MiB |###########           | Elapsed Time: 0:00:14 ETA:   0:00:12
+ 54% of 541.2 MiB |###########           | Elapsed Time: 0:00:14 ETA:   0:00:12
+ 54% of 541.2 MiB |############          | Elapsed Time: 0:00:15 ETA:   0:00:12
+ 55% of 541.2 MiB |############          | Elapsed Time: 0:00:15 ETA:   0:00:12
+ 55% of 541.2 MiB |############          | Elapsed Time: 0:00:15 ETA:   0:00:12
+ 55% of 541.2 MiB |############          | Elapsed Time: 0:00:15 ETA:   0:00:12
+ 56% of 541.2 MiB |############          | Elapsed Time: 0:00:15 ETA:   0:00:11
+ 56% of 541.2 MiB |############          | Elapsed Time: 0:00:15 ETA:   0:00:11
+ 57% of 541.2 MiB |############          | Elapsed Time: 0:00:15 ETA:   0:00:11
+ 57% of 541.2 MiB |############          | Elapsed Time: 0:00:15 ETA:   0:00:11
+ 58% of 541.2 MiB |############          | Elapsed Time: 0:00:15 ETA:   0:00:11
+ 58% of 541.2 MiB |############          | Elapsed Time: 0:00:15 ETA:   0:00:11
+ 58% of 541.2 MiB |############          | Elapsed Time: 0:00:16 ETA:   0:00:11
+ 59% of 541.2 MiB |#############         | Elapsed Time: 0:00:16 ETA:   0:00:11
+ 59% of 541.2 MiB |#############         | Elapsed Time: 0:00:16 ETA:   0:00:10
+ 60% of 541.2 MiB |#############         | Elapsed Time: 0:00:16 ETA:   0:00:10
+ 60% of 541.2 MiB |#############         | Elapsed Time: 0:00:16 ETA:   0:00:10
+ 60% of 541.2 MiB |#############         | Elapsed Time: 0:00:16 ETA:   0:00:10
+ 61% of 541.2 MiB |#############         | Elapsed Time: 0:00:16 ETA:   0:00:10
+ 61% of 541.2 MiB |#############         | Elapsed Time: 0:00:16 ETA:   0:00:10
+ 62% of 541.2 MiB |#############         | Elapsed Time: 0:00:16 ETA:   0:00:10
+ 62% of 541.2 MiB |#############         | Elapsed Time: 0:00:16 ETA:   0:00:10
+ 62% of 541.2 MiB |#############         | Elapsed Time: 0:00:17 ETA:   0:00:10
+ 63% of 541.2 MiB |#############         | Elapsed Time: 0:00:17 ETA:   0:00:09
+ 63% of 541.2 MiB |#############         | Elapsed Time: 0:00:17 ETA:   0:00:09
+ 64% of 541.2 MiB |##############        | Elapsed Time: 0:00:17 ETA:   0:00:09
+ 64% of 541.2 MiB |##############        | Elapsed Time: 0:00:17 ETA:   0:00:09
+ 64% of 541.2 MiB |##############        | Elapsed Time: 0:00:17 ETA:   0:00:09
+ 65% of 541.2 MiB |##############        | Elapsed Time: 0:00:17 ETA:   0:00:09
+ 65% of 541.2 MiB |##############        | Elapsed Time: 0:00:17 ETA:   0:00:09
+ 66% of 541.2 MiB |##############        | Elapsed Time: 0:00:17 ETA:   0:00:09
+ 66% of 541.2 MiB |##############        | Elapsed Time: 0:00:18 ETA:   0:00:09
+ 66% of 541.2 MiB |##############        | Elapsed Time: 0:00:18 ETA:   0:00:08
+ 67% of 541.2 MiB |##############        | Elapsed Time: 0:00:18 ETA:   0:00:08
+ 67% of 541.2 MiB |##############        | Elapsed Time: 0:00:18 ETA:   0:00:08
+ 68% of 541.2 MiB |##############        | Elapsed Time: 0:00:18 ETA:   0:00:08
+ 68% of 541.2 MiB |###############       | Elapsed Time: 0:00:18 ETA:   0:00:08
+ 68% of 541.2 MiB |###############       | Elapsed Time: 0:00:18 ETA:   0:00:08
+ 69% of 541.2 MiB |###############       | Elapsed Time: 0:00:18 ETA:   0:00:08
+ 69% of 541.2 MiB |###############       | Elapsed Time: 0:00:18 ETA:   0:00:08
+ 70% of 541.2 MiB |###############       | Elapsed Time: 0:00:18 ETA:   0:00:08
+ 70% of 541.2 MiB |###############       | Elapsed Time: 0:00:19 ETA:   0:00:07
+ 70% of 541.2 MiB |###############       | Elapsed Time: 0:00:19 ETA:   0:00:07
+ 71% of 541.2 MiB |###############       | Elapsed Time: 0:00:19 ETA:   0:00:07
+ 71% of 541.2 MiB |###############       | Elapsed Time: 0:00:19 ETA:   0:00:07
+ 72% of 541.2 MiB |###############       | Elapsed Time: 0:00:19 ETA:   0:00:07
+ 72% of 541.2 MiB |###############       | Elapsed Time: 0:00:19 ETA:   0:00:07
+ 72% of 541.2 MiB |################      | Elapsed Time: 0:00:19 ETA:   0:00:07
+ 73% of 541.2 MiB |################      | Elapsed Time: 0:00:19 ETA:   0:00:07
+ 73% of 541.2 MiB |################      | Elapsed Time: 0:00:19 ETA:   0:00:07
+ 74% of 541.2 MiB |################      | Elapsed Time: 0:00:19 ETA:   0:00:06
+ 74% of 541.2 MiB |################      | Elapsed Time: 0:00:20 ETA:   0:00:06
+ 75% of 541.2 MiB |################      | Elapsed Time: 0:00:20 ETA:   0:00:06
+ 75% of 541.2 MiB |################      | Elapsed Time: 0:00:20 ETA:   0:00:06
+ 75% of 541.2 MiB |################      | Elapsed Time: 0:00:20 ETA:   0:00:06
+ 76% of 541.2 MiB |################      | Elapsed Time: 0:00:20 ETA:   0:00:06
+ 76% of 541.2 MiB |################      | Elapsed Time: 0:00:20 ETA:   0:00:06
+ 77% of 541.2 MiB |################      | Elapsed Time: 0:00:20 ETA:   0:00:06
+ 77% of 541.2 MiB |#################     | Elapsed Time: 0:00:20 ETA:   0:00:05
+ 78% of 541.2 MiB |#################     | Elapsed Time: 0:00:20 ETA:   0:00:05
+ 78% of 541.2 MiB |#################     | Elapsed Time: 0:00:21 ETA:   0:00:05
+ 78% of 541.2 MiB |#################     | Elapsed Time: 0:00:21 ETA:   0:00:05
+ 79% of 541.2 MiB |#################     | Elapsed Time: 0:00:21 ETA:   0:00:05
+ 79% of 541.2 MiB |#################     | Elapsed Time: 0:00:21 ETA:   0:00:05
+ 80% of 541.2 MiB |#################     | Elapsed Time: 0:00:21 ETA:   0:00:05
+ 80% of 541.2 MiB |#################     | Elapsed Time: 0:00:21 ETA:   0:00:05
+ 81% of 541.2 MiB |#################     | Elapsed Time: 0:00:21 ETA:   0:00:05
+ 81% of 541.2 MiB |#################     | Elapsed Time: 0:00:21 ETA:   0:00:04
+ 81% of 541.2 MiB |##################    | Elapsed Time: 0:00:21 ETA:   0:00:04
+ 82% of 541.2 MiB |##################    | Elapsed Time: 0:00:21 ETA:   0:00:04
+ 82% of 541.2 MiB |##################    | Elapsed Time: 0:00:22 ETA:   0:00:04
+ 83% of 541.2 MiB |##################    | Elapsed Time: 0:00:22 ETA:   0:00:04
+ 83% of 541.2 MiB |##################    | Elapsed Time: 0:00:22 ETA:   0:00:04
+ 83% of 541.2 MiB |##################    | Elapsed Time: 0:00:22 ETA:   0:00:04
+ 84% of 541.2 MiB |##################    | Elapsed Time: 0:00:22 ETA:   0:00:04
+ 84% of 541.2 MiB |##################    | Elapsed Time: 0:00:22 ETA:   0:00:04
+ 85% of 541.2 MiB |##################    | Elapsed Time: 0:00:22 ETA:   0:00:03
+ 85% of 541.2 MiB |##################    | Elapsed Time: 0:00:22 ETA:   0:00:03
+ 86% of 541.2 MiB |##################    | Elapsed Time: 0:00:22 ETA:   0:00:03
+ 86% of 541.2 MiB |###################   | Elapsed Time: 0:00:22 ETA:   0:00:03
+ 86% of 541.2 MiB |###################   | Elapsed Time: 0:00:23 ETA:   0:00:03
+ 87% of 541.2 MiB |###################   | Elapsed Time: 0:00:23 ETA:   0:00:03
+ 87% of 541.2 MiB |###################   | Elapsed Time: 0:00:23 ETA:   0:00:03
+ 88% of 541.2 MiB |###################   | Elapsed Time: 0:00:23 ETA:   0:00:03
+ 88% of 541.2 MiB |###################   | Elapsed Time: 0:00:23 ETA:   0:00:03
+ 89% of 541.2 MiB |###################   | Elapsed Time: 0:00:23 ETA:   0:00:02
+ 89% of 541.2 MiB |###################   | Elapsed Time: 0:00:23 ETA:   0:00:02
+ 89% of 541.2 MiB |###################   | Elapsed Time: 0:00:23 ETA:   0:00:02
+ 90% of 541.2 MiB |###################   | Elapsed Time: 0:00:23 ETA:   0:00:02
+ 90% of 541.2 MiB |###################   | Elapsed Time: 0:00:23 ETA:   0:00:02
+ 91% of 541.2 MiB |####################  | Elapsed Time: 0:00:23 ETA:   0:00:02
+ 91% of 541.2 MiB |####################  | Elapsed Time: 0:00:24 ETA:   0:00:02
+ 92% of 541.2 MiB |####################  | Elapsed Time: 0:00:24 ETA:   0:00:02
+ 92% of 541.2 MiB |####################  | Elapsed Time: 0:00:24 ETA:   0:00:01
+ 93% of 541.2 MiB |####################  | Elapsed Time: 0:00:24 ETA:   0:00:01
+ 93% of 541.2 MiB |####################  | Elapsed Time: 0:00:24 ETA:   0:00:01
+ 94% of 541.2 MiB |####################  | Elapsed Time: 0:00:24 ETA:   0:00:01
+ 94% of 541.2 MiB |####################  | Elapsed Time: 0:00:24 ETA:   0:00:01
+ 95% of 541.2 MiB |####################  | Elapsed Time: 0:00:24 ETA:   0:00:01
+ 95% of 541.2 MiB |##################### | Elapsed Time: 0:00:24 ETA:   0:00:01
+ 96% of 541.2 MiB |##################### | Elapsed Time: 0:00:25 ETA:   0:00:00
+ 96% of 541.2 MiB |##################### | Elapsed Time: 0:00:25 ETA:   0:00:00
+ 97% of 541.2 MiB |##################### | Elapsed Time: 0:00:25 ETA:   0:00:00
+ 97% of 541.2 MiB |##################### | Elapsed Time: 0:00:25 ETA:   0:00:00
+ 97% of 541.2 MiB |##################### | Elapsed Time: 0:00:25 ETA:   0:00:00
+ 98% of 541.2 MiB |##################### | Elapsed Time: 0:00:25 ETA:   0:00:00
+ 98% of 541.2 MiB |##################### | Elapsed Time: 0:00:25 ETA:   0:00:00
+ 99% of 541.2 MiB |##################### | Elapsed Time: 0:00:25 ETA:   0:00:00
+ 99% of 541.2 MiB |##################### | Elapsed Time: 0:00:25 ETA:   0:00:00
+100% of 541.2 MiB |######################| Elapsed Time: 0:00:25 Time:  0:00:25
+</pre></div>
+</div>
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in notebooks */
+
+:root {
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base rgba(0, 0, 0, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, white)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 15))
+  );
+}
+
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base, rgba(255, 255, 255, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, #111111)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 15))
+  );
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-obj-name,
+.xr-group-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-group-name::before {
+  content: "📁";
+  padding-right: 0.3em;
+}
+
+.xr-group-name,
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: inline-block;
+  opacity: 0;
+  height: 0;
+  margin: 0;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+  border: 2px solid transparent !important;
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0) !important;
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: "►";
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: "▼";
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-top: 4px;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-group-box {
+  display: inline-grid;
+  grid-template-columns: 0px 20px auto;
+  width: 100%;
+}
+
+.xr-group-box-vline {
+  grid-column-start: 1;
+  border-right: 0.2em solid;
+  border-color: var(--xr-border-color);
+  width: 0px;
+}
+
+.xr-group-box-hline {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  height: 1em;
+  width: 20px;
+  border-bottom: 0.2em solid;
+  border-color: var(--xr-border-color);
+}
+
+.xr-group-box-contents {
+  grid-column-start: 3;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: "(";
+}
+
+.xr-dim-list:after {
+  content: ")";
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ",";
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  border-color: var(--xr-background-color-row-odd);
+  margin-bottom: 0;
+  padding-top: 2px;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+  border-color: var(--xr-background-color-row-even);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  border-top: 2px dotted var(--xr-background-color);
+  padding-bottom: 20px !important;
+  padding-top: 10px !important;
+}
+
+.xr-var-attrs-in + label,
+.xr-var-data-in + label,
+.xr-index-data-in + label {
+  padding: 0 1px;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-data > pre,
+.xr-index-data > pre,
+.xr-var-data > table > tbody > tr {
+  background-color: transparent !important;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.xr-var-attrs-in:checked + label > .xr-icon-file-text2,
+.xr-var-data-in:checked + label > .xr-icon-database,
+.xr-index-data-in:checked + label > .xr-icon-database {
+  color: var(--xr-font-color0);
+  filter: drop-shadow(1px 1px 5px var(--xr-font-color2));
+  stroke-width: 0.8px;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 112MB
+Dimensions:  (time_a: 29, y: 370, x: 436, time: 58)
+Coordinates:
+  * time_a   (time_a) datetime64[ns] 232B 1996-10-01 1997-10-01 ... 2024-10-01
+  * y        (y) float32 1kB 7.201e+06 7.201e+06 ... 7.127e+06 7.127e+06
+  * x        (x) float32 2kB 3.94e+05 3.942e+05 3.944e+05 ... 4.808e+05 4.81e+05
+  * time     (time) datetime64[ns] 464B 1996-05-01 1996-10-01 ... 2024-10-01
+Data variables:
+    ba       (time_a, y, x) float64 37MB ...
+    b        (time, y, x) float64 75MB ...
+Attributes:
+    pyproj_srs:  +proj=utm +zone=28 +datum=WGS84 +units=m +no_defs</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-394944a0-24a7-4982-9588-e9cbcd591818' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-394944a0-24a7-4982-9588-e9cbcd591818' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time_a</span>: 29</li><li><span class='xr-has-index'>y</span>: 370</li><li><span class='xr-has-index'>x</span>: 436</li><li><span class='xr-has-index'>time</span>: 58</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-2a76c392-7fef-4391-9d23-1632dd5d67d6' class='xr-section-summary-in' type='checkbox'  checked><label for='section-2a76c392-7fef-4391-9d23-1632dd5d67d6' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time_a</span></div><div class='xr-var-dims'>(time_a)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1996-10-01 ... 2024-10-01</div><input id='attrs-2f925585-9540-4372-97ff-f9dd2ca94de3' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-2f925585-9540-4372-97ff-f9dd2ca94de3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1b70c657-477c-4e2e-b984-5c4bc12124e2' class='xr-var-data-in' type='checkbox'><label for='data-1b70c657-477c-4e2e-b984-5c4bc12124e2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;1996-10-01T00:00:00.000000000&#x27;, &#x27;1997-10-01T00:00:00.000000000&#x27;,
+       &#x27;1998-10-01T00:00:00.000000000&#x27;, &#x27;1999-10-01T00:00:00.000000000&#x27;,
+       &#x27;2000-10-01T00:00:00.000000000&#x27;, &#x27;2001-10-01T00:00:00.000000000&#x27;,
+       &#x27;2002-10-01T00:00:00.000000000&#x27;, &#x27;2003-10-01T00:00:00.000000000&#x27;,
+       &#x27;2004-10-01T00:00:00.000000000&#x27;, &#x27;2005-10-01T00:00:00.000000000&#x27;,
+       &#x27;2006-10-01T00:00:00.000000000&#x27;, &#x27;2007-10-01T00:00:00.000000000&#x27;,
+       &#x27;2008-10-01T00:00:00.000000000&#x27;, &#x27;2009-10-01T00:00:00.000000000&#x27;,
+       &#x27;2010-10-01T00:00:00.000000000&#x27;, &#x27;2011-10-01T00:00:00.000000000&#x27;,
+       &#x27;2012-10-01T00:00:00.000000000&#x27;, &#x27;2013-10-01T00:00:00.000000000&#x27;,
+       &#x27;2014-10-01T00:00:00.000000000&#x27;, &#x27;2015-10-01T00:00:00.000000000&#x27;,
+       &#x27;2016-10-01T00:00:00.000000000&#x27;, &#x27;2017-10-01T00:00:00.000000000&#x27;,
+       &#x27;2018-10-01T00:00:00.000000000&#x27;, &#x27;2019-10-01T00:00:00.000000000&#x27;,
+       &#x27;2020-10-01T00:00:00.000000000&#x27;, &#x27;2021-10-01T00:00:00.000000000&#x27;,
+       &#x27;2022-10-01T00:00:00.000000000&#x27;, &#x27;2023-10-01T00:00:00.000000000&#x27;,
+       &#x27;2024-10-01T00:00:00.000000000&#x27;], dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>7.201e+06 7.201e+06 ... 7.127e+06</div><input id='attrs-b4509754-7de7-4dcc-843b-2506e9b33118' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b4509754-7de7-4dcc-843b-2506e9b33118' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-318771c0-1d91-44a9-99a1-6f5fa862135d' class='xr-var-data-in' type='checkbox'><label for='data-318771c0-1d91-44a9-99a1-6f5fa862135d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m</dd><dt><span>long_name :</span></dt><dd>y coordinate of projection</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd></dl></div><div class='xr-var-data'><pre>array([7.200982e+06, 7.200782e+06, 7.200582e+06, ..., 7.127582e+06,
+       7.127382e+06, 7.127182e+06], shape=(370,), dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>3.94e+05 3.942e+05 ... 4.81e+05</div><input id='attrs-235bf54f-a411-43aa-a45d-dbd2544f9125' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-235bf54f-a411-43aa-a45d-dbd2544f9125' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1763119a-47ab-4819-bf3f-fe4b42e1d108' class='xr-var-data-in' type='checkbox'><label for='data-1763119a-47ab-4819-bf3f-fe4b42e1d108' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m</dd><dt><span>long_name :</span></dt><dd>x coordinate of projection</dd><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd></dl></div><div class='xr-var-data'><pre>array([393962.1, 394162.1, 394362.1, ..., 480562.1, 480762.1, 480962.1],
+      shape=(436,), dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1996-05-01 ... 2024-10-01</div><input id='attrs-db67aad7-d38f-4267-8e8b-b314204df79d' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-db67aad7-d38f-4267-8e8b-b314204df79d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c522137f-5821-4543-ab80-20e52fbe5139' class='xr-var-data-in' type='checkbox'><label for='data-c522137f-5821-4543-ab80-20e52fbe5139' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;1996-05-01T00:00:00.000000000&#x27;, &#x27;1996-10-01T00:00:00.000000000&#x27;,
+       &#x27;1997-05-01T00:00:00.000000000&#x27;, &#x27;1997-10-01T00:00:00.000000000&#x27;,
+       &#x27;1998-05-01T00:00:00.000000000&#x27;, &#x27;1998-10-01T00:00:00.000000000&#x27;,
+       &#x27;1999-05-01T00:00:00.000000000&#x27;, &#x27;1999-10-01T00:00:00.000000000&#x27;,
+       &#x27;2000-05-01T00:00:00.000000000&#x27;, &#x27;2000-10-01T00:00:00.000000000&#x27;,
+       &#x27;2001-05-01T00:00:00.000000000&#x27;, &#x27;2001-10-01T00:00:00.000000000&#x27;,
+       &#x27;2002-05-01T00:00:00.000000000&#x27;, &#x27;2002-10-01T00:00:00.000000000&#x27;,
+       &#x27;2003-05-01T00:00:00.000000000&#x27;, &#x27;2003-10-01T00:00:00.000000000&#x27;,
+       &#x27;2004-05-01T00:00:00.000000000&#x27;, &#x27;2004-10-01T00:00:00.000000000&#x27;,
+       &#x27;2005-05-01T00:00:00.000000000&#x27;, &#x27;2005-10-01T00:00:00.000000000&#x27;,
+       &#x27;2006-05-01T00:00:00.000000000&#x27;, &#x27;2006-10-01T00:00:00.000000000&#x27;,
+       &#x27;2007-05-01T00:00:00.000000000&#x27;, &#x27;2007-10-01T00:00:00.000000000&#x27;,
+       &#x27;2008-05-01T00:00:00.000000000&#x27;, &#x27;2008-10-01T00:00:00.000000000&#x27;,
+       &#x27;2009-05-01T00:00:00.000000000&#x27;, &#x27;2009-10-01T00:00:00.000000000&#x27;,
+       &#x27;2010-05-01T00:00:00.000000000&#x27;, &#x27;2010-10-01T00:00:00.000000000&#x27;,
+       &#x27;2011-05-01T00:00:00.000000000&#x27;, &#x27;2011-10-01T00:00:00.000000000&#x27;,
+       &#x27;2012-05-01T00:00:00.000000000&#x27;, &#x27;2012-10-01T00:00:00.000000000&#x27;,
+       &#x27;2013-05-01T00:00:00.000000000&#x27;, &#x27;2013-10-01T00:00:00.000000000&#x27;,
+       &#x27;2014-05-01T00:00:00.000000000&#x27;, &#x27;2014-10-01T00:00:00.000000000&#x27;,
+       &#x27;2015-05-01T00:00:00.000000000&#x27;, &#x27;2015-10-01T00:00:00.000000000&#x27;,
+       &#x27;2016-05-01T00:00:00.000000000&#x27;, &#x27;2016-10-01T00:00:00.000000000&#x27;,
+       &#x27;2017-05-01T00:00:00.000000000&#x27;, &#x27;2017-10-01T00:00:00.000000000&#x27;,
+       &#x27;2018-05-01T00:00:00.000000000&#x27;, &#x27;2018-10-01T00:00:00.000000000&#x27;,
+       &#x27;2019-05-01T00:00:00.000000000&#x27;, &#x27;2019-10-01T00:00:00.000000000&#x27;,
+       &#x27;2020-05-01T00:00:00.000000000&#x27;, &#x27;2020-10-01T00:00:00.000000000&#x27;,
+       &#x27;2021-05-01T00:00:00.000000000&#x27;, &#x27;2021-10-01T00:00:00.000000000&#x27;,
+       &#x27;2022-05-01T00:00:00.000000000&#x27;, &#x27;2022-10-01T00:00:00.000000000&#x27;,
+       &#x27;2023-05-01T00:00:00.000000000&#x27;, &#x27;2023-10-01T00:00:00.000000000&#x27;,
+       &#x27;2024-05-01T00:00:00.000000000&#x27;, &#x27;2024-10-01T00:00:00.000000000&#x27;],
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-5f7a0430-2b94-4973-8933-f2d9cf0e3c1f' class='xr-section-summary-in' type='checkbox'  checked><label for='section-5f7a0430-2b94-4973-8933-f2d9cf0e3c1f' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>ba</span></div><div class='xr-var-dims'>(time_a, y, x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-46a6da0e-5d2f-4ed7-8bca-62f1aca6e53a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-46a6da0e-5d2f-4ed7-8bca-62f1aca6e53a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-86a936ae-a9cb-4b86-b8fa-c91a0b683906' class='xr-var-data-in' type='checkbox'><label for='data-86a936ae-a9cb-4b86-b8fa-c91a0b683906' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m w.e.</dd><dt><span>pyproj_srs :</span></dt><dd>+proj=utm +zone=28 +datum=WGS84 +units=m +no_defs</dd><dt><span>long_name :</span></dt><dd>annual mb</dd></dl></div><div class='xr-var-data'><pre>[4678280 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>b</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-c2848c5c-3338-4439-bad4-0ccc8f926362' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c2848c5c-3338-4439-bad4-0ccc8f926362' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-49471050-eaca-4ec4-b6cb-9a8931f7e089' class='xr-var-data-in' type='checkbox'><label for='data-49471050-eaca-4ec4-b6cb-9a8931f7e089' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m w.e.</dd><dt><span>pyproj_srs :</span></dt><dd>+proj=utm +zone=28 +datum=WGS84 +units=m +no_defs</dd><dt><span>long_name :</span></dt><dd>seasonal mb</dd></dl></div><div class='xr-var-data'><pre>[9356560 values with dtype=float64]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-3fda2160-cdc2-44ae-a759-98a1f6e2a964' class='xr-section-summary-in' type='checkbox'  checked><label for='section-3fda2160-cdc2-44ae-a759-98a1f6e2a964' class='xr-section-summary' >Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>pyproj_srs :</span></dt><dd>+proj=utm +zone=28 +datum=WGS84 +units=m +no_defs</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<p>Let’s have a first look on the gridded data and the mean annual mass balance:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">annual_smb</span> <span class="o">=</span> <span class="n">ds_user</span><span class="p">[</span><span class="s1">&#39;ba&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">dtcg_oggm_ice</span><span class="o">.</span><span class="n">l1_datacube</span><span class="o">.</span><span class="n">glacier_mask</span><span class="p">)</span>
+<span class="n">avg_smb</span> <span class="o">=</span> <span class="n">annual_smb</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time_a&#39;</span><span class="p">,</span> <span class="n">keep_attrs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">avg_smb</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mean annual mass balance 1996 to 2024&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">annual_smb</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Annual mean mass balance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/64ceca0a389efa280ea5eb4fa1db76d2fb96d524dd0d31b05df4be830d9bbd57.png" src="../_images/64ceca0a389efa280ea5eb4fa1db76d2fb96d524dd0d31b05df4be830d9bbd57.png" />
+<img alt="../_images/1bf66fb024837a8745ab4549930692a35e73f4061db2fc2b3c101c5753eb6070.png" src="../_images/1bf66fb024837a8745ab4549930692a35e73f4061db2fc2b3c101c5753eb6070.png" />
+</div>
+</div>
+</section>
+<section id="create-l3-data-cubes">
+<h2>Create L3 data cubes<a class="headerlink" href="#create-l3-data-cubes" title="Link to this heading">#</a></h2>
+<p>The main idea of <strong>DTC-Glaciers</strong> is to <strong>make it easy</strong> for potential users <strong>to interact</strong> with the system and to generate custom model output, instead of relying only on traditional preprocessed static model output. For this we show case here a first use case where the user can provide it’s own observations and generate <strong>L3</strong> data cubes.</p>
+<p>Let’s prepare the user data as cumulated mass balance between 2010 and 2020:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_date_string</span><span class="p">(</span><span class="n">date</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">datetime_as_string</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;D&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+<span class="n">start_date</span> <span class="o">=</span> <span class="n">annual_smb</span><span class="o">.</span><span class="n">time_a</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># 2010</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="n">annual_smb</span><span class="o">.</span><span class="n">time_a</span><span class="p">[</span><span class="mi">24</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># 2020</span>
+
+<span class="c1"># the period of the reference mass balance, e.g. &#39;2010-01-01_2020-01-01&#39;</span>
+<span class="n">ref_mb_period</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">get_date_string</span><span class="p">(</span><span class="n">start_date</span><span class="p">)</span><span class="si">}</span><span class="s2">_&quot;</span>
+                 <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">get_date_string</span><span class="p">(</span><span class="n">end_date</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># the actual observation value calculated as the cumulative mass balance over the period of interest</span>
+<span class="n">annual_cumsum_smb</span> <span class="o">=</span> <span class="n">annual_smb</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="n">ref_mb</span> <span class="o">=</span> <span class="p">(</span><span class="n">annual_cumsum_smb</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time_a</span><span class="o">=</span><span class="n">end_date</span><span class="p">)</span><span class="o">.</span><span class="n">values</span> <span class="o">-</span>
+          <span class="n">annual_cumsum_smb</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time_a</span><span class="o">=</span><span class="n">start_date</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+         <span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span>  <span class="c1"># convert to mm w.e., which is equal to kg m-2</span>
+
+<span class="c1"># the unit of the provided observation</span>
+<span class="n">ref_mb_unit</span> <span class="o">=</span> <span class="s1">&#39;kg m-2&#39;</span>
+
+<span class="c1"># an associated uncertainty, in this example we just set a typical order of magnitude</span>
+<span class="n">ref_mb_err</span> <span class="o">=</span> <span class="mi">1000</span> 
+
+<span class="c1"># this description is add to the attributes of the resulting datacubes for reference</span>
+<span class="n">calibration_strategy</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;OGGM model DailyTIModel calibrated with user data &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;from Landsvirkjun over the period </span><span class="si">{</span><span class="n">ref_mb_period</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+<span class="c1"># this is the name which will be used when adding the datacube to a datatree</span>
+<span class="n">l3_datacube_name</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;L3_Daily_Landsvirkjun_&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">get_date_string</span><span class="p">(</span><span class="n">start_date</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">_&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">get_date_string</span><span class="p">(</span><span class="n">end_date</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Currently DTC-Glaciers only supports the calibration of the mass balance over a complete refernece period. However, in OGGM it is possible to calibrate wih a non-complete set of mass balance observations, only taking specific years into account. This functionality could potantially be included to DTC-Glaciers in the future.</p>
+<p>Let’s provide the user data to the calibrator and create <strong>L3</strong> data cubes. For this we use <code class="docutils literal notranslate"><span class="pre">calibrator.calibrate_mb_and_create_data</span> <span class="pre">cubes</span></code>, which takes as input the mass balance model to calibrate and the referene mass balance values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calibrator</span> <span class="o">=</span> <span class="n">calibration</span><span class="o">.</span><span class="n">CalibratorCryotempo</span><span class="p">(</span><span class="n">l1_datacube</span><span class="o">=</span><span class="n">data_tree_ice</span><span class="p">[</span><span class="s1">&#39;L1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">ds</span><span class="p">,</span>
+                                             <span class="n">gdir</span><span class="o">=</span><span class="n">dtcg_oggm_ice</span><span class="o">.</span><span class="n">gdir</span><span class="p">)</span>
+
+<span class="n">l3_datacubes</span> <span class="o">=</span> <span class="n">calibrator</span><span class="o">.</span><span class="n">calibrate_mb_and_create_datacubes</span><span class="p">(</span>
+    <span class="n">mb_model_class</span><span class="o">=</span><span class="n">massbalance</span><span class="o">.</span><span class="n">DailyTIModel</span><span class="p">,</span>
+    <span class="n">ref_mb</span><span class="o">=</span><span class="n">ref_mb</span><span class="p">,</span>
+    <span class="n">ref_mb_err</span><span class="o">=</span><span class="n">ref_mb_err</span><span class="p">,</span>
+    <span class="n">ref_mb_unit</span><span class="o">=</span><span class="n">ref_mb_unit</span><span class="p">,</span>
+    <span class="n">ref_mb_period</span><span class="o">=</span><span class="n">ref_mb_period</span><span class="p">,</span>
+    <span class="n">calibration_strategy</span><span class="o">=</span><span class="n">calibration_strategy</span><span class="p">,</span>
+    <span class="n">datacubes_requested</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;monthly&#39;</span><span class="p">,</span> <span class="s1">&#39;annual_hydro&#39;</span><span class="p">,</span> <span class="s1">&#39;daily_smb&#39;</span><span class="p">],</span>
+    <span class="n">show_log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># to see what is happening</span>
+    <span class="c1"># we set here a small ensemble number for MCS for demonstration to reduce computing time,</span>
+    <span class="c1"># the precomputed datacubes use 2**4~100 ensemble members</span>
+    <span class="n">mcs_sampling_settings</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;nr_samples&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="o">**</span><span class="mi">1</span><span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DailyTIModel_2010-10-01_2020-10-01:
+  Starting Monte Carlo Simulation for 12 ensemble members.
+  Finished Monte Carlo Simulation: 12 ensemble members for output aggregation available.
+  Start generating datacubes
+    Start generation of monthly datacube
+    Finished generation of monthly datacube
+    Start generation of annual_hydro datacube
+    Finished generation of annual_hydro datacube
+    Start generation of daily_smb datacube
+    Finished generation of daily_smb datacube
+  Finished generating datacubes
+</pre></div>
+</div>
+</div>
+</div>
+<p>The resulting <strong>L3</strong> data cube can be added to an existing data_tree the same way as <strong>L2</strong> data cubes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dtcg.datacube.geozarr</span><span class="w"> </span><span class="kn">import</span> <span class="n">GeoZarrHandler</span>
+
+<span class="n">datacube_handler</span> <span class="o">=</span> <span class="n">GeoZarrHandler</span><span class="p">(</span><span class="n">data_tree</span><span class="o">=</span><span class="n">data_tree_ice</span><span class="p">)</span>
+
+<span class="n">datacube_handler</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">datacubes</span><span class="o">=</span><span class="n">l3_datacubes</span><span class="p">,</span> 
+                           <span class="n">datacube_name</span><span class="o">=</span><span class="n">l3_datacube_name</span><span class="p">)</span>
+
+<span class="nb">list</span><span class="p">(</span><span class="n">datacube_handler</span><span class="o">.</span><span class="n">data_tree</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;L1&#39;,
+ &#39;L2_Daily_Cryosat_2011_2020&#39;,
+ &#39;L2_Daily_Hugonnet_2000_2020&#39;,
+ &#39;L2_Daily_Hugonnet_2010_2020&#39;,
+ &#39;L2_SfcDaily_Cryosat_2011_2020&#39;,
+ &#39;L2_SfcDaily_Hugonnet_2000_2020&#39;,
+ &#39;L2_SfcDaily_Hugonnet_2010_2020&#39;,
+ &#39;L3_Daily_Landsvirkjun_2010_2020&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/zarr-developers/geozarr-spec"><img alt="Zarr logo" src="https://avatars.githubusercontent.com/u/35050297?s=96&amp;v=4" /></a> And could be stored locally as GeoZarr:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># datacube_handler.export(&#39;datacube_including_L3.zarr&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="validate-l3-data-cubes">
+<h2>Validate L3 data cubes<a class="headerlink" href="#validate-l3-data-cubes" title="Link to this heading">#</a></h2>
+<div class="alert alert-danger">
+    <b>IMPORTANT</b>: Note that the current L3 data cube was created with a smaller ensemble for the Monte Carlo Simulation, theirfore uncertainties are not compareable with the preprocessed L2 data cubes.
+</div>
+<p>The general validation of <strong>L3</strong> data cubes works the same way as for <strong>L2</strong> explained in <a class="reference internal" href="03_validation.html"><span class="std std-doc">this notebook</span></a>. Let’s have a look:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select the datacubes which should be evaluated</span>
+<span class="n">validation_name_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;L2_Daily_Cryosat_2011_2020&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;L2_Daily_Hugonnet_2010_2020&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;L3_Daily_Landsvirkjun_2010_2020&#39;</span>
+                       <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dtcg.validation.validator</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatacubeValidator</span>
+
+<span class="c1"># conduct the actual validation</span>
+<span class="n">validator</span> <span class="o">=</span> <span class="n">DatacubeValidator</span><span class="p">(</span><span class="n">datacube_handler</span><span class="o">.</span><span class="n">data_tree</span><span class="p">)</span>
+<span class="n">validation_data</span> <span class="o">=</span> <span class="n">validator</span><span class="o">.</span><span class="n">get_validation_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">validation_name_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data</span><span class="p">[</span><span class="s1">&#39;WGMS&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MeanAbsD (mm w.e. yr-1)</th>
+      <th>MeanD (mm w.e. yr-1)</th>
+      <th>MedianD (mm w.e. yr-1)</th>
+      <th>RMSD (mm w.e. yr-1)</th>
+      <th>CORRCOEF</th>
+    </tr>
+    <tr>
+      <th>L1 WGMS annual mass balance
+2000-2024</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>L2_Daily_Cryosat_2011_2020</th>
+      <td>437.6 (375.2, 506.4)</td>
+      <td>98.9 (-40.2, 282.4)</td>
+      <td>89.9 (-51.6, 274.2)</td>
+      <td>539.9 (460.9, 642.8)</td>
+      <td>0.49 (0.27, 0.71)</td>
+    </tr>
+    <tr>
+      <th>L2_Daily_Hugonnet_2010_2020</th>
+      <td>515.2 (375.0, 640.3)</td>
+      <td>-298.1 (-449.1, -113.9)</td>
+      <td>-308.1 (-479.9, -127.2)</td>
+      <td>622.5 (478.3, 756.1)</td>
+      <td>0.48 (0.24, 0.70)</td>
+    </tr>
+    <tr>
+      <th>L3_Daily_Landsvirkjun_2010_2020</th>
+      <td>442.4 (336.7, 545.5)</td>
+      <td>-121.5 (-261.0, 66.9)</td>
+      <td>-123.0 (-267.7, 42.9)</td>
+      <td>552.1 (439.3, 665.3)</td>
+      <td>0.49 (0.26, 0.71)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data</span><span class="p">[</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MeanAbsD (m)</th>
+      <th>MeanD (m)</th>
+      <th>MedianD (m)</th>
+      <th>RMSD (m)</th>
+      <th>CORRCOEF</th>
+    </tr>
+    <tr>
+      <th>L1 CryoSat2 elevation change
+2011-01-01_2025-05-01</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>L2_Daily_Cryosat_2011_2020</th>
+      <td>0.6 (0.8, 1.1)</td>
+      <td>0.2 (-0.2, 0.4)</td>
+      <td>0.1 (-0.2, 0.5)</td>
+      <td>0.7 (1.1, 1.4)</td>
+      <td>0.75 (0.31, 0.57)</td>
+    </tr>
+    <tr>
+      <th>L2_Daily_Hugonnet_2010_2020</th>
+      <td>3.4 (2.5, 4.5)</td>
+      <td>-3.4 (-4.4, -2.4)</td>
+      <td>-4.1 (-4.6, -1.4)</td>
+      <td>4.1 (3.4, 5.1)</td>
+      <td>0.55 (0.17, 0.58)</td>
+    </tr>
+    <tr>
+      <th>L3_Daily_Landsvirkjun_2010_2020</th>
+      <td>1.9 (1.4, 2.4)</td>
+      <td>-1.7 (-2.3, -1.1)</td>
+      <td>-2.2 (-2.5, -0.7)</td>
+      <td>2.3 (1.9, 2.8)</td>
+      <td>0.60 (0.26, 0.64)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We see the <strong>L3</strong> data cube lies somewhere in between the two other <strong>L2</strong> data cubes for the WGMS and CryoSat valiation. This is also confirmed when visually comparing the data in a plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">validation_name_list</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;WGMS&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d85bef7f1af1854f8570a623deda778a6d283f78e698bb0651ee67eb9f2ebf52.png" src="../_images/d85bef7f1af1854f8570a623deda778a6d283f78e698bb0651ee67eb9f2ebf52.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">validation_name_list</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/da05f689bb343fa562fbb2c4c6a3eade323971ae9248c4b303a7ad8a63b68f80.png" src="../_images/da05f689bb343fa562fbb2c4c6a3eade323971ae9248c4b303a7ad8a63b68f80.png" />
+</div>
+</div>
+</section>
+<section id="validation-with-user-data">
+<h2>Validation with user data<a class="headerlink" href="#validation-with-user-data" title="Link to this heading">#</a></h2>
+<p>Another level of <strong>interaction</strong> between the <strong>user</strong> and <strong>DTC-Glaciers</strong>, it is also possible to bring your <strong>own data</strong> and use the tools of the <strong>validation framework</strong> for evaluating the supported validation metrics or for creating plots for visually checking the differences.</p>
+<p>For this wee need to provide the user data in the following format:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">annual_mb</span> <span class="o">=</span> <span class="n">annual_smb</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">))</span>
+
+<span class="n">user_observation</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># let the validation framework know which observation you provide</span>
+    <span class="s1">&#39;obs_type&#39;</span><span class="p">:</span> <span class="s1">&#39;annual_mb&#39;</span><span class="p">,</span>
+    <span class="c1"># the actual values</span>
+    <span class="s1">&#39;values&#39;</span><span class="p">:</span> <span class="n">annual_mb</span><span class="o">.</span><span class="n">values</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="c1"># corresponding uncertainties</span>
+    <span class="s1">&#39;uncertainty&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">annual_mb</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
+    <span class="c1"># tha observation years</span>
+    <span class="s1">&#39;years&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">yr</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;datetime64[Y]&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1970</span> <span class="k">for</span> <span class="n">yr</span> <span class="ow">in</span> <span class="n">annual_mb</span><span class="o">.</span><span class="n">time_a</span><span class="o">.</span><span class="n">values</span><span class="p">]),</span>
+    <span class="c1"># name of the data source, this will be displayed in the validation tables</span>
+    <span class="s1">&#39;name&#39;</span> <span class="p">:</span> <span class="s2">&quot;Landsvirkjun provided annual mass balance&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>After preparing the data you can provide it via <code class="docutils literal notranslate"><span class="pre">user_observation</span></code> and interact with the validation framwork in the same way as previously:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data</span><span class="p">,</span> <span class="n">bootstrap_args</span> <span class="o">=</span> <span class="n">validator</span><span class="o">.</span><span class="n">get_validation_for_layers</span><span class="p">(</span>
+    <span class="n">user_observation</span><span class="o">=</span><span class="n">user_observation</span><span class="p">,</span> <span class="n">l2_name_list</span><span class="o">=</span><span class="n">validation_name_list</span><span class="p">,</span> <span class="n">return_bootstrap_args</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data</span><span class="p">[</span><span class="s1">&#39;annual_mb&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MeanAbsD (mm w.e. yr-1)</th>
+      <th>MeanD (mm w.e. yr-1)</th>
+      <th>MedianD (mm w.e. yr-1)</th>
+      <th>RMSD (mm w.e. yr-1)</th>
+      <th>CORRCOEF</th>
+    </tr>
+    <tr>
+      <th>Landsvirkjun provided annual mass balance
+2000-2024</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>L2_Daily_Cryosat_2011_2020</th>
+      <td>501.8 (437.3, 589.3)</td>
+      <td>316.0 (183.8, 491.4)</td>
+      <td>279.4 (147.2, 505.1)</td>
+      <td>620.5 (528.9, 729.2)</td>
+      <td>0.49 (0.26, 0.71)</td>
+    </tr>
+    <tr>
+      <th>L2_Daily_Hugonnet_2010_2020</th>
+      <td>444.0 (336.7, 550.8)</td>
+      <td>-80.9 (-224.5, 93.9)</td>
+      <td>-111.2 (-282.9, 100.2)</td>
+      <td>555.5 (436.1, 668.6)</td>
+      <td>0.47 (0.23, 0.70)</td>
+    </tr>
+    <tr>
+      <th>L3_Daily_Landsvirkjun_2010_2020</th>
+      <td>442.6 (367.7, 520.0)</td>
+      <td>95.7 (-38.1, 275.0)</td>
+      <td>66.5 (-75.0, 278.6)</td>
+      <td>550.0 (457.8, 654.0)</td>
+      <td>0.48 (0.25, 0.71)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We see in this case our newly generated <strong>L3</strong> data cube performes sligthly better compared to the other two options. This is axpected as parts of the data where also used for calibration and theirfore the validation is not independent.</p>
+<p>You also can provide the <code class="docutils literal notranslate"><span class="pre">user_observation</span></code> to the plotting function and visually compare different data cubes to the provided observation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">user_observation</span><span class="o">=</span><span class="n">user_observation</span><span class="p">,</span> <span class="n">l2_name_list</span><span class="o">=</span><span class="n">validation_name_list</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3c4f0a4ecef42ad90ac4e559e34804d83b7805c7c826ed5a7b134077273e3f75.png" src="../_images/3c4f0a4ecef42ad90ac4e559e34804d83b7805c7c826ed5a7b134077273e3f75.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="03_validation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Validating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="05_additional_features.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Further DTC-Glaciers features, work in progress</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-scene">Preparing the scene</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-l3-data-cubes">Create L3 data cubes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validate-l3-data-cubes">Validate L3 data cubes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-with-user-data">Validation with user data</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By DTCG Consortium
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Jan 10, 2026.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+&copy; Copyright 2024-2025 DTC-Glaciers consortium
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
