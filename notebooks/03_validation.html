@@ -454,6 +454,10 @@ document.write(`
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="validating-dtc-glaciers-eo-dt-enhanced-data-cubes-l2">
 <h1>Validating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)<a class="headerlink" href="#validating-dtc-glaciers-eo-dt-enhanced-data-cubes-l2" title="Link to this heading">#</a></h1>
+<p>To assess the performance of different <strong>L2 data cubes</strong>, this notebook illustrates the capabilities of the <strong>DTC Glaciers validation framework</strong>.<br />
+The objective is to evaluate L2 data cubes by comparing their model-derived estimates against independent observations available from the corresponding <strong>L1 data cubes</strong>.</p>
+<p>This validation step is a core component of the DTC Glaciers concept, providing a transparent way to quantify consistency between observations and model-based reconstructions, and to characterise associated uncertainties.</p>
+<p>We begin by opening two examples from the pre-processed <strong>L2 data cubes</strong>:</p>
 <p>If required, install the DTCG API using the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install &#39;dtcg[jupyter] @ git+https://github.com/DTC-Glaciers/dtcg&#39;
 </pre></div>
@@ -470,8 +474,6 @@ document.write(`
 </div>
 </div>
 </div>
-<p>To asses the performance of different <strong>L2</strong> data cubes this notbook illustrates the capabilities of the <strong>DTC-Glaciers validation framework</strong>. The goal is to use available data from the <strong>L1</strong> data cubes for valiation of corresponding <strong>L2</strong> data cubes.</p>
-<p>We start by opening two examples from the preprocessed <strong>L2</strong> data cubes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgi_id_ice</span> <span class="o">=</span> <span class="s2">&quot;RGI60-06.00377&quot;</span>  <span class="c1"># Brúarjökull</span>

@@ -384,7 +384,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -400,6 +402,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#content">Content</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -414,19 +424,33 @@ document.write(`
 <figure class="margin align-default">
 <img alt="_images/ESA_logo.svg" src="_images/ESA_logo.svg" />
 </figure>
-<p>These are preliminary notebooks. They are part of the <a class="reference external" href="https://dtcglaciers.org">DTC Glaciers</a> project, funded by the <a class="reference external" href="https://www.esa.int/">European Space Agency</a>.</p>
+<p>This webpage collects the demonstration notebooks developed during the first year of the <strong>Digital Twin Component for Glaciers</strong> (DTC Glaciers), an ESA-funded activity exploring the feasibility of a glacier-focused Digital Twin Component. For project background, objectives, and governance, please refer to the main project website: <a class="reference external" href="https://dtcglaciers.org">dtcglaciers.org</a>.</p>
+<p>Together, the notebooks illustrate the concepts, workflows, and technical capabilities implemented at the end of the initial 12-month project phase, including:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="notebooks/01_L1_datacubes.html"><span class="std std-doc">Creating DTC-Glaciers EO-Native data cubes (L1)</span></a></p></li>
-<li><p><a class="reference internal" href="notebooks/02_L2_datacubes.html"><span class="std std-doc">Creating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)</span></a></p></li>
-<li><p><a class="reference internal" href="notebooks/03_validation.html"><span class="std std-doc">Validating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)</span></a></p></li>
-<li><p><a class="reference internal" href="notebooks/04_user_provided_data.html"><span class="std std-doc">Creating DTC-Glaciers User-DT-Enhanced Data cubes (L3)</span></a></p></li>
-<li><p><a class="reference internal" href="notebooks/05_additional_features.html"><span class="std std-doc">Further DTC-Glaciers features, work in progress</span></a></p></li>
-<li><p><a class="reference internal" href="notebooks/06_the_beginning_of_dtcg.html"><span class="std std-doc">CryoSat2 - model comparison at Vatnajökull ice cap, Iceland</span></a></p></li>
+<li><p>the construction of <a class="reference internal" href="notebooks/01_L1_datacubes.html"><span class="std std-doc">EO-native glacier data cubes</span></a> from heterogeneous satellite products (L1),</p></li>
+<li><p>the generation of <a class="reference internal" href="notebooks/02_L2_datacubes.html"><span class="std std-doc">DT-enhanced data cubes</span></a> through physically based modelling and data assimilation (L2),</p></li>
+<li><p><a class="reference internal" href="notebooks/03_validation.html"><span class="std std-doc">validation workflows</span></a> against independent observations,</p></li>
+<li><p>the ingestion of <a class="reference internal" href="notebooks/04_user_provided_data.html"><span class="std std-doc">user-provided data</span></a> into the DTC framework (L3),</p></li>
+<li><p>and a set of <a class="reference internal" href="notebooks/05_additional_features.html"><span class="std std-doc">additional exploratory features</span></a> as well as an <a class="reference internal" href="#06_the_beginning_of_dtcg.ipynb"><span class="xref myst">case demonstration notebook</span></a> developed during the project.</p></li>
 </ul>
+<p>You can run these notebooks locally (in which case data download may be necessary) or on the <a class="reference external" href="https://hub.dtcglaciers.org">DTCG-Hub</a>: dedicated cloud resources for DTC Glaciers.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This project has just started! The notebooks presented here are a first iteration of the data assimilation and visualisation pipeline and serve as a baseline from which we will build upon. Check back for updates soon, and if you are interested in contributing, please get in touch!</p>
+<p>These notebooks represent the <strong>state of the system at the end of the first project year</strong>.
+They are not a final operational product, but a reference implementation demonstrating feasibility, design choices, and current limitations.</p>
+<p>The DTC Glaciers team intends to <strong>build upon and extend these workflows</strong> in potential subsequent project phases, including improved data coverage, model integration, and user-driven applications.</p>
 </div>
+<section id="content">
+<h2>Content<a class="headerlink" href="#content" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="notebooks/01_L1_datacubes.html"><span class="std std-doc">Creating DTC-Glaciers EO-Native data cubes (L1)</span></a></p></li>
+<li><p><a class="reference internal" href="notebooks/02_L2_datacubes.html"><span class="std std-doc">Creating DTC-Glaciers EO-DT-Enhanced data cubes (L2)</span></a></p></li>
+<li><p><a class="reference internal" href="notebooks/03_validation.html"><span class="std std-doc">Validating DTC-Glaciers EO-DT-Enhanced data cubes (L2)</span></a></p></li>
+<li><p><a class="reference internal" href="notebooks/04_user_provided_data.html"><span class="std std-doc">Creating DTC-Glaciers User-DT-Enhanced data cubes (L3)</span></a></p></li>
+<li><p><a class="reference internal" href="notebooks/05_additional_features.html"><span class="std std-doc">Additional DTC-Glaciers features (exploratory)</span></a></p></li>
+<li><p><a class="reference internal" href="notebooks/06_the_beginning_of_dtcg.html"><span class="std std-doc">CryoSat-2 – model comparison at Vatnajökull ice cap, Iceland</span></a></p></li>
+</ul>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -476,6 +500,21 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#content">Content</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
