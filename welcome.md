@@ -14,6 +14,7 @@ Together, the notebooks illustrate the concepts, workflows, and technical capabi
 - the generation of [DT-enhanced data cubes](notebooks/02_L2_datacubes.ipynb) through physically based modelling and data assimilation (L2),
 - [validation workflows](notebooks/03_validation.ipynb) against independent observations,
 - the ingestion of [user-provided data](notebooks/04_user_provided_data.ipynb) into the DTC framework (L3),
+- [showcasing how to use DTCG tools](notebooks/07_recreate_dea_story.ipynb) to recreate the plots used in [this interactive visualisation story on the DestinE website](https://dea.destine.eu/web/stories/viewer/684039a1b62b202b54ee0271)
 - and a set of [additional exploratory features](notebooks/05_additional_features.ipynb) as well as an [case demonstration notebook](06_the_beginning_of_dtcg.ipynb) developed during the project.
 
 You can run these notebooks locally (in which case data download may be necessary) or on the [DTCG-Hub](https://hub.dtcglaciers.org): dedicated cloud resources for DTC Glaciers.
@@ -31,5 +32,6 @@ The DTC Glaciers team intends to **build upon and extend these workflows** in po
 - [Creating DTC-Glaciers EO-DT-Enhanced data cubes (L2)](notebooks/02_L2_datacubes.ipynb)
 - [Validating DTC-Glaciers EO-DT-Enhanced data cubes (L2)](notebooks/03_validation.ipynb)
 - [Creating DTC-Glaciers User-DT-Enhanced data cubes (L3)](notebooks/04_user_provided_data.ipynb)
+- [A DTC-Glaciers example for hydropower outlook](notebooks/07_recreate_dea_story.ipynb)
 - [Additional DTC-Glaciers features (exploratory)](notebooks/05_additional_features.ipynb)
 - [CryoSat-2 – model comparison at Vatnajökull ice cap, Iceland](notebooks/06_the_beginning_of_dtcg.ipynb)
