@@ -12,3 +12,4 @@ parts:
     - file: notebooks/04_user_provided_data
     - file: notebooks/05_additional_features
     - file: notebooks/06_the_beginning_of_dtcg
+    - file: notebooks/07_recreate_dea_story
