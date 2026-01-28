@@ -1,0 +1,1123 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>A DTC-Glaciers example for hydropower outlook &#8212; DTC-Glaciers notebooks</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bd95c4b6" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/07_recreate_dea_story';</script>
+    <script data-domain="dtcglaciers.org" defer="defer" src="https://plausible.oggm.org/js/script.js"></script>
+    <link rel="canonical" href="https://notebooks.dtcglaciers.org/notebooks/07_recreate_dea_story.html" />
+    <link rel="icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="CryoSat2 - model comparison at Vatnajökull ice cap, Iceland" href="06_the_beginning_of_dtcg.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="Jan 28, 2026"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.jpg" class="logo__image only-light" alt="DTC-Glaciers notebooks - Home"/>
+    <script>document.write(`<img src="../_static/logo.jpg" class="logo__image only-dark" alt="DTC-Glaciers notebooks - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../welcome.html">
+                    DTC Glaciers notebooks
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary notebooks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_L1_datacubes.html">Creating DTC-Glaciers EO-Native data cubes (L1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_L2_datacubes.html">Creating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_validation.html">Validating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_user_provided_data.html">Creating DTC-Glaciers User-DT-Enhanced Data cubes (L3)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_additional_features.html">Further DTC-Glaciers features, work in progress</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_the_beginning_of_dtcg.html">CryoSat2 - model comparison at Vatnajökull ice cap, Iceland</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">A DTC-Glaciers example for hydropower outlook</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://hub.dtcglaciers.org/hub/user-redirect/git-pull?repo=https%3A//github.com/DTC-Glaciers/dtcg-notebooks&urlpath=lab/tree/dtcg-notebooks/notebooks/07_recreate_dea_story.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/DTC-Glaciers/dtcg-notebooks" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/DTC-Glaciers/dtcg-notebooks/edit/main/notebooks/07_recreate_dea_story.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/DTC-Glaciers/dtcg-notebooks/issues/new?title=Issue%20on%20page%20%2Fnotebooks/07_recreate_dea_story.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/07_recreate_dea_story.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>A DTC-Glaciers example for hydropower outlook</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-user-story">The user story</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hydropower-and-glaciers-in-iceland">Hydropower and glaciers in Iceland</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-summer-of-2015-was-highly-unusual">The summer of 2015 was highly unusual</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-this-matters-for-the-future">Why this matters for the future</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-observations-tell-us-about-2015">What observations tell us about 2015</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-situ-mass-balance-observations-from-wgms">In-situ mass balance observations from WGMS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cryotempo-eolis-elevation-changes-from-cryosat-2">CryoTEMPO-EOLIS elevation changes from CryoSat-2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#out-of-the-box-output-from-dtc-glaciers">Out-of-the-box output from DTC-Glaciers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibrate-dtc-glaciers-with-cryosat-2-observations-from-june-2015">Calibrate DTC-Glaciers with CryoSat-2 observations from June 2015</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reinformed-vs-out-of-the-box-dtc-glaciers-output">Reinformed vs. out-of-the-box DTC-Glaciers output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stay-in-touch">Stay in touch</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div>
+<img src="https://notebooks.dtcglaciers.org/_images/ESA_logo.svg" width="160" align='right'/>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="a-dtc-glaciers-example-for-hydropower-outlook">
+<h1>A DTC-Glaciers example for hydropower outlook<a class="headerlink" href="#a-dtc-glaciers-example-for-hydropower-outlook" title="Link to this heading">#</a></h1>
+<p>In this notebook, we show how the plots used in the Dea User Story <strong><a class="reference external" href="https://dea.destine.eu/web/stories/viewer/684039a1b62b202b54ee0271">“A glacier digital twin component to inform hydropower outlook”</a></strong> can be recreated.</p>
+<section id="the-user-story">
+<h2>The user story<a class="headerlink" href="#the-user-story" title="Link to this heading">#</a></h2>
+<p>The user story focuses on the <strong>summer of 2015</strong>, when Iceland faced a major challenge for its hydropower system. During this period, glacier runoff was exceptionally low, leading to serious concerns about electricity production. We use the tools provided by <strong>DTC-Glaciers</strong> to explore how a <strong>glacier digital twin</strong> can help to better understand, anticipate, and manage such events in the future.</p>
+<section id="hydropower-and-glaciers-in-iceland">
+<h3>Hydropower and glaciers in Iceland<a class="headerlink" href="#hydropower-and-glaciers-in-iceland" title="Link to this heading">#</a></h3>
+<p>More than <strong>80% of Iceland’s electricity</strong> is generated from <strong>hydropower</strong>. These power plants have been historically developed and operated by <strong><a class="reference external" href="https://en.wikipedia.org/wiki/Landsvirkjun">Landsvirkjun</a></strong>, Iceland’s national power company, and they play a key role in the country’s low-carbon energy system.</p>
+<p>The <strong><a class="reference external" href="https://en.wikipedia.org/wiki/K%C3%A1rahnj%C3%BAkar_Hydropower_Plant">Kárahnjúkar Hydropower Plant</a></strong> is the largest hydropower plant in Iceland, with an annual production of around <strong>4,600 GWh</strong>. It is supplied by a catchment area of <strong>1,660 km²</strong>, of which <strong>72% is covered by glacier ice</strong>. Most of this ice belongs to <strong>Brúarjökull</strong>, an outlet glacier of <strong><a class="reference external" href="https://en.wikipedia.org/wiki/Vatnaj%C3%B6kull">Vatnajökull</a></strong>, the largest ice cap in Iceland.</p>
+</section>
+<section id="the-summer-of-2015-was-highly-unusual">
+<h3>The summer of 2015 was highly unusual<a class="headerlink" href="#the-summer-of-2015-was-highly-unusual" title="Link to this heading">#</a></h3>
+<p><strong>Cold weather</strong> and <strong>persistent cloud cover</strong> led to a much <strong>later</strong> and <strong>weaker melt season</strong> than normal. As a result, glacier runoff was strongly reduced. According to Landsvirkjun, this was <strong>one of the worst melt seasons</strong> ever observed for their reservoirs (Source: <a class="reference external" href="https://www.waterpowermagazine.com/analysis/managing-hydro-operations-in-iceland-4831665/">International Water Power Magazine</a>).</p>
+<p>By <strong>August, river flow rates</strong> were still <strong>very low</strong>. This raised serious <strong>concerns</strong> about <strong>electricity supply</strong> and even led to <strong>discussions about emergency measures</strong> for the coming winter. In the end, heavy precipitation later in the summer refilled the reservoirs, and power rationing could be avoided.</p>
+<p><strong>This event clearly shows the need for better preparedness.</strong></p>
+</section>
+<section id="why-this-matters-for-the-future">
+<h3>Why this matters for the future<a class="headerlink" href="#why-this-matters-for-the-future" title="Link to this heading">#</a></h3>
+<p>While the summer of 2015 was exceptional, <strong>similar conditions</strong> can <strong>occur again</strong>. Years with <strong>positive glacier mass balance</strong> can reduce meltwater availability and create comparable <strong>challenges for hydropower production</strong>.</p>
+<p>In this notebook, we treat the year <strong>2015 as a hindcast</strong>. This means we use it as a real-world test case to evaluate how well future forecasts might perform under similar conditions.</p>
+<p><strong>Can an Earth-observation-informed Glacier Digital Twin help us anticipate such critical situations before they happen?</strong></p>
+</section>
+</section>
+<section id="what-observations-tell-us-about-2015">
+<h2>What observations tell us about 2015<a class="headerlink" href="#what-observations-tell-us-about-2015" title="Link to this heading">#</a></h2>
+<p>If required, install the DTCG API using the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install &#39;dtcg[jupyter] @ git+https://github.com/DTC-Glaciers/dtcg&#39;
+</pre></div>
+</div>
+<p>Run this command in a notebook cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.image</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpimg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.legend_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">HandlerTuple</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">oggm.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">massbalance</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">oggm</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">dtcg.integration.oggm_bindings</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">oggm_bindings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">dtcg.integration.calibration</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">calibration</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dtcg</span><span class="w"> </span><span class="kn">import</span> <span class="n">DEFAULT_L2_DATACUBE_URL</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dtcg.datacube.geozarr</span><span class="w"> </span><span class="kn">import</span> <span class="n">GeoZarrHandler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dtcg.validation.validator</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatacubeValidator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dtcg.validation.cryosat_validation</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_cryosat_data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We start by exploring the data available in the <strong>preprocessed DTC-Glaciers L1 datacubes</strong>. The workflow used to create these L1 datacubes is described in more detail in the notebook <a class="reference internal" href="01_L1_datacubes.html"><span class="std std-doc">Creating DTC-Glaciers EO-Native Data Cubes (L1)</span></a>.</p>
+<p>For this example, we open the preprocessed datacubes for <strong>Brúarjökull</strong> and examine the available observations.</p>
+<p>In particular, this section focuses on:</p>
+<ul class="simple">
+<li><p><strong>In-situ glacier mass balance measurements</strong> provided by the <strong><a class="reference external" href="https://wgms.ch/">WGMS</a></strong></p></li>
+<li><p><strong>Surface elevation change maps</strong> from <strong><a class="reference external" href="https://cryotempo-eolis.org/">CryoTEMPO-EOLIS</a></strong>, derived from <strong>CryoSat-2</strong> observations</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the glacier we want to analyse and open the preprocessed DTC-Glaciers data</span>
+<span class="n">rgi_id_ice</span> <span class="o">=</span> <span class="s2">&quot;RGI60-06.00377&quot;</span>  <span class="c1"># Brúarjökull</span>
+<span class="n">dtcg_oggm_ice</span> <span class="o">=</span> <span class="n">oggm_bindings</span><span class="o">.</span><span class="n">BindingsOggmModel</span><span class="p">(</span><span class="n">rgi_id</span><span class="o">=</span><span class="n">rgi_id_ice</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_l2_data_tree</span><span class="p">(</span><span class="n">rgi_id</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_datatree</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">DEFAULT_L2_DATACUBE_URL</span><span class="si">}{</span><span class="n">rgi_id</span><span class="si">}</span><span class="s2">.zarr&quot;</span><span class="p">,</span>
+            <span class="n">chunks</span><span class="o">=</span><span class="p">{},</span>
+            <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;zarr&quot;</span><span class="p">,</span>
+            <span class="n">consolidated</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">decode_cf</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+<span class="n">data_tree_ice</span> <span class="o">=</span> <span class="n">get_l2_data_tree</span><span class="p">(</span><span class="n">rgi_id_ice</span><span class="p">)</span>
+<span class="n">l1_datacube_ice</span> <span class="o">=</span> <span class="n">data_tree_ice</span><span class="p">[</span><span class="s1">&#39;L1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">ds</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="in-situ-mass-balance-observations-from-wgms">
+<h3>In-situ mass balance observations from WGMS<a class="headerlink" href="#in-situ-mass-balance-observations-from-wgms" title="Link to this heading">#</a></h3>
+<p>The figure below shows the WGMS observations from the last 25 years:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">l1_datacube_ice</span><span class="o">.</span><span class="n">t_wgms</span><span class="p">,</span>
+             <span class="n">y</span><span class="o">=</span><span class="n">l1_datacube_ice</span><span class="o">.</span><span class="n">wgms_mb</span><span class="p">,</span>
+             <span class="n">yerr</span><span class="o">=</span><span class="n">l1_datacube_ice</span><span class="o">.</span><span class="n">wgms_mb_unc</span><span class="p">,</span>
+             <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.--&quot;</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s2">&quot;on&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Specific MB (mm w.e. yr⁻¹)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">dtcg_oggm_ice</span><span class="o">.</span><span class="n">l1_datacube</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;RGI-ID&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">1999.5</span><span class="p">,</span> <span class="mf">2024.5</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9877fe9f5153eea3f1c03664e5495b3e20914b1d2d8d85704859aa22a249655c.png" src="../_images/9877fe9f5153eea3f1c03664e5495b3e20914b1d2d8d85704859aa22a249655c.png" />
+</div>
+</div>
+<p>From the plot above, we see that <strong>2015 had the most positive glacier mass balance of the last 25 years</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate statistics</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean annual mass balance 2000 to 2025: &quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">l1_datacube_ice</span><span class="o">.</span><span class="n">wgms_mb</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">t_wgms</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="mi">2025</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> mm w.e. yr⁻¹&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;             Annual mass balance 2015: &quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">l1_datacube_ice</span><span class="o">.</span><span class="n">wgms_mb</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">t_wgms</span><span class="o">=</span><span class="mi">2015</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> mm w.e. yr⁻¹&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean annual mass balance 2000 to 2025: -343 mm w.e. yr⁻¹
+             Annual mass balance 2015: 1044 mm w.e. yr⁻¹
+</pre></div>
+</div>
+</div>
+</div>
+<p>The observed mass balance in <strong>2015</strong> was <strong>1044 mm w.e. yr⁻¹</strong>, compared to a <strong>25-year mean</strong> of <strong>−343 mm w.e. yr⁻¹</strong>. This large difference clearly shows how <strong>exceptional the year 2015</strong> was.</p>
+</section>
+<section id="cryotempo-eolis-elevation-changes-from-cryosat-2">
+<h3>CryoTEMPO-EOLIS elevation changes from CryoSat-2<a class="headerlink" href="#cryotempo-eolis-elevation-changes-from-cryosat-2" title="Link to this heading">#</a></h3>
+<p>The exceptional nature of <strong>2015</strong> is also visible in the <strong>CryoTEMPO-EOLIS</strong> surface elevation change maps.</p>
+<p>Below, we compare the <strong>annual glacier elevation change</strong> in <strong>2015</strong> with the <strong>multi-year average</strong>:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">da</span> <span class="o">=</span> <span class="n">l1_datacube_ice</span><span class="o">.</span><span class="n">eolis_gridded_elevation_change</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+<span class="c1"># Calculate per-pixel difference between December and January for each year</span>
+<span class="n">jan</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">da</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;t.year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">dec</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">da</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span> <span class="o">==</span> <span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;t.year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">annual_diff</span> <span class="o">=</span> <span class="n">dec</span> <span class="o">-</span> <span class="n">jan</span>                     <span class="c1"># dims: (&#39;year&#39;, &#39;y&#39;, &#39;x&#39;)</span>
+
+<span class="c1"># Average across years to get the per-pixel mean annual difference</span>
+<span class="n">avg_annual_diff</span> <span class="o">=</span> <span class="n">annual_diff</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Pull out 2015 specifically</span>
+<span class="n">annual_diff_2015</span> <span class="o">=</span> <span class="n">annual_diff</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="mi">2015</span><span class="p">)</span>
+
+<span class="c1"># plot</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;RdBu&quot;</span>
+<span class="n">vmin</span> <span class="o">=</span> <span class="o">-</span><span class="mi">8</span>
+<span class="n">vmax</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">avg_annual_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">robust</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="n">cbar_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Annual elevation change (m)&quot;</span><span class="p">})</span>
+<span class="n">annual_diff_2015</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">robust</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="n">cbar_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Annual elevation change (m)&quot;</span><span class="p">})</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">annual_diff</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">annual_diff</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s1"> Average (Dec - Jan)&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;2015 (Dec - Jan)&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/c204121a9f41a8667573b622d24b5c6a8ee2d08f10d869291d8ce31bce223242.png" src="../_images/c204121a9f41a8667573b622d24b5c6a8ee2d08f10d869291d8ce31bce223242.png" />
+</div>
+</div>
+<p>When comparing the <strong>2015 map</strong> with the <strong>14-year average</strong>, we see much more <strong>positive elevation change</strong> (shown in blue). This indicates that <strong>glacier mass gain was significantly higher in 2015</strong> than in an average year.</p>
+<p>In the <strong><a class="reference external" href="https://dea.destine.eu/web/stories/viewer/684039a1b62b202b54ee0271">Dea user story</a></strong>, additional maps of <strong>surface albedo</strong> are shown. These data are not yet included in the DTC-Glaciers L1 datacubes. The albedo observations also show <strong>higher values in 2015</strong> compared to an average year, which points to <strong>increased snow accumulation</strong>.</p>
+<p>A <strong>high albedo</strong> means that more sunlight is reflected, which typically indicates the presence of <strong>snow rather than bare ice</strong>.</p>
+</section>
+</section>
+<section id="out-of-the-box-output-from-dtc-glaciers">
+<h2>Out-of-the-box output from DTC-Glaciers<a class="headerlink" href="#out-of-the-box-output-from-dtc-glaciers" title="Link to this heading">#</a></h2>
+<p>We now take a look at what <strong>DTC-Glaciers</strong> tells us about <strong>2015</strong> using an <strong>out-of-the-box configuration</strong>.
+More detailed information on how this configuration was created can be found in the notebook <a class="reference internal" href="02_L2_datacubes.html"><span class="std std-doc">Creating DTC-Glaciers EO-DT-Enhanced Data Cubes (L2)</span></a>.</p>
+<p>Under the hood, DTC-Glaciers is based on the <strong><a class="reference external" href="https://oggm.org/">Open Global Glacier Model (OGGM)</a></strong>. Here, <em>out-of-the-box</em> refers to a model setup in which OGGM is <strong>calibrated using CryoSat-2 data from 2011 to 2020</strong>.</p>
+<p>The model output from this calibration is already included in the <strong>preprocessed DTC-Glaciers datacubes</strong>, allowing us to inspect the results directly without running any additional computations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the name of the L2 datacube we want to analyse</span>
+<span class="n">L2_name</span> <span class="o">=</span> <span class="s1">&#39;L2_Daily_Cryosat_2011_2020&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># function for preparing the data for the plot</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_elevation_change_per_year</span><span class="p">(</span><span class="n">data_tree</span><span class="p">,</span> <span class="n">L2_name</span><span class="p">,</span> <span class="n">start_month</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="c1"># get data from data_tree</span>
+    <span class="n">da_smb</span> <span class="o">=</span> <span class="n">data_tree</span><span class="p">[</span><span class="n">L2_name</span><span class="p">][</span><span class="s1">&#39;daily_smb&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">specific_mb</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="c1"># convert float year to datetime</span>
+    <span class="n">yrs</span><span class="p">,</span> <span class="n">mnths</span><span class="p">,</span> <span class="n">dys</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">floatyear_to_date</span><span class="p">(</span><span class="n">da_smb</span><span class="o">.</span><span class="n">time</span><span class="p">,</span>
+                                              <span class="n">return_day</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">smb_dates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">y</span><span class="si">:</span><span class="s2">04d</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">m</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">d</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span>
+                          <span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">yrs</span><span class="p">,</span> <span class="n">mnths</span><span class="p">,</span> <span class="n">dys</span><span class="p">)],</span>
+                         <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;datetime64[D]&quot;</span><span class="p">)</span>
+    <span class="n">da_smb</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">smb_dates</span>
+
+    <span class="c1"># add hydro coordinate and day of year</span>
+    <span class="n">da_smb</span> <span class="o">=</span> <span class="n">da_smb</span><span class="o">.</span><span class="n">drop_vars</span><span class="p">(</span><span class="s1">&#39;calendar_year&#39;</span><span class="p">)</span>
+    <span class="n">hydro_year</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+        <span class="n">da_smb</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span> <span class="o">&gt;=</span> <span class="n">start_month</span><span class="p">,</span>
+        <span class="n">da_smb</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">da_smb</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="c1"># hydrological year start</span>
+    <span class="n">hydro_start</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">hydro_year</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;-</span><span class="si">{</span><span class="n">start_month</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">-01&quot;</span><span class="p">,</span>
+        <span class="n">dims</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;datetime64[ns]&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># hydrological day index (Oct 1 = 1)</span>
+    <span class="n">hydro_doy</span> <span class="o">=</span> <span class="p">((</span><span class="n">da_smb</span><span class="o">.</span><span class="n">time</span> <span class="o">-</span> <span class="n">hydro_start</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">da_h</span> <span class="o">=</span> <span class="n">da_smb</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span><span class="n">hydro_year</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">hydro_year</span><span class="o">.</span><span class="n">values</span><span class="p">),</span>
+                                <span class="n">hydro_doy</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">hydro_doy</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+    
+    <span class="c1"># cumsum per hydro_year, reset to 0</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">da_h</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;hydro_year&quot;</span><span class="p">)</span>
+    <span class="n">da_cumsum</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="n">g</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    
+    <span class="c1"># reshape to (hydro_year, hydro_doy) (requires unique hydro_doy within a year)</span>
+    <span class="n">da_overlay</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">da_cumsum</span>
+        <span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span><span class="n">hydro_year</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">hydro_year</span><span class="o">.</span><span class="n">values</span><span class="p">),</span>
+                       <span class="n">hydro_doy</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">hydro_doy</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;hydro_year&quot;</span><span class="p">,</span> <span class="s2">&quot;hydro_doy&quot;</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">sortby</span><span class="p">(</span><span class="s2">&quot;hydro_doy&quot;</span><span class="p">)</span>
+    <span class="p">)</span> <span class="o">/</span> <span class="mi">850</span>
+
+    <span class="k">return</span> <span class="n">da_overlay</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_annual_elevation_change</span><span class="p">(</span>
+    <span class="n">data_tree</span><span class="p">,</span>
+    <span class="n">L2_name</span><span class="p">,</span>
+    <span class="n">L2_name_reinformed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">annual_range</span><span class="o">=</span><span class="p">[</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2025</span><span class="p">],</span>
+    <span class="n">special_year</span><span class="o">=</span><span class="mi">2015</span><span class="p">,</span>
+    <span class="n">add_special_year_uncertainty</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">add_observation</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">add_observation_used_for_calibration</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">label_oggm_default</span><span class="o">=</span><span class="s1">&#39;OGGM average and range of medians: Oct </span><span class="si">{}</span><span class="s1"> - Sep </span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">label_oggm_special_year</span><span class="o">=</span><span class="s1">&#39;OGGM: Oct </span><span class="si">{}</span><span class="s1"> - Sep </span><span class="si">{}</span><span class="s1"> (median&#39;</span><span class="p">,</span>
+    <span class="n">label_cryosat</span><span class="o">=</span><span class="s1">&#39;CryoSat-2 starting Oct </span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">label_reinformed</span><span class="o">=</span><span class="s1">&#39;OGGM reinformed by CryoSat-2 from Jun 2015&#39;</span><span class="p">,</span>
+    <span class="n">c_special_year</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
+    <span class="n">c_obs</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span>
+    <span class="n">c_reinformed</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span>
+    <span class="n">ylim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="c1"># prepare data for plotting and select annual_range</span>
+    <span class="n">da_hydro_elev</span> <span class="o">=</span> <span class="n">get_elevation_change_per_year</span><span class="p">(</span>
+        <span class="n">data_tree</span><span class="o">=</span><span class="n">data_tree</span><span class="p">,</span> <span class="n">L2_name</span><span class="o">=</span><span class="n">L2_name</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="n">fontsize</span><span class="p">})</span>
+
+    <span class="n">legend_handles</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">legend_labels</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># actual plotting</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">8.5</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">)</span>
+
+    <span class="c1"># use the same value for x for all</span>
+    <span class="n">date_index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;2014-10-01&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;2015-10-01&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
+
+    <span class="c1"># plot the mean and range of all years</span>
+    <span class="k">if</span> <span class="n">annual_range</span><span class="p">:</span>
+        <span class="n">da_hydro_elev</span> <span class="o">=</span> <span class="n">da_hydro_elev</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span>
+        <span class="n">hydro_year</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">annual_range</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">annual_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="n">line</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+            <span class="n">date_index</span><span class="p">,</span>
+            <span class="n">da_hydro_elev</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">member</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;hydro_year&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;k&#39;</span><span class="p">,</span>
+           <span class="p">)</span>
+        <span class="n">band</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+            <span class="n">date_index</span><span class="p">,</span>
+            <span class="n">da_hydro_elev</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">member</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;hydro_year&#39;</span><span class="p">),</span>
+            <span class="n">da_hydro_elev</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">member</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;hydro_year&#39;</span><span class="p">),</span>
+            <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
+            <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+           <span class="p">)</span>
+
+        <span class="n">legend_handles</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">line</span><span class="p">,</span> <span class="n">band</span><span class="p">))</span>
+        <span class="n">legend_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label_oggm_default</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">annual_range</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">annual_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    
+    <span class="c1"># add special_year curve</span>
+    <span class="n">line</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">date_index</span><span class="p">,</span>
+        <span class="n">da_hydro_elev</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">member</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span> <span class="n">hydro_year</span><span class="o">=</span><span class="n">special_year</span><span class="p">),</span>
+        <span class="n">c</span><span class="o">=</span><span class="n">c_special_year</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">add_special_year_uncertainty</span><span class="p">:</span>
+        <span class="n">band</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+            <span class="n">date_index</span><span class="p">,</span>
+            <span class="n">da_hydro_elev</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">member</span><span class="o">=</span><span class="s1">&#39;0.15&#39;</span><span class="p">,</span> <span class="n">hydro_year</span><span class="o">=</span><span class="n">special_year</span><span class="p">),</span>
+            <span class="n">da_hydro_elev</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">member</span><span class="o">=</span><span class="s1">&#39;0.85&#39;</span><span class="p">,</span> <span class="n">hydro_year</span><span class="o">=</span><span class="n">special_year</span><span class="p">),</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">c_special_year</span><span class="p">,</span>
+            <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">legend_handles</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">line</span><span class="p">,</span> <span class="n">band</span><span class="p">))</span>
+        <span class="n">legend_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label_oggm_special_year</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">special_year</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">special_year</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; and uncertainty)&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">legend_handles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="n">legend_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label_oggm_special_year</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">special_year</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">special_year</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">)</span>
+
+    <span class="c1"># add results from reinformed L2 datacube</span>
+    <span class="k">if</span> <span class="n">L2_name_reinformed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">da_hydro_elev_reinform</span> <span class="o">=</span> <span class="n">get_elevation_change_per_year</span><span class="p">(</span>
+            <span class="n">data_tree</span><span class="o">=</span><span class="n">data_tree</span><span class="p">,</span> <span class="n">L2_name</span><span class="o">=</span><span class="n">L2_name_reinformed</span><span class="p">)</span>
+        <span class="n">line</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+            <span class="n">date_index</span><span class="p">,</span>
+            <span class="n">da_hydro_elev_reinform</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">member</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span> <span class="n">hydro_year</span><span class="o">=</span><span class="n">special_year</span><span class="p">),</span>
+            <span class="n">c</span><span class="o">=</span><span class="n">c_reinformed</span><span class="p">)</span>
+        <span class="n">band</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+            <span class="n">date_index</span><span class="p">,</span>
+            <span class="n">da_hydro_elev_reinform</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">member</span><span class="o">=</span><span class="s1">&#39;0.25&#39;</span><span class="p">,</span> <span class="n">hydro_year</span><span class="o">=</span><span class="n">special_year</span><span class="p">),</span>
+            <span class="n">da_hydro_elev_reinform</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">member</span><span class="o">=</span><span class="s1">&#39;0.75&#39;</span><span class="p">,</span> <span class="n">hydro_year</span><span class="o">=</span><span class="n">special_year</span><span class="p">),</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">c_reinformed</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+        <span class="n">legend_handles</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">line</span><span class="p">,</span> <span class="n">band</span><span class="p">))</span>
+        <span class="n">legend_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label_reinformed</span><span class="p">)</span>
+
+    <span class="c1"># add observation</span>
+    <span class="k">if</span> <span class="n">add_observation</span><span class="p">:</span>
+        <span class="n">baseline_date</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">special_year</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s1">-10-01&#39;</span>
+        <span class="n">cryosat_elev</span><span class="p">,</span> <span class="n">cryosat_elev_unc</span> <span class="o">=</span> <span class="n">get_cryosat_data</span><span class="p">(</span>
+            <span class="n">l1_datacube</span><span class="o">=</span><span class="n">data_tree</span><span class="p">[</span><span class="s1">&#39;L1&#39;</span><span class="p">],</span> <span class="n">baseline_date</span><span class="o">=</span><span class="n">baseline_date</span><span class="p">)</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span>
+            <span class="n">data_tree</span><span class="p">[</span><span class="s1">&#39;L1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;datetime64[D]&#39;</span><span class="p">),</span>
+            <span class="n">cryosat_elev</span><span class="p">,</span>
+            <span class="n">yerr</span><span class="o">=</span><span class="n">cryosat_elev_unc</span><span class="p">,</span>
+            <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;o--&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">c_obs</span><span class="p">,</span>
+            <span class="n">lw</span><span class="o">=</span><span class="n">lw</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="n">ms</span><span class="p">)</span>
+        <span class="n">legend_handles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+        <span class="n">legend_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label_cryosat</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">special_year</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">add_observation_used_for_calibration</span><span class="p">:</span>
+            <span class="n">calibration_date</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">add_observation_used_for_calibration</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;datetime64[ns]&quot;</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">cryosat_elev</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">calibration_date</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;datetime64[D]&#39;</span><span class="p">),</span>
+                        <span class="n">cryosat_elev</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">calibration_date</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">),</span>
+                        <span class="n">yerr</span><span class="o">=</span><span class="n">cryosat_elev_unc</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">calibration_date</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">),</span>
+                        <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">c_reinformed</span><span class="p">,</span>
+                        <span class="n">lw</span><span class="o">=</span><span class="n">lw</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="n">ms</span><span class="p">)</span>
+    
+    <span class="c1"># format x-axis</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="n">date_index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">date_index</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.dates</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mdates</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">MonthLocator</span><span class="p">())</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s1">&#39;%b&#39;</span><span class="p">))</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.ticker</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ticker</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">NullLocator</span><span class="p">())</span>
+
+    <span class="c1"># format y-axis</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Elevation change in m&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">legend_handles</span><span class="p">,</span> <span class="n">legend_labels</span><span class="p">,</span>
+              <span class="n">handler_map</span><span class="o">=</span><span class="p">{</span><span class="nb">tuple</span><span class="p">:</span> <span class="n">HandlerTuple</span><span class="p">()},</span>
+              <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower center&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_annual_elevation_change</span><span class="p">(</span>
+    <span class="n">data_tree</span><span class="o">=</span><span class="n">data_tree_ice</span><span class="p">,</span>
+    <span class="n">L2_name</span><span class="o">=</span><span class="n">L2_name</span><span class="p">,</span>
+    <span class="n">annual_range</span><span class="o">=</span><span class="p">[</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2025</span><span class="p">],</span>
+    <span class="n">special_year</span><span class="o">=</span><span class="mi">2015</span><span class="p">,)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2ba16b2edf8488ce9a920c58b43cd14192b71f997036035a97cec35f033584d5.png" src="../_images/2ba16b2edf8488ce9a920c58b43cd14192b71f997036035a97cec35f033584d5.png" />
+</div>
+</div>
+<p>This graph shows <strong>daily output</strong> from the standard OGGM glacier mass balance model, calibrated using <strong>multi-year averages of CryoSat-2 surface elevation change observations</strong>.</p>
+<p>The <strong>black line</strong> represents the <strong>average hydrological year</strong> over the period <strong>2000–2025</strong>. It shows snow accumulation until late May, followed by a short but intense melt season. The shaded area indicates the <strong>year-to-year variability</strong>, highlighting how different individual seasons can be.</p>
+<p>The <strong>red line</strong> shows the modeled evolution during the <strong>2014–2015 hydrological year</strong>. This year clearly stands out: summer melting did not begin until <strong>mid-June</strong>, and the year ended as the <strong>most positive mass balance year of the entire 25-year period</strong>.</p>
+<p>Next, we compare the <strong>model output for 2015</strong> with the <strong>glacier-integrated CryoSat-2 observations</strong> from the same year:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_annual_elevation_change</span><span class="p">(</span>
+    <span class="n">data_tree</span><span class="o">=</span><span class="n">data_tree_ice</span><span class="p">,</span>
+    <span class="n">L2_name</span><span class="o">=</span><span class="n">L2_name</span><span class="p">,</span>
+    <span class="n">annual_range</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">special_year</span><span class="o">=</span><span class="mi">2015</span><span class="p">,</span>
+    <span class="n">add_special_year_uncertainty</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">add_observation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/073b5bd8a74045ddba57a015dc546f536b3c08fe9d88a6c96f646ecc2499d250.png" src="../_images/073b5bd8a74045ddba57a015dc546f536b3c08fe9d88a6c96f646ecc2499d250.png" />
+</div>
+</div>
+<p>We see that the model and the observations agree quite well until <strong>mid-May</strong>. However, from <strong>June onwards</strong> the model no longer follows the measurements. As the exceptional summer of 2015 unfolds, the standard out-of-the-box setup is not able to capture the observed evolution.</p>
+<p><strong>From the perspective of an operator in June: would the delayed onset of melt have been enough to trigger early action - and could the model have been trusted at that point?</strong></p>
+<p>Next, we revisit 2015, but this time we <strong>incorporate CryoSat-2 information as the season progresses</strong>. In practice, this means we use the <strong>mid-June CryoSat-2 observation</strong> to update (reinform) the DTC-Glaciers model state.</p>
+</section>
+<section id="calibrate-dtc-glaciers-with-cryosat-2-observations-from-june-2015">
+<h2>Calibrate DTC-Glaciers with CryoSat-2 observations from June 2015<a class="headerlink" href="#calibrate-dtc-glaciers-with-cryosat-2-observations-from-june-2015" title="Link to this heading">#</a></h2>
+<p>The tools used below to reinform <strong>DTC-Glaciers</strong> are described in more detail in the notebook <a class="reference internal" href="02_L2_datacubes.html"><span class="std std-doc">Creating DTC-Glaciers EO-DT-Enhanced Data Cubes (L2)</span></a>.</p>
+<p>In principle, we only need to define the <strong>reference period</strong> used for the calibration. In this example, the period runs from <strong>1 October 2014 to 1 June 2015</strong>. Internally, DTC-Glaciers automatically searches for the <strong>closest available CryoSat-2 observations</strong> to these dates.</p>
+<p>We then run the DTC-Glaciers calibration workflow and <strong>add the resulting model output</strong> to the existing <code class="docutils literal notranslate"><span class="pre">data_tree</span></code> for later analysis.</p>
+<p>The calibration below takes <strong>around three minutes</strong> to complete. If you want to reduce computing time, you can set <code class="docutils literal notranslate"><span class="pre">nr_samples</span></code> to a smaller value. This reduces the <strong>ensemble size of the Monte Carlo simulation</strong> used for uncertainty propagation (explained in more detail in <a class="reference internal" href="02_L2_datacubes.html#data-assimilation-and-error-propagation-with-monte-carlo-simulation"><span class="std std-ref">this notebook</span></a>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a descriptive name for the updated DTC-Glaciers configuration</span>
+<span class="n">L2_name_reinformed</span> <span class="o">=</span> <span class="s1">&#39;L2_Daily_Cryosat_2015_Jun&#39;</span>
+
+<span class="c1"># Initialise the calibrator, define the settings, and run the calibration</span>
+<span class="n">calibrator</span> <span class="o">=</span> <span class="n">calibration</span><span class="o">.</span><span class="n">CalibratorCryotempo</span><span class="p">(</span><span class="n">l1_datacube</span><span class="o">=</span><span class="n">data_tree_ice</span><span class="p">[</span><span class="s1">&#39;L1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">ds</span><span class="p">,</span>
+                                             <span class="n">gdir</span><span class="o">=</span><span class="n">dtcg_oggm_ice</span><span class="o">.</span><span class="n">gdir</span><span class="p">)</span>
+
+<span class="n">calibrator</span><span class="o">.</span><span class="n">set_model_matrix</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="n">L2_name_reinformed</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">massbalance</span><span class="o">.</span><span class="n">DailyTIModel</span><span class="p">,</span>
+    <span class="n">ref_mb_period</span><span class="o">=</span><span class="s2">&quot;2014-10-01_2015-06-01&quot;</span><span class="p">,</span>
+    <span class="n">source</span><span class="o">=</span><span class="s2">&quot;CryoTEMPO-EOLIS&quot;</span><span class="p">,</span>
+    <span class="n">extra_kwargs</span><span class="o">=</span><span class="p">{},</span>
+<span class="p">)</span>
+
+<span class="n">l2_datacubes</span> <span class="o">=</span> <span class="n">calibrator</span><span class="o">.</span><span class="n">calibrate</span><span class="p">(</span>
+    <span class="n">gdir</span><span class="o">=</span><span class="n">dtcg_oggm_ice</span><span class="o">.</span><span class="n">gdir</span><span class="p">,</span>
+    <span class="c1"># Show log messages during the workflow to monitor progress</span>
+    <span class="n">show_log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="c1"># &#39;nr_samples&#39; defines the ensemble size for the Monte Carlo simulation.</span>
+    <span class="c1"># To reduce computing time, this can be set to 2**3 or 2**2.</span>
+    <span class="n">mcs_sampling_settings</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;nr_samples&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="o">**</span><span class="mi">4</span><span class="p">,},</span>
+    <span class="c1"># Select the output data to generate; here we request all available outputs</span>
+    <span class="n">datacubes_requested</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;monthly&#39;</span><span class="p">,</span> <span class="s1">&#39;annual_hydro&#39;</span><span class="p">,</span> <span class="s1">&#39;daily_smb&#39;</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="c1"># Add the new L2 datacube to the existing data_tree</span>
+<span class="n">datacube_handler</span> <span class="o">=</span> <span class="n">GeoZarrHandler</span><span class="p">(</span><span class="n">data_tree</span><span class="o">=</span><span class="n">data_tree_ice</span><span class="p">)</span>
+<span class="n">datacube_handler</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">datacubes</span><span class="o">=</span><span class="n">l2_datacubes</span><span class="p">[</span><span class="n">L2_name_reinformed</span><span class="p">],</span>
+                           <span class="n">datacube_name</span><span class="o">=</span><span class="n">L2_name_reinformed</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>L2_Daily_Cryosat_2015_Jun_2014-10-01_2015-06-01:
+  Starting Monte Carlo Simulation for 96 ensemble members.
+  Finished Monte Carlo Simulation: 96 ensemble members for output aggregation available.
+  Start generating datacubes
+    Start generation of monthly datacube
+    Finished generation of monthly datacube
+    Start generation of annual_hydro datacube
+    Finished generation of annual_hydro datacube
+    Start generation of daily_smb datacube
+    Finished generation of daily_smb datacube
+  Finished generating datacubes
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/1 [00:00&lt;?, ?it/s]
+100%|██████████| 1/1 [03:10&lt;00:00, 190.14s/it]
+100%|██████████| 1/1 [03:10&lt;00:00, 190.14s/it]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="reinformed-vs-out-of-the-box-dtc-glaciers-output">
+<h2>Reinformed vs. out-of-the-box DTC-Glaciers output<a class="headerlink" href="#reinformed-vs-out-of-the-box-dtc-glaciers-output" title="Link to this heading">#</a></h2>
+<p>Below, we compare the <strong>reinformed DTC-Glaciers output</strong> with the <strong>out-of-the-box results</strong> and the <strong>glacier-integrated CryoSat-2 observations</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_annual_elevation_change</span><span class="p">(</span>
+    <span class="n">data_tree</span><span class="o">=</span><span class="n">data_tree_ice</span><span class="p">,</span>
+    <span class="n">L2_name</span><span class="o">=</span><span class="n">L2_name</span><span class="p">,</span>
+    <span class="n">L2_name_reinformed</span><span class="o">=</span><span class="n">L2_name_reinformed</span><span class="p">,</span>
+    <span class="n">annual_range</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">special_year</span><span class="o">=</span><span class="mi">2015</span><span class="p">,</span>
+    <span class="n">add_special_year_uncertainty</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">add_observation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">add_observation_used_for_calibration</span><span class="o">=</span><span class="s1">&#39;2015-06-01&#39;</span><span class="p">,</span>
+    <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/fb8ffa0c44a428e7d66fd1a0486cff13dc8741dd0ed39be09e76015e1bbe83e5.png" src="../_images/fb8ffa0c44a428e7d66fd1a0486cff13dc8741dd0ed39be09e76015e1bbe83e5.png" />
+</div>
+</div>
+<p>The <strong>red line</strong> shows the <strong>out-of-the-box model output</strong>, as seen in the previous plots.</p>
+<p>The <strong>blue line</strong> represents <strong>CryoSat-2 elevation change observations</strong>. These observations confirm - and even strengthen - the signal of a <strong>delayed onset of the melt season</strong>. They provide new information that DTC-Glaciers can use to update its representation of the year.</p>
+<p>The <strong>orange line</strong> shows the <strong>DTC-Glaciers output after re-calibration</strong>. In hindsight, this updated model output aligns much more closely with what actually occurred.</p>
+<p><strong>By combining Earth Observation data with glacier modelling, a decision-maker in mid-summer 2015 could have had a much stronger basis for anticipating the risks ahead.</strong></p>
+</section>
+<section id="stay-in-touch">
+<h2>Stay in touch<a class="headerlink" href="#stay-in-touch" title="Link to this heading">#</a></h2>
+<p><strong>DTC-Glaciers</strong> is an <strong>ESA-funded pilot project</strong> that develops a prototype <strong>Glacier Digital Twin</strong> to help anticipate and respond to hydrological changes in glacierised regions. By combining <strong>Earth observation data</strong> with <strong>process-based models</strong>, the project aims to provide <strong>timely and reliable information</strong> to support decision-making.</p>
+<p>The project is currently in an <strong>early prototype phase</strong>. We welcome <strong>feedback, ideas, and collaboration</strong> from the community to help shape its future.</p>
+<p>To learn more and get involved, visit our website: <a class="reference external" href="https://dtcglaciers.org">https://dtcglaciers.org</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="06_the_beginning_of_dtcg.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">CryoSat2 - model comparison at Vatnajökull ice cap, Iceland</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-user-story">The user story</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hydropower-and-glaciers-in-iceland">Hydropower and glaciers in Iceland</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-summer-of-2015-was-highly-unusual">The summer of 2015 was highly unusual</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-this-matters-for-the-future">Why this matters for the future</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-observations-tell-us-about-2015">What observations tell us about 2015</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-situ-mass-balance-observations-from-wgms">In-situ mass balance observations from WGMS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cryotempo-eolis-elevation-changes-from-cryosat-2">CryoTEMPO-EOLIS elevation changes from CryoSat-2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#out-of-the-box-output-from-dtc-glaciers">Out-of-the-box output from DTC-Glaciers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibrate-dtc-glaciers-with-cryosat-2-observations-from-june-2015">Calibrate DTC-Glaciers with CryoSat-2 observations from June 2015</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reinformed-vs-out-of-the-box-dtc-glaciers-output">Reinformed vs. out-of-the-box DTC-Glaciers output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stay-in-touch">Stay in touch</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By DTCG Consortium
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Jan 28, 2026.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+&copy; Copyright 2024-2025 DTC-Glaciers consortium
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

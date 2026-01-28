@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
@@ -51,7 +51,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -64,10 +64,11 @@
     <link rel="icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="A DTC-Glaciers example for hydropower outlook" href="07_recreate_dea_story.html" />
     <link rel="prev" title="Further DTC-Glaciers features, work in progress" href="05_additional_features.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Jan 11, 2026"/>
+    <meta name="docbuild:last-update" content="Jan 28, 2026"/>
   </head>
   
   
@@ -191,6 +192,7 @@
 <li class="toctree-l1"><a class="reference internal" href="04_user_provided_data.html">Creating DTC-Glaciers User-DT-Enhanced Data cubes (L3)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05_additional_features.html">Further DTC-Glaciers features, work in progress</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">CryoSat2 - model comparison at Vatnajökull ice cap, Iceland</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_recreate_dea_story.html">A DTC-Glaciers example for hydropower outlook</a></li>
 </ul>
 
     </div>
@@ -509,11 +511,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-01-11 19:34:36: oggm.cfg: Reading default parameters from the OGGM `params.cfg` configuration file.
-2026-01-11 19:34:36: oggm.cfg: Multiprocessing switched OFF according to the parameter file.
-2026-01-11 19:34:36: oggm.cfg: Multiprocessing: using all available processors (N=4)
-2026-01-11 19:34:36: oggm.cfg: Multiprocessing switched ON after user settings.
-2026-01-11 19:34:36: oggm.cfg: PARAMS[&#39;continue_on_error&#39;] changed from `False` to `True`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-01-28 15:23:38: oggm.cfg: Reading default parameters from the OGGM `params.cfg` configuration file.
+2026-01-28 15:23:38: oggm.cfg: Multiprocessing switched OFF according to the parameter file.
+2026-01-28 15:23:38: oggm.cfg: Multiprocessing: using all available processors (N=4)
+2026-01-28 15:23:38: oggm.cfg: Multiprocessing switched ON after user settings.
+2026-01-28 15:23:39: oggm.cfg: PARAMS[&#39;continue_on_error&#39;] changed from `False` to `True`.
 </pre></div>
 </div>
 </div>
@@ -564,8 +566,8 @@ document.write(`
 <p class="expanded admonition-title">Hide code cell output</p>
 </summary>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-01-11 19:34:37: oggm.workflow: init_glacier_directories from prepro level 4 on 118 glaciers.
-2026-01-11 19:34:37: oggm.workflow: Execute entity tasks [gdir_from_prepro] on 118 glaciers
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-01-28 15:23:39: oggm.workflow: init_glacier_directories from prepro level 4 on 118 glaciers.
+2026-01-28 15:23:39: oggm.workflow: Execute entity tasks [gdir_from_prepro] on 118 glaciers
 </pre></div>
 </div>
 </div>
@@ -589,10 +591,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-01-11 19:35:04: oggm.workflow: Execute entity tasks [run_from_climate_data] on 118 glaciers
-2026-01-11 19:35:07: oggm.core.flowline: AttributeError occurred during task run_from_climate_data_spinup_historical_monthly on RGI60-06.00387: &#39;Dataset&#39; object has no attribute &#39;time&#39;
-2026-01-11 19:35:30: oggm.utils: Applying global task compile_run_output on 118 glaciers
-2026-01-11 19:35:30: oggm.utils: Applying compile_run_output on 118 gdirs.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-01-28 15:24:02: oggm.workflow: Execute entity tasks [run_from_climate_data] on 118 glaciers
+2026-01-28 15:24:05: oggm.core.flowline: AttributeError occurred during task run_from_climate_data_spinup_historical_monthly on RGI60-06.00387: &#39;Dataset&#39; object has no attribute &#39;time&#39;
+2026-01-28 15:24:26: oggm.utils: Applying global task compile_run_output on 118 glaciers
+2026-01-28 15:24:26: oggm.utils: Applying compile_run_output on 118 gdirs.
 </pre></div>
 </div>
 </div>
@@ -663,7 +665,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pandas/plotting/_matplotlib/core.py:981: UserWarning: This axis already has a converter set and is updating to a potentially incompatible converter
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pandas/plotting/_matplotlib/core.py:997: UserWarning: This axis already has a converter set and is updating to a potentially incompatible converter
   return ax.plot(*args, **kwds)
 </pre></div>
 </div>
@@ -772,7 +774,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pandas/plotting/_matplotlib/core.py:981: UserWarning: This axis already has a converter set and is updating to a potentially incompatible converter
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pandas/plotting/_matplotlib/core.py:997: UserWarning: This axis already has a converter set and is updating to a potentially incompatible converter
   return ax.plot(*args, **kwds)
 </pre></div>
 </div>
@@ -919,6 +921,15 @@ document.write(`
         <p class="prev-next-title">Further DTC-Glaciers features, work in progress</p>
       </div>
     </a>
+    <a class="right-next"
+       href="07_recreate_dea_story.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">A DTC-Glaciers example for hydropower outlook</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -983,7 +994,7 @@ By DTCG Consortium
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jan 11, 2026.
+  Last updated on Jan 28, 2026.
   <br/>
 </p>
   </div>

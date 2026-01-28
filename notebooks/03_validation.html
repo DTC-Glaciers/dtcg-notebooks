@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
@@ -51,7 +51,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -68,7 +68,7 @@
     <link rel="prev" title="Creating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)" href="02_L2_datacubes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Jan 11, 2026"/>
+    <meta name="docbuild:last-update" content="Jan 28, 2026"/>
   </head>
   
   
@@ -192,6 +192,7 @@
 <li class="toctree-l1"><a class="reference internal" href="04_user_provided_data.html">Creating DTC-Glaciers User-DT-Enhanced Data cubes (L3)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05_additional_features.html">Further DTC-Glaciers features, work in progress</a></li>
 <li class="toctree-l1"><a class="reference internal" href="06_the_beginning_of_dtcg.html">CryoSat2 - model comparison at Vatnajökull ice cap, Iceland</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_recreate_dea_story.html">A DTC-Glaciers example for hydropower outlook</a></li>
 </ul>
 
     </div>
@@ -496,7 +497,7 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 </div>
 <section id="validation-of-dtc-glaciers-output">
 <h2>Validation of DTC-Glaciers output<a class="headerlink" href="#validation-of-dtc-glaciers-output" title="Link to this heading">#</a></h2>
-<p>The <strong>validation</strong> within DTC-Glaciers consist of a mix of using <strong>in-situ observations</strong> as well as <strong>EO data</strong> from our <strong>L1</strong> data cubes. The entire validation framework is build around the <code class="docutils literal notranslate"><span class="pre">DatacubeValidator</span></code>, which only needs a data tree as input:</p>
+<p>The <strong>validation</strong> within DTC-Glaciers consists of a combination of <strong>in-situ observations</strong> and <strong>Earth observation (EO) data</strong> from the <strong>L1 data cubes</strong>. The entire validation framework is built around the <code class="docutils literal notranslate"><span class="pre">DatacubeValidator</span></code>, which only requires a <strong>data tree</strong> as input:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dtcg.validation.validator</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatacubeValidator</span>
@@ -507,7 +508,7 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 </div>
 </div>
 </div>
-<p>We asses the performance of different <strong>L2</strong> data cubes with regards to observations, by calculating the following metrics:</p>
+<p>We assess the performance of different <strong>L2 data cubes</strong> with respect to observations by calculating the following metrics:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator_ice</span><span class="o">.</span><span class="n">get_description_of_metrics</span><span class="p">()</span>
@@ -524,13 +525,15 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 </div>
 </div>
 </div>
-<p>To account for <strong>observation</strong> and <strong>model uncertainty</strong> during validation, we rely on <strong><a class="reference external" href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">Bootstrapping</a></strong>. In addition to evaluating the <strong>performance metrics</strong> using the <strong>most likely</strong> observation and model values, we generate a <strong>distribution</strong> for each metric. This is done by repeatedly <strong>resampling the time series</strong> in coherent multi-year blocks and <strong>drawing</strong> a plausible value for each resampled year from the corresponding <strong>uncertainty description</strong>. For <strong>observations</strong>, we assume a <strong>normal distribution</strong>, while the <strong>model output</strong> is represented by <strong>seven quantiles</strong> (0.05, 0.15, 0.25, 0.5, 0.75, 0.85, and 0.95). By default, this procedure is <strong>repeated 5000 times</strong>, and the resulting sampling distribution is summarized using a <strong>90% confidence interval</strong>, which is shown in brackets in the validation output below.</p>
-<p>Below we show two examples of the validation framework, for our two case study regions with different data availablility.</p>
+<p>To account for <strong>observation</strong> and <strong>model uncertainty</strong> during validation, we rely on <strong><a class="reference external" href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstrapping</a></strong>. For this purpose, the <strong>performance metrics</strong> are not only evaluated for the <strong>most likely</strong> observation and model values, but we also generate a <strong>distribution</strong> for each metric.</p>
+<p>This is done by repeatedly <strong>resampling the time series</strong> in coherent multi-year blocks and <strong>drawing</strong> a plausible value for each resampled year from the corresponding <strong>uncertainty description</strong>. For <strong>observations</strong>, we assume a <strong>normal distribution</strong>, while the <strong>model output</strong> is represented by <strong>seven quantiles</strong> (0.05, 0.15, 0.25, 0.5, 0.75, 0.85, and 0.95).</p>
+<p>By default, this procedure is <strong>repeated 5,000 times</strong>. The resulting sampling distribution is then summarised using a <strong>90% confidence interval</strong>, which is shown in brackets in the validation output below.</p>
+<p>Below, we show two examples of the validation framework for our two case study regions, which differ in their <strong>data availability</strong>.</p>
 </section>
 <section id="iceland">
 <h2>Iceland<a class="headerlink" href="#iceland" title="Link to this heading">#</a></h2>
-<p>In Iceland we have EO-data from <strong><a class="reference external" href="https://cryotempo-eolis.org/">CryoTEMPO-EOLIS</a></strong> (CryoSat-2) available as well as for some glaciers in-situ observations from <strong><a class="reference external" href="https://wgms.ch/">WGMS</a></strong>.</p>
-<p>Let’s see which <strong>L2</strong> data cubes we have available:</p>
+<p>In Iceland, we have <strong>Earth observation data</strong> from <strong><a class="reference external" href="https://cryotempo-eolis.org/">CryoTEMPO-EOLIS</a></strong> (CryoSat-2), as well as <strong>in-situ observations</strong> from <strong><a class="reference external" href="https://wgms.ch/">WGMS</a></strong> for some glaciers.</p>
+<p>Let’s see which <strong>L2 data cubes</strong> are available:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">data_tree_ice</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
@@ -547,7 +550,7 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 </div>
 </div>
 </div>
-<p>For the following analysis, we selected the Daily model calibrated with <strong><a class="reference external" href="https://cryotempo-eolis.org/">CryoTEMPO-EOLIS</a></strong> (CryoSat-2) for the period 2011–2020 and compared it to the same model calibrated with <strong><a class="reference external" href="https://doi.org/10.1038/s41586-021-03436-z">Hugonnet et al. (2021)</a></strong> for the period 2010–2020, which is the default dataset used in OGGM v1.6.2.</p>
+<p>For the following analysis, we selected the <strong>daily mass balance model</strong> calibrated with <strong><a class="reference external" href="https://cryotempo-eolis.org/">CryoTEMPO-EOLIS</a></strong> (CryoSat-2) for the period <strong>2011–2020</strong>. We then compared it to the same model calibrated with <strong><a class="reference external" href="https://doi.org/10.1038/s41586-021-03436-z">Hugonnet et al. (2021)</a></strong> for the period <strong>2010–2020</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l2_list_ice</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;L2_Daily_Cryosat_2011_2020&#39;</span><span class="p">,</span> <span class="s1">&#39;L2_Daily_Hugonnet_2010_2020&#39;</span><span class="p">]</span>
@@ -555,7 +558,7 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 </div>
 </div>
 </div>
-<p>With the already set-up <code class="docutils literal notranslate"><span class="pre">DatacubeValidator</span></code> we only need to provide the <strong>L2</strong> data cubes we are interested in and the validator looks which data is available in the <strong>L1</strong> data cubes and calculates the performance metrics:</p>
+<p>With the <code class="docutils literal notranslate"><span class="pre">DatacubeValidator</span></code> already set up, we only need to provide the <strong>L2 data cubes</strong> of interest. The validator then checks which reference data are available in the <strong>L1 data cubes</strong> and computes the corresponding <strong>performance metrics</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data_ice</span><span class="p">,</span> <span class="n">bootstrap_args_ice</span> <span class="o">=</span> <span class="n">validator_ice</span><span class="o">.</span><span class="n">get_validation_for_layers</span><span class="p">(</span>
@@ -564,7 +567,7 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 </div>
 </div>
 </div>
-<p>Let’s start by looking at the results of comparing the <strong>L2</strong> data cubes to the CryoSat-2 observation:</p>
+<p>Let’s start by examining the results of comparing the <strong>L2 data cubes</strong> with the <strong>CryoSat-2 observations</strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data_ice</span><span class="p">[</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">]</span>
@@ -627,8 +630,10 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 </table>
 </div></div></div>
 </div>
-<p>We see that the data cube calibrated with Cryosat outperfoms the Hugonnet one. We can see smaller values in the metrics quantiving absolute differnces (<code class="docutils literal notranslate"><span class="pre">MeanAbsD</span></code>, <code class="docutils literal notranslate"><span class="pre">RMSD</span></code>). Further metrics quantifiying a bias (<code class="docutils literal notranslate"><span class="pre">MeanD</span></code> and <code class="docutils literal notranslate"><span class="pre">MedianD</span></code>) are closer to zero, with confidence intervalls with changing signs. Finally, also the correlation coefficient is larger indicating a stronger linear relationship between observations and model output.</p>
-<p>To help with interpretation we also can have a look at the bootstrap settings used during the validation:</p>
+<p>We see that the data cube calibrated with <strong>CryoSat-2</strong> outperforms the one calibrated with <strong>Hugonnet et al. (2021)</strong>.<br />
+The metrics that quantify <strong>absolute differences</strong> (<code class="docutils literal notranslate"><span class="pre">MeanAbsD</span></code>, <code class="docutils literal notranslate"><span class="pre">RMSD</span></code>) show smaller values, indicating a better overall agreement.</p>
+<p>Metrics that quantify <strong>bias</strong> (<code class="docutils literal notranslate"><span class="pre">MeanD</span></code> and <code class="docutils literal notranslate"><span class="pre">MedianD</span></code>) are closer to zero, and their <strong>confidence intervals span both positive and negative values</strong>, suggesting no strong systematic bias. Finally, the <strong>correlation coefficient</strong> is higher, indicating a stronger linear relationship between the observations and the model output.</p>
+<p>To help with interpretation, we can also take a look at the <strong>bootstrap settings</strong> used during the validation:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bootstrap_args_ice</span><span class="p">[</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">]</span>
@@ -641,8 +646,8 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 </div>
 </div>
 </div>
-<p>We see that the provided intervalls of metrics correspond to a 90% confidence intervall (<code class="docutils literal notranslate"><span class="pre">ci_level</span></code>), in total 173 observations are available (<code class="docutils literal notranslate"><span class="pre">n</span></code>), that 5000 individual resamplings of the timeseries and evalutaions of the metrics where performed (<code class="docutils literal notranslate"><span class="pre">n_boot</span></code>) and the coherent block length was 13 observations (<code class="docutils literal notranslate"><span class="pre">block_length</span></code>). For reproducebility we use a constant random <code class="docutils literal notranslate"><span class="pre">seed</span></code>.</p>
-<p>However we need to take into account that the above validation is not independent as the Cryosat data cube used parts of this data vor calibration. Theirfore, we also can have a look solely on the independent data by defining a validation period:</p>
+<p>We see that the reported metric intervals correspond to a <strong>90% confidence interval</strong> (<code class="docutils literal notranslate"><span class="pre">ci_level</span></code>). In total, <strong>173 observations</strong> are available (<code class="docutils literal notranslate"><span class="pre">n</span></code>). The validation is based on <strong>5,000 bootstrap resamplings</strong> of the time series and repeated evaluations of the metrics (<code class="docutils literal notranslate"><span class="pre">n_boot</span></code>). A <strong>block length of 13 observations</strong> was used to preserve temporal coherence (<code class="docutils literal notranslate"><span class="pre">block_length</span></code>). For <strong>reproducibility</strong>, a fixed random <code class="docutils literal notranslate"><span class="pre">seed</span></code> is applied.</p>
+<p>However, it is important to note that this validation is <strong>not fully independent</strong>, because the CryoSat-2 data cube uses part of the same data for calibration. Therefore, we also evaluate the model performance using <strong>independent data only</strong> by defining a dedicated <strong>validation period</strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_cryosat_2020_2025</span> <span class="o">=</span> <span class="n">validator_ice</span><span class="o">.</span><span class="n">get_validation_for_layers</span><span class="p">(</span>
@@ -711,8 +716,9 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 </table>
 </div></div></div>
 </div>
-<p>Also when using the independent validation period, we see that the Cryosat data cube still outperforms the Hugonnet data cube, however differences are not as pronounced as when using the entire period.</p>
-<p>We also can use the <code class="docutils literal notranslate"><span class="pre">DatacubeValidator</span></code> to get a visual impression of the performance by creating comparision plots. For the entire period:</p>
+<p>Even when using the <strong>independent validation period</strong>, the <strong>CryoSat-2–calibrated data cube</strong> still outperforms the <strong>Hugonnet-calibrated data cube</strong>. However, the differences are <strong>less pronounced</strong> than when using the full time period.</p>
+<p>We can also use the <code class="docutils literal notranslate"><span class="pre">DatacubeValidator</span></code> to gain a <strong>visual impression of model performance</strong> by creating <strong>comparison plots</strong>.</p>
+<p>First, for the <strong>entire period</strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator_ice</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_ice</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">)</span>
@@ -724,7 +730,7 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 <img alt="../_images/075e6f5a5ad47ba976ce77c97675c528f2e0e708fe02ae881b1b2c0a4e3e4835.png" src="../_images/075e6f5a5ad47ba976ce77c97675c528f2e0e708fe02ae881b1b2c0a4e3e4835.png" />
 </div>
 </div>
-<p>Or for the independent period, by defining a <code class="docutils literal notranslate"><span class="pre">baseline_date</span></code>:</p>
+<p>Or for the <strong>independent validation period</strong>, by defining a <code class="docutils literal notranslate"><span class="pre">baseline_date</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">validator_ice</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_ice</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">,</span>
@@ -737,7 +743,7 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 <img alt="../_images/0eddaf75e8a16f1992833fbd9f6854153904630b9fbe29a6db97ca5b834e3124.png" src="../_images/0eddaf75e8a16f1992833fbd9f6854153904630b9fbe29a6db97ca5b834e3124.png" />
 </div>
 </div>
-<p>Another available data source for our test glacier are in-situ mass balance obsevations from <strong><a class="reference external" href="https://wgms.ch/">WGMS</a></strong>:</p>
+<p>Another available data source for our test glacier is <strong>in-situ mass balance observations</strong> from <strong><a class="reference external" href="https://wgms.ch/">WGMS</a></strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data_ice</span><span class="p">[</span><span class="s1">&#39;WGMS&#39;</span><span class="p">]</span>
@@ -812,8 +818,8 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 </div>
 </div>
 </div>
-<p>Also for this data the Cryosat data cube outperformes the Hugonnet data cube in most metrics, illustrating the added value of the EO-data.</p>
-<p>Visualisations are also available for the in-situ data:</p>
+<p>For this dataset as well, the <strong>CryoSat-2–calibrated data cube</strong> outperforms the <strong>Hugonnet-calibrated data cube</strong> for most metrics. This highlights the <strong>added value of Earth observation data</strong>, confirmed through validation against <strong>independent in-situ measurements</strong>.</p>
+<p>Visualisations are also available for the <strong>in-situ data</strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator_ice</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_ice</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;WGMS&#39;</span><span class="p">)</span>
@@ -828,7 +834,8 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 </section>
 <section id="austria">
 <h2>Austria<a class="headerlink" href="#austria" title="Link to this heading">#</a></h2>
-<p>In Austria we have EO-data from <strong><a class="reference external" href="https://www.enveo.at/">ENVEO</a></strong> (Sentinel-2) available as well as for some glaciers in-situ observations from <strong>WGMS</strong>. <a class="reference internal" href="01_L1_datacubes.html"><span class="std std-doc">See this notebook</span></a> for further explanations about the available data. Let’s see which <strong>L2</strong> data cubes we have available:</p>
+<p>In Austria, we have <strong>EO data</strong> from <strong><a class="reference external" href="https://www.enveo.at/">ENVEO</a></strong> (Sentinel-2), as well as <strong>in-situ observations</strong> from <strong>WGMS</strong> for some glaciers. See <a class="reference internal" href="01_L1_datacubes.html"><span class="std std-doc">this notebook</span></a> for further explanations of the available data.</p>
+<p>Let’s see which <strong>L2 data cubes</strong> are available:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">data_tree_aut</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
@@ -845,7 +852,8 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 </div>
 </div>
 </div>
-<p>In this case we compare the influence of two different mass balance models, which rely on the same calibration data from <strong><a class="reference external" href="https://doi.org/10.1038/s41586-021-03436-z">Hugonnet et al. (2021)</a></strong> in the period 2010 to 2020. The daily model is a simple temperature index model, which is the same as the <a class="reference external" href="https://docs.oggm.org/en/v1.6.2/mass-balance-monthly.html">OGGM v1.6.1 default</a>, but with a daily resolution. The second model is a temperature index model, enhanced with a bucket system for snowtracking and was implemented following <a class="reference external" href="https://doi.org/10.1017/aog.2023.57">Schuster et al. 2023</a> and the <a class="reference external" href="https://github.com/OGGM/massbalance-sandbox">OGGM Mass-Balance sandbox</a>.</p>
+<p>In this case, we compare the impact of <strong>two different mass balance models</strong> that both use the same calibration data from <strong><a class="reference external" href="https://doi.org/10.1038/s41586-021-03436-z">Hugonnet et al. (2021)</a></strong> over the period <strong>2010–2020</strong>.</p>
+<p>The first model is a <strong>daily temperature-index model</strong>, which is equivalent to the <strong>OGGM v1.6.2 default approach</strong>, but implemented at <strong>daily resolution</strong>. The second model is a <strong>temperature-index model enhanced with a bucket-based snow-tracking scheme</strong>. This model follows the approach described in <strong><a class="reference external" href="https://doi.org/10.1017/aog.2023.57">Schuster et al. (2023)</a></strong> and in the <strong><a class="reference external" href="https://github.com/OGGM/massbalance-sandbox">OGGM mass-balance sandbox</a></strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l2_list_aut</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;L2_Daily_Hugonnet_2000_2020&#39;</span><span class="p">,</span> <span class="s1">&#39;L2_SfcDaily_Hugonnet_2000_2020&#39;</span><span class="p">]</span>
@@ -861,7 +869,8 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 </div>
 </div>
 </div>
-<p>You see a warning message shown, which indicates that some data cubes are missing data for the validation. The reason is that for the validation with Sentinel-2 data we need a modelled snowline, and this is only available when using the newly implemented snowtracking bucket sysetm. But more on this later, first we have a look at the WGMS validation:</p>
+<p>You may see a warning message indicating that some data cubes are missing data for the validation. This happens because validation with <strong>Sentinel-2 data</strong> requires a <strong>modelled snowline</strong>, which is only available when using the newly implemented <strong>snow-tracking bucket system</strong>.</p>
+<p>We will return to this point later. For now, we first look at the <strong>WGMS-based validation</strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data_aut</span><span class="p">[</span><span class="s1">&#39;WGMS&#39;</span><span class="p">]</span>
@@ -936,7 +945,8 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 </div>
 </div>
 </div>
-<p>The comparision of the two options shows slightly better performance for the daily model without snowtracking. Let’s visualize the data:</p>
+<p>The comparison of the two options shows <strong>slightly better performance</strong> for the <strong>daily model without snow tracking</strong>.</p>
+<p>Let’s visualise the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator_aut</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_aut</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;WGMS&#39;</span><span class="p">)</span>
@@ -948,9 +958,10 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 <img alt="../_images/018538799c61d6a4996b1a84fa86f8257bec1f23e3eb1169e4c7b37a86a9a296.png" src="../_images/018538799c61d6a4996b1a84fa86f8257bec1f23e3eb1169e4c7b37a86a9a296.png" />
 </div>
 </div>
-<p>For surface tracking we see that the extreme year 2022 is much better captured. This probably could be related to the fact that with the bucket system albedo feedbacks are included and the very early snowfree glacier surface in 2022 led to a darker surface and hence more ablation. However, the newly developed bucket system need further research and developments to become operational.</p>
-<p>A potential new way in the future could be to utilize snowline observations for assimilation. Through the inclusion of surface tracking we are able to utilize this new type of EO data. In particular we are able to use snowline altitudes derived from Sentinel-2. In the current implementation we are using this data only for validation, but with future developments it should become possible to also use this data in the assimilation pipeline.</p>
-<p>The validation metrics of this first implementation looks like this:</p>
+<p>For the <strong>surface-tracking model</strong>, we see that the <strong>extreme year 2022</strong> is captured much better. This improvement is likely related to the <strong>bucket-based snow-tracking system</strong>, which implicitly includes <strong>albedo feedbacks</strong>. In 2022, the glacier surface became snow-free very early, leading to a <strong>darker surface</strong> and therefore <strong>enhanced ablation</strong>.</p>
+<p>However, the newly developed <strong>bucket system</strong> still requires further research and development before it can be considered operational.</p>
+<p>A promising future direction is the <strong>assimilation of snowline observations</strong>. By including surface tracking, we are able to make use of this new type of <strong>EO data</strong>, in particular <strong>snowline altitudes derived from Sentinel-2</strong>. In the current implementation, these data are used <strong>only for validation</strong>, but future developments should make it possible to also include them directly in the <strong>assimilation pipeline</strong>.</p>
+<p>The validation metrics of this first implementation are shown below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data_aut</span><span class="p">[</span><span class="s1">&#39;Sentinel2&#39;</span><span class="p">]</span>
@@ -1005,7 +1016,7 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 </table>
 </div></div></div>
 </div>
-<p>And the modelled snowline evolution can also be vizualized together with the observations:</p>
+<p>The modelled snowline evolution can also be <strong>visualised</strong> together with the observations:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator_aut</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_aut</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;Sentinel2&#39;</span><span class="p">,)</span>
@@ -1017,7 +1028,7 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 <img alt="../_images/e4446d245fbe6bea6d3d7a1b4424832b63d0000afc82033a809c589d4c9eba66.png" src="../_images/e4446d245fbe6bea6d3d7a1b4424832b63d0000afc82033a809c589d4c9eba66.png" />
 </div>
 </div>
-<p>The plot is quite packed when looking at the full period, theirfor you also could use <code class="docutils literal notranslate"><span class="pre">x_lim</span></code> for zooming in to a period of interest:</p>
+<p>The plot is quite dense when shown over the full period. Therefore, you can use <code class="docutils literal notranslate"><span class="pre">x_lim</span></code> to zoom in on a specific period of interest:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator_aut</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_aut</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;Sentinel2&#39;</span><span class="p">,</span>
@@ -1126,7 +1137,7 @@ By DTCG Consortium
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jan 11, 2026.
+  Last updated on Jan 28, 2026.
   <br/>
 </p>
   </div>

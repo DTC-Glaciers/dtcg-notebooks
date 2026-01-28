@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
@@ -51,7 +51,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -68,7 +68,7 @@
     <link rel="prev" title="Validating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)" href="03_validation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Jan 11, 2026"/>
+    <meta name="docbuild:last-update" content="Jan 28, 2026"/>
   </head>
   
   
@@ -192,6 +192,7 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Creating DTC-Glaciers User-DT-Enhanced Data cubes (L3)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05_additional_features.html">Further DTC-Glaciers features, work in progress</a></li>
 <li class="toctree-l1"><a class="reference internal" href="06_the_beginning_of_dtcg.html">CryoSat2 - model comparison at Vatnajökull ice cap, Iceland</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_recreate_dea_story.html">A DTC-Glaciers example for hydropower outlook</a></li>
 </ul>
 
     </div>
@@ -482,8 +483,8 @@ This includes direct comparison with pre-computed L2 data cubes, as well as vali
 </div>
 <section id="preparing-the-scene">
 <h2>Preparing the scene<a class="headerlink" href="#preparing-the-scene" title="Link to this heading">#</a></h2>
-<p>In this example we concentrate on Iceland, where we got example in-situ mass balance data from he <strong>National Power Company of Iceland <a class="reference external" href="https://www.landsvirkjun.com/">Landsvirkjun</a></strong>, a key stakeholder of DTC-Glaciers.</p>
-<p>We use <strong>Brúarjökull</strong> again:</p>
+<p>In this example, we focus on <strong>Iceland</strong>, where we have example <strong>in-situ mass balance data</strong> from the <strong>National Power Company of Iceland, <a class="reference external" href="https://www.landsvirkjun.com/">Landsvirkjun</a></strong>, a key stakeholder of DTC-Glaciers.</p>
+<p>We concentrate on <strong>Brúarjökull</strong>, an outlet glacier of <strong><a class="reference external" href="https://en.wikipedia.org/wiki/Vatnaj%C3%B6kull">Vatnajökull</a></strong>, the largest ice cap in Iceland. In the following cells, we open the example data and reproject it onto the same grid as our data cubes.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1047,7 +1048,7 @@ Data variables:
     ba       (time_a, y, x) float64 37MB ...
     b        (time, y, x) float64 75MB ...
 Attributes:
-    pyproj_srs:  +proj=utm +zone=28 +datum=WGS84 +units=m +no_defs</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-5ce5f850-7f67-4a63-a3da-c9373b989e51' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-5ce5f850-7f67-4a63-a3da-c9373b989e51' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time_a</span>: 29</li><li><span class='xr-has-index'>y</span>: 370</li><li><span class='xr-has-index'>x</span>: 436</li><li><span class='xr-has-index'>time</span>: 58</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-ab5d56db-0748-486b-a832-6983c1d6bdbd' class='xr-section-summary-in' type='checkbox'  checked><label for='section-ab5d56db-0748-486b-a832-6983c1d6bdbd' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time_a</span></div><div class='xr-var-dims'>(time_a)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1996-10-01 ... 2024-10-01</div><input id='attrs-3c185643-4b95-4117-8f04-1e13edb0c647' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-3c185643-4b95-4117-8f04-1e13edb0c647' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-656b2a9a-2275-4b81-a360-61f227505690' class='xr-var-data-in' type='checkbox'><label for='data-656b2a9a-2275-4b81-a360-61f227505690' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;1996-10-01T00:00:00.000000000&#x27;, &#x27;1997-10-01T00:00:00.000000000&#x27;,
+    pyproj_srs:  +proj=utm +zone=28 +datum=WGS84 +units=m +no_defs</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-74549711-193c-4bbf-a716-b93a0320d4ee' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-74549711-193c-4bbf-a716-b93a0320d4ee' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time_a</span>: 29</li><li><span class='xr-has-index'>y</span>: 370</li><li><span class='xr-has-index'>x</span>: 436</li><li><span class='xr-has-index'>time</span>: 58</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-0a8d66eb-528d-491f-8743-448e9eefff54' class='xr-section-summary-in' type='checkbox'  checked><label for='section-0a8d66eb-528d-491f-8743-448e9eefff54' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time_a</span></div><div class='xr-var-dims'>(time_a)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1996-10-01 ... 2024-10-01</div><input id='attrs-fa8abc6f-217e-4c4c-8d48-53f24c0c74dc' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-fa8abc6f-217e-4c4c-8d48-53f24c0c74dc' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-785b6a3d-0732-4207-b6b2-df82bd181d37' class='xr-var-data-in' type='checkbox'><label for='data-785b6a3d-0732-4207-b6b2-df82bd181d37' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;1996-10-01T00:00:00.000000000&#x27;, &#x27;1997-10-01T00:00:00.000000000&#x27;,
        &#x27;1998-10-01T00:00:00.000000000&#x27;, &#x27;1999-10-01T00:00:00.000000000&#x27;,
        &#x27;2000-10-01T00:00:00.000000000&#x27;, &#x27;2001-10-01T00:00:00.000000000&#x27;,
        &#x27;2002-10-01T00:00:00.000000000&#x27;, &#x27;2003-10-01T00:00:00.000000000&#x27;,
@@ -1061,9 +1062,9 @@ Attributes:
        &#x27;2018-10-01T00:00:00.000000000&#x27;, &#x27;2019-10-01T00:00:00.000000000&#x27;,
        &#x27;2020-10-01T00:00:00.000000000&#x27;, &#x27;2021-10-01T00:00:00.000000000&#x27;,
        &#x27;2022-10-01T00:00:00.000000000&#x27;, &#x27;2023-10-01T00:00:00.000000000&#x27;,
-       &#x27;2024-10-01T00:00:00.000000000&#x27;], dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>7.201e+06 7.201e+06 ... 7.127e+06</div><input id='attrs-a7f55c1d-15ac-4486-8a42-50fb2e18703d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a7f55c1d-15ac-4486-8a42-50fb2e18703d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-de8ca4b3-3a3a-4265-b482-fd10e23318aa' class='xr-var-data-in' type='checkbox'><label for='data-de8ca4b3-3a3a-4265-b482-fd10e23318aa' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m</dd><dt><span>long_name :</span></dt><dd>y coordinate of projection</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd></dl></div><div class='xr-var-data'><pre>array([7.200982e+06, 7.200782e+06, 7.200582e+06, ..., 7.127582e+06,
-       7.127382e+06, 7.127182e+06], shape=(370,), dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>3.94e+05 3.942e+05 ... 4.81e+05</div><input id='attrs-77632f47-a89c-43a8-b7df-ec7d37fafd0a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-77632f47-a89c-43a8-b7df-ec7d37fafd0a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d671e59f-8d6a-466d-90da-622e2456a663' class='xr-var-data-in' type='checkbox'><label for='data-d671e59f-8d6a-466d-90da-622e2456a663' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m</dd><dt><span>long_name :</span></dt><dd>x coordinate of projection</dd><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd></dl></div><div class='xr-var-data'><pre>array([393962.1, 394162.1, 394362.1, ..., 480562.1, 480762.1, 480962.1],
-      shape=(436,), dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1996-05-01 ... 2024-10-01</div><input id='attrs-f7e752c6-f1f9-450c-a788-f11eba3bf667' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-f7e752c6-f1f9-450c-a788-f11eba3bf667' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e610d053-8eac-4be4-b16f-0675e8c25d78' class='xr-var-data-in' type='checkbox'><label for='data-e610d053-8eac-4be4-b16f-0675e8c25d78' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;1996-05-01T00:00:00.000000000&#x27;, &#x27;1996-10-01T00:00:00.000000000&#x27;,
+       &#x27;2024-10-01T00:00:00.000000000&#x27;], dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>7.201e+06 7.201e+06 ... 7.127e+06</div><input id='attrs-88aade7c-2a59-4cb2-9b5a-709997214114' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-88aade7c-2a59-4cb2-9b5a-709997214114' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c6c44819-619e-4792-a351-247dba346c05' class='xr-var-data-in' type='checkbox'><label for='data-c6c44819-619e-4792-a351-247dba346c05' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m</dd><dt><span>long_name :</span></dt><dd>y coordinate of projection</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd></dl></div><div class='xr-var-data'><pre>array([7.200982e+06, 7.200782e+06, 7.200582e+06, ..., 7.127582e+06,
+       7.127382e+06, 7.127182e+06], shape=(370,), dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>3.94e+05 3.942e+05 ... 4.81e+05</div><input id='attrs-15cc99e7-a282-4167-87c6-a6c986c765e2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-15cc99e7-a282-4167-87c6-a6c986c765e2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-dbe66998-1507-45b9-a793-fc2c26fe6773' class='xr-var-data-in' type='checkbox'><label for='data-dbe66998-1507-45b9-a793-fc2c26fe6773' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m</dd><dt><span>long_name :</span></dt><dd>x coordinate of projection</dd><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd></dl></div><div class='xr-var-data'><pre>array([393962.1, 394162.1, 394362.1, ..., 480562.1, 480762.1, 480962.1],
+      shape=(436,), dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1996-05-01 ... 2024-10-01</div><input id='attrs-e95c2219-657c-4b36-883a-7227928e22b4' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-e95c2219-657c-4b36-883a-7227928e22b4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1f396a35-f4dd-47ea-99e4-9696b228ac36' class='xr-var-data-in' type='checkbox'><label for='data-1f396a35-f4dd-47ea-99e4-9696b228ac36' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;1996-05-01T00:00:00.000000000&#x27;, &#x27;1996-10-01T00:00:00.000000000&#x27;,
        &#x27;1997-05-01T00:00:00.000000000&#x27;, &#x27;1997-10-01T00:00:00.000000000&#x27;,
        &#x27;1998-05-01T00:00:00.000000000&#x27;, &#x27;1998-10-01T00:00:00.000000000&#x27;,
        &#x27;1999-05-01T00:00:00.000000000&#x27;, &#x27;1999-10-01T00:00:00.000000000&#x27;,
@@ -1092,9 +1093,9 @@ Attributes:
        &#x27;2022-05-01T00:00:00.000000000&#x27;, &#x27;2022-10-01T00:00:00.000000000&#x27;,
        &#x27;2023-05-01T00:00:00.000000000&#x27;, &#x27;2023-10-01T00:00:00.000000000&#x27;,
        &#x27;2024-05-01T00:00:00.000000000&#x27;, &#x27;2024-10-01T00:00:00.000000000&#x27;],
-      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-5c2da8bc-9262-4dac-a4b5-68ddd07ce3d6' class='xr-section-summary-in' type='checkbox'  checked><label for='section-5c2da8bc-9262-4dac-a4b5-68ddd07ce3d6' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>ba</span></div><div class='xr-var-dims'>(time_a, y, x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-b021bb47-4fd8-44a7-b6e8-304c245aed5a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b021bb47-4fd8-44a7-b6e8-304c245aed5a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fab99a3e-5920-4f3c-b0d3-80017d62d5f5' class='xr-var-data-in' type='checkbox'><label for='data-fab99a3e-5920-4f3c-b0d3-80017d62d5f5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m w.e.</dd><dt><span>pyproj_srs :</span></dt><dd>+proj=utm +zone=28 +datum=WGS84 +units=m +no_defs</dd><dt><span>long_name :</span></dt><dd>annual mb</dd></dl></div><div class='xr-var-data'><pre>[4678280 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>b</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-59d500c7-ae65-433a-b724-da2f1508d31d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-59d500c7-ae65-433a-b724-da2f1508d31d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3636ae2e-add5-4e80-add1-ab21458f5aa3' class='xr-var-data-in' type='checkbox'><label for='data-3636ae2e-add5-4e80-add1-ab21458f5aa3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m w.e.</dd><dt><span>pyproj_srs :</span></dt><dd>+proj=utm +zone=28 +datum=WGS84 +units=m +no_defs</dd><dt><span>long_name :</span></dt><dd>seasonal mb</dd></dl></div><div class='xr-var-data'><pre>[9356560 values with dtype=float64]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-16b7ff66-c139-4de2-9b1e-7c1590478d1d' class='xr-section-summary-in' type='checkbox'  checked><label for='section-16b7ff66-c139-4de2-9b1e-7c1590478d1d' class='xr-section-summary' >Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>pyproj_srs :</span></dt><dd>+proj=utm +zone=28 +datum=WGS84 +units=m +no_defs</dd></dl></div></li></ul></div></div></div></div>
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-0d9a9a9e-9e01-44fb-a783-94685c1ca052' class='xr-section-summary-in' type='checkbox'  checked><label for='section-0d9a9a9e-9e01-44fb-a783-94685c1ca052' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>ba</span></div><div class='xr-var-dims'>(time_a, y, x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-05f7503f-d37d-46bc-9777-28dececb321c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-05f7503f-d37d-46bc-9777-28dececb321c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1367f231-a123-4834-9615-fa31cb4e10b5' class='xr-var-data-in' type='checkbox'><label for='data-1367f231-a123-4834-9615-fa31cb4e10b5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m w.e.</dd><dt><span>pyproj_srs :</span></dt><dd>+proj=utm +zone=28 +datum=WGS84 +units=m +no_defs</dd><dt><span>long_name :</span></dt><dd>annual mb</dd></dl></div><div class='xr-var-data'><pre>[4678280 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>b</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-e1cdf96d-b823-4021-a0b6-bffb4032ac62' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e1cdf96d-b823-4021-a0b6-bffb4032ac62' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-67b58392-eb2f-4329-a4c4-3c823cb1f66b' class='xr-var-data-in' type='checkbox'><label for='data-67b58392-eb2f-4329-a4c4-3c823cb1f66b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m w.e.</dd><dt><span>pyproj_srs :</span></dt><dd>+proj=utm +zone=28 +datum=WGS84 +units=m +no_defs</dd><dt><span>long_name :</span></dt><dd>seasonal mb</dd></dl></div><div class='xr-var-data'><pre>[9356560 values with dtype=float64]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-bfd47209-6fef-47de-9eea-4241db03e841' class='xr-section-summary-in' type='checkbox'  checked><label for='section-bfd47209-6fef-47de-9eea-4241db03e841' class='xr-section-summary' >Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>pyproj_srs :</span></dt><dd>+proj=utm +zone=28 +datum=WGS84 +units=m +no_defs</dd></dl></div></li></ul></div></div></div></div>
 </div>
-<p>Let’s have a first look on the gridded data and the mean annual mass balance:</p>
+<p>Let’s take a first look at the <strong>gridded data</strong> and the <strong>mean annual mass balance</strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">annual_smb</span> <span class="o">=</span> <span class="n">ds_user</span><span class="p">[</span><span class="s1">&#39;ba&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">dtcg_oggm_ice</span><span class="o">.</span><span class="n">l1_datacube</span><span class="o">.</span><span class="n">glacier_mask</span><span class="p">)</span>
@@ -1118,8 +1119,8 @@ Attributes:
 </section>
 <section id="create-l3-data-cubes">
 <h2>Create L3 data cubes<a class="headerlink" href="#create-l3-data-cubes" title="Link to this heading">#</a></h2>
-<p>The main idea of <strong>DTC-Glaciers</strong> is to <strong>make it easy</strong> for potential users <strong>to interact</strong> with the system and to generate custom model output, instead of relying only on traditional preprocessed static model output. For this we show case here a first use case where the user can provide it’s own observations and generate <strong>L3</strong> data cubes.</p>
-<p>Let’s prepare the user data as cumulated mass balance between 2010 and 2020:</p>
+<p>The main idea of <strong>DTC-Glaciers</strong> is to <strong>make it easy</strong> for users to <strong>interact with the system</strong> and generate <strong>custom model output</strong>, rather than relying only on preprocessed, static results. Here, we demonstrate a first use case in which a user can provide <strong>their own observations</strong>, generate <strong>L3 data cubes</strong>, and further use their own data for <strong>validation</strong> (shown in one of the next sections).</p>
+<p>Let’s prepare the user data as <strong>cumulative mass balance</strong> for the period <strong>2010–2020</strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_date_string</span><span class="p">(</span><span class="n">date</span><span class="p">):</span>
@@ -1156,8 +1157,8 @@ Attributes:
 </div>
 </div>
 </div>
-<p>Currently DTC-Glaciers only supports the calibration of the mass balance over a complete refernece period. However, in OGGM it is possible to calibrate wih a non-complete set of mass balance observations, only taking specific years into account. This functionality could potantially be included to DTC-Glaciers in the future.</p>
-<p>Let’s provide the user data to the calibrator and create <strong>L3</strong> data cubes. For this we use <code class="docutils literal notranslate"><span class="pre">calibrator.calibrate_mb_and_create_data</span> <span class="pre">cubes</span></code>, which takes as input the mass balance model to calibrate and the referene mass balance values:</p>
+<p>Currently, DTC-Glaciers supports calibration of the mass balance only over a <strong>complete reference period</strong>. However, in <strong>OGGM</strong> it is also possible to calibrate using an <strong>incomplete set of mass balance observations</strong>, for example by considering only selected years. This functionality could potentially be added to DTC-Glaciers in the future.</p>
+<p>Now we provide the user data to the calibrator and create <strong>L3 data cubes</strong>. For this, we use <code class="docutils literal notranslate"><span class="pre">calibrator.calibrate_mb_and_create_datacubes</span></code>, which takes as input the <strong>mass balance model</strong> to be calibrated and the <strong>reference mass balance values</strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calibrator</span> <span class="o">=</span> <span class="n">calibration</span><span class="o">.</span><span class="n">CalibratorCryotempo</span><span class="p">(</span><span class="n">l1_datacube</span><span class="o">=</span><span class="n">data_tree_ice</span><span class="p">[</span><span class="s1">&#39;L1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">ds</span><span class="p">,</span>
@@ -1195,7 +1196,7 @@ Attributes:
 </div>
 </div>
 </div>
-<p>The resulting <strong>L3</strong> data cube can be added to an existing data_tree the same way as <strong>L2</strong> data cubes:</p>
+<p>The resulting <strong>L3 data cube</strong> can be added to the existing <code class="docutils literal notranslate"><span class="pre">data_tree</span></code> in the same way as the <strong>L2 data cubes</strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dtcg.datacube.geozarr</span><span class="w"> </span><span class="kn">import</span> <span class="n">GeoZarrHandler</span>
@@ -1232,9 +1233,10 @@ Attributes:
 <section id="validate-l3-data-cubes">
 <h2>Validate L3 data cubes<a class="headerlink" href="#validate-l3-data-cubes" title="Link to this heading">#</a></h2>
 <div class="alert alert-danger">
-    <b>IMPORTANT</b>: Note that the current L3 data cube was created with a smaller ensemble for the Monte Carlo Simulation, theirfore uncertainties are not compareable with the preprocessed L2 data cubes.
+    <b>IMPORTANT</b>: Please note that the current <b>L3 data cube</b> was created using a <b>smaller ensemble size</b> for the Monte Carlo simulation. Therefore, the resulting uncertainties are <b>not comparable</b> to those of the preprocessed <b>L2 data cubes</b>.
 </div>
-<p>The general validation of <strong>L3</strong> data cubes works the same way as for <strong>L2</strong> explained in <a class="reference internal" href="03_validation.html"><span class="std std-doc">this notebook</span></a>. Let’s have a look:</p>
+<p>The general validation of <strong>L3 data cubes</strong> works in the same way as for <strong>L2</strong>, as explained in<br />
+<a class="reference internal" href="03_validation.html"><span class="std std-doc">this notebook</span></a>. Let’s have a look:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select the datacubes which should be evaluated</span>
@@ -1317,11 +1319,11 @@ Attributes:
     </tr>
     <tr>
       <th>L3_Daily_Landsvirkjun_2010_2020</th>
-      <td>431.2 (331.8, 516.4)</td>
-      <td>-106.6 (-251.1, 77.5)</td>
-      <td>-109.7 (-240.9, 59.9)</td>
-      <td>539.9 (431.1, 633.3)</td>
-      <td>0.49 (0.28, 0.72)</td>
+      <td>443.8 (336.4, 536.5)</td>
+      <td>-119.3 (-252.5, 76.1)</td>
+      <td>-137.4 (-251.5, 54.3)</td>
+      <td>553.6 (437.6, 658.0)</td>
+      <td>0.49 (0.27, 0.71)</td>
     </tr>
   </tbody>
 </table>
@@ -1387,17 +1389,18 @@ Attributes:
     </tr>
     <tr>
       <th>L3_Daily_Landsvirkjun_2010_2020</th>
-      <td>1.3 (1.0, 1.6)</td>
-      <td>-1.2 (-1.5, -0.7)</td>
-      <td>-1.4 (-1.7, -0.7)</td>
+      <td>1.4 (1.0, 1.5)</td>
+      <td>-1.2 (-1.4, -0.6)</td>
+      <td>-1.5 (-1.5, -0.4)</td>
       <td>1.6 (1.2, 1.7)</td>
-      <td>0.86 (0.68, 0.89)</td>
+      <td>0.86 (0.67, 0.87)</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
 <p>We see the <strong>L3</strong> data cube lies somewhere in between the two other <strong>L2</strong> data cubes for the WGMS and CryoSat valiation. This is also confirmed when visually comparing the data in a plot:</p>
+<p>We see that the <strong>L3 data cube</strong> lies somewhere between the two <strong>L2 data cubes</strong> calibrated with <strong><a class="reference external" href="https://doi.org/10.1038/s41586-021-03436-z">Hugonnet et al. (2021)</a></strong> and <strong>CryoSat-2</strong> data. This is also confirmed by a visual comparison of the results in the plot:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">validation_name_list</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;WGMS&#39;</span><span class="p">)</span>
@@ -1406,7 +1409,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3290617a5e73f374422aac5726bac59cdec71a76ac2560292af0c9518bc5273d.png" src="../_images/3290617a5e73f374422aac5726bac59cdec71a76ac2560292af0c9518bc5273d.png" />
+<img alt="../_images/70dcb35e32b782d0f9c8102b99db67ed3fda036d1fe56ff7da2ef130086cd78a.png" src="../_images/70dcb35e32b782d0f9c8102b99db67ed3fda036d1fe56ff7da2ef130086cd78a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1417,35 +1420,35 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4bf0546b25c66b1840dd955429fc41bef9f1e4f276c278c3fac83f4ed515ba12.png" src="../_images/4bf0546b25c66b1840dd955429fc41bef9f1e4f276c278c3fac83f4ed515ba12.png" />
+<img alt="../_images/77e2a85bf8d08604d42444cfb43c5d065c2172996e38c96f75bf8f5fdec2ccde.png" src="../_images/77e2a85bf8d08604d42444cfb43c5d065c2172996e38c96f75bf8f5fdec2ccde.png" />
 </div>
 </div>
 </section>
 <section id="validation-with-user-data">
 <h2>Validation with user data<a class="headerlink" href="#validation-with-user-data" title="Link to this heading">#</a></h2>
-<p>Another level of <strong>interaction</strong> between the <strong>user</strong> and <strong>DTC-Glaciers</strong>, it is also possible to bring your <strong>own data</strong> and use the tools of the <strong>validation framework</strong> for evaluating the supported validation metrics or for creating plots for visually checking the differences.</p>
-<p>For this wee need to provide the user data in the following format:</p>
+<p>Another level of <strong>interaction</strong> between the <strong>user</strong> and <strong>DTC-Glaciers</strong> is the ability to bring <strong>your own data</strong> and use the tools of the <strong>validation framework</strong> to evaluate the supported validation metrics or to create plots for visually inspecting differences.</p>
+<p>For this, we need to provide the user data in the following format:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">annual_mb</span> <span class="o">=</span> <span class="n">annual_smb</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">))</span>
 
 <span class="n">user_observation</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="c1"># let the validation framework know which observation you provide</span>
+    <span class="c1"># Let the validation framework know which type of observation is provided</span>
     <span class="s1">&#39;obs_type&#39;</span><span class="p">:</span> <span class="s1">&#39;annual_mb&#39;</span><span class="p">,</span>
-    <span class="c1"># the actual values</span>
+    <span class="c1"># The observed values</span>
     <span class="s1">&#39;values&#39;</span><span class="p">:</span> <span class="n">annual_mb</span><span class="o">.</span><span class="n">values</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span>
-    <span class="c1"># corresponding uncertainties</span>
+    <span class="c1"># Corresponding uncertainties</span>
     <span class="s1">&#39;uncertainty&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">annual_mb</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
-    <span class="c1"># tha observation years</span>
+    <span class="c1"># The observation years</span>
     <span class="s1">&#39;years&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">yr</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;datetime64[Y]&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1970</span> <span class="k">for</span> <span class="n">yr</span> <span class="ow">in</span> <span class="n">annual_mb</span><span class="o">.</span><span class="n">time_a</span><span class="o">.</span><span class="n">values</span><span class="p">]),</span>
-    <span class="c1"># name of the data source, this will be displayed in the validation tables</span>
+    <span class="c1"># Name of the data source (displayed in the validation tables)</span>
     <span class="s1">&#39;name&#39;</span> <span class="p">:</span> <span class="s2">&quot;Landsvirkjun provided annual mass balance&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>After preparing the data you can provide it via <code class="docutils literal notranslate"><span class="pre">user_observation</span></code> and interact with the validation framwork in the same way as previously:</p>
+<p>After preparing the data, you can provide it via <code class="docutils literal notranslate"><span class="pre">user_observation</span></code> and interact with the <strong>validation framework</strong> in the same way as before:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data</span><span class="p">,</span> <span class="n">bootstrap_args</span> <span class="o">=</span> <span class="n">validator</span><span class="o">.</span><span class="n">get_validation_for_layers</span><span class="p">(</span>
@@ -1514,18 +1517,18 @@ Attributes:
     </tr>
     <tr>
       <th>L3_Daily_Landsvirkjun_2010_2020</th>
-      <td>440.1 (369.7, 497.8)</td>
-      <td>110.6 (-27.5, 283.8)</td>
-      <td>89.5 (-51.5, 301.4)</td>
-      <td>543.6 (448.1, 632.4)</td>
-      <td>0.48 (0.27, 0.72)</td>
+      <td>444.2 (369.0, 518.3)</td>
+      <td>97.9 (-29.3, 285.0)</td>
+      <td>55.7 (-56.6, 291.0)</td>
+      <td>552.5 (457.8, 651.6)</td>
+      <td>0.48 (0.26, 0.71)</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p>We see in this case our newly generated <strong>L3</strong> data cube performes sligthly better compared to the other two options. This is axpected as parts of the data where also used for calibration and theirfore the validation is not independent.</p>
-<p>You also can provide the <code class="docutils literal notranslate"><span class="pre">user_observation</span></code> to the plotting function and visually compare different data cubes to the provided observation:</p>
+<p>In this case, we see that the newly generated <strong>L3 data cube</strong> performs <strong>slightly better</strong> than the other two options. This is <strong>expected</strong>, as parts of the user-provided data were also used for calibration, and the validation is therefore <strong>not fully independent</strong>.</p>
+<p>You can also provide the <code class="docutils literal notranslate"><span class="pre">user_observation</span></code> to the plotting functions to <strong>visually compare</strong> different data cubes with the provided observations:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">user_observation</span><span class="o">=</span><span class="n">user_observation</span><span class="p">,</span> <span class="n">l2_name_list</span><span class="o">=</span><span class="n">validation_name_list</span><span class="p">)</span>
@@ -1534,7 +1537,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/125d148fb0a9e1e4128790036cedc94a781ee4882213e6e1533949382185d8e5.png" src="../_images/125d148fb0a9e1e4128790036cedc94a781ee4882213e6e1533949382185d8e5.png" />
+<img alt="../_images/0cb01be9943c2c3e0687033935e4e1ad64d5990eae900b30d6b650a82c63f4e0.png" src="../_images/0cb01be9943c2c3e0687033935e4e1ad64d5990eae900b30d6b650a82c63f4e0.png" />
 </div>
 </div>
 </section>
@@ -1634,7 +1637,7 @@ By DTCG Consortium
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jan 11, 2026.
+  Last updated on Jan 28, 2026.
   <br/>
 </p>
   </div>
