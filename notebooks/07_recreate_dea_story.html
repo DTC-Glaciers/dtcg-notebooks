@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>A DTC-Glaciers example for hydropower outlook &#8212; DTC-Glaciers notebooks</title>
+    <title>Informing hydropower outlook with DTC-Glaciers: a prototype demonstration &#8212; DTC-Glaciers notebooks</title>
   
   
   
@@ -67,7 +67,7 @@
     <link rel="prev" title="CryoSat2 - model comparison at Vatnajökull ice cap, Iceland" href="06_the_beginning_of_dtcg.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Jan 28, 2026"/>
+    <meta name="docbuild:last-update" content="Jan 29, 2026"/>
   </head>
   
   
@@ -157,8 +157,8 @@
       
     
     
-    <img src="../_static/logo.jpg" class="logo__image only-light" alt="DTC-Glaciers notebooks - Home"/>
-    <script>document.write(`<img src="../_static/logo.jpg" class="logo__image only-dark" alt="DTC-Glaciers notebooks - Home"/>`);</script>
+    <img src="../_static/dtc_logo.png" class="logo__image only-light" alt="DTC-Glaciers notebooks - Home"/>
+    <script>document.write(`<img src="../_static/dtc_logo.png" class="logo__image only-dark" alt="DTC-Glaciers notebooks - Home"/>`);</script>
   
   
 </a></div>
@@ -191,7 +191,7 @@
 <li class="toctree-l1"><a class="reference internal" href="04_user_provided_data.html">Creating DTC-Glaciers User-DT-Enhanced Data cubes (L3)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05_additional_features.html">Further DTC-Glaciers features, work in progress</a></li>
 <li class="toctree-l1"><a class="reference internal" href="06_the_beginning_of_dtcg.html">CryoSat2 - model comparison at Vatnajökull ice cap, Iceland</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">A DTC-Glaciers example for hydropower outlook</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Informing hydropower outlook with DTC-Glaciers: a prototype demonstration</a></li>
 </ul>
 
     </div>
@@ -425,7 +425,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>A DTC-Glaciers example for hydropower outlook</h1>
+    <h1>Informing hydropower outlook with DTC-Glaciers: a prototype demonstration</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -449,6 +449,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#out-of-the-box-output-from-dtc-glaciers">Out-of-the-box output from DTC-Glaciers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibrate-dtc-glaciers-with-cryosat-2-observations-from-june-2015">Calibrate DTC-Glaciers with CryoSat-2 observations from June 2015</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reinformed-vs-out-of-the-box-dtc-glaciers-output">Reinformed vs. out-of-the-box DTC-Glaciers output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-and-future-work">Limitations and future work</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stay-in-touch">Stay in touch</a></li>
 </ul>
             </nav>
@@ -464,27 +465,26 @@ document.write(`
   <div>
 <img src="https://notebooks.dtcglaciers.org/_images/ESA_logo.svg" width="160" align='right'/>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="a-dtc-glaciers-example-for-hydropower-outlook">
-<h1>A DTC-Glaciers example for hydropower outlook<a class="headerlink" href="#a-dtc-glaciers-example-for-hydropower-outlook" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="informing-hydropower-outlook-with-dtc-glaciers-a-prototype-demonstration">
+<h1>Informing hydropower outlook with DTC-Glaciers: a prototype demonstration<a class="headerlink" href="#informing-hydropower-outlook-with-dtc-glaciers-a-prototype-demonstration" title="Link to this heading">#</a></h1>
 <p>In this notebook, we show how the plots used in the Dea User Story <strong><a class="reference external" href="https://dea.destine.eu/web/stories/viewer/684039a1b62b202b54ee0271">“A glacier digital twin component to inform hydropower outlook”</a></strong> can be recreated.</p>
 <section id="the-user-story">
 <h2>The user story<a class="headerlink" href="#the-user-story" title="Link to this heading">#</a></h2>
-<p>The user story focuses on the <strong>summer of 2015</strong>, when Iceland faced a major challenge for its hydropower system. During this period, glacier runoff was exceptionally low, leading to serious concerns about electricity production. We use the tools provided by <strong>DTC-Glaciers</strong> to explore how a <strong>glacier digital twin</strong> can help to better understand, anticipate, and manage such events in the future.</p>
+<p>The user story focuses on the <strong>summer of 2015</strong>, when Iceland faced a major challenge for its hydropower system. During this period, glacier runoff was exceptionally low, leading to serious concerns about electricity production. We use the tools provided by <strong>DTC-Glaciers</strong> to explore how a glacier digital twin prototype can help to better understand, anticipate, and manage such events in the future.</p>
 <section id="hydropower-and-glaciers-in-iceland">
 <h3>Hydropower and glaciers in Iceland<a class="headerlink" href="#hydropower-and-glaciers-in-iceland" title="Link to this heading">#</a></h3>
-<p>More than <strong>80% of Iceland’s electricity</strong> is generated from <strong>hydropower</strong>. These power plants have been historically developed and operated by <strong><a class="reference external" href="https://en.wikipedia.org/wiki/Landsvirkjun">Landsvirkjun</a></strong>, Iceland’s national power company, and they play a key role in the country’s low-carbon energy system.</p>
-<p>The <strong><a class="reference external" href="https://en.wikipedia.org/wiki/K%C3%A1rahnj%C3%BAkar_Hydropower_Plant">Kárahnjúkar Hydropower Plant</a></strong> is the largest hydropower plant in Iceland, with an annual production of around <strong>4,600 GWh</strong>. It is supplied by a catchment area of <strong>1,660 km²</strong>, of which <strong>72% is covered by glacier ice</strong>. Most of this ice belongs to <strong>Brúarjökull</strong>, an outlet glacier of <strong><a class="reference external" href="https://en.wikipedia.org/wiki/Vatnaj%C3%B6kull">Vatnajökull</a></strong>, the largest ice cap in Iceland.</p>
+<p><strong>More than 80% of Iceland’s electricity is generated from hydropower</strong>. These power plants have been historically developed and operated by <a class="reference external" href="https://en.wikipedia.org/wiki/Landsvirkjun">Landsvirkjun</a>, Iceland’s national power company, and they play a key role in the country’s low-carbon energy system.</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/K%C3%A1rahnj%C3%BAkar_Hydropower_Plant">Kárahnjúkar Hydropower Plant</a> is the largest hydropower plant in Iceland, with an annual production of around 4,600 GWh. It is supplied by a catchment area of 1,660 km², of which <strong>72% is covered by glacier ice</strong>. Most of this ice belongs to <strong>Brúarjökull</strong>, an outlet glacier of <a class="reference external" href="https://en.wikipedia.org/wiki/Vatnaj%C3%B6kull">Vatnajökull</a>, the largest ice cap in Iceland.</p>
 </section>
 <section id="the-summer-of-2015-was-highly-unusual">
 <h3>The summer of 2015 was highly unusual<a class="headerlink" href="#the-summer-of-2015-was-highly-unusual" title="Link to this heading">#</a></h3>
-<p><strong>Cold weather</strong> and <strong>persistent cloud cover</strong> led to a much <strong>later</strong> and <strong>weaker melt season</strong> than normal. As a result, glacier runoff was strongly reduced. According to Landsvirkjun, this was <strong>one of the worst melt seasons</strong> ever observed for their reservoirs (Source: <a class="reference external" href="https://www.waterpowermagazine.com/analysis/managing-hydro-operations-in-iceland-4831665/">International Water Power Magazine</a>).</p>
-<p>By <strong>August, river flow rates</strong> were still <strong>very low</strong>. This raised serious <strong>concerns</strong> about <strong>electricity supply</strong> and even led to <strong>discussions about emergency measures</strong> for the coming winter. In the end, heavy precipitation later in the summer refilled the reservoirs, and power rationing could be avoided.</p>
-<p><strong>This event clearly shows the need for better preparedness.</strong></p>
+<p>Cold weather and persistent cloud cover led to a much later** and weaker melt season than normal. As a result, glacier runoff was strongly reduced. According to Landsvirkjun, this was one of the worst melt seasons ever observed for their reservoirs (<em>Source: <a class="reference external" href="https://www.waterpowermagazine.com/analysis/managing-hydro-operations-in-iceland-4831665/">International Water Power Magazine</a></em>).</p>
+<p>By August, river flow rates were still very low. This raised serious concerns about electricity supply and even led to discussions about emergency measures for the coming winter. In the end, heavy precipitation later in the summer refilled the reservoirs, and power rationing could be avoided.</p>
 </section>
 <section id="why-this-matters-for-the-future">
 <h3>Why this matters for the future<a class="headerlink" href="#why-this-matters-for-the-future" title="Link to this heading">#</a></h3>
-<p>While the summer of 2015 was exceptional, <strong>similar conditions</strong> can <strong>occur again</strong>. Years with <strong>positive glacier mass balance</strong> can reduce meltwater availability and create comparable <strong>challenges for hydropower production</strong>.</p>
-<p>In this notebook, we treat the year <strong>2015 as a hindcast</strong>. This means we use it as a real-world test case to evaluate how well future forecasts might perform under similar conditions.</p>
+<p>While the summer of 2015 was exceptional, similar conditions can occur again. Years with positive glacier mass balance can reduce meltwater availability and create comparable challenges for hydropower production. Conversely, years with highly negative mass balance may lead to reservoir overflows and planned water releases.</p>
+<p>In this notebook, we <strong>use the year 2015 as a “hindcast”</strong>. This means we use it as a real-world test case to evaluate how well future forecasts might perform under similar conditions.</p>
 <p><strong>Can an Earth-observation-informed Glacier Digital Twin help us anticipate such critical situations before they happen?</strong></p>
 </section>
 </section>
@@ -586,12 +586,12 @@ document.write(`
 </div>
 </div>
 </div>
-<p>The observed mass balance in <strong>2015</strong> was <strong>1044 mm w.e. yr⁻¹</strong>, compared to a <strong>25-year mean</strong> of <strong>−343 mm w.e. yr⁻¹</strong>. This large difference clearly shows how <strong>exceptional the year 2015</strong> was.</p>
+<p>The observed mass balance in 2015 was <strong>1044 mm w.e. yr⁻¹</strong>, compared to a 25-year mean of <strong>−343 mm w.e. yr⁻¹</strong>. This large difference clearly shows how exceptional the year 2015 was.</p>
 </section>
 <section id="cryotempo-eolis-elevation-changes-from-cryosat-2">
 <h3>CryoTEMPO-EOLIS elevation changes from CryoSat-2<a class="headerlink" href="#cryotempo-eolis-elevation-changes-from-cryosat-2" title="Link to this heading">#</a></h3>
-<p>The exceptional nature of <strong>2015</strong> is also visible in the <strong>CryoTEMPO-EOLIS</strong> surface elevation change maps.</p>
-<p>Below, we compare the <strong>annual glacier elevation change</strong> in <strong>2015</strong> with the <strong>multi-year average</strong>:</p>
+<p>The exceptional nature of 2015 is also visible in the <strong>CryoTEMPO-EOLIS</strong> surface elevation change maps.</p>
+<p>Below, <strong>we compare the annual glacier elevation change in 2015 with the multi-year average</strong>:</p>
 <div class="cell tag_hide-input docutils container">
 <details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -633,17 +633,17 @@ document.write(`
 <img alt="../_images/c204121a9f41a8667573b622d24b5c6a8ee2d08f10d869291d8ce31bce223242.png" src="../_images/c204121a9f41a8667573b622d24b5c6a8ee2d08f10d869291d8ce31bce223242.png" />
 </div>
 </div>
-<p>When comparing the <strong>2015 map</strong> with the <strong>14-year average</strong>, we see much more <strong>positive elevation change</strong> (shown in blue). This indicates that <strong>glacier mass gain was significantly higher in 2015</strong> than in an average year.</p>
-<p>In the <strong><a class="reference external" href="https://dea.destine.eu/web/stories/viewer/684039a1b62b202b54ee0271">Dea user story</a></strong>, additional maps of <strong>surface albedo</strong> are shown. These data are not yet included in the DTC-Glaciers L1 datacubes. The albedo observations also show <strong>higher values in 2015</strong> compared to an average year, which points to <strong>increased snow accumulation</strong>.</p>
-<p>A <strong>high albedo</strong> means that more sunlight is reflected, which typically indicates the presence of <strong>snow rather than bare ice</strong>.</p>
+<p>When comparing the 2015 map with the 14-year average, we see much more positive elevation change (shown in blue). <strong>This indicates that glacier mass gain was significantly higher in 2015 than in an average year</strong>.</p>
+<p>In the <a class="reference external" href="https://dea.destine.eu/web/stories/viewer/684039a1b62b202b54ee0271">Dea user story</a>, additional maps of surface albedo are shown. These data are not yet included in the DTC-Glaciers L1 datacubes. The albedo observations also show higher values in 2015 compared to an average year, which points to increased snow accumulation.</p>
+<p>A high albedo means that more sunlight is reflected, which typically indicates the presence of snow rather than bare ice.</p>
 </section>
 </section>
 <section id="out-of-the-box-output-from-dtc-glaciers">
 <h2>Out-of-the-box output from DTC-Glaciers<a class="headerlink" href="#out-of-the-box-output-from-dtc-glaciers" title="Link to this heading">#</a></h2>
-<p>We now take a look at what <strong>DTC-Glaciers</strong> tells us about <strong>2015</strong> using an <strong>out-of-the-box configuration</strong>.
+<p>We now take a look at what DTC-Glaciers tells us about 2015 using an out-of-the-box configuration.
 More detailed information on how this configuration was created can be found in the notebook <a class="reference internal" href="02_L2_datacubes.html"><span class="std std-doc">Creating DTC-Glaciers EO-DT-Enhanced Data Cubes (L2)</span></a>.</p>
-<p>Under the hood, DTC-Glaciers is based on the <strong><a class="reference external" href="https://oggm.org/">Open Global Glacier Model (OGGM)</a></strong>. Here, <em>out-of-the-box</em> refers to a model setup in which OGGM is <strong>calibrated using CryoSat-2 data from 2011 to 2020</strong>.</p>
-<p>The model output from this calibration is already included in the <strong>preprocessed DTC-Glaciers datacubes</strong>, allowing us to inspect the results directly without running any additional computations.</p>
+<p>Under the hood, DTC-Glaciers is based on the <a class="reference external" href="https://oggm.org/">Open Global Glacier Model (OGGM)</a>. Here, <em>out-of-the-box</em> refers to a model setup in which <strong>OGGM is calibrated using CryoSat-2 data from 2011 to 2020</strong>.</p>
+<p>The model output from this calibration is already included in the preprocessed DTC-Glaciers datacubes, allowing us to inspect the results directly without running any additional computations:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the name of the L2 datacube we want to analyse</span>
@@ -684,16 +684,16 @@ More detailed information on how this configuration was created can be found in 
         <span class="p">(</span><span class="n">hydro_year</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;-</span><span class="si">{</span><span class="n">start_month</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">-01&quot;</span><span class="p">,</span>
         <span class="n">dims</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span>
     <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;datetime64[ns]&quot;</span><span class="p">)</span>
-    
+
     <span class="c1"># hydrological day index (Oct 1 = 1)</span>
     <span class="n">hydro_doy</span> <span class="o">=</span> <span class="p">((</span><span class="n">da_smb</span><span class="o">.</span><span class="n">time</span> <span class="o">-</span> <span class="n">hydro_start</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="n">da_h</span> <span class="o">=</span> <span class="n">da_smb</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span><span class="n">hydro_year</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">hydro_year</span><span class="o">.</span><span class="n">values</span><span class="p">),</span>
                                 <span class="n">hydro_doy</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">hydro_doy</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
-    
+
     <span class="c1"># cumsum per hydro_year, reset to 0</span>
     <span class="n">g</span> <span class="o">=</span> <span class="n">da_h</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;hydro_year&quot;</span><span class="p">)</span>
     <span class="n">da_cumsum</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="n">g</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    
+
     <span class="c1"># reshape to (hydro_year, hydro_doy) (requires unique hydro_doy within a year)</span>
     <span class="n">da_overlay</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">da_cumsum</span>
@@ -773,7 +773,7 @@ More detailed information on how this configuration was created can be found in 
 
         <span class="n">legend_handles</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">line</span><span class="p">,</span> <span class="n">band</span><span class="p">))</span>
         <span class="n">legend_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label_oggm_default</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">annual_range</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">annual_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-    
+
     <span class="c1"># add special_year curve</span>
     <span class="n">line</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
         <span class="n">date_index</span><span class="p">,</span>
@@ -831,7 +831,7 @@ More detailed information on how this configuration was created can be found in 
                         <span class="n">yerr</span><span class="o">=</span><span class="n">cryosat_elev_unc</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">calibration_date</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">),</span>
                         <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">c_reinformed</span><span class="p">,</span>
                         <span class="n">lw</span><span class="o">=</span><span class="n">lw</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="n">ms</span><span class="p">)</span>
-    
+
     <span class="c1"># format x-axis</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="n">date_index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">date_index</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.dates</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mdates</span>
@@ -843,12 +843,12 @@ More detailed information on how this configuration was created can be found in 
     <span class="c1"># format y-axis</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Elevation change in m&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
-    
+
     <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">legend_handles</span><span class="p">,</span> <span class="n">legend_labels</span><span class="p">,</span>
               <span class="n">handler_map</span><span class="o">=</span><span class="p">{</span><span class="nb">tuple</span><span class="p">:</span> <span class="n">HandlerTuple</span><span class="p">()},</span>
               <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower center&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
-    
+
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -869,10 +869,10 @@ More detailed information on how this configuration was created can be found in 
 <img alt="../_images/2ba16b2edf8488ce9a920c58b43cd14192b71f997036035a97cec35f033584d5.png" src="../_images/2ba16b2edf8488ce9a920c58b43cd14192b71f997036035a97cec35f033584d5.png" />
 </div>
 </div>
-<p>This graph shows <strong>daily output</strong> from the standard OGGM glacier mass balance model, calibrated using <strong>multi-year averages of CryoSat-2 surface elevation change observations</strong>.</p>
-<p>The <strong>black line</strong> represents the <strong>average hydrological year</strong> over the period <strong>2000–2025</strong>. It shows snow accumulation until late May, followed by a short but intense melt season. The shaded area indicates the <strong>year-to-year variability</strong>, highlighting how different individual seasons can be.</p>
-<p>The <strong>red line</strong> shows the modeled evolution during the <strong>2014–2015 hydrological year</strong>. This year clearly stands out: summer melting did not begin until <strong>mid-June</strong>, and the year ended as the <strong>most positive mass balance year of the entire 25-year period</strong>.</p>
-<p>Next, we compare the <strong>model output for 2015</strong> with the <strong>glacier-integrated CryoSat-2 observations</strong> from the same year:</p>
+<p>This graph shows <strong>daily output from the standard OGGM glacier mass balance model, calibrated using multi-year averages of CryoSat-2 surface elevation change observations</strong>.</p>
+<p>The <strong>black line</strong> represents the average hydrological year over the period 2000–2025. It shows snow accumulation until late May, followed by a short but intense melt season. The shaded area indicates the year-to-year variability, highlighting how different individual seasons can be.</p>
+<p>The <strong>red line</strong> shows the modeled evolution during the <strong>2014–2015 hydrological year</strong>. This year clearly stands out: summer melting did not begin until mid-June, and the year ended as the most positive mass balance year of the entire 25-year period.</p>
+<p>Next, we compare the model output for 2015 with the glacier-integrated CryoSat-2 observations from the same year:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_annual_elevation_change</span><span class="p">(</span>
@@ -891,16 +891,16 @@ More detailed information on how this configuration was created can be found in 
 <img alt="../_images/073b5bd8a74045ddba57a015dc546f536b3c08fe9d88a6c96f646ecc2499d250.png" src="../_images/073b5bd8a74045ddba57a015dc546f536b3c08fe9d88a6c96f646ecc2499d250.png" />
 </div>
 </div>
-<p>We see that the model and the observations agree quite well until <strong>mid-May</strong>. However, from <strong>June onwards</strong> the model no longer follows the measurements. As the exceptional summer of 2015 unfolds, the standard out-of-the-box setup is not able to capture the observed evolution.</p>
+<p>We see that the model and the observations agree quite well until mid-May. However, from June onwards the model no longer follows the measurements. As the exceptional summer of 2015 unfolds, the standard out-of-the-box setup is not able to capture the observed evolution.</p>
 <p><strong>From the perspective of an operator in June: would the delayed onset of melt have been enough to trigger early action - and could the model have been trusted at that point?</strong></p>
 <p>Next, we revisit 2015, but this time we <strong>incorporate CryoSat-2 information as the season progresses</strong>. In practice, this means we use the <strong>mid-June CryoSat-2 observation</strong> to update (reinform) the DTC-Glaciers model state.</p>
 </section>
 <section id="calibrate-dtc-glaciers-with-cryosat-2-observations-from-june-2015">
 <h2>Calibrate DTC-Glaciers with CryoSat-2 observations from June 2015<a class="headerlink" href="#calibrate-dtc-glaciers-with-cryosat-2-observations-from-june-2015" title="Link to this heading">#</a></h2>
-<p>The tools used below to reinform <strong>DTC-Glaciers</strong> are described in more detail in the notebook <a class="reference internal" href="02_L2_datacubes.html"><span class="std std-doc">Creating DTC-Glaciers EO-DT-Enhanced Data Cubes (L2)</span></a>.</p>
-<p>In principle, we only need to define the <strong>reference period</strong> used for the calibration. In this example, the period runs from <strong>1 October 2014 to 1 June 2015</strong>. Internally, DTC-Glaciers automatically searches for the <strong>closest available CryoSat-2 observations</strong> to these dates.</p>
-<p>We then run the DTC-Glaciers calibration workflow and <strong>add the resulting model output</strong> to the existing <code class="docutils literal notranslate"><span class="pre">data_tree</span></code> for later analysis.</p>
-<p>The calibration below takes <strong>around three minutes</strong> to complete. If you want to reduce computing time, you can set <code class="docutils literal notranslate"><span class="pre">nr_samples</span></code> to a smaller value. This reduces the <strong>ensemble size of the Monte Carlo simulation</strong> used for uncertainty propagation (explained in more detail in <a class="reference internal" href="02_L2_datacubes.html#data-assimilation-and-error-propagation-with-monte-carlo-simulation"><span class="std std-ref">this notebook</span></a>).</p>
+<p>The tools used below to reinform DTC-Glaciers are described in more detail in the notebook <a class="reference internal" href="02_L2_datacubes.html"><span class="std std-doc">Creating DTC-Glaciers EO-DT-Enhanced Data Cubes (L2)</span></a>.</p>
+<p>In principle, we only need to define the reference period used for the calibration. In this example, the period runs from 1 October 2014 to 1 June 2015. Internally, DTC-Glaciers automatically searches for the closest available CryoSat-2 observations to these dates.</p>
+<p>We then run the DTC-Glaciers calibration workflow and add the resulting model output to the existing <code class="docutils literal notranslate"><span class="pre">data_tree</span></code> for later analysis.</p>
+<p>The calibration below takes around three minutes to complete. If you want to reduce computing time, you can set <code class="docutils literal notranslate"><span class="pre">nr_samples</span></code> to a smaller value. This reduces the ensemble size of the Monte Carlo simulation used for uncertainty propagation (explained in more detail in <a class="reference internal" href="02_L2_datacubes.html#data-assimilation-and-error-propagation-with-monte-carlo-simulation"><span class="std std-ref">this notebook</span></a>):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a descriptive name for the updated DTC-Glaciers configuration</span>
@@ -951,8 +951,8 @@ More detailed information on how this configuration was created can be found in 
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/1 [00:00&lt;?, ?it/s]
-100%|██████████| 1/1 [03:10&lt;00:00, 190.14s/it]
-100%|██████████| 1/1 [03:10&lt;00:00, 190.14s/it]
+100%|██████████| 1/1 [03:18&lt;00:00, 198.51s/it]
+100%|██████████| 1/1 [03:18&lt;00:00, 198.51s/it]
 </pre></div>
 </div>
 </div>
@@ -960,7 +960,7 @@ More detailed information on how this configuration was created can be found in 
 </section>
 <section id="reinformed-vs-out-of-the-box-dtc-glaciers-output">
 <h2>Reinformed vs. out-of-the-box DTC-Glaciers output<a class="headerlink" href="#reinformed-vs-out-of-the-box-dtc-glaciers-output" title="Link to this heading">#</a></h2>
-<p>Below, we compare the <strong>reinformed DTC-Glaciers output</strong> with the <strong>out-of-the-box results</strong> and the <strong>glacier-integrated CryoSat-2 observations</strong>:</p>
+<p>Below, we compare the <strong>reinformed DTC-Glaciers output with the out-of-the-box results and the glacier-integrated CryoSat-2 observations</strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_annual_elevation_change</span><span class="p">(</span>
@@ -978,17 +978,25 @@ More detailed information on how this configuration was created can be found in 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fb8ffa0c44a428e7d66fd1a0486cff13dc8741dd0ed39be09e76015e1bbe83e5.png" src="../_images/fb8ffa0c44a428e7d66fd1a0486cff13dc8741dd0ed39be09e76015e1bbe83e5.png" />
+<img alt="../_images/8397a98eaeff6d98de1152133cbdff85ba1570643759c8f6c81d35a03aeaa847.png" src="../_images/8397a98eaeff6d98de1152133cbdff85ba1570643759c8f6c81d35a03aeaa847.png" />
 </div>
 </div>
-<p>The <strong>red line</strong> shows the <strong>out-of-the-box model output</strong>, as seen in the previous plots.</p>
-<p>The <strong>blue line</strong> represents <strong>CryoSat-2 elevation change observations</strong>. These observations confirm - and even strengthen - the signal of a <strong>delayed onset of the melt season</strong>. They provide new information that DTC-Glaciers can use to update its representation of the year.</p>
+<p>The <strong>red line</strong> shows the out-of-the-box model output, as seen in the previous plots.</p>
+<p>The <strong>blue line</strong> represents <strong>CryoSat-2 elevation change observations</strong>. These observations confirm - and even strengthen - the signal of a delayed onset of the melt season. They provide new information that DTC-Glaciers can use to update its representation of the year.</p>
 <p>The <strong>orange line</strong> shows the <strong>DTC-Glaciers output after re-calibration</strong>. In hindsight, this updated model output aligns much more closely with what actually occurred.</p>
 <p><strong>By combining Earth Observation data with glacier modelling, a decision-maker in mid-summer 2015 could have had a much stronger basis for anticipating the risks ahead.</strong></p>
 </section>
+<section id="limitations-and-future-work">
+<h2>Limitations and future work<a class="headerlink" href="#limitations-and-future-work" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The plot above assumes perfect knowledge of weather conditions from the forecast date (June) through the end of the year. This is, of course, a strong and unrealistic assumption. In practice, seasonal forecasts of glacier mass balance would need to rely on seasonal forecasts or historical climatology. The aim here was to demonstrate that glaciological information can be used in near real time to update glacier states as they evolve, potentially improving seasonal forecasts. Future work should demonstrate this more quantitatively.</p></li>
+<li><p>The current method for converting mass change to elevation change uses a simplified density assumption. A more robust approach based on physically based modelling should be a priority for future development.</p></li>
+<li><p>The CryoSat-2 data shows an anomalous positive mass balance in July 2015, possibly due to radar signal penetration issues. This needs further investigation. Nevertheless, 2015 remains the most positive year in the CryoSat-2 time series, and the trend is consistent with the unfolding of that summer season.</p></li>
+<li><p>DTC-Glaciers is currently a prototype and cannot yet deliver operational forecasts. Further development and validation are needed before it can support real-time decision-making.</p></li>
+</ul>
+</section>
 <section id="stay-in-touch">
 <h2>Stay in touch<a class="headerlink" href="#stay-in-touch" title="Link to this heading">#</a></h2>
-<p><strong>DTC-Glaciers</strong> is an <strong>ESA-funded pilot project</strong> that develops a prototype <strong>Glacier Digital Twin</strong> to help anticipate and respond to hydrological changes in glacierised regions. By combining <strong>Earth observation data</strong> with <strong>process-based models</strong>, the project aims to provide <strong>timely and reliable information</strong> to support decision-making.</p>
 <p>The project is currently in an <strong>early prototype phase</strong>. We welcome <strong>feedback, ideas, and collaboration</strong> from the community to help shape its future.</p>
 <p>To learn more and get involved, visit our website: <a class="reference external" href="https://dtcglaciers.org">https://dtcglaciers.org</a></p>
 </section>
@@ -1063,6 +1071,7 @@ More detailed information on how this configuration was created can be found in 
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#out-of-the-box-output-from-dtc-glaciers">Out-of-the-box output from DTC-Glaciers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibrate-dtc-glaciers-with-cryosat-2-observations-from-june-2015">Calibrate DTC-Glaciers with CryoSat-2 observations from June 2015</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reinformed-vs-out-of-the-box-dtc-glaciers-output">Reinformed vs. out-of-the-box DTC-Glaciers output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-and-future-work">Limitations and future work</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stay-in-touch">Stay in touch</a></li>
 </ul>
   </nav></div>
@@ -1090,7 +1099,7 @@ By DTCG Consortium
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jan 28, 2026.
+  Last updated on Jan 29, 2026.
   <br/>
 </p>
   </div>
