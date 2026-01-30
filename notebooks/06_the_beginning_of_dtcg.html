@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>CryoSat2 - model comparison at Vatnajökull ice cap, Iceland &#8212; DTC-Glaciers notebooks</title>
+    <title>CryoSat2 - Model Comparison at Vatnajökull Ice Cap, Iceland &#8212; DTC-Glaciers notebooks</title>
   
   
   
@@ -64,11 +64,11 @@
     <link rel="icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Informing hydropower outlook with DTC-Glaciers: a prototype demonstration" href="07_recreate_dea_story.html" />
-    <link rel="prev" title="Further DTC-Glaciers features, work in progress" href="05_additional_features.html" />
+    <link rel="next" title="Informing hydropower outlook with DTC Glaciers: a prototype demonstration" href="07_recreate_dea_story.html" />
+    <link rel="prev" title="API and Streaming Capabilities" href="05_additional_features.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Jan 29, 2026"/>
+    <meta name="docbuild:last-update" content="Jan 30, 2026"/>
   </head>
   
   
@@ -186,13 +186,13 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary notebooks</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01_L1_datacubes.html">Creating DTC-Glaciers EO-Native data cubes (L1)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_L2_datacubes.html">Creating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_validation.html">Validating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_user_provided_data.html">Creating DTC-Glaciers User-DT-Enhanced Data cubes (L3)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_additional_features.html">Further DTC-Glaciers features, work in progress</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">CryoSat2 - model comparison at Vatnajökull ice cap, Iceland</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_recreate_dea_story.html">Informing hydropower outlook with DTC-Glaciers: a prototype demonstration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_L1_datacubes.html">Creating DTC Glaciers EO-Native Data Cubes (L1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_L2_datacubes.html">Creating DTC Glaciers EO-DT-Enhanced Data Cubes (L2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_validation.html">Validating DTC Glaciers EO-DT-Enhanced Data Cubes (L2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_user_provided_data.html">Creating DTC Glaciers User-DT-Enhanced Data cubes (L3)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_additional_features.html">API and Streaming Capabilities</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">CryoSat2 - Model Comparison at Vatnajökull Ice Cap, Iceland</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_recreate_dea_story.html">Informing hydropower outlook with DTC Glaciers: a prototype demonstration</a></li>
 </ul>
 
     </div>
@@ -426,7 +426,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>CryoSat2 - model comparison at Vatnajökull ice cap, Iceland</h1>
+    <h1>CryoSat2 - Model Comparison at Vatnajökull Ice Cap, Iceland</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -473,8 +473,8 @@ document.write(`
 <img src="https://notebooks.dtcglaciers.org/_images/ESA_logo.svg" width="160" align='right'/>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="cryosat2-model-comparison-at-vatnajokull-ice-cap-iceland">
-<h1>CryoSat2 - model comparison at Vatnajökull ice cap, Iceland<a class="headerlink" href="#cryosat2-model-comparison-at-vatnajokull-ice-cap-iceland" title="Link to this heading">#</a></h1>
-<p>This notebook was created at the beginning of the <a class="reference external" href="https://dtcglaciers.org">DTC-Glaciers</a> project for illustration of the scientific challenges to be tackled. We compare the output from the Open Global Glacier Model (OGGM) v1.6.1 against EO And in-situ observations at Vatnajökull ice cap, Iceland.</p>
+<h1>CryoSat2 - Model Comparison at Vatnajökull Ice Cap, Iceland<a class="headerlink" href="#cryosat2-model-comparison-at-vatnajokull-ice-cap-iceland" title="Link to this heading">#</a></h1>
+<p>This notebook was created at the beginning of the <a class="reference external" href="https://dtcglaciers.org">DTC Glaciers</a> project for illustration of the scientific challenges to be tackled. We compare the output from the Open Global Glacier Model (OGGM) v1.6.1 against EO And in-situ observations at Vatnajökull ice cap, Iceland.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">oggm</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span><span class="p">,</span> <span class="n">workflow</span><span class="p">,</span> <span class="n">tasks</span><span class="p">,</span> <span class="n">DEFAULT_BASE_URL</span><span class="p">,</span> <span class="n">cfg</span>
@@ -495,7 +495,9 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Where to find the test files on EODS</span>
-<span class="n">dtcf_url</span> <span class="o">=</span> <span class="s1">&#39;https://cluster.klima.uni-bremen.de/~dtcg/test_files/case_study_regions/iceland/&#39;</span>
+<span class="n">dtcg_url</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;https://cluster.klima.uni-bremen.de/~dtcg/test_files/case_study_regions/iceland/&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -503,19 +505,19 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># OGGM parameters</span>
-<span class="n">cfg</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">logging_level</span><span class="o">=</span><span class="s1">&#39;ERROR&#39;</span><span class="p">)</span>
-<span class="n">cfg</span><span class="o">.</span><span class="n">PARAMS</span><span class="p">[</span><span class="s1">&#39;use_multiprocessing&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">cfg</span><span class="o">.</span><span class="n">PARAMS</span><span class="p">[</span><span class="s1">&#39;continue_on_error&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">cfg</span><span class="o">.</span><span class="n">PATHS</span><span class="p">[</span><span class="s1">&#39;working_dir&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_temp_dir</span><span class="p">(</span><span class="s1">&#39;working_dir&#39;</span><span class="p">)</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">logging_level</span><span class="o">=</span><span class="s2">&quot;ERROR&quot;</span><span class="p">)</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">PARAMS</span><span class="p">[</span><span class="s2">&quot;use_multiprocessing&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">PARAMS</span><span class="p">[</span><span class="s2">&quot;continue_on_error&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">PATHS</span><span class="p">[</span><span class="s2">&quot;working_dir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_temp_dir</span><span class="p">(</span><span class="s2">&quot;working_dir&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-01-29 23:31:17: oggm.cfg: Reading default parameters from the OGGM `params.cfg` configuration file.
-2026-01-29 23:31:17: oggm.cfg: Multiprocessing switched OFF according to the parameter file.
-2026-01-29 23:31:17: oggm.cfg: Multiprocessing: using all available processors (N=4)
-2026-01-29 23:31:17: oggm.cfg: Multiprocessing switched ON after user settings.
-2026-01-29 23:31:17: oggm.cfg: PARAMS[&#39;continue_on_error&#39;] changed from `False` to `True`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-01-30 15:43:00: oggm.cfg: Reading default parameters from the OGGM `params.cfg` configuration file.
+2026-01-30 15:43:00: oggm.cfg: Multiprocessing switched OFF according to the parameter file.
+2026-01-30 15:43:00: oggm.cfg: Multiprocessing: using all available processors (N=4)
+2026-01-30 15:43:00: oggm.cfg: Multiprocessing switched ON after user settings.
+2026-01-30 15:43:00: oggm.cfg: PARAMS[&#39;continue_on_error&#39;] changed from `False` to `True`.
 </pre></div>
 </div>
 </div>
@@ -525,20 +527,22 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># RGI6 ids</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">file_downloader</span><span class="p">(</span><span class="n">dtcf_url</span> <span class="o">+</span> <span class="s1">&#39;vatnajokull_rgi_ids.yml&#39;</span><span class="p">),</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">yaml_file</span><span class="p">:</span>
-    <span class="n">rgi_ids</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">yaml_file</span><span class="p">)[</span><span class="s1">&#39;rgi_ids&#39;</span><span class="p">]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span>
+    <span class="n">utils</span><span class="o">.</span><span class="n">file_downloader</span><span class="p">(</span><span class="n">dtcg_url</span> <span class="o">+</span> <span class="s2">&quot;vatnajokull_rgi_ids.yml&quot;</span><span class="p">),</span> <span class="s2">&quot;r&quot;</span>
+<span class="p">)</span> <span class="k">as</span> <span class="n">yaml_file</span><span class="p">:</span>
+    <span class="n">rgi_ids</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">yaml_file</span><span class="p">)[</span><span class="s2">&quot;rgi_ids&quot;</span><span class="p">]</span>
 
 <span class="c1"># Select the outlines from RGI6 file and convert to UTM</span>
-<span class="n">rgi_file</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">get_rgi_region_file</span><span class="p">(</span><span class="s1">&#39;06&#39;</span><span class="p">))</span>
-<span class="n">rgi_file</span> <span class="o">=</span> <span class="n">rgi_file</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rgi_file</span><span class="o">.</span><span class="n">RGIId</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">rgi_ids</span><span class="p">)]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;RGIId&#39;</span><span class="p">)</span>
-<span class="n">rgi_file</span> <span class="o">=</span> <span class="n">rgi_file</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s1">&#39;EPSG:32628&#39;</span><span class="p">)</span>
+<span class="n">rgi_file</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">get_rgi_region_file</span><span class="p">(</span><span class="s2">&quot;06&quot;</span><span class="p">))</span>
+<span class="n">rgi_file</span> <span class="o">=</span> <span class="n">rgi_file</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rgi_file</span><span class="o">.</span><span class="n">RGIId</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">rgi_ids</span><span class="p">)]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;RGIId&quot;</span><span class="p">)</span>
+<span class="n">rgi_file</span> <span class="o">=</span> <span class="n">rgi_file</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s2">&quot;EPSG:32628&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgi_file</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ec</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgi_file</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ec</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -555,7 +559,7 @@ document.write(`
     <span class="n">rgi_ids</span><span class="p">,</span>  <span class="c1"># which glaciers?</span>
     <span class="n">prepro_base_url</span><span class="o">=</span><span class="n">DEFAULT_BASE_URL</span><span class="p">,</span>  <span class="c1"># where to fetch the data?</span>
     <span class="n">from_prepro_level</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>  <span class="c1"># what kind of data?</span>
-    <span class="n">prepro_border</span><span class="o">=</span><span class="mi">80</span>  <span class="c1"># how big of a map?</span>
+    <span class="n">prepro_border</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>  <span class="c1"># how big of a map?</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -566,8 +570,8 @@ document.write(`
 <p class="expanded admonition-title">Hide code cell output</p>
 </summary>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-01-29 23:31:18: oggm.workflow: init_glacier_directories from prepro level 4 on 118 glaciers.
-2026-01-29 23:31:18: oggm.workflow: Execute entity tasks [gdir_from_prepro] on 118 glaciers
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-01-30 15:43:01: oggm.workflow: init_glacier_directories from prepro level 4 on 118 glaciers.
+2026-01-30 15:43:01: oggm.workflow: Execute entity tasks [gdir_from_prepro] on 118 glaciers
 </pre></div>
 </div>
 </div>
@@ -578,23 +582,29 @@ document.write(`
 <h2>Re-run OGGM at monthly timestep and load data<a class="headerlink" href="#re-run-oggm-at-monthly-timestep-and-load-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">workflow</span><span class="o">.</span><span class="n">execute_entity_task</span><span class="p">(</span><span class="n">tasks</span><span class="o">.</span><span class="n">run_from_climate_data</span><span class="p">,</span> <span class="n">gdirs</span><span class="p">,</span>
-                             <span class="n">init_model_filesuffix</span><span class="o">=</span><span class="s1">&#39;_spinup_historical&#39;</span><span class="p">,</span>
-                             <span class="n">init_model_yr</span><span class="o">=</span><span class="mi">1979</span><span class="p">,</span>
-                             <span class="n">store_monthly_step</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                             <span class="n">ys</span><span class="o">=</span><span class="mi">1979</span><span class="p">,</span> <span class="n">ye</span><span class="o">=</span><span class="mi">2020</span><span class="p">,</span>
-                             <span class="n">mb_elev_feedback</span><span class="o">=</span><span class="s1">&#39;monthly&#39;</span><span class="p">,</span>
-                             <span class="n">output_filesuffix</span><span class="o">=</span><span class="s1">&#39;_spinup_historical_monthly&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">workflow</span><span class="o">.</span><span class="n">execute_entity_task</span><span class="p">(</span>
+    <span class="n">tasks</span><span class="o">.</span><span class="n">run_from_climate_data</span><span class="p">,</span>
+    <span class="n">gdirs</span><span class="p">,</span>
+    <span class="n">init_model_filesuffix</span><span class="o">=</span><span class="s2">&quot;_spinup_historical&quot;</span><span class="p">,</span>
+    <span class="n">init_model_yr</span><span class="o">=</span><span class="mi">1979</span><span class="p">,</span>
+    <span class="n">store_monthly_step</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">ys</span><span class="o">=</span><span class="mi">1979</span><span class="p">,</span>
+    <span class="n">ye</span><span class="o">=</span><span class="mi">2020</span><span class="p">,</span>
+    <span class="n">mb_elev_feedback</span><span class="o">=</span><span class="s2">&quot;monthly&quot;</span><span class="p">,</span>
+    <span class="n">output_filesuffix</span><span class="o">=</span><span class="s2">&quot;_spinup_historical_monthly&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 
-<span class="n">ds_monthly</span> <span class="o">=</span>  <span class="n">utils</span><span class="o">.</span><span class="n">compile_run_output</span><span class="p">(</span><span class="n">gdirs</span><span class="p">,</span> <span class="n">input_filesuffix</span><span class="o">=</span><span class="s1">&#39;_spinup_historical_monthly&#39;</span><span class="p">)</span>
+<span class="n">ds_monthly</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">compile_run_output</span><span class="p">(</span>
+    <span class="n">gdirs</span><span class="p">,</span> <span class="n">input_filesuffix</span><span class="o">=</span><span class="s2">&quot;_spinup_historical_monthly&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-01-29 23:31:38: oggm.workflow: Execute entity tasks [run_from_climate_data] on 118 glaciers
-2026-01-29 23:31:41: oggm.core.flowline: AttributeError occurred during task run_from_climate_data_spinup_historical_monthly on RGI60-06.00387: &#39;Dataset&#39; object has no attribute &#39;time&#39;
-2026-01-29 23:32:03: oggm.utils: Applying global task compile_run_output on 118 glaciers
-2026-01-29 23:32:03: oggm.utils: Applying compile_run_output on 118 gdirs.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-01-30 15:43:22: oggm.workflow: Execute entity tasks [run_from_climate_data] on 118 glaciers
+2026-01-30 15:43:24: oggm.core.flowline: AttributeError occurred during task run_from_climate_data_spinup_historical_monthly on RGI60-06.00387: &#39;Dataset&#39; object has no attribute &#39;time&#39;
+2026-01-30 15:43:47: oggm.utils: Applying global task compile_run_output on 118 glaciers
+2026-01-30 15:43:47: oggm.utils: Applying compile_run_output on 118 gdirs.
 </pre></div>
 </div>
 </div>
@@ -607,15 +617,20 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">years</span><span class="p">,</span> <span class="n">months</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">floatyear_to_date</span><span class="p">(</span><span class="n">ds_monthly</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">({</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="n">years</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="n">months</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}))</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_volume_m3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds_monthly</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;rgi_id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">volume</span><span class="o">.</span><span class="n">data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">({</span><span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="n">years</span><span class="p">,</span> <span class="s2">&quot;month&quot;</span><span class="p">:</span> <span class="n">months</span><span class="p">,</span> <span class="s2">&quot;day&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}))</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;OGGM_volume_m3&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds_monthly</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s2">&quot;rgi_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">volume</span><span class="o">.</span><span class="n">data</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_mwe&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_volume_m3&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_volume_m3&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2000-01&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">rgi_file</span><span class="o">.</span><span class="n">Area</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1e6</span><span class="p">)</span> <span class="o">*</span> <span class="mi">900</span> <span class="o">/</span> <span class="mi">1000</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;OGGM_mwe&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;OGGM_volume_m3&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;OGGM_volume_m3&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2000-01&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="o">/</span> <span class="p">(</span><span class="n">rgi_file</span><span class="o">.</span><span class="n">Area</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1e6</span><span class="p">)</span>
+    <span class="o">*</span> <span class="mi">900</span>
+    <span class="o">/</span> <span class="mi">1000</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -623,9 +638,10 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_mwe&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;OGGM v1.6.1&#39;</span><span class="p">);</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;OGGM_mwe&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;OGGM v1.6.1&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;m w.e.&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Vatnajökull cumulative mass change 1979-2020 from OGGM&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;m w.e.&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Vatnajökull cumulative mass change 1979-2020 from OGGM&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
@@ -640,9 +656,13 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ref_mb_df</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_geodetic_mb_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rgi_ids</span><span class="p">]</span>
-<span class="n">ref_mb_df</span> <span class="o">=</span> <span class="n">ref_mb_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ref_mb_df</span><span class="o">.</span><span class="n">period</span> <span class="o">==</span> <span class="s1">&#39;2000-01-01_2020-01-01&#39;</span><span class="p">]</span>
-<span class="n">hugonnet_20yrs</span> <span class="o">=</span> <span class="p">(</span><span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;dmdtda&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">20</span>
-<span class="n">hugonnet_20yrs_err</span> <span class="o">=</span> <span class="p">(</span><span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;err_dmdtda&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">20</span>
+<span class="n">ref_mb_df</span> <span class="o">=</span> <span class="n">ref_mb_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ref_mb_df</span><span class="o">.</span><span class="n">period</span> <span class="o">==</span> <span class="s2">&quot;2000-01-01_2020-01-01&quot;</span><span class="p">]</span>
+<span class="n">hugonnet_20yrs</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="n">ref_mb_df</span><span class="p">[</span><span class="s2">&quot;area&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s2">&quot;dmdtda&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s2">&quot;area&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">20</span>
+<span class="p">)</span>
+<span class="n">hugonnet_20yrs_err</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="n">ref_mb_df</span><span class="p">[</span><span class="s2">&quot;area&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s2">&quot;err_dmdtda&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s2">&quot;area&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">20</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -650,16 +670,23 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute Hugonnet&#39;s mass balance estimates for the plot</span>
-<span class="n">p0</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_mwe&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2000-01&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">p0</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;OGGM_mwe&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2000-01&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">p1</span> <span class="o">=</span> <span class="n">hugonnet_20yrs</span> <span class="o">+</span> <span class="n">p0</span>
 
 <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
-<span class="n">ptimes</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s1">&#39;2000-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-01&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">index</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">ptimes</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">p0</span><span class="p">,</span> <span class="n">p1</span><span class="p">],</span> <span class="n">yerr</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">hugonnet_20yrs_err</span><span class="p">],</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
-             <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Hugonnet et al. (2021)&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_mwe&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;1995&#39;</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;OGGM v1.6.1&#39;</span><span class="p">);</span>
+<span class="n">ptimes</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;2000-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-01&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">index</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">ptimes</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">p0</span><span class="p">,</span> <span class="n">p1</span><span class="p">],</span>
+    <span class="n">yerr</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">hugonnet_20yrs_err</span><span class="p">],</span>
+    <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C3&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Hugonnet et al. (2021)&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;OGGM_mwe&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;1995&quot;</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;OGGM v1.6.1&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;m w.e.&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Vatnajökull cumulative mass change as calibrated&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;m w.e.&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Vatnajökull cumulative mass change as calibrated&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
@@ -680,9 +707,11 @@ document.write(`
 <h3>Load Cryosat-2 data<a class="headerlink" href="#load-cryosat-2-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obs_file</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">file_downloader</span><span class="p">(</span><span class="n">dtcf_url</span> <span class="o">+</span> <span class="s1">&#39;averaged_grid.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obs_file</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">file_downloader</span><span class="p">(</span><span class="n">dtcg_url</span> <span class="o">+</span> <span class="s2">&quot;averaged_grid.csv&quot;</span><span class="p">)</span>
 <span class="n">df_obs_elev</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">obs_file</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df_obs_elev</span> <span class="o">=</span> <span class="n">df_obs_elev</span><span class="p">[</span><span class="s1">&#39;changes_t0&#39;</span><span class="p">]</span>  <span class="c1"># only keep average which is used for comparision</span>
+<span class="n">df_obs_elev</span> <span class="o">=</span> <span class="n">df_obs_elev</span><span class="p">[</span>
+    <span class="s2">&quot;changes_t0&quot;</span>
+<span class="p">]</span>  <span class="c1"># only keep average which is used for comparision</span>
 </pre></div>
 </div>
 </div>
@@ -693,10 +722,22 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ref_mb_df</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_geodetic_mb_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rgi_ids</span><span class="p">]</span>
-<span class="n">ref_mb_df</span> <span class="o">=</span> <span class="n">ref_mb_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ref_mb_df</span><span class="o">.</span><span class="n">period</span> <span class="o">==</span> <span class="s1">&#39;2010-01-01_2020-01-01&#39;</span><span class="p">]</span>
+<span class="n">ref_mb_df</span> <span class="o">=</span> <span class="n">ref_mb_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ref_mb_df</span><span class="o">.</span><span class="n">period</span> <span class="o">==</span> <span class="s2">&quot;2010-01-01_2020-01-01&quot;</span><span class="p">]</span>
 <span class="c1"># Hugonnet uses 850</span>
-<span class="n">hugonnet_10yrs</span> <span class="o">=</span> <span class="p">(</span><span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;dmdtda&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">/</span> <span class="mi">850</span>
-<span class="n">hugonnet_10yrs_err</span> <span class="o">=</span> <span class="p">(</span><span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;err_dmdtda&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">/</span> <span class="mi">850</span>
+<span class="n">hugonnet_10yrs</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="n">ref_mb_df</span><span class="p">[</span><span class="s2">&quot;area&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s2">&quot;dmdtda&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="o">/</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s2">&quot;area&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="o">*</span> <span class="mi">10</span>
+    <span class="o">*</span> <span class="mi">1000</span>
+    <span class="o">/</span> <span class="mi">850</span>
+<span class="p">)</span>
+<span class="n">hugonnet_10yrs_err</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="n">ref_mb_df</span><span class="p">[</span><span class="s2">&quot;area&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s2">&quot;err_dmdtda&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="o">/</span> <span class="n">ref_mb_df</span><span class="p">[</span><span class="s2">&quot;area&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="o">*</span> <span class="mi">10</span>
+    <span class="o">*</span> <span class="mi">1000</span>
+    <span class="o">/</span> <span class="mi">850</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -706,17 +747,17 @@ document.write(`
 <h3>WGMS<a class="headerlink" href="#wgms" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">file_downloader</span><span class="p">(</span><span class="n">dtcf_url</span> <span class="o">+</span> <span class="s1">&#39;vatna_berthier.csv&#39;</span><span class="p">),</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">file_downloader</span><span class="p">(</span><span class="n">dtcg_url</span> <span class="o">+</span> <span class="s2">&quot;vatna_berthier.csv&quot;</span><span class="p">),</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="n">dfwts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dfw</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-    <span class="n">dfwts</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;MB&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">bw</span>
-    <span class="n">dfwts</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;MB&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">bs</span>
+    <span class="n">dfwts</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;MB&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">bw</span>
+    <span class="n">dfwts</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;MB&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">bs</span>
     <span class="k">pass</span>
 
-<span class="n">dfwts</span><span class="p">[</span><span class="s1">&#39;MB_m&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfwts</span><span class="p">[</span><span class="s1">&#39;MB&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">/</span> <span class="mi">850</span>
-<span class="n">dfwts</span><span class="p">[</span><span class="s1">&#39;MB_m_cum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfwts</span><span class="p">[</span><span class="s1">&#39;MB_m&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="n">dfwts</span><span class="p">[</span><span class="s2">&quot;MB_m&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfwts</span><span class="p">[</span><span class="s2">&quot;MB&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">/</span> <span class="mi">850</span>
+<span class="n">dfwts</span><span class="p">[</span><span class="s2">&quot;MB_m_cum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfwts</span><span class="p">[</span><span class="s2">&quot;MB_m&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -730,14 +771,14 @@ document.write(`
 <span class="c1"># from the meta_data: &quot;average of the first 5 months (all data pre-2011)&quot;</span>
 <span class="c1"># baseline_volume = np.mean(volume_total.sel(time=slice(2011, 2011.5)))</span>
 <span class="c1"># Her we just pick the first one in the obs timeseries</span>
-<span class="n">baseline_volume</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_volume_m3&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2010-09&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">baseline_volume</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;OGGM_volume_m3&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2010-09&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 
 <span class="c1"># divide by RGI area, which is the same area as used by the creation of the observation</span>
 <span class="n">rgi_area</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">gdir</span><span class="o">.</span><span class="n">rgi_area_m2</span> <span class="k">for</span> <span class="n">gdir</span> <span class="ow">in</span> <span class="n">gdirs</span><span class="p">])</span>
 
 <span class="c1"># finally the calculation of the modelled elevation change</span>
 <span class="c1"># This assumes a density of 900 kg m2</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_elev&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_volume_m3&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">baseline_volume</span><span class="p">)</span> <span class="o">/</span> <span class="n">rgi_area</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;OGGM_elev&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;OGGM_volume_m3&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">baseline_volume</span><span class="p">)</span> <span class="o">/</span> <span class="n">rgi_area</span>
 </pre></div>
 </div>
 </div>
@@ -748,27 +789,44 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute Hugonnet&#39;s mass balance estimates for the plot</span>
-<span class="n">p0</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_elev&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2010-01&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">p0</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;OGGM_elev&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2010-01&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">p1</span> <span class="o">=</span> <span class="n">hugonnet_10yrs</span> <span class="o">+</span> <span class="n">p0</span>
 
 <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
-<span class="n">ptimes</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s1">&#39;2010-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-01&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">index</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">ptimes</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">p0</span><span class="p">,</span> <span class="n">p1</span><span class="p">],</span> <span class="n">yerr</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">hugonnet_20yrs_err</span><span class="p">],</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
-             <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Hugonnet et al. (2021)&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;OGGM_elev&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2010&#39;</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;OGGM v1.6.1&#39;</span><span class="p">);</span>
-<span class="n">df_obs_elev</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CryoSat-2&#39;</span><span class="p">)</span>
+<span class="n">ptimes</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;2010-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-01&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">index</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">ptimes</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">p0</span><span class="p">,</span> <span class="n">p1</span><span class="p">],</span>
+    <span class="n">yerr</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">hugonnet_20yrs_err</span><span class="p">],</span>
+    <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C3&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Hugonnet et al. (2021)&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;OGGM_elev&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2010&quot;</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;OGGM v1.6.1&quot;</span><span class="p">)</span>
+<span class="n">df_obs_elev</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;CryoSat-2&quot;</span><span class="p">)</span>
 
-<span class="n">wgts</span> <span class="o">=</span> <span class="p">(</span><span class="n">dfwts</span><span class="p">[</span><span class="s1">&#39;MB_m_cum&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">dfwts</span><span class="p">[</span><span class="s1">&#39;MB_m_cum&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2010-10-01&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2010-10-01&#39;</span><span class="p">:]</span>
-<span class="n">wgts</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span>  <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
-    <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
-         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;In-situ obs&#39;</span><span class="p">);</span>
+<span class="n">wgts</span> <span class="o">=</span> <span class="p">(</span><span class="n">dfwts</span><span class="p">[</span><span class="s2">&quot;MB_m_cum&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">dfwts</span><span class="p">[</span><span class="s2">&quot;MB_m_cum&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2010-10-01&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2010-10-01&quot;</span><span class="p">:]</span>
+<span class="n">wgts</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+    <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;v&quot;</span><span class="p">,</span>
+    <span class="n">markersize</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">markerfacecolor</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span>
+    <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;In-situ obs&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># Set x-axis ticks to show every year</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">YearLocator</span><span class="p">())</span>  <span class="c1"># One tick per year</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s1">&#39;%Y&#39;</span><span class="p">))</span>  <span class="c1"># Format as &quot;YYYY&quot;</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s2">&quot;%Y&quot;</span><span class="p">))</span>  <span class="c1"># Format as &quot;YYYY&quot;</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;m elevation&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Vatnajökull cumulative elevation change&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;m elevation&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Vatnajökull cumulative elevation change&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
@@ -789,7 +847,7 @@ document.write(`
 <h3>Load WGMS data<a class="headerlink" href="#load-wgms-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fp_wgms</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">file_downloader</span><span class="p">(</span><span class="n">dtcf_url</span> <span class="o">+</span> <span class="s1">&#39;WGMS_MB-DTC-Glaciers.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fp_wgms</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">file_downloader</span><span class="p">(</span><span class="n">dtcg_url</span> <span class="o">+</span> <span class="s2">&quot;WGMS_MB-DTC-Glaciers.csv&quot;</span><span class="p">)</span>
 <span class="n">wgms_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">fp_wgms</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -799,18 +857,20 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># conversions between wgms ids and rgi ids</span>
-<span class="n">fp_wgms_ids_conversion</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">file_downloader</span><span class="p">(</span><span class="n">dtcf_url</span> <span class="o">+</span> <span class="s1">&#39;glacier_id_lut.csv&#39;</span><span class="p">)</span>
+<span class="n">fp_wgms_ids_conversion</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">file_downloader</span><span class="p">(</span><span class="n">dtcg_url</span> <span class="o">+</span> <span class="s2">&quot;glacier_id_lut.csv&quot;</span><span class="p">)</span>
 <span class="n">df_wgms_ids</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">fp_wgms_ids_conversion</span><span class="p">)</span>
 
+
 <span class="k">def</span><span class="w"> </span><span class="nf">get_wgms_from_rgi</span><span class="p">(</span><span class="n">rgi_id</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">rgi_id</span> <span class="ow">in</span> <span class="n">df_wgms_ids</span><span class="p">[</span><span class="s1">&#39;RGI60_ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">df_wgms_ids</span><span class="p">[</span><span class="n">df_wgms_ids</span><span class="p">[</span><span class="s1">&#39;RGI60_ID&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">rgi_id</span><span class="p">][</span><span class="s1">&#39;WGMS_ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">rgi_id</span> <span class="ow">in</span> <span class="n">df_wgms_ids</span><span class="p">[</span><span class="s2">&quot;RGI60_ID&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">df_wgms_ids</span><span class="p">[</span><span class="n">df_wgms_ids</span><span class="p">[</span><span class="s2">&quot;RGI60_ID&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">rgi_id</span><span class="p">][</span><span class="s2">&quot;WGMS_ID&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span>
 
+
 <span class="k">def</span><span class="w"> </span><span class="nf">get_rgi_from_wgms</span><span class="p">(</span><span class="n">wgms_id</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">wgms_id</span> <span class="ow">in</span> <span class="n">df_wgms_ids</span><span class="p">[</span><span class="s1">&#39;WGMS_ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">df_wgms_ids</span><span class="p">[</span><span class="n">df_wgms_ids</span><span class="p">[</span><span class="s1">&#39;WGMS_ID&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">wgms_id</span><span class="p">][</span><span class="s1">&#39;RGI60_ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">wgms_id</span> <span class="ow">in</span> <span class="n">df_wgms_ids</span><span class="p">[</span><span class="s2">&quot;WGMS_ID&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">df_wgms_ids</span><span class="p">[</span><span class="n">df_wgms_ids</span><span class="p">[</span><span class="s2">&quot;WGMS_ID&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">wgms_id</span><span class="p">][</span><span class="s2">&quot;RGI60_ID&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span>
 </pre></div>
@@ -820,21 +880,24 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_wgms_mb_observation</span><span class="p">(</span><span class="n">rgi_id</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns (mb_DataFrame, Glacier name)</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">wgms_id</span> <span class="o">=</span> <span class="n">get_wgms_from_rgi</span><span class="p">(</span><span class="n">rgi_id</span><span class="p">)</span>
 
     <span class="c1"># only not None if this glacier is a WGMS glacier</span>
     <span class="k">if</span> <span class="n">wgms_id</span><span class="p">:</span>
         <span class="c1"># check if we have some data</span>
-        <span class="k">if</span> <span class="n">wgms_id</span> <span class="ow">in</span> <span class="n">wgms_data</span><span class="p">[</span><span class="s1">&#39;glacier_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
-            <span class="n">wgms_glacier_data</span> <span class="o">=</span> <span class="n">wgms_data</span><span class="p">[</span><span class="n">wgms_data</span><span class="p">[</span><span class="s1">&#39;glacier_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">wgms_id</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">wgms_id</span> <span class="ow">in</span> <span class="n">wgms_data</span><span class="p">[</span><span class="s2">&quot;glacier_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
+            <span class="n">wgms_glacier_data</span> <span class="o">=</span> <span class="n">wgms_data</span><span class="p">[</span><span class="n">wgms_data</span><span class="p">[</span><span class="s2">&quot;glacier_id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">wgms_id</span><span class="p">]</span>
             <span class="n">df_wgms_glacier_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-                <span class="p">{</span><span class="s1">&#39;annual_balance&#39;</span><span class="p">:</span> <span class="n">wgms_glacier_data</span><span class="p">[</span><span class="s1">&#39;annual_balance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">},</span>
-                <span class="n">index</span><span class="o">=</span><span class="n">wgms_glacier_data</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+                <span class="p">{</span><span class="s2">&quot;annual_balance&quot;</span><span class="p">:</span> <span class="n">wgms_glacier_data</span><span class="p">[</span><span class="s2">&quot;annual_balance&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">},</span>
+                <span class="n">index</span><span class="o">=</span><span class="n">wgms_glacier_data</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
             <span class="p">)</span>
-            <span class="k">return</span> <span class="n">df_wgms_glacier_data</span><span class="p">,</span> <span class="n">wgms_glacier_data</span><span class="p">[</span><span class="s1">&#39;glacier_id.short_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">return</span> <span class="p">(</span>
+                <span class="n">df_wgms_glacier_data</span><span class="p">,</span>
+                <span class="n">wgms_glacier_data</span><span class="p">[</span><span class="s2">&quot;glacier_id.short_name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -847,9 +910,9 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here we need some code to work in hydro ye</span>
 <span class="n">df_annual</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1980</span><span class="p">,</span> <span class="mi">2019</span><span class="p">):</span>
-    <span class="n">d0</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s1">-10-01&#39;</span>
-    <span class="n">d1</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">-10-01&#39;</span>
-    <span class="n">df_annual</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="s1">&#39;OGGM_mwe&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">d1</span><span class="p">][</span><span class="s1">&#39;OGGM_mwe&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">d0</span><span class="p">][</span><span class="s1">&#39;OGGM_mwe&#39;</span><span class="p">]</span>
+    <span class="n">d0</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s2">-10-01&quot;</span>
+    <span class="n">d1</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">-10-01&quot;</span>
+    <span class="n">df_annual</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="s2">&quot;OGGM_mwe&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">d1</span><span class="p">][</span><span class="s2">&quot;OGGM_mwe&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">d0</span><span class="p">][</span><span class="s2">&quot;OGGM_mwe&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -857,25 +920,34 @@ document.write(`
 </section>
 <section id="plot-wgms-and-modelled-mb-for-all-available-glaciers">
 <h3>Plot WGMS and modelled mb for all available glaciers<a class="headerlink" href="#plot-wgms-and-modelled-mb-for-all-available-glaciers" title="Link to this heading">#</a></h3>
-<p>We commented the below because we have to sort out the data first - the above looks much better anyway.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for gdir in gdirs:</span>
-<span class="c1">#     wgms_mb = get_wgms_mb_observation(gdir.rgi_id)</span>
-<span class="c1">#     if wgms_mb is not None:</span>
-<span class="c1">#         fig, ax = plt.subplots(1, 1)</span>
-<span class="c1">#         # add modelled smb</span>
-<span class="c1">#         df_annual[&#39;OGGM_mwe&#39;].plot(ax=ax, label=&#39;OGGM v1.6.1&#39;)</span>
-<span class="c1">#         # add observation</span>
-<span class="c1">#         wgms_mb[0][&#39;annual_balance&#39;].plot(ax=ax, marker=&#39;.&#39;,</span>
-<span class="c1">#                                           label=&#39;Observations (WGMS)&#39;)</span>
-<span class="c1">#         ax.set_title(f&#39;{gdir.rgi_id}, {wgms_mb[1]}&#39;)</span>
-<span class="c1">#         ax.set_xlabel(&#39;&#39;); ax.set_ylabel(&#39;m w.e.&#39;);</span>
-<span class="c1">#         ax.legend();</span>
-<span class="c1">#         ax.set_xlim(1998, 2024);</span>
-<span class="c1">#         plt.show()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">gdir</span> <span class="ow">in</span> <span class="n">gdirs</span><span class="p">:</span>
+    <span class="n">wgms_mb</span> <span class="o">=</span> <span class="n">get_wgms_mb_observation</span><span class="p">(</span><span class="n">gdir</span><span class="o">.</span><span class="n">rgi_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">wgms_mb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># add modelled smb</span>
+        <span class="n">df_annual</span><span class="p">[</span><span class="s2">&quot;OGGM_mwe&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;OGGM v1.6.1&quot;</span><span class="p">)</span>
+        <span class="c1"># add observation</span>
+        <span class="n">wgms_mb</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;annual_balance&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+            <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Observations (WGMS)&quot;</span>
+        <span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gdir</span><span class="o">.</span><span class="n">rgi_id</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">wgms_mb</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;m w.e.&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">1998</span><span class="p">,</span> <span class="mi">2024</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f8926755be405c2917fb357c11cc6321eea530205010588755a7061df9e5efee.png" src="../_images/f8926755be405c2917fb357c11cc6321eea530205010588755a7061df9e5efee.png" />
+<img alt="../_images/20ff0ee6379fbb508d99f6e90e130b87868324ad7dd72b2a28851b3f6a32f8a4.png" src="../_images/20ff0ee6379fbb508d99f6e90e130b87868324ad7dd72b2a28851b3f6a32f8a4.png" />
+<img alt="../_images/8c23c197218e3c28b97f876a660a98980223b96211111316b237fe7ffffb1102.png" src="../_images/8c23c197218e3c28b97f876a660a98980223b96211111316b237fe7ffffb1102.png" />
+<img alt="../_images/d1fb48bc2993d6c5505e8b4a3bea256fdabb3bbc581551c8a2e1b62c5af5da00.png" src="../_images/d1fb48bc2993d6c5505e8b4a3bea256fdabb3bbc581551c8a2e1b62c5af5da00.png" />
+<img alt="../_images/1b8a32c37ef059c8d8637e5a749597096b79aa010f4f4afe5eede860946ef89b.png" src="../_images/1b8a32c37ef059c8d8637e5a749597096b79aa010f4f4afe5eede860946ef89b.png" />
+<img alt="../_images/b04879662ef7e24b0044217f52643ea9be2e67c5bcbfb5861eb065ef4e56657c.png" src="../_images/b04879662ef7e24b0044217f52643ea9be2e67c5bcbfb5861eb065ef4e56657c.png" />
 </div>
 </div>
 </section>
@@ -918,7 +990,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Further DTC-Glaciers features, work in progress</p>
+        <p class="prev-next-title">API and Streaming Capabilities</p>
       </div>
     </a>
     <a class="right-next"
@@ -926,7 +998,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Informing hydropower outlook with DTC-Glaciers: a prototype demonstration</p>
+        <p class="prev-next-title">Informing hydropower outlook with DTC Glaciers: a prototype demonstration</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -994,7 +1066,7 @@ By DTCG Consortium
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jan 29, 2026.
+  Last updated on Jan 30, 2026.
   <br/>
 </p>
   </div>

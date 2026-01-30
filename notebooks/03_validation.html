@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Validating DTC-Glaciers EO-DT-Enhanced Data cubes (L2) &#8212; DTC-Glaciers notebooks</title>
+    <title>Validating DTC Glaciers EO-DT-Enhanced Data Cubes (L2) &#8212; DTC-Glaciers notebooks</title>
   
   
   
@@ -64,11 +64,11 @@
     <link rel="icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Creating DTC-Glaciers User-DT-Enhanced Data cubes (L3)" href="04_user_provided_data.html" />
-    <link rel="prev" title="Creating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)" href="02_L2_datacubes.html" />
+    <link rel="next" title="Creating DTC Glaciers User-DT-Enhanced Data cubes (L3)" href="04_user_provided_data.html" />
+    <link rel="prev" title="Creating DTC Glaciers EO-DT-Enhanced Data Cubes (L2)" href="02_L2_datacubes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Jan 29, 2026"/>
+    <meta name="docbuild:last-update" content="Jan 30, 2026"/>
   </head>
   
   
@@ -186,13 +186,13 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary notebooks</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01_L1_datacubes.html">Creating DTC-Glaciers EO-Native data cubes (L1)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_L2_datacubes.html">Creating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Validating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_user_provided_data.html">Creating DTC-Glaciers User-DT-Enhanced Data cubes (L3)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_additional_features.html">Further DTC-Glaciers features, work in progress</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_the_beginning_of_dtcg.html">CryoSat2 - model comparison at Vatnajökull ice cap, Iceland</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_recreate_dea_story.html">Informing hydropower outlook with DTC-Glaciers: a prototype demonstration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_L1_datacubes.html">Creating DTC Glaciers EO-Native Data Cubes (L1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_L2_datacubes.html">Creating DTC Glaciers EO-DT-Enhanced Data Cubes (L2)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Validating DTC Glaciers EO-DT-Enhanced Data Cubes (L2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_user_provided_data.html">Creating DTC Glaciers User-DT-Enhanced Data cubes (L3)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_additional_features.html">API and Streaming Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_the_beginning_of_dtcg.html">CryoSat2 - Model Comparison at Vatnajökull Ice Cap, Iceland</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_recreate_dea_story.html">Informing hydropower outlook with DTC Glaciers: a prototype demonstration</a></li>
 </ul>
 
     </div>
@@ -426,7 +426,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Validating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)</h1>
+    <h1>Validating DTC Glaciers EO-DT-Enhanced Data Cubes (L2)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -436,7 +436,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-of-dtc-glaciers-output">Validation of DTC-Glaciers output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-of-dtc-glaciers-output">Validation of DTC Glaciers output</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iceland">Iceland</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#austria">Austria</a></li>
 </ul>
@@ -454,7 +454,7 @@ document.write(`
 <img src="https://notebooks.dtcglaciers.org/_images/ESA_logo.svg" width="160" align='right'/>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="validating-dtc-glaciers-eo-dt-enhanced-data-cubes-l2">
-<h1>Validating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)<a class="headerlink" href="#validating-dtc-glaciers-eo-dt-enhanced-data-cubes-l2" title="Link to this heading">#</a></h1>
+<h1>Validating DTC Glaciers EO-DT-Enhanced Data Cubes (L2)<a class="headerlink" href="#validating-dtc-glaciers-eo-dt-enhanced-data-cubes-l2" title="Link to this heading">#</a></h1>
 <p>To assess the performance of different <strong>L2 data cubes</strong>, this notebook illustrates the capabilities of the <strong>DTC Glaciers validation framework</strong>.<br />
 The objective is to evaluate L2 data cubes by comparing their model-derived estimates against independent observations available from the corresponding <strong>L1 data cubes</strong>.</p>
 <p>This validation step is a core component of the DTC Glaciers concept, providing a transparent way to quantify consistency between observations and model-based reconstructions, and to characterise associated uncertainties.</p>
@@ -480,14 +480,16 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgi_id_ice</span> <span class="o">=</span> <span class="s2">&quot;RGI60-06.00377&quot;</span>  <span class="c1"># Brúarjökull</span>
 <span class="n">rgi_id_aut</span> <span class="o">=</span> <span class="s2">&quot;RGI60-11.00719&quot;</span>  <span class="c1"># Vernagtferner</span>
 
+
 <span class="k">def</span><span class="w"> </span><span class="nf">get_l2_data_tree</span><span class="p">(</span><span class="n">rgi_id</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_datatree</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">DEFAULT_L2_DATACUBE_URL</span><span class="si">}{</span><span class="n">rgi_id</span><span class="si">}</span><span class="s2">.zarr&quot;</span><span class="p">,</span>
-            <span class="n">chunks</span><span class="o">=</span><span class="p">{},</span>
-            <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;zarr&quot;</span><span class="p">,</span>
-            <span class="n">consolidated</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-            <span class="n">decode_cf</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">DEFAULT_L2_DATACUBE_URL</span><span class="si">}{</span><span class="n">rgi_id</span><span class="si">}</span><span class="s2">.zarr&quot;</span><span class="p">,</span>
+        <span class="n">chunks</span><span class="o">=</span><span class="p">{},</span>
+        <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;zarr&quot;</span><span class="p">,</span>
+        <span class="n">consolidated</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">decode_cf</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
 
 <span class="n">data_tree_ice</span> <span class="o">=</span> <span class="n">get_l2_data_tree</span><span class="p">(</span><span class="n">rgi_id_ice</span><span class="p">)</span>
 <span class="n">data_tree_aut</span> <span class="o">=</span> <span class="n">get_l2_data_tree</span><span class="p">(</span><span class="n">rgi_id_aut</span><span class="p">)</span>
@@ -496,8 +498,8 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 </div>
 </div>
 <section id="validation-of-dtc-glaciers-output">
-<h2>Validation of DTC-Glaciers output<a class="headerlink" href="#validation-of-dtc-glaciers-output" title="Link to this heading">#</a></h2>
-<p>The <strong>validation</strong> within DTC-Glaciers consists of a combination of <strong>in-situ observations</strong> and <strong>Earth observation (EO) data</strong> from the <strong>L1 data cubes</strong>. The entire validation framework is built around the <code class="docutils literal notranslate"><span class="pre">DatacubeValidator</span></code>, which only requires a <strong>data tree</strong> as input:</p>
+<h2>Validation of DTC Glaciers output<a class="headerlink" href="#validation-of-dtc-glaciers-output" title="Link to this heading">#</a></h2>
+<p>The <strong>validation</strong> within DTC Glaciers consists of a combination of <strong>in-situ observations</strong> and <strong>Earth observation (EO) data</strong> from the <strong>L1 data cubes</strong>. The entire validation framework is built around the <code class="docutils literal notranslate"><span class="pre">DatacubeValidator</span></code>, which only requires a <strong>data tree</strong> as input:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dtcg.validation.validator</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatacubeValidator</span>
@@ -553,7 +555,7 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 <p>For the following analysis, we selected the <strong>daily mass balance model</strong> calibrated with <strong><a class="reference external" href="https://cryotempo-eolis.org/">CryoTEMPO-EOLIS</a></strong> (CryoSat-2) for the period <strong>2011–2020</strong>. We then compared it to the same model calibrated with <strong><a class="reference external" href="https://doi.org/10.1038/s41586-021-03436-z">Hugonnet et al. (2021)</a></strong> for the period <strong>2010–2020</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l2_list_ice</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;L2_Daily_Cryosat_2011_2020&#39;</span><span class="p">,</span> <span class="s1">&#39;L2_Daily_Hugonnet_2010_2020&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l2_list_ice</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;L2_Daily_Cryosat_2011_2020&quot;</span><span class="p">,</span> <span class="s2">&quot;L2_Daily_Hugonnet_2010_2020&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -562,7 +564,8 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data_ice</span><span class="p">,</span> <span class="n">bootstrap_args_ice</span> <span class="o">=</span> <span class="n">validator_ice</span><span class="o">.</span><span class="n">get_validation_for_layers</span><span class="p">(</span>
-    <span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_ice</span><span class="p">,</span> <span class="n">return_bootstrap_args</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_ice</span><span class="p">,</span> <span class="n">return_bootstrap_args</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -570,7 +573,7 @@ The objective is to evaluate L2 data cubes by comparing their model-derived esti
 <p>Let’s start by examining the results of comparing the <strong>L2 data cubes</strong> with the <strong>CryoSat-2 observations</strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data_ice</span><span class="p">[</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data_ice</span><span class="p">[</span><span class="s2">&quot;CryoSat2&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -636,7 +639,7 @@ The metrics that quantify <strong>absolute differences</strong> (<code class="do
 <p>To help with interpretation, we can also take a look at the <strong>bootstrap settings</strong> used during the validation:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bootstrap_args_ice</span><span class="p">[</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bootstrap_args_ice</span><span class="p">[</span><span class="s2">&quot;CryoSat2&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -652,11 +655,14 @@ The metrics that quantify <strong>absolute differences</strong> (<code class="do
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_cryosat_2020_2025</span> <span class="o">=</span> <span class="n">validator_ice</span><span class="o">.</span><span class="n">get_validation_for_layers</span><span class="p">(</span>
     <span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_ice</span><span class="p">,</span>
-    <span class="n">baseline_date</span><span class="o">=</span><span class="s1">&#39;2020-01-01&#39;</span><span class="p">,</span>  <span class="c1"># the date where the cumulated elevation change starts</span>
-    <span class="n">obs_list</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">],</span>  <span class="c1"># we can select to only perform the validation on one observation</span>
-    <span class="n">validation_period</span><span class="o">=</span><span class="s1">&#39;2020-01-01_2025-12-31&#39;</span><span class="p">,)</span>  <span class="c1"># define the period which should be considered</span>
+    <span class="n">baseline_date</span><span class="o">=</span><span class="s2">&quot;2020-01-01&quot;</span><span class="p">,</span>  <span class="c1"># the date where the cumulated elevation change starts</span>
+    <span class="n">obs_list</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;CryoSat2&quot;</span>
+    <span class="p">],</span>  <span class="c1"># we can select to only perform the validation on one observation</span>
+    <span class="n">validation_period</span><span class="o">=</span><span class="s2">&quot;2020-01-01_2025-12-31&quot;</span><span class="p">,</span>
+<span class="p">)</span>  <span class="c1"># define the period which should be considered</span>
 
-<span class="n">validation_cryosat_2020_2025</span><span class="p">[</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">]</span>
+<span class="n">validation_cryosat_2020_2025</span><span class="p">[</span><span class="s2">&quot;CryoSat2&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -721,7 +727,9 @@ The metrics that quantify <strong>absolute differences</strong> (<code class="do
 <p>First, for the <strong>entire period</strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator_ice</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_ice</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator_ice</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span>
+    <span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_ice</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s2">&quot;CryoSat2&quot;</span>
+<span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -733,8 +741,9 @@ The metrics that quantify <strong>absolute differences</strong> (<code class="do
 <p>Or for the <strong>independent validation period</strong>, by defining a <code class="docutils literal notranslate"><span class="pre">baseline_date</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">validator_ice</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_ice</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;CryoSat2&#39;</span><span class="p">,</span>
-                                                   <span class="n">baseline_date</span><span class="o">=</span><span class="s1">&#39;2020-01-01&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">validator_ice</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span>
+    <span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_ice</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s2">&quot;CryoSat2&quot;</span><span class="p">,</span> <span class="n">baseline_date</span><span class="o">=</span><span class="s2">&quot;2020-01-01&quot;</span>
+<span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -746,7 +755,7 @@ The metrics that quantify <strong>absolute differences</strong> (<code class="do
 <p>Another available data source for our test glacier is <strong>in-situ mass balance observations</strong> from <strong><a class="reference external" href="https://wgms.ch/">WGMS</a></strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data_ice</span><span class="p">[</span><span class="s1">&#39;WGMS&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data_ice</span><span class="p">[</span><span class="s2">&quot;WGMS&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -808,7 +817,7 @@ The metrics that quantify <strong>absolute differences</strong> (<code class="do
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bootstrap_args_ice</span><span class="p">[</span><span class="s1">&#39;WGMS&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bootstrap_args_ice</span><span class="p">[</span><span class="s2">&quot;WGMS&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -822,7 +831,7 @@ The metrics that quantify <strong>absolute differences</strong> (<code class="do
 <p>Visualisations are also available for the <strong>in-situ data</strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator_ice</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_ice</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;WGMS&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator_ice</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_ice</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s2">&quot;WGMS&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -856,10 +865,11 @@ The metrics that quantify <strong>absolute differences</strong> (<code class="do
 <p>The first model is a <strong>daily temperature-index model</strong>, which is equivalent to the <strong>OGGM v1.6.2 default approach</strong>, but implemented at <strong>daily resolution</strong>. The second model is a <strong>temperature-index model enhanced with a bucket-based snow-tracking scheme</strong>. This model follows the approach described in <strong><a class="reference external" href="https://doi.org/10.1017/aog.2023.57">Schuster et al. (2023)</a></strong> and in the <strong><a class="reference external" href="https://github.com/OGGM/massbalance-sandbox">OGGM mass-balance sandbox</a></strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l2_list_aut</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;L2_Daily_Hugonnet_2000_2020&#39;</span><span class="p">,</span> <span class="s1">&#39;L2_SfcDaily_Hugonnet_2000_2020&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l2_list_aut</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;L2_Daily_Hugonnet_2000_2020&quot;</span><span class="p">,</span> <span class="s2">&quot;L2_SfcDaily_Hugonnet_2000_2020&quot;</span><span class="p">]</span>
 
 <span class="n">validation_data_aut</span><span class="p">,</span> <span class="n">bootstrap_args_aut</span> <span class="o">=</span> <span class="n">validator_aut</span><span class="o">.</span><span class="n">get_validation_for_layers</span><span class="p">(</span>
-    <span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_aut</span><span class="p">,</span> <span class="n">return_bootstrap_args</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_aut</span><span class="p">,</span> <span class="n">return_bootstrap_args</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -873,7 +883,7 @@ The metrics that quantify <strong>absolute differences</strong> (<code class="do
 <p>We will return to this point later. For now, we first look at the <strong>WGMS-based validation</strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data_aut</span><span class="p">[</span><span class="s1">&#39;WGMS&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data_aut</span><span class="p">[</span><span class="s2">&quot;WGMS&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -935,7 +945,7 @@ The metrics that quantify <strong>absolute differences</strong> (<code class="do
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bootstrap_args_aut</span><span class="p">[</span><span class="s1">&#39;WGMS&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bootstrap_args_aut</span><span class="p">[</span><span class="s2">&quot;WGMS&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -949,7 +959,7 @@ The metrics that quantify <strong>absolute differences</strong> (<code class="do
 <p>Let’s visualise the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator_aut</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_aut</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;WGMS&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator_aut</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_aut</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s2">&quot;WGMS&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -964,7 +974,7 @@ The metrics that quantify <strong>absolute differences</strong> (<code class="do
 <p>The validation metrics of this first implementation are shown below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data_aut</span><span class="p">[</span><span class="s1">&#39;Sentinel2&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validation_data_aut</span><span class="p">[</span><span class="s2">&quot;Sentinel2&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1019,7 +1029,10 @@ The metrics that quantify <strong>absolute differences</strong> (<code class="do
 <p>The modelled snowline evolution can also be <strong>visualised</strong> together with the observations:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator_aut</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_aut</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;Sentinel2&#39;</span><span class="p">,)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator_aut</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span>
+    <span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_aut</span><span class="p">,</span>
+    <span class="n">obs_name</span><span class="o">=</span><span class="s2">&quot;Sentinel2&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1031,8 +1044,9 @@ The metrics that quantify <strong>absolute differences</strong> (<code class="do
 <p>The plot is quite dense when shown over the full period. Therefore, you can use <code class="docutils literal notranslate"><span class="pre">x_lim</span></code> to zoom in on a specific period of interest:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator_aut</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span><span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_aut</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s1">&#39;Sentinel2&#39;</span><span class="p">,</span>
-                                             <span class="n">x_lim</span><span class="o">=</span><span class="p">[</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2022</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validator_aut</span><span class="o">.</span><span class="n">get_validation_plot_for_layers</span><span class="p">(</span>
+    <span class="n">l2_name_list</span><span class="o">=</span><span class="n">l2_list_aut</span><span class="p">,</span> <span class="n">obs_name</span><span class="o">=</span><span class="s2">&quot;Sentinel2&quot;</span><span class="p">,</span> <span class="n">x_lim</span><span class="o">=</span><span class="p">[</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2022</span><span class="p">]</span>
+<span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1080,7 +1094,7 @@ The metrics that quantify <strong>absolute differences</strong> (<code class="do
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Creating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)</p>
+        <p class="prev-next-title">Creating DTC Glaciers EO-DT-Enhanced Data Cubes (L2)</p>
       </div>
     </a>
     <a class="right-next"
@@ -1088,7 +1102,7 @@ The metrics that quantify <strong>absolute differences</strong> (<code class="do
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Creating DTC-Glaciers User-DT-Enhanced Data cubes (L3)</p>
+        <p class="prev-next-title">Creating DTC Glaciers User-DT-Enhanced Data cubes (L3)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1108,7 +1122,7 @@ The metrics that quantify <strong>absolute differences</strong> (<code class="do
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-of-dtc-glaciers-output">Validation of DTC-Glaciers output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-of-dtc-glaciers-output">Validation of DTC Glaciers output</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iceland">Iceland</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#austria">Austria</a></li>
 </ul>
@@ -1137,7 +1151,7 @@ By DTCG Consortium
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jan 29, 2026.
+  Last updated on Jan 30, 2026.
   <br/>
 </p>
   </div>

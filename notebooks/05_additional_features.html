@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Further DTC-Glaciers features, work in progress &#8212; DTC-Glaciers notebooks</title>
+    <title>API and Streaming Capabilities &#8212; DTC-Glaciers notebooks</title>
   
   
   
@@ -64,11 +64,11 @@
     <link rel="icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="CryoSat2 - model comparison at Vatnajökull ice cap, Iceland" href="06_the_beginning_of_dtcg.html" />
-    <link rel="prev" title="Creating DTC-Glaciers User-DT-Enhanced Data cubes (L3)" href="04_user_provided_data.html" />
+    <link rel="next" title="CryoSat2 - Model Comparison at Vatnajökull Ice Cap, Iceland" href="06_the_beginning_of_dtcg.html" />
+    <link rel="prev" title="Creating DTC Glaciers User-DT-Enhanced Data cubes (L3)" href="04_user_provided_data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Jan 29, 2026"/>
+    <meta name="docbuild:last-update" content="Jan 30, 2026"/>
   </head>
   
   
@@ -186,13 +186,13 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary notebooks</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01_L1_datacubes.html">Creating DTC-Glaciers EO-Native data cubes (L1)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_L2_datacubes.html">Creating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_validation.html">Validating DTC-Glaciers EO-DT-Enhanced Data cubes (L2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_user_provided_data.html">Creating DTC-Glaciers User-DT-Enhanced Data cubes (L3)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Further DTC-Glaciers features, work in progress</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_the_beginning_of_dtcg.html">CryoSat2 - model comparison at Vatnajökull ice cap, Iceland</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_recreate_dea_story.html">Informing hydropower outlook with DTC-Glaciers: a prototype demonstration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_L1_datacubes.html">Creating DTC Glaciers EO-Native Data Cubes (L1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_L2_datacubes.html">Creating DTC Glaciers EO-DT-Enhanced Data Cubes (L2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_validation.html">Validating DTC Glaciers EO-DT-Enhanced Data Cubes (L2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_user_provided_data.html">Creating DTC Glaciers User-DT-Enhanced Data cubes (L3)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">API and Streaming Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_the_beginning_of_dtcg.html">CryoSat2 - Model Comparison at Vatnajökull Ice Cap, Iceland</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_recreate_dea_story.html">Informing hydropower outlook with DTC Glaciers: a prototype demonstration</a></li>
 </ul>
 
     </div>
@@ -426,7 +426,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Further DTC-Glaciers features, work in progress</h1>
+    <h1>API and Streaming Capabilities</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -440,7 +440,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-implementation">Technical Implementation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dtc-glaciers-api">DTC-Glaciers API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dtc-glaciers-api">DTC Glaciers API</a></li>
 </ul>
             </nav>
         </div>
@@ -455,8 +455,8 @@ document.write(`
   <div>
 <img src="https://notebooks.dtcglaciers.org/_images/ESA_logo.svg" width="160" align='right'/>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="further-dtc-glaciers-features-work-in-progress">
-<h1>Further DTC-Glaciers features, work in progress<a class="headerlink" href="#further-dtc-glaciers-features-work-in-progress" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="api-and-streaming-capabilities">
+<h1>API and Streaming Capabilities<a class="headerlink" href="#api-and-streaming-capabilities" title="Link to this heading">#</a></h1>
 <p>If necessary, install the DTCG API with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install &#39;dtcg[jupyter] @ git+https://github.com/DTC-Glaciers/dtcg&#39;
 </pre></div>
@@ -469,6 +469,7 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">dtcg.interface.plotting</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dtcg_plotting</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">holoviews</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">hv</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dtcg</span><span class="w"> </span><span class="kn">import</span> <span class="n">DEFAULT_L2_DATACUBE_URL</span>
 </pre></div>
 </div>
 </div>
@@ -991,12 +992,12 @@ if (window.Jupyter !== undefined) {
   } catch(err) {
   }
 }
-</script><div class="output text_html"><div id='00050daa-38e9-459e-aaaf-1bbab395a2e5'>
-  <div id="bd955ca4-e8f6-42af-8c7a-f7d2d153a27b" data-root-id="00050daa-38e9-459e-aaaf-1bbab395a2e5" style="display: contents;"></div>
+</script><div class="output text_html"><div id='cb2e4a23-8474-4646-8be8-6aef3fa0b759'>
+  <div id="d96f81af-a676-4bb2-a171-344015080eac" data-root-id="cb2e4a23-8474-4646-8be8-6aef3fa0b759" style="display: contents;"></div>
 </div>
 <script type="application/javascript">(function(root) {
-  var docs_json = {"f80d7852-171a-4dff-b3b0-7816d6ef1cc1":{"version":"3.8.2","title":"Bokeh Application","config":{"type":"object","name":"DocumentConfig","id":"6f02986a-6bbb-42c1-9be9-ea2696098a5d","attributes":{"notifications":{"type":"object","name":"Notifications","id":"c9023253-45e2-4504-aa5a-8375a8a14b8e"}}},"roots":[{"type":"object","name":"panel.models.browser.BrowserInfo","id":"00050daa-38e9-459e-aaaf-1bbab395a2e5"},{"type":"object","name":"panel.models.comm_manager.CommManager","id":"11541f02-a201-4ed6-8623-78d1a9ee3969","attributes":{"plot_id":"00050daa-38e9-459e-aaaf-1bbab395a2e5","comm_id":"d9dc4f60af7d46fb920bde8697ca2b6f","client_comm_id":"919c9a20e7d44712b5188fa56eb05619"}}],"defs":[{"type":"model","name":"ReactiveHTML1"},{"type":"model","name":"FlexBox1","properties":[{"name":"align_content","kind":"Any","default":"flex-start"},{"name":"align_items","kind":"Any","default":"flex-start"},{"name":"flex_direction","kind":"Any","default":"row"},{"name":"flex_wrap","kind":"Any","default":"wrap"},{"name":"gap","kind":"Any","default":""},{"name":"justify_content","kind":"Any","default":"flex-start"}]},{"type":"model","name":"FloatPanel1","properties":[{"name":"config","kind":"Any","default":{"type":"map"}},{"name":"contained","kind":"Any","default":true},{"name":"position","kind":"Any","default":"right-top"},{"name":"offsetx","kind":"Any","default":null},{"name":"offsety","kind":"Any","default":null},{"name":"theme","kind":"Any","default":"primary"},{"name":"status","kind":"Any","default":"normalized"}]},{"type":"model","name":"GridStack1","properties":[{"name":"ncols","kind":"Any","default":null},{"name":"nrows","kind":"Any","default":null},{"name":"allow_resize","kind":"Any","default":true},{"name":"allow_drag","kind":"Any","default":true},{"name":"state","kind":"Any","default":[]}]},{"type":"model","name":"drag1","properties":[{"name":"slider_width","kind":"Any","default":5},{"name":"slider_color","kind":"Any","default":"black"},{"name":"start","kind":"Any","default":0},{"name":"end","kind":"Any","default":100},{"name":"value","kind":"Any","default":50}]},{"type":"model","name":"click1","properties":[{"name":"terminal_output","kind":"Any","default":""},{"name":"debug_name","kind":"Any","default":""},{"name":"clears","kind":"Any","default":0}]},{"type":"model","name":"ReactiveESM1","properties":[{"name":"esm_constants","kind":"Any","default":{"type":"map"}}]},{"type":"model","name":"JSComponent1","properties":[{"name":"esm_constants","kind":"Any","default":{"type":"map"}}]},{"type":"model","name":"ReactComponent1","properties":[{"name":"use_shadow_dom","kind":"Any","default":true},{"name":"esm_constants","kind":"Any","default":{"type":"map"}}]},{"type":"model","name":"AnyWidgetComponent1","properties":[{"name":"use_shadow_dom","kind":"Any","default":true},{"name":"esm_constants","kind":"Any","default":{"type":"map"}}]},{"type":"model","name":"FastWrapper1","properties":[{"name":"object","kind":"Any","default":null},{"name":"style","kind":"Any","default":null}]},{"type":"model","name":"NotificationArea1","properties":[{"name":"js_events","kind":"Any","default":{"type":"map"}},{"name":"max_notifications","kind":"Any","default":5},{"name":"notifications","kind":"Any","default":[]},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0},{"name":"types","kind":"Any","default":[{"type":"map","entries":[["type","warning"],["background","#ffc107"],["icon",{"type":"map","entries":[["className","fas fa-exclamation-triangle"],["tagName","i"],["color","white"]]}]]},{"type":"map","entries":[["type","info"],["background","#007bff"],["icon",{"type":"map","entries":[["className","fas fa-info-circle"],["tagName","i"],["color","white"]]}]]}]}]},{"type":"model","name":"Notification","properties":[{"name":"background","kind":"Any","default":null},{"name":"duration","kind":"Any","default":3000},{"name":"icon","kind":"Any","default":null},{"name":"message","kind":"Any","default":""},{"name":"notification_type","kind":"Any","default":null},{"name":"_rendered","kind":"Any","default":false},{"name":"_destroyed","kind":"Any","default":false}]},{"type":"model","name":"TemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"BootstrapTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"TemplateEditor1","properties":[{"name":"layout","kind":"Any","default":[]}]},{"type":"model","name":"MaterialTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"request_value1","properties":[{"name":"fill","kind":"Any","default":"none"},{"name":"_synced","kind":"Any","default":null},{"name":"_request_sync","kind":"Any","default":0}]},{"type":"model","name":"holoviews.plotting.bokeh.raster.HoverModel","properties":[{"name":"xy","kind":"Any","default":null},{"name":"data","kind":"Any","default":null}]}]}};
-  var render_items = [{"docid":"f80d7852-171a-4dff-b3b0-7816d6ef1cc1","roots":{"00050daa-38e9-459e-aaaf-1bbab395a2e5":"bd955ca4-e8f6-42af-8c7a-f7d2d153a27b"},"root_ids":["00050daa-38e9-459e-aaaf-1bbab395a2e5"]}];
+  var docs_json = {"75fcd4ff-9bdb-4920-8b5f-c426dcabf634":{"version":"3.8.2","title":"Bokeh Application","config":{"type":"object","name":"DocumentConfig","id":"46231e4e-3646-4ca3-b79b-9b1563b6fb8b","attributes":{"notifications":{"type":"object","name":"Notifications","id":"b0425b90-67dc-488e-81b4-3532e243ea17"}}},"roots":[{"type":"object","name":"panel.models.browser.BrowserInfo","id":"cb2e4a23-8474-4646-8be8-6aef3fa0b759"},{"type":"object","name":"panel.models.comm_manager.CommManager","id":"60bfaa1b-fc93-47b4-8376-99d6be0b9374","attributes":{"plot_id":"cb2e4a23-8474-4646-8be8-6aef3fa0b759","comm_id":"24f5224508384aeb95005e780d042259","client_comm_id":"793f16023fe14324bd2964ebe849ef72"}}],"defs":[{"type":"model","name":"ReactiveHTML1"},{"type":"model","name":"FlexBox1","properties":[{"name":"align_content","kind":"Any","default":"flex-start"},{"name":"align_items","kind":"Any","default":"flex-start"},{"name":"flex_direction","kind":"Any","default":"row"},{"name":"flex_wrap","kind":"Any","default":"wrap"},{"name":"gap","kind":"Any","default":""},{"name":"justify_content","kind":"Any","default":"flex-start"}]},{"type":"model","name":"FloatPanel1","properties":[{"name":"config","kind":"Any","default":{"type":"map"}},{"name":"contained","kind":"Any","default":true},{"name":"position","kind":"Any","default":"right-top"},{"name":"offsetx","kind":"Any","default":null},{"name":"offsety","kind":"Any","default":null},{"name":"theme","kind":"Any","default":"primary"},{"name":"status","kind":"Any","default":"normalized"}]},{"type":"model","name":"GridStack1","properties":[{"name":"ncols","kind":"Any","default":null},{"name":"nrows","kind":"Any","default":null},{"name":"allow_resize","kind":"Any","default":true},{"name":"allow_drag","kind":"Any","default":true},{"name":"state","kind":"Any","default":[]}]},{"type":"model","name":"drag1","properties":[{"name":"slider_width","kind":"Any","default":5},{"name":"slider_color","kind":"Any","default":"black"},{"name":"start","kind":"Any","default":0},{"name":"end","kind":"Any","default":100},{"name":"value","kind":"Any","default":50}]},{"type":"model","name":"click1","properties":[{"name":"terminal_output","kind":"Any","default":""},{"name":"debug_name","kind":"Any","default":""},{"name":"clears","kind":"Any","default":0}]},{"type":"model","name":"ReactiveESM1","properties":[{"name":"esm_constants","kind":"Any","default":{"type":"map"}}]},{"type":"model","name":"JSComponent1","properties":[{"name":"esm_constants","kind":"Any","default":{"type":"map"}}]},{"type":"model","name":"ReactComponent1","properties":[{"name":"use_shadow_dom","kind":"Any","default":true},{"name":"esm_constants","kind":"Any","default":{"type":"map"}}]},{"type":"model","name":"AnyWidgetComponent1","properties":[{"name":"use_shadow_dom","kind":"Any","default":true},{"name":"esm_constants","kind":"Any","default":{"type":"map"}}]},{"type":"model","name":"FastWrapper1","properties":[{"name":"object","kind":"Any","default":null},{"name":"style","kind":"Any","default":null}]},{"type":"model","name":"NotificationArea1","properties":[{"name":"js_events","kind":"Any","default":{"type":"map"}},{"name":"max_notifications","kind":"Any","default":5},{"name":"notifications","kind":"Any","default":[]},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0},{"name":"types","kind":"Any","default":[{"type":"map","entries":[["type","warning"],["background","#ffc107"],["icon",{"type":"map","entries":[["className","fas fa-exclamation-triangle"],["tagName","i"],["color","white"]]}]]},{"type":"map","entries":[["type","info"],["background","#007bff"],["icon",{"type":"map","entries":[["className","fas fa-info-circle"],["tagName","i"],["color","white"]]}]]}]}]},{"type":"model","name":"Notification","properties":[{"name":"background","kind":"Any","default":null},{"name":"duration","kind":"Any","default":3000},{"name":"icon","kind":"Any","default":null},{"name":"message","kind":"Any","default":""},{"name":"notification_type","kind":"Any","default":null},{"name":"_rendered","kind":"Any","default":false},{"name":"_destroyed","kind":"Any","default":false}]},{"type":"model","name":"TemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"BootstrapTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"TemplateEditor1","properties":[{"name":"layout","kind":"Any","default":[]}]},{"type":"model","name":"MaterialTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"request_value1","properties":[{"name":"fill","kind":"Any","default":"none"},{"name":"_synced","kind":"Any","default":null},{"name":"_request_sync","kind":"Any","default":0}]},{"type":"model","name":"holoviews.plotting.bokeh.raster.HoverModel","properties":[{"name":"xy","kind":"Any","default":null},{"name":"data","kind":"Any","default":null}]}]}};
+  var render_items = [{"docid":"75fcd4ff-9bdb-4920-8b5f-c426dcabf634","roots":{"cb2e4a23-8474-4646-8be8-6aef3fa0b759":"d96f81af-a676-4bb2-a171-344015080eac"},"root_ids":["cb2e4a23-8474-4646-8be8-6aef3fa0b759"]}];
   var docs = Object.values(docs_json)
   if (!docs) {
     return
@@ -1152,14 +1153,14 @@ roTBs2RqAAAAAElFTkSuQmCC' style='height:25px; border-radius:12px; display: inlin
 
 </div></div>
 </div>
-<p>In this notebook we showcase other features of DTC-Glacires which potentially can become usefull in the future.</p>
+<p>Here we showcase some of DTCG’s more experimental infrastructural capabilities, which address more long-term considerations for integration with <a class="reference external" href="https://destination-earth.eu/procurement/destination-earth-core-service-platform-framework-advanced-applications-and-services/">DESP</a>.</p>
 <section id="streaming-datacubes">
 <h2>Streaming Datacubes<a class="headerlink" href="#streaming-datacubes" title="Link to this heading">#</a></h2>
 <p>DTCG simplifies user interactions and saves on bandwidth costs by streaming data.
 Streaming a datacube just requires the name of the glacier:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">streamer</span> <span class="o">=</span> <span class="n">call</span><span class="o">.</span><span class="n">StreamDatacube</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">streamer</span> <span class="o">=</span> <span class="n">call</span><span class="o">.</span><span class="n">StreamDatacube</span><span class="p">(</span><span class="n">server</span><span class="o">=</span><span class="n">DEFAULT_L2_DATACUBE_URL</span><span class="p">)</span>
 <span class="n">datacube</span> <span class="o">=</span> <span class="n">streamer</span><span class="o">.</span><span class="n">stream_datacube</span><span class="p">(</span><span class="n">glacier</span><span class="o">=</span><span class="s2">&quot;Bruarjökull&quot;</span><span class="p">)</span>
 <span class="n">datacube</span>
 </pre></div>
@@ -1169,7 +1170,7 @@ Streaming a datacube just requires the name of the glacier:</p>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">streamer</span> <span class="o">=</span> <span class="n">call</span><span class="o">.</span><span class="n">StreamDatacube</span><span class="p">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">streamer</span> <span class="o">=</span> <span class="n">call</span><span class="o">.</span><span class="n">StreamDatacube</span><span class="p">(</span><span class="n">server</span><span class="o">=</span><span class="n">DEFAULT_L2_DATACUBE_URL</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">datacube</span> <span class="o">=</span> <span class="n">streamer</span><span class="o">.</span><span class="n">stream_datacube</span><span class="p">(</span><span class="n">glacier</span><span class="o">=</span><span class="s2">&quot;Bruarjökull&quot;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">datacube</span>
 
@@ -1204,105 +1205,6 @@ Streaming a datacube just requires the name of the glacier:</p>
 </div>
 </div>
 </div>
-<p>Let’s take a look at 2015, <a class="reference external" href="https://notebooks.dtcglaciers.org/notebooks/04_calibrate_with_eolis_data.ipynb">which we know from another notebook was an anomalous year for Iceland</a>.
-We can compare the cumulative specific mass balance <strong>observed by CryoSat-2</strong> to the cumulative specific mass balance <strong>modelled by OGGM</strong>.
-To make things simpler, we also combine the data with some glacier attributes from OGGM.
-Again, we can do this using DTCG with just a few lines of code.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgi_id</span> <span class="o">=</span> <span class="s2">&quot;RGI60-06.00377&quot;</span>
-<span class="n">dtcg_data</span> <span class="o">=</span> <span class="n">dtcg_oggm</span><span class="o">.</span><span class="n">BindingsCryotempo</span><span class="p">()</span>
-<span class="n">gdir</span> <span class="o">=</span> <span class="n">dtcg_data</span><span class="o">.</span><span class="n">get_glacier_directories</span><span class="p">(</span><span class="n">rgi_ids</span><span class="o">=</span><span class="p">[</span><span class="n">rgi_id</span><span class="p">],</span> <span class="n">from_prepro_level</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">prepro_border</span><span class="o">=</span><span class="mi">80</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">runoff_data</span> <span class="o">=</span> <span class="n">dtcg_data</span><span class="o">.</span><span class="n">get_aggregate_runoff</span><span class="p">(</span><span class="n">gdir</span><span class="o">=</span><span class="n">gdir</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">rgi_id</span> <span class="o">=</span> <span class="s2">&quot;RGI60-06.00377&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">dtcg_data</span> <span class="o">=</span> <span class="n">dtcg_oggm</span><span class="o">.</span><span class="n">BindingsCryotempo</span><span class="p">()</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">gdir</span> <span class="o">=</span> <span class="n">dtcg_data</span><span class="o">.</span><span class="n">get_glacier_directories</span><span class="p">(</span><span class="n">rgi_ids</span><span class="o">=</span><span class="p">[</span><span class="n">rgi_id</span><span class="p">],</span> <span class="n">from_prepro_level</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">prepro_border</span><span class="o">=</span><span class="mi">80</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">runoff_data</span> <span class="o">=</span> <span class="n">dtcg_data</span><span class="o">.</span><span class="n">get_aggregate_runoff</span><span class="p">(</span><span class="n">gdir</span><span class="o">=</span><span class="n">gdir</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/dtcg/integration/oggm_bindings.py:375,</span> in <span class="ni">BindingsOggmModel.get_glacier_directories</span><span class="nt">(self, rgi_ids, prepro_base_url, from_prepro_level, prepro_border, add_daily_w5e5, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">372</span> <span class="k">if</span> <span class="n">prepro_base_url</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">373</span>     <span class="n">prepro_base_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_BASE_URL</span>
-<span class="ne">--&gt; </span><span class="mi">375</span> <span class="n">gdirs</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">init_glacier_directories</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">376</span>     <span class="n">rgi_ids</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">377</span>     <span class="n">prepro_base_url</span><span class="o">=</span><span class="n">prepro_base_url</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">378</span>     <span class="n">from_prepro_level</span><span class="o">=</span><span class="n">from_prepro_level</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">379</span>     <span class="n">prepro_border</span><span class="o">=</span><span class="n">prepro_border</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">380</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">382</span> <span class="k">if</span> <span class="n">add_daily_w5e5</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">383</span>     <span class="n">workflow</span><span class="o">.</span><span class="n">execute_entity_task</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">384</span>         <span class="n">gdirs</span><span class="o">=</span><span class="n">gdirs</span><span class="p">,</span> <span class="n">task</span><span class="o">=</span><span class="n">w5e5</span><span class="o">.</span><span class="n">process_w5e5_data</span><span class="p">,</span> <span class="n">daily</span><span class="o">=</span><span class="kc">True</span>
-<span class="g g-Whitespace">    </span><span class="mi">385</span>     <span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/oggm/workflow.py:374,</span> in <span class="ni">init_glacier_directories</span><span class="nt">(rgidf, reset, force, from_prepro_level, prepro_border, prepro_rgi_version, prepro_base_url, from_tar, delete_tar)</span>
-<span class="g g-Whitespace">    </span><span class="mi">371</span>     <span class="n">reset</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">query_yes_no</span><span class="p">(</span><span class="s1">&#39;Delete all glacier directories?&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">373</span> <span class="k">if</span> <span class="n">from_prepro_level</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">374</span>     <span class="n">url</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_prepro_base_url</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="n">prepro_base_url</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">375</span>                                     <span class="n">border</span><span class="o">=</span><span class="n">prepro_border</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">376</span>                                     <span class="n">prepro_level</span><span class="o">=</span><span class="n">from_prepro_level</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">377</span>                                     <span class="n">rgi_version</span><span class="o">=</span><span class="n">prepro_rgi_version</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">378</span>     <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">PARAMS</span><span class="p">[</span><span class="s1">&#39;has_internet&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">utils</span><span class="o">.</span><span class="n">url_exists</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">379</span>         <span class="k">raise</span> <span class="n">InvalidParamsError</span><span class="p">(</span><span class="s2">&quot;base url seems unreachable with these &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">380</span>                                  <span class="s2">&quot;parameters: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/oggm/utils/_downloads.py:1244,</span> in <span class="ni">get_prepro_base_url</span><span class="nt">(base_url, rgi_version, border, prepro_level)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1241</span>     <span class="n">base_url</span> <span class="o">+=</span> <span class="s1">&#39;/&#39;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1243</span> <span class="k">if</span> <span class="n">rgi_version</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1244</span>     <span class="n">rgi_version</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">PARAMS</span><span class="p">[</span><span class="s1">&#39;rgi_version&#39;</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1246</span> <span class="k">if</span> <span class="n">border</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1247</span>     <span class="n">border</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">PARAMS</span><span class="p">[</span><span class="s1">&#39;border&#39;</span><span class="p">]</span>
-
-<span class="ne">KeyError</span>: &#39;rgi_version&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p>We can plot this interactively.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">graph_artist</span> <span class="o">=</span> <span class="n">dtcg_plotting</span><span class="o">.</span><span class="n">BokehGraph</span><span class="p">()</span>
-<span class="n">artist</span> <span class="o">=</span> <span class="n">dtcg_plotting</span><span class="o">.</span><span class="n">BokehCryotempo</span><span class="p">()</span>
-<span class="n">fig_smb_cumulative</span> <span class="o">=</span> <span class="n">artist</span><span class="o">.</span><span class="n">plot_eolis_smb</span><span class="p">(</span>
-    <span class="n">datacube</span><span class="o">=</span><span class="n">datacube</span><span class="o">.</span><span class="n">L1</span><span class="p">,</span> <span class="n">ref_year</span><span class="o">=</span><span class="mi">2015</span><span class="p">,</span> <span class="n">glacier_area</span><span class="o">=</span><span class="n">gdir</span><span class="o">.</span><span class="n">rgi_area_km2</span>
-<span class="p">)</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;a) Cumulative Specific Mass Balance (CryoSat)&quot;</span><span class="p">)</span>
-<span class="n">fig_runoff_cumulative</span> <span class="o">=</span> <span class="n">graph_artist</span><span class="o">.</span><span class="n">plot_runoff_timeseries</span><span class="p">(</span>
-    <span class="n">runoff</span><span class="o">=</span><span class="n">runoff_data</span><span class="p">[</span><span class="s2">&quot;monthly_runoff&quot;</span><span class="p">],</span>
-    <span class="n">ref_year</span><span class="o">=</span><span class="mi">2015</span><span class="p">,</span>
-    <span class="n">cumulative</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;b) Cumulative Monthly Runoff (OGGM)&quot;</span><span class="p">)</span>
-<span class="n">hv</span><span class="o">.</span><span class="n">Layout</span><span class="p">([</span><span class="n">fig_smb_cumulative</span><span class="p">,</span> <span class="n">fig_runoff_cumulative</span><span class="p">])</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span><span class="n">sizing_mode</span><span class="o">=</span><span class="s2">&quot;stretch_width&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Bruarjökull, Iceland&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cols</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">graph_artist</span> <span class="o">=</span> <span class="n">dtcg_plotting</span><span class="o">.</span><span class="n">BokehGraph</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">artist</span> <span class="o">=</span> <span class="n">dtcg_plotting</span><span class="o">.</span><span class="n">BokehCryotempo</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">fig_smb_cumulative</span> <span class="o">=</span> <span class="n">artist</span><span class="o">.</span><span class="n">plot_eolis_smb</span><span class="p">(</span>
-<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="n">datacube</span><span class="o">=</span><span class="n">datacube</span><span class="o">.</span><span class="n">L1</span><span class="p">,</span> <span class="n">ref_year</span><span class="o">=</span><span class="mi">2015</span><span class="p">,</span> <span class="n">glacier_area</span><span class="o">=</span><span class="n">gdir</span><span class="o">.</span><span class="n">rgi_area_km2</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="p">)</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;a) Cumulative Specific Mass Balance (CryoSat)&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">fig_runoff_cumulative</span> <span class="o">=</span> <span class="n">graph_artist</span><span class="o">.</span><span class="n">plot_runoff_timeseries</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">runoff</span><span class="o">=</span><span class="n">runoff_data</span><span class="p">[</span><span class="s2">&quot;monthly_runoff&quot;</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">ref_year</span><span class="o">=</span><span class="mi">2015</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">cumulative</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="p">)</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;b) Cumulative Monthly Runoff (OGGM)&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">hv</span><span class="o">.</span><span class="n">Layout</span><span class="p">([</span><span class="n">fig_smb_cumulative</span><span class="p">,</span> <span class="n">fig_runoff_cumulative</span><span class="p">])</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span><span class="n">sizing_mode</span><span class="o">=</span><span class="s2">&quot;stretch_width&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Bruarjökull, Iceland&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cols</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;datacube&#39; is not defined
-</pre></div>
-</div>
-</div>
-</div>
-<p>We can see from <strong>Figure a)</strong> that Bruarjökull experienced a significant delay to the start of the 2015 summer season, which led to the highest winter cumulative specific mass balance since at least 2011.
-<strong>Figure b)</strong> shows a corresponding decrease in monthly runoff. Indeed, <a class="reference external" href="https://gogn.lv.is/files/Arsskyrslur/LV-Annual_Report_2015.pdf">Landsvirkjun considered the annual inflow into Vatnajökull to be “very dry”</a>.</p>
 <section id="technical-implementation">
 <h3>Technical Implementation<a class="headerlink" href="#technical-implementation" title="Link to this heading">#</a></h3>
 <p>Datacubes are streamed directly from a URL, and opened as data trees.
@@ -1327,7 +1229,7 @@ This is equivalent to accessing a <code class="docutils literal notranslate"><sp
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">datacube</span><span class="o">.</span><span class="n">L1</span><span class="o">.</span><span class="n">eolis_elevation_change_sigma_timeseries</span>
 
 <span class="ne">NameError</span>: name &#39;datacube&#39; is not defined
@@ -1338,7 +1240,7 @@ This is equivalent to accessing a <code class="docutils literal notranslate"><sp
 </section>
 </section>
 <section id="dtc-glaciers-api">
-<h2>DTC-Glaciers API<a class="headerlink" href="#dtc-glaciers-api" title="Link to this heading">#</a></h2>
+<h2>DTC Glaciers API<a class="headerlink" href="#dtc-glaciers-api" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">dtcg</span>
@@ -1412,7 +1314,7 @@ For selecting a subregion, this is what an API query could look like:</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">14</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">14</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># A query might look like this</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">user_query_params</span> <span class="o">=</span> <span class="p">{</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;select_glacier&quot;</span><span class="p">,</span>
@@ -1480,7 +1382,7 @@ In a dashboard setting, these plots can also support real-time data.</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">dashboard</span> <span class="o">=</span> <span class="n">dtcg</span><span class="o">.</span><span class="n">interface</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">HoloviewsDashboard</span><span class="p">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">plot_graph</span><span class="o">.</span><span class="n">plot_mass_balance</span><span class="p">(</span>
 <span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">observations</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;runoff_data&quot;</span><span class="p">][</span><span class="s2">&quot;wgms&quot;</span><span class="p">],</span>
@@ -1508,7 +1410,7 @@ In a dashboard setting, these plots can also support real-time data.</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">dashboard</span> <span class="o">=</span> <span class="n">dtcg</span><span class="o">.</span><span class="n">interface</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">HoloviewsDashboardL2</span><span class="p">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">plot_runoff_dashboard</span><span class="p">(</span>
 <span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
@@ -1560,7 +1462,7 @@ In a dashboard setting, these plots can also support real-time data.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Creating DTC-Glaciers User-DT-Enhanced Data cubes (L3)</p>
+        <p class="prev-next-title">Creating DTC Glaciers User-DT-Enhanced Data cubes (L3)</p>
       </div>
     </a>
     <a class="right-next"
@@ -1568,7 +1470,7 @@ In a dashboard setting, these plots can also support real-time data.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">CryoSat2 - model comparison at Vatnajökull ice cap, Iceland</p>
+        <p class="prev-next-title">CryoSat2 - Model Comparison at Vatnajökull Ice Cap, Iceland</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1592,7 +1494,7 @@ In a dashboard setting, these plots can also support real-time data.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-implementation">Technical Implementation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dtc-glaciers-api">DTC-Glaciers API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dtc-glaciers-api">DTC Glaciers API</a></li>
 </ul>
   </nav></div>
 
@@ -1619,7 +1521,7 @@ By DTCG Consortium
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jan 29, 2026.
+  Last updated on Jan 30, 2026.
   <br/>
 </p>
   </div>
